@@ -1,0 +1,20 @@
+{
+  "observedAtUtc": "2026-10-20T20:43:42Z",
+  "sourceUrl": "https://api.carbonintensity.org.uk/intensity/2026-10-20T20:30Z/fw48h",
+  "requestFromUtc": "2026-10-20T20:30:00Z",
+  "httpStatus": 200,
+  "contentType": "application/json",
+  "responseBytes": 10942,
+  "rowCount": 97,
+  "firstFromUtc": "2026-10-20T20:00Z",
+  "lastToUtc": "2026-10-22T20:30Z",
+  "spanHours": 48.5,
+  "requestedStartCovered": true,
+  "requested48hCovered": true,
+  "forecastNullCount": 0,
+  "actualNullCount": 96,
+  "intervalValidationIssues": [],
+  "providerIssuedAtUtc": null,
+  "rawResponseSha256": "2739eb8b0a60890bc3d3c1cf42c6a70a85b87e5d562c4a442b7c83dcbf479f4e",
+  "evidenceOnly": "Unauthenticated M00 research snapshot; not an application adapter or a live comparison. Retain future actual values as null."
+}
