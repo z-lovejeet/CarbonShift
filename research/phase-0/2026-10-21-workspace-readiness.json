@@ -1,0 +1,168 @@
+{
+  "workspace": "/Users/lovejeetsingh1/Documents/Hackathons/IEEE ClimateChain",
+  "platform": "Darwin",
+  "architecture": "arm64",
+  "topLevelEntries": [
+    ".DS_Store",
+    "AGENTS.md",
+    "docs",
+    "research"
+  ],
+  "applicationMarkers": {
+    "package.json": false,
+    "pnpm-lock.yaml": false,
+    "src": false,
+    "contracts": false,
+    "supabase": false,
+    "node_modules": false,
+    ".git": false
+  },
+  "gitVersion": {
+    "exitCode": 0,
+    "output": "git version 2.54.0 (Apple Git-157)"
+  },
+  "gitRoot": {
+    "exitCode": 128,
+    "output": "fatal: not a git repository (or any of the parent directories): .git"
+  },
+  "gitStatus": {
+    "exitCode": 128,
+    "output": "fatal: not a git repository (or any of the parent directories): .git"
+  },
+  "runtimes": {
+    "node": {
+      "exitCode": 0,
+      "output": "v24.11.1"
+    },
+    "pnpm": {
+      "exitCode": 0,
+      "output": "10.34.4"
+    },
+    "npm": {
+      "exitCode": 0,
+      "output": "11.6.2"
+    },
+    "python3": {
+      "exitCode": 0,
+      "output": "Python 3.9.6"
+    }
+  },
+  "optionalToolAvailability": {
+    "corepack": true,
+    "docker": true,
+    "supabase": false,
+    "gh": false
+  },
+  "environmentPresenceOnly": {
+    "NEXT_PUBLIC_SUPABASE_URL": false,
+    "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY": false,
+    "SUPABASE_SECRET_KEY": false,
+    "GEMINI_API_KEY": false,
+    "GROQ_API_KEY": false,
+    "SEPOLIA_RPC_URL": false,
+    "LEDGER_PRIVATE_KEY": false,
+    "APP_ORIGIN": false,
+    "PRIVACY_CONTACT": false
+  },
+  "localEnvFiles": [],
+  "existingFiles": [
+    {
+      "path": "docs/01-prd-and-blueprint.md",
+      "sha256": "4146d492e0d91071dd0285a4afd563db5eb58af7427278e88ce7ad66123fc04a"
+    },
+    {
+      "path": "docs/02-features-pages-and-flows.md",
+      "sha256": "2266b1f7386de3e77d87f603084182fc22bda153861151c5d8efe2b11ecd6062"
+    },
+    {
+      "path": "docs/03-ui-ux-and-design-system.md",
+      "sha256": "03e4747f1d669ee140a7e357e8f263791a67e79ee0bbe0699a32d8058f787128"
+    },
+    {
+      "path": "docs/04-architecture-and-system-design.md",
+      "sha256": "971cdf73b13297c3fc0700e9ff87c1c3bc91c89d63dceec78367df69acb6acf6"
+    },
+    {
+      "path": "docs/05-tech-stack-and-folder-structure.md",
+      "sha256": "566e9b298a06be59b3f45ad119363ca76c82aca7a49da7234e9b866ff7a01b61"
+    },
+    {
+      "path": "docs/06-data-model-and-state-machines.md",
+      "sha256": "1481b3b78ebb57f7304ed60ecc70a2fa50c0c42a5672be737c1cebc13fb37ed1"
+    },
+    {
+      "path": "docs/07-api-and-integrations.md",
+      "sha256": "a46371a156d2a9e5587045e340e623348a2304edee1e43983c673173cb5bac9b"
+    },
+    {
+      "path": "docs/08-scheduling-and-carbon-methodology.md",
+      "sha256": "35c45f7bfe741d503c3069f3fb87fe1af17db8e0f3c6297e8d54e48bf2f48fd7"
+    },
+    {
+      "path": "docs/09-ai-agents-models-and-workflow.md",
+      "sha256": "aafbc582b900ecfde28f73e0b54089fcdcbefd251288b5b0eb330a0dcc015e9b"
+    },
+    {
+      "path": "docs/10-blockchain-and-evidence-specification.md",
+      "sha256": "e41b5bb98a3943dc7d829a5c46078a51a52a443a11791b3db7819b767f5da359"
+    },
+    {
+      "path": "docs/11-security-privacy-and-abuse.md",
+      "sha256": "43b5cf0168740e3a1d9d933cf483c276337f7683f48a15822d83370c24ea1374"
+    },
+    {
+      "path": "docs/12-testing-and-ai-evaluation.md",
+      "sha256": "2d0c9376d74f15007844ba7627fea46ffb9047e454213e74178fe84699750bea"
+    },
+    {
+      "path": "docs/13-development-roadmap-and-codex-tasks.md",
+      "sha256": "2178c72aa7bbaa279445545a90b2f11448137d24c8f239b2d2c7ea87ec40b260"
+    },
+    {
+      "path": "docs/14-manual-setup-guide.md",
+      "sha256": "a106519c4e4e3c87ec9a4d516de9e326869adc5dfadb79eaa97b5c5551a1a4d1"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "582a173e16e492753ea7e8686ef7c5c5a4562f7a1453d5e7315a1d212321fbf2"
+    },
+    {
+      "path": "docs/decisions-and-status.md",
+      "sha256": "0081d2338d725151e01dbeb5f217f2bcd3b751c38fcc02d3773c1efce12f5049"
+    },
+    {
+      "path": "research/wave-1/01-hackathon-and-theme.md",
+      "sha256": "0607e33a4b2ae6801267a92a8576adddc6a506acdb53e2534244366e84311cd3"
+    },
+    {
+      "path": "research/wave-1/02-judges-and-judging-criteria.md",
+      "sha256": "0e136cb73b15bf54c7f7dd2c1d5eb31f814a93df3d901eac03aab12795466957"
+    },
+    {
+      "path": "research/wave-1/03-comparable-hackathon-winners.md",
+      "sha256": "3d59a772d577b4604273318883852a00d42775749a46ba0fb8cab67f86ee580e"
+    },
+    {
+      "path": "research/wave-2/gemini-wave-2-master-prompt.md",
+      "sha256": "9a4fc164bbaf45cbd9ef33e59d821fe67c66a9f18afe9203d75f5c64837d168a"
+    },
+    {
+      "path": "research/wave-2/project-ideas-claude-analysis.md",
+      "sha256": "2b2c9fa7f222147763e040ba76025f1b1a8db406c95a10720bc0cd9962e1a262"
+    },
+    {
+      "path": "research/wave-2/project-ideas-claude.md",
+      "sha256": "014e3177a71cfce2ca457d6fccbd355e86993b7f4e31a18f59e0180a84e4c2f8"
+    },
+    {
+      "path": "research/wave-2/top-three-build-guide.md",
+      "sha256": "3807285f84b4f6562879e7fa3e7f4c6a889f205d5ce64f17397fc0e3c3a580b6"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "0f9bcb7133024ecca9e85a3e16201330b82d0f9c4aa45de259778d5547d66b3c"
+    }
+  ],
+  "recordedAtUtc": "2026-10-20 20:45:54 UTC",
+  "purpose": "M00.02/M00.03 read-only workspace inspection; credential presence only. No product install, Git initialization, account creation, or authenticated request."
+}
