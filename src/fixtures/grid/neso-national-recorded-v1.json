@@ -1,0 +1,750 @@
+{
+  "fixtureVersion": "neso-national-recorded-v1",
+  "dataOrigin": "recorded_public_provider_normalized_snapshot",
+  "replayOnly": true,
+  "label": "Historical national provider snapshots for isolated replay. Cycle duration/energy are authored assumptions, not appliance measurements or achieved climate impact. Never use this file as a live fallback.",
+  "startedAtUtc": "2026-10-21T09:05:37Z",
+  "completedAtUtc": "2026-10-21T09:05:41Z",
+  "forecastRequest": {
+    "fromUtc": "2026-10-21T10:00:00Z",
+    "toUtc": "2026-10-21T16:00:00Z"
+  },
+  "actualRequest": {
+    "fromUtc": "2026-10-21T05:00:00Z",
+    "toUtc": "2026-10-21T07:00:00Z"
+  },
+  "forecast": {
+    "id": "b977b513-5cc0-4f0b-aa8b-5a2f559e6fff",
+    "hash": "0xb6eec1864f662be4a2ff5fe737756011f26327f40d73b9abb23ce41416435652",
+    "snapshot": {
+      "geography": "GB_NATIONAL",
+      "sourceUrl": "https://api.carbonintensity.org.uk/intensity/2026-10-21T10:00Z/fw48h",
+      "retrievedAtUtc": "2026-10-21T09:05:39Z",
+      "providerIssuedAtUtc": null,
+      "license": "CC BY 4.0",
+      "intervals": [
+        {
+          "fromUtc": "2026-10-21T09:30:00Z",
+          "toUtc": "2026-10-21T10:00:00Z",
+          "forecastGPerKwh": 119,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T10:00:00Z",
+          "toUtc": "2026-10-21T10:30:00Z",
+          "forecastGPerKwh": 117,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T10:30:00Z",
+          "toUtc": "2026-10-21T11:00:00Z",
+          "forecastGPerKwh": 115,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T11:00:00Z",
+          "toUtc": "2026-10-21T11:30:00Z",
+          "forecastGPerKwh": 107,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T11:30:00Z",
+          "toUtc": "2026-10-21T12:00:00Z",
+          "forecastGPerKwh": 95,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T12:00:00Z",
+          "toUtc": "2026-10-21T12:30:00Z",
+          "forecastGPerKwh": 92,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T12:30:00Z",
+          "toUtc": "2026-10-21T13:00:00Z",
+          "forecastGPerKwh": 89,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T13:00:00Z",
+          "toUtc": "2026-10-21T13:30:00Z",
+          "forecastGPerKwh": 90,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T13:30:00Z",
+          "toUtc": "2026-10-21T14:00:00Z",
+          "forecastGPerKwh": 91,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T14:00:00Z",
+          "toUtc": "2026-10-21T14:30:00Z",
+          "forecastGPerKwh": 94,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T14:30:00Z",
+          "toUtc": "2026-10-21T15:00:00Z",
+          "forecastGPerKwh": 97,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T15:00:00Z",
+          "toUtc": "2026-10-21T15:30:00Z",
+          "forecastGPerKwh": 96,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T15:30:00Z",
+          "toUtc": "2026-10-21T16:00:00Z",
+          "forecastGPerKwh": 98,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T16:00:00Z",
+          "toUtc": "2026-10-21T16:30:00Z",
+          "forecastGPerKwh": 100,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T16:30:00Z",
+          "toUtc": "2026-10-21T17:00:00Z",
+          "forecastGPerKwh": 97,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T17:00:00Z",
+          "toUtc": "2026-10-21T17:30:00Z",
+          "forecastGPerKwh": 95,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T17:30:00Z",
+          "toUtc": "2026-10-21T18:00:00Z",
+          "forecastGPerKwh": 95,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T18:00:00Z",
+          "toUtc": "2026-10-21T18:30:00Z",
+          "forecastGPerKwh": 94,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T18:30:00Z",
+          "toUtc": "2026-10-21T19:00:00Z",
+          "forecastGPerKwh": 88,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T19:00:00Z",
+          "toUtc": "2026-10-21T19:30:00Z",
+          "forecastGPerKwh": 85,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T19:30:00Z",
+          "toUtc": "2026-10-21T20:00:00Z",
+          "forecastGPerKwh": 73,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T20:00:00Z",
+          "toUtc": "2026-10-21T20:30:00Z",
+          "forecastGPerKwh": 71,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T20:30:00Z",
+          "toUtc": "2026-10-21T21:00:00Z",
+          "forecastGPerKwh": 68,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T21:00:00Z",
+          "toUtc": "2026-10-21T21:30:00Z",
+          "forecastGPerKwh": 65,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T21:30:00Z",
+          "toUtc": "2026-10-21T22:00:00Z",
+          "forecastGPerKwh": 64,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T22:00:00Z",
+          "toUtc": "2026-10-21T22:30:00Z",
+          "forecastGPerKwh": 63,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T22:30:00Z",
+          "toUtc": "2026-10-21T23:00:00Z",
+          "forecastGPerKwh": 64,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T23:00:00Z",
+          "toUtc": "2026-10-21T23:30:00Z",
+          "forecastGPerKwh": 66,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-21T23:30:00Z",
+          "toUtc": "2026-10-22T00:00:00Z",
+          "forecastGPerKwh": 61,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T00:00:00Z",
+          "toUtc": "2026-10-22T00:30:00Z",
+          "forecastGPerKwh": 62,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T00:30:00Z",
+          "toUtc": "2026-10-22T01:00:00Z",
+          "forecastGPerKwh": 61,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T01:00:00Z",
+          "toUtc": "2026-10-22T01:30:00Z",
+          "forecastGPerKwh": 62,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T01:30:00Z",
+          "toUtc": "2026-10-22T02:00:00Z",
+          "forecastGPerKwh": 62,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T02:00:00Z",
+          "toUtc": "2026-10-22T02:30:00Z",
+          "forecastGPerKwh": 62,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T02:30:00Z",
+          "toUtc": "2026-10-22T03:00:00Z",
+          "forecastGPerKwh": 59,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T03:00:00Z",
+          "toUtc": "2026-10-22T03:30:00Z",
+          "forecastGPerKwh": 60,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T03:30:00Z",
+          "toUtc": "2026-10-22T04:00:00Z",
+          "forecastGPerKwh": 60,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T04:00:00Z",
+          "toUtc": "2026-10-22T04:30:00Z",
+          "forecastGPerKwh": 60,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T04:30:00Z",
+          "toUtc": "2026-10-22T05:00:00Z",
+          "forecastGPerKwh": 60,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T05:00:00Z",
+          "toUtc": "2026-10-22T05:30:00Z",
+          "forecastGPerKwh": 62,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T05:30:00Z",
+          "toUtc": "2026-10-22T06:00:00Z",
+          "forecastGPerKwh": 65,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T06:00:00Z",
+          "toUtc": "2026-10-22T06:30:00Z",
+          "forecastGPerKwh": 72,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T06:30:00Z",
+          "toUtc": "2026-10-22T07:00:00Z",
+          "forecastGPerKwh": 84,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T07:00:00Z",
+          "toUtc": "2026-10-22T07:30:00Z",
+          "forecastGPerKwh": 95,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T07:30:00Z",
+          "toUtc": "2026-10-22T08:00:00Z",
+          "forecastGPerKwh": 104,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T08:00:00Z",
+          "toUtc": "2026-10-22T08:30:00Z",
+          "forecastGPerKwh": 109,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T08:30:00Z",
+          "toUtc": "2026-10-22T09:00:00Z",
+          "forecastGPerKwh": 103,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T09:00:00Z",
+          "toUtc": "2026-10-22T09:30:00Z",
+          "forecastGPerKwh": 97,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T09:30:00Z",
+          "toUtc": "2026-10-22T10:00:00Z",
+          "forecastGPerKwh": 94,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T10:00:00Z",
+          "toUtc": "2026-10-22T10:30:00Z",
+          "forecastGPerKwh": 82,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T10:30:00Z",
+          "toUtc": "2026-10-22T11:00:00Z",
+          "forecastGPerKwh": 77,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T11:00:00Z",
+          "toUtc": "2026-10-22T11:30:00Z",
+          "forecastGPerKwh": 73,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T11:30:00Z",
+          "toUtc": "2026-10-22T12:00:00Z",
+          "forecastGPerKwh": 75,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T12:00:00Z",
+          "toUtc": "2026-10-22T12:30:00Z",
+          "forecastGPerKwh": 77,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T12:30:00Z",
+          "toUtc": "2026-10-22T13:00:00Z",
+          "forecastGPerKwh": 79,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T13:00:00Z",
+          "toUtc": "2026-10-22T13:30:00Z",
+          "forecastGPerKwh": 84,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T13:30:00Z",
+          "toUtc": "2026-10-22T14:00:00Z",
+          "forecastGPerKwh": 94,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T14:00:00Z",
+          "toUtc": "2026-10-22T14:30:00Z",
+          "forecastGPerKwh": 107,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T14:30:00Z",
+          "toUtc": "2026-10-22T15:00:00Z",
+          "forecastGPerKwh": 119,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T15:00:00Z",
+          "toUtc": "2026-10-22T15:30:00Z",
+          "forecastGPerKwh": 136,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T15:30:00Z",
+          "toUtc": "2026-10-22T16:00:00Z",
+          "forecastGPerKwh": 154,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T16:00:00Z",
+          "toUtc": "2026-10-22T16:30:00Z",
+          "forecastGPerKwh": 163,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T16:30:00Z",
+          "toUtc": "2026-10-22T17:00:00Z",
+          "forecastGPerKwh": 171,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T17:00:00Z",
+          "toUtc": "2026-10-22T17:30:00Z",
+          "forecastGPerKwh": 175,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T17:30:00Z",
+          "toUtc": "2026-10-22T18:00:00Z",
+          "forecastGPerKwh": 173,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T18:00:00Z",
+          "toUtc": "2026-10-22T18:30:00Z",
+          "forecastGPerKwh": 169,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T18:30:00Z",
+          "toUtc": "2026-10-22T19:00:00Z",
+          "forecastGPerKwh": 163,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T19:00:00Z",
+          "toUtc": "2026-10-22T19:30:00Z",
+          "forecastGPerKwh": 158,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T19:30:00Z",
+          "toUtc": "2026-10-22T20:00:00Z",
+          "forecastGPerKwh": 157,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T20:00:00Z",
+          "toUtc": "2026-10-22T20:30:00Z",
+          "forecastGPerKwh": 151,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T20:30:00Z",
+          "toUtc": "2026-10-22T21:00:00Z",
+          "forecastGPerKwh": 146,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T21:00:00Z",
+          "toUtc": "2026-10-22T21:30:00Z",
+          "forecastGPerKwh": 131,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T21:30:00Z",
+          "toUtc": "2026-10-22T22:00:00Z",
+          "forecastGPerKwh": 118,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T22:00:00Z",
+          "toUtc": "2026-10-22T22:30:00Z",
+          "forecastGPerKwh": 104,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T22:30:00Z",
+          "toUtc": "2026-10-22T23:00:00Z",
+          "forecastGPerKwh": 93,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T23:00:00Z",
+          "toUtc": "2026-10-22T23:30:00Z",
+          "forecastGPerKwh": 86,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-22T23:30:00Z",
+          "toUtc": "2026-10-23T00:00:00Z",
+          "forecastGPerKwh": 76,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T00:00:00Z",
+          "toUtc": "2026-10-23T00:30:00Z",
+          "forecastGPerKwh": 75,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T00:30:00Z",
+          "toUtc": "2026-10-23T01:00:00Z",
+          "forecastGPerKwh": 73,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T01:00:00Z",
+          "toUtc": "2026-10-23T01:30:00Z",
+          "forecastGPerKwh": 66,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T01:30:00Z",
+          "toUtc": "2026-10-23T02:00:00Z",
+          "forecastGPerKwh": 67,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T02:00:00Z",
+          "toUtc": "2026-10-23T02:30:00Z",
+          "forecastGPerKwh": 67,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T02:30:00Z",
+          "toUtc": "2026-10-23T03:00:00Z",
+          "forecastGPerKwh": 66,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T03:00:00Z",
+          "toUtc": "2026-10-23T03:30:00Z",
+          "forecastGPerKwh": 67,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T03:30:00Z",
+          "toUtc": "2026-10-23T04:00:00Z",
+          "forecastGPerKwh": 66,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T04:00:00Z",
+          "toUtc": "2026-10-23T04:30:00Z",
+          "forecastGPerKwh": 67,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T04:30:00Z",
+          "toUtc": "2026-10-23T05:00:00Z",
+          "forecastGPerKwh": 66,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T05:00:00Z",
+          "toUtc": "2026-10-23T05:30:00Z",
+          "forecastGPerKwh": 66,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T05:30:00Z",
+          "toUtc": "2026-10-23T06:00:00Z",
+          "forecastGPerKwh": 70,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T06:00:00Z",
+          "toUtc": "2026-10-23T06:30:00Z",
+          "forecastGPerKwh": 78,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T06:30:00Z",
+          "toUtc": "2026-10-23T07:00:00Z",
+          "forecastGPerKwh": 79,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T07:00:00Z",
+          "toUtc": "2026-10-23T07:30:00Z",
+          "forecastGPerKwh": 82,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T07:30:00Z",
+          "toUtc": "2026-10-23T08:00:00Z",
+          "forecastGPerKwh": 80,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T08:00:00Z",
+          "toUtc": "2026-10-23T08:30:00Z",
+          "forecastGPerKwh": 74,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T08:30:00Z",
+          "toUtc": "2026-10-23T09:00:00Z",
+          "forecastGPerKwh": 79,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T09:00:00Z",
+          "toUtc": "2026-10-23T09:30:00Z",
+          "forecastGPerKwh": 73,
+          "actualGPerKwh": null
+        },
+        {
+          "fromUtc": "2026-10-23T09:30:00Z",
+          "toUtc": "2026-10-23T10:00:00Z",
+          "forecastGPerKwh": 69,
+          "actualGPerKwh": null
+        }
+      ]
+    },
+    "attribution": "NESO Carbon Intensity API — CC BY 4.0; normalized by CarbonShift"
+  },
+  "actual": {
+    "id": "d85d325c-5837-4b00-a429-edb1436db204",
+    "hash": "0x583b4439d81def1e0a9e10294233083ea2b9b69e73da7b647e0d34ada279a421",
+    "snapshot": {
+      "geography": "GB_NATIONAL",
+      "sourceUrl": "https://api.carbonintensity.org.uk/intensity/2026-10-21T05:00Z/2026-10-21T07:00Z",
+      "retrievedAtUtc": "2026-10-21T09:05:41Z",
+      "providerIssuedAtUtc": null,
+      "license": "CC BY 4.0",
+      "intervals": [
+        {
+          "fromUtc": "2026-10-21T04:30:00Z",
+          "toUtc": "2026-10-21T05:00:00Z",
+          "forecastGPerKwh": 80,
+          "actualGPerKwh": 97
+        },
+        {
+          "fromUtc": "2026-10-21T05:00:00Z",
+          "toUtc": "2026-10-21T05:30:00Z",
+          "forecastGPerKwh": 83,
+          "actualGPerKwh": 113
+        },
+        {
+          "fromUtc": "2026-10-21T05:30:00Z",
+          "toUtc": "2026-10-21T06:00:00Z",
+          "forecastGPerKwh": 89,
+          "actualGPerKwh": 131
+        },
+        {
+          "fromUtc": "2026-10-21T06:00:00Z",
+          "toUtc": "2026-10-21T06:30:00Z",
+          "forecastGPerKwh": 104,
+          "actualGPerKwh": 143
+        },
+        {
+          "fromUtc": "2026-10-21T06:30:00Z",
+          "toUtc": "2026-10-21T07:00:00Z",
+          "forecastGPerKwh": 113,
+          "actualGPerKwh": 138
+        }
+      ]
+    },
+    "attribution": "NESO Carbon Intensity API — CC BY 4.0; normalized by CarbonShift"
+  },
+  "comparison": {
+    "constraints": {
+      "geography": "GB_NATIONAL",
+      "timezone": "Europe/London",
+      "earliestStartUtc": "2026-10-21T10:00:00Z",
+      "deadlineUtc": "2026-10-21T16:00:00Z",
+      "durationMinutes": 60,
+      "energyWh": 1000,
+      "energyBasis": "illustrative_default",
+      "blockedIntervals": [],
+      "baselineStartUtc": "2026-10-21T10:00:00Z",
+      "baselineOrigin": "earliest_feasible_confirmed",
+      "confirmedAtUtc": "2026-10-21T09:05:39Z"
+    },
+    "forecastSnapshotId": "b977b513-5cc0-4f0b-aa8b-5a2f559e6fff",
+    "forecastSnapshotHash": "0xb6eec1864f662be4a2ff5fe737756011f26327f40d73b9abb23ce41416435652",
+    "baseline": {
+      "startUtc": "2026-10-21T10:00:00Z",
+      "endUtc": "2026-10-21T11:00:00Z",
+      "energyWhBins": [
+        500,
+        500
+      ],
+      "factorGPerKwh": [
+        117,
+        115
+      ],
+      "estimatedMg": 116000,
+      "rank": 11
+    },
+    "selected": {
+      "startUtc": "2026-10-21T12:30:00Z",
+      "endUtc": "2026-10-21T13:30:00Z",
+      "energyWhBins": [
+        500,
+        500
+      ],
+      "factorGPerKwh": [
+        89,
+        90
+      ],
+      "estimatedMg": 89500,
+      "rank": 1
+    },
+    "alternatives": [
+      {
+        "startUtc": "2026-10-21T12:00:00Z",
+        "endUtc": "2026-10-21T13:00:00Z",
+        "energyWhBins": [
+          500,
+          500
+        ],
+        "factorGPerKwh": [
+          92,
+          89
+        ],
+        "estimatedMg": 90500,
+        "rank": 2
+      },
+      {
+        "startUtc": "2026-10-21T13:00:00Z",
+        "endUtc": "2026-10-21T14:00:00Z",
+        "energyWhBins": [
+          500,
+          500
+        ],
+        "factorGPerKwh": [
+          90,
+          91
+        ],
+        "estimatedMg": 90500,
+        "rank": 3
+      },
+      {
+        "startUtc": "2026-10-21T13:30:00Z",
+        "endUtc": "2026-10-21T14:30:00Z",
+        "energyWhBins": [
+          500,
+          500
+        ],
+        "factorGPerKwh": [
+          91,
+          94
+        ],
+        "estimatedMg": 92500,
+        "rank": 4
+      }
+    ],
+    "differenceMg": 26500,
+    "differencePercent": 22.844827586206897,
+    "methodVersion": "carbonshift-gb-uniform-v1",
+    "createdAtUtc": "2026-10-21T09:05:39Z",
+    "expiresAtUtc": "2026-10-21T09:10:39Z"
+  }
+}
