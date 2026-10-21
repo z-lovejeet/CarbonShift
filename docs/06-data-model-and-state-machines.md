@@ -1,6 +1,6 @@
 # CarbonShift — database, domain model, and state machines
 
-Version 1.1 · 21 October 2026 · Shared M02 domain contracts implemented; relational persistence and full state lifecycle remain later work.
+Version 1.2 · 21 October 2026 · Shared domain contracts and M03 grid records implemented; relational persistence and full state lifecycle remain later work.
 
 ## 1. Representation rules
 
@@ -41,6 +41,8 @@ The strict Zod schemas in `src/domain/schemas/` own these field names. Compariso
 UTC inputs require canonical whole-second `YYYY-MM-DDTHH:mm:ssZ` strings, with valid calendar dates and no leap seconds. Blocks must lie within earliest start/deadline; sorting is normalization, overlapping blocks are rejected, and touching blocks are allowed. `confirmedAtUtc` cannot be in the future relative to the injected comparison clock. External numeric factors and totals must be safe integers; intermediate arithmetic uses BigInt and rejects an unsafe final total.
 
 The pure updated-result projection uses `reportId`, `snapshotHash`, `baselineActualMg`, `reportedActualMg`, `differenceMg`, nullable `differencePercent`, `status`, `reasonCodes`, and `deviationCodes`, alongside the evidence/method labels. No report yields `forecast_only`; a run with missing factors yields `actual_pending` with all updated amounts null. Report persistence, correction sequencing and cancellation authorization remain M07 responsibilities. Private report IDs are UUIDs; `did_not_run` after cancellation is a separate service-layer transition, not a bypass flag in the calculator.
+
+M03's `GridSnapshotRecord` wraps the unchanged shared snapshot with server-generated `id`, `hash` and `attribution`. `hash` is SHA-256 over `CarbonShift:grid-snapshot:v1\n` followed by the normalized strict schema's fixed-order JSON projection. It includes truthful retrieval/source/license metadata; object input key order is normalized before hashing. It is a storage identity, distinct from M08's public JCS manifest/method hashes. Cache hits retain the entire original record; future M04 persistence must not rewrite snapshots. Empty actual responses return null, not an invalid empty snapshot or zero-valued factors.
 
 ## 3. Relational records
 

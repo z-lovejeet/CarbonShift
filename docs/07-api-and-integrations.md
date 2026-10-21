@@ -1,6 +1,6 @@
 # CarbonShift — API and external integration contracts
 
-Version 1.0 · 20 October 2026 · Proposed wire contracts. Base path `/api/v1`.
+Version 1.1 · 21 October 2026 · Wire contracts, with the M03 internal grid integration implemented. Base path `/api/v1`; private product endpoints remain later work.
 
 ## 1. Common conventions
 
@@ -100,6 +100,18 @@ Use only allowlisted provider URLs assembled from validated timestamps. Store no
 No provider API key is specified by the public quick-start. If authenticated access or terms change, update the adapter/setup rather than guessing a key.
 
 M00 observation, 21 October 2026: the public 48-hour endpoint returned 97 contiguous half-hours, including one interval before the requested start, with 96 null actual values. Validate timestamps and requested coverage rather than assuming exactly 96 rows. Extra surrounding intervals may be retained in the source snapshot; only the required covered range participates in a calculation. Future actual values remain null. The [saved response observation](../research/phase-0/2026-10-21-grid-observation.json) is readiness evidence, not an implemented adapter or a reusable live forecast.
+
+### M03 internal implementation contract
+
+M03 internal grid contract (not a new public endpoint): `getForecast({fromUtc,toUtc})` returns an immutable `{id,hash,snapshot,attribution}` record after complete forecast coverage validation. The endpoints and cache keys are constructed only from strict UTC fields. Forecast bounds are aligned half-hours, with a positive span at most 48 hours. `getActual({fromUtc,toUtc})` rounds the required range outward to half-hours and supports a bounded 96-hour union range, enough for method v1's baseline/reported cycle. It returns a structurally valid partial snapshot or null for an empty series; missing actual coverage remains for the domain's `actual_pending` projection, never zero.
+
+The provider's minute timestamps are explicitly normalized to canonical UTC seconds. Required known fields are validated; unused provider additions (such as intensity index) are discarded. Full snapshots retain extra contiguous edge intervals. Provider issuance stays null. Records get a server UUID and a digest of a versioned, fixed-field snapshot projection (`CarbonShift:grid-snapshot:v1\n` + JSON); this storage digest is not the M08 public manifest/JCS proof scheme or independent source certification. Attribution is NESO Carbon Intensity API, CC BY 4.0.
+
+Five-minute cache reuse is per normalized request and process, with 32 retained entries and identical in-flight coalescing. Retrieval time/ID/hash are never refreshed on a hit. Expired or clock-future entries are not served as fresh on an outage. The live entry point supplies its own server clock and fetch; tests inject dependencies in the internal client only. Empty actual series and failed requests are not cached. Cache loss across server processes affects request volume, not calculation correctness.
+
+Each read has an eight-second attempt timeout covering headers and body, one possible retry, and a twenty-second total deadline. Retry only transport/timeouts, HTTP 408/429 and 5xx; invalid schema/JSON and other 4xx fail immediately. Default retry wait is 250 ms; a valid Retry-After up to two seconds is honored, and a longer value returns the typed failure instead of waiting/retrying early. Redirects are refused, framework fetch caching is disabled, credentials are omitted, and response bodies are limited to 256 KiB and 256 intervals. These are application bounds, not provider quotas. Errors use sanitized static messages without raw bodies. Live checks are a separate explicit command; normal tests remain offline.
+
+The M03 live check on 21 October 2026 used both national endpoints. Its [recorded normalized fixture](../src/fixtures/grid/neso-national-recorded-v1.json) is historical replay evidence only; it cannot be a live fallback. It includes source/retrieval data, null issuance, storage hashes and a scheduler comparison with explicitly illustrative cycle energy. Actual observed counts/times and executed checks are in the status log. The current [official definition](https://carbon-intensity.github.io/api-definitions/) documents a 14-day range limit; CarbonShift deliberately uses the tighter 96-hour actual-range bound for this method.
 
 ## 5. AI provider adapters
 

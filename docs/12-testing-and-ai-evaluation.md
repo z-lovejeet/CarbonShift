@@ -1,6 +1,6 @@
 # CarbonShift — testing, AI evaluation, and acceptance
 
-Version 1.2 · 21 October 2026 · Full product acceptance specification. M01 foundation and M02 domain checks have run; full T01–T12 product acceptance remains incomplete. See the status log for actual results.
+Version 1.3 · 21 October 2026 · Full product acceptance specification. M01/M02 checks and M03 adapter/live-read checks have run; full T01–T12 product acceptance remains incomplete. See the status log for actual results.
 
 ## 1. Verification strategy
 
@@ -157,3 +157,11 @@ The suites named `src/test/unit/domain-*.test.ts` cover T03/T06 domain rules and
 `src/test/e2e/domain.spec.ts` builds a test-only browser bundle in memory. Chromium in Asia/Kolkata checks London DST disambiguation/nonexistent times and exact browser/server comparison equality, across the existing three viewport projects. This exercises actual shared code without introducing a product page or treating a demonstration as live data. Manual input UX, real feed, authentication, result persistence and proofs remain their owning phases.
 
 `pnpm exec tsx scripts/benchmark-domain.ts` records hardware/runtime, 20 warmups and 200 samples each for 30-/180-minute profiles across the full allowed horizon. Local timings include input/output validation and do not establish web latency or climate benefit. No machine-specific timing threshold is placed in CI. Observed results belong in the status log.
+
+## 11. M03 grid verification
+
+`grid-provider`, `grid-client`, `grid-cache`, `grid-transport` and `grid-replay` unit suites cover T05's server adapter boundary, using fake fetch/clock and the labeled recorded fixture. Check allowlisted endpoints, timestamp normalization, unexpected request fields, malformed intervals/values, complete forecast coverage, partial actual data, cache age/identity, concurrent coalescing/eviction, no stale fallback, timeouts including stalled/late bodies, retry classification, byte caps and sanitized errors. Captured forecasts replay through the real adapter and unchanged scheduler; snapshot digests and the exact fixture bytes are pinned. These tests never use changing live data.
+
+`pnpm check:grid` is the separate explicit live read: a six-hour forecast comparison with illustrative energy plus a completed historical actual range. It uses the real server clock/transport, no account or paid model. `--capture` writes `src/fixtures/grid/neso-national-recorded-v1.json` only if absent; it is frozen historical evidence. Recording a new version requires a distinct fixture/version and review of expected outputs. The script does not save a user plan or claim measured avoided emissions.
+
+M03 regression includes the existing M01 shell/domain browser suite and fresh-copy install/static/unit/local-contract/build checks. The M00 research verifier intentionally rejects a scaffolded app; check preserved research hashes and documentation consistency instead. No hosted CI, Supabase, AI or testnet pass is inferred from these local checks.
