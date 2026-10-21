@@ -1,6 +1,6 @@
 # CarbonShift — phased development roadmap for Codex
 
-Version 2.2 · 21 October 2026 · 12 phases, 60 primary tasks. M00/M01/M02 passed; M03.01 is ready. The current request stops at G02. Actual execution evidence lives in the status log.
+Version 2.3 · 21 October 2026 · 12 phases, 60 primary tasks. M00–M03 passed; M04.01 is next, with real database access required for its integration evidence. The current request stops at G03. Actual execution evidence lives in the status log.
 
 ## 1. How to execute this roadmap
 
@@ -8,7 +8,7 @@ This is the execution guide for a solo builder using Codex with the user's selec
 
 Use one primary coding session at a time. One task should deliver a coherent, testable change. A phase may span several sessions; a session should not attempt an entire phase simply because the model has context available. If a task becomes too large, split it into lettered substeps such as `M09.03a` and `M09.03b`, preserving the parent task and its exit conditions.
 
-This roadmap was created as a planning document. The user subsequently authorized M00, M01, then M02. Use the status log for the current phase and stopping point; do not infer purchases or later-phase execution. Within authorized work, do not repeatedly ask for approval of routine choices already covered by the existing scope.
+This roadmap was created as a planning document. The user subsequently authorized M00 through M03. Use the status log for the current phase and stopping point; do not infer purchases or later-phase execution. Within authorized work, do not repeatedly ask for approval of routine choices already covered by the existing scope.
 
 ### Standard task loop
 

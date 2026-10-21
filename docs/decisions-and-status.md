@@ -19,6 +19,8 @@ Updated 21 October 2026.
 | U11 | Move to M01 according to the documents | Completed at G01 |
 | U12 | Move to M02 — Phase 2 | Completed M02.01–M02.05 at G02; no M03 execution authorized |
 | U13 | Publish current source to z-lovejeet/CarbonShift using global Git identity, with focused commits | User revised the limit to allow 32 commits, each touching 1–3 files; no larger initial-commit exception |
+| U14 | Complete all of M03 correctly and check existing M00–M02 behavior | Completed M03.01–M03.05 at G03; no account, paid API or M04 work |
+| U15 | Commit and push M03, announcing the commit count before pushing | Announced nine new commits, three files each, bringing published history to 41; use existing global Git identity and normal push |
 
 ## 2. Working baseline decisions
 
@@ -59,14 +61,14 @@ No partner, external reviewer, benchmark result, deployed URL, or contract addre
 
 Documentation: the fourteen substantive drafts and the guidance files have been written and passed the documentation checks recorded below.
 
-Roadmap version 2 preserves phase IDs with five tasks each. M00, M01 and M02 passed: fifteen tasks completed. M03.01 is `ready`; the other 44 downstream tasks are `not_started`. Task evidence below is authoritative; do not duplicate the whole backlog in another tracker.
+Roadmap version 2 preserves phase IDs with five tasks each. M00–M03 passed: twenty tasks completed. M04.01 is the next implementation task; its real DB integration depends on unverified G-DB. The other 39 downstream tasks are `not_started`. Task evidence below is authoritative; do not duplicate the whole backlog in another tracker.
 
 | Milestone | State | Evidence |
 |---|---|---|
 | M00 Scope/access | Passed | G00 passed: scope, workspace, dependencies, public-source evidence and offline verification recorded in section 7 |
 | M01 Repository/dependencies | Passed | G01 passed: pinned scaffold, web/worker config, 34 unit/component checks, local contract tooling smoke, nine browser checks, and clean reproduction |
 | M02 Pure scheduler | Passed | G02: schemas/time/math/optimizer/updated-result projection; 122 domain checks plus 34 foundation checks, 2,300 property cases and six new browser checks; clean reproduction passed |
-| M03 Grid integration | Not started | Official API documentation inspected; no application adapter |
+| M03 Grid integration | Passed | G03: real national forecast/range reads, immutable snapshot identity, bounded cache/transport, 73 adapter/replay checks; complete 229-test/local-contract/build/browser regression passed |
 | M04 Auth/data | Not started | No project/migrations created |
 | M05 Planner UI | Not started | Wireframes specified in Markdown only |
 | M06 Product AI | Not started | Catalogs inspected; no evaluation |
@@ -107,8 +109,9 @@ Roadmap version 2 review, observed on 21 October 2026 using local read-only Pyth
 - 21 October 2026: user authorized M00 and added full-document reading, premium minimal UI/UX, and functional backend requirements. Adopted the existing bounded scope, inspected the workspace/runtime, captured a public grid response, rechecked official model catalogs, and recorded external setup timing. Final G00 verification is recorded below.
 - 21 October 2026: completed M01.01–M01.05 and G01. Added the pinned application foundation, typed environment boundaries, real checks/CI configuration, responsive shell, and verified local setup/reproduction instructions. No service account, remote repository, deployment, or paid API call was created.
 - 21 October 2026: completed M02.01–M02.05 and G02 under U12. Added shared pure contracts, explicit London/UTC time rules, exact integer accounting, deterministic optimization, updated-result projection, labeled versioned fixtures, import/ambient-capability checks, browser parity tests and a reproducible local benchmark. No live grid/service integration, account, key or deployment was added.
-- Current stopping point: M02 complete at G02; no M03 work started.
-- Next implementation task: M03.01 on next-phase authorization; use the latest handoff at the end of this file.
+- 21 October 2026: completed M03.01–M03.05 and G03 under U14. Implemented and tested real national grid reads, strict validation, immutable snapshot records, bounded cache/coalescing/retry, outage handling and replay evidence. Existing domain/math and frontend behavior were preserved.
+- Current stopping point: M03 complete at G03; no M04 work started. U15 subsequently authorizes publishing the M03 changes in nine focused commits. The original 32 commits are preserved without rewriting history.
+- Next implementation task: M04.01 on next-phase authorization, with an isolated database needed for integration checks; use the latest handoff at the end of this file.
 
 Future decision entries should include date, change, reason, user authorization when applicable, affected files, and verification evidence.
 
@@ -238,7 +241,7 @@ All fourteen numbered documents and repository guidance were reread. Before scaf
 
 **G01:** passed. The minimal app and applicable checks reproduce without service credentials. Source and documentation agree on implemented behavior, current limitations, and next task. No phase-required live service check is pending; later external gates remain unverified as planned.
 
-### Current handoff
+### M01 handoff (historical)
 
 ```text
 Task: M01.05
@@ -299,7 +302,7 @@ All fourteen numbered documents and guidance were reread under U12. The working 
 
 **G02:** passed. All five M02 tasks have implemented, tested outputs that run without external services. T03/T06 domain and T09 projection subsets pass; manual UI, actual service integrations and complete F01–F12/T01–T12 acceptance remain pending. The public shell continues to say recommendations are unavailable. The next ready task is M03.01; this request stops here.
 
-### Current handoff — M02
+### M02 handoff (historical)
 
 ```text
 Task: M02.05
@@ -326,3 +329,68 @@ Fresh pre-publication checks: `pnpm lint`, `pnpm typecheck`, and `pnpm test` exi
 Publication procedure: validate that all 95 files appear exactly once across the 32 commit groups; build the history with Git's normal global author/committer configuration; verify its final source tree, per-commit file counts, identity and clean working tree; push `main` with upstream tracking using a normal non-force push; compare local and remote branch IDs. If publishing is interrupted, inspect local `main` and `origin/main` before retrying; never force overwrite remote work. Hosted CI status remains separate evidence and must not be called passing merely because the push succeeds.
 
 Next ready implementation task remains M03.01, requiring separate phase authorization and the reading/entry checks in the M02 handoff. Source publication does not open M03.
+
+## 11. M03 execution record — 21 October 2026
+
+U14 authorizes the complete phase through G03. All fourteen numbered documents and repository guidance were reread. Entry tree was clean at published `c04891a`; G02 was passed. Current official national API docs confirm the national 48-hour and range endpoints, UTC inputs, no authentication and CC BY 4.0. Provider facts are separate from the actual implementation checks below. Existing research is preserved; the historical M00 verifier is not a current application test.
+
+### M03.01 — passed
+
+- Changed files: `src/server/grid/errors.ts`, `provider.ts`, `transport.ts`, `snapshot.ts`, `client.ts`, `index.ts`; `src/test/fixtures/grid-provider.ts`, `src/test/unit/grid-provider.test.ts`, `grid-client.test.ts`; authorization/guidance and document 07's internal integration contract.
+- Implemented national-only URL construction, strict canonical input bounds, minute-to-second normalization, typed forecast/actual reads and server-only product entry. No request accepts a destination URL, no fixture import exists in the adapter, and no account or key is required. Snapshot normalization reuses the M02 schema.
+- Executed both targeted suites: 36 checks passed, exit 0; `pnpm typecheck` and `pnpm lint` exited 0. These tests include the M03.02 validation cases below; live evidence remains M03.05.
+- Next ready task: M03.02.
+
+### M03.02 — passed
+
+- The same targeted suites verified duplicates, gaps, overlap, invalid lengths/dates/offsets, negative/decimal/unsafe/nonfinite/string factors and incompatible regional responses. Missing forecast ends, null required forecast and empty forecast fail clearly; extra contiguous edges are retained.
+- Actual nulls and partial edge coverage remain explicit; an adapter-to-updated-calculator test returned `actual_pending` with all amounts null. Empty actual data returns null rather than an invented zero snapshot. No method formula or existing domain interface was changed.
+- Next ready task: M03.03 — timestamped snapshot identity, cache, coalescing and provenance checks.
+
+### M03.03 — passed
+
+- Changed files: `src/server/grid/client.ts`, `snapshot.ts`, `src/test/unit/grid-cache.test.ts`. Implemented per-request five-minute LRU cache with 32 retained records and coalesced in-flight reads. A hit retains the original retrieval time, server UUID, digest and deeply frozen snapshot; actual and forecast keys remain separate.
+- Executed `pnpm exec vitest run src/test/unit/grid-cache.test.ts`: eight checks passed. `pnpm typecheck` exited 0. Cases include boundary expiry, simultaneous callers, eviction, failed-flight removal, empty actual data, incomplete forecast rejection, clock rollback, key-order-stable digest and independent copied contents.
+- The storage digest is versioned and includes source/time/license plus ordered factors. It is not the public JCS manifest proof and does not establish source truth. Persistent database storage remains M04. Next ready task: M03.04.
+
+### M03.04 — passed
+
+- Changed files: `src/server/grid/transport.ts`, `errors.ts`, `src/test/unit/grid-transport.test.ts`.
+- Executed the targeted transport suite: 24 checks passed; `pnpm typecheck` and `pnpm lint` exited 0. Verified eight-second attempt/body timeout even for ignored abort, stream cancellation, at most two network attempts, total deadline, retryable/permanent HTTP handling, bounded Retry-After, malformed JSON/schema/UTF-8, response byte caps and static redacted errors.
+- Expired cached data are never served during an outage; concurrent failed callers share the same retry budget; failures do not poison the next flight. No demo fallback exists. Tests use fake transport and timers, not actual outages or paid services. Next ready task: M03.05 — real forecast/range read and frozen replay evidence.
+
+### M03.05 — passed
+
+- Changed files: `scripts/check-grid.ts`, `package.json` (`check:grid` only; no dependency/lockfile change), `src/fixtures/grid/neso-national-recorded-v1.json`, `src/test/unit/grid-replay.test.ts`; final range validation in client/provider and transport cleanup regression; root guidance/README/index, specifications 01/04/05/06/07/12/13/14, and this status log.
+- Executed `pnpm check:grid --capture`: exit 0. Actual live run started `2026-10-21T09:05:37Z` and completed `09:05:41Z`. Forecast URL `https://api.carbonintensity.org.uk/intensity/2026-10-21T10:00Z/fw48h` returned 97 normalized contiguous intervals, retrieved at `09:05:39Z`, with complete required coverage `10:00–16:00Z`. Provider issuance is null. Actual URL `https://api.carbonintensity.org.uk/intensity/2026-10-21T05:00Z/2026-10-21T07:00Z` returned five intervals, all with actual factors. Extra provider edge intervals were retained.
+- The live forecast reached the unchanged scheduler: illustrative 1000 Wh/60-minute cycle, baseline `10:00Z` at 116,000 mg, selected `12:30Z` at 89,500 mg, difference 26,500 mg. These are forecast estimates under authored energy assumptions, not a user's executed plan or measured avoided emissions. No plan/account/model/testnet write occurred.
+- The capture is a sanitized normalized projection, not an exact raw HTTP response. It is explicitly historical/replay-only and cannot be imported by live grid modules. SHA-256 of the frozen file: `17104136e47e5225bfd4d6708b3aef39cc1f8eb0f87c67a7dc0c0386af6b48e7`. The capture includes source, license, retrieval, server IDs, actual snapshot and reproducible comparison. Normal tests use its captured clock; the live command has no fixture/clock override.
+- Executed replay/client suites: 13 checks passed. Exact captured snapshot/digest and the complete comparison reproduced through a fake provider transport; a removed required forecast factor failed. Actual-range factors/digest reproduced separately. Normal tests made no live API requests.
+- Review found a late-header cleanup race: if a transport resolved only after abort, the body could remain open because the abort listener was installed too late. Added a regression; observed one failure with zero body cancellations, diagnosed the already-aborted signal, then added an immediate cancellation check after headers. The transport rerun passed all 25 cases. This extends M03.04's earlier 24-case evidence; no unresolved failure remains.
+- Executed `pnpm build && pnpm test:e2e`: exit 0, production build passed and all 15 existing Chromium checks passed at 360/768/1440 px, including India-timezone domain parity and shell keyboard/automated-accessibility checks. No new screen was added; full future planner/receipt UX, other browsers and screen-reader checks remain later work.
+- Executed `pnpm verify:clean`: exit 0. Fresh strict frozen install, environment validation, lint/client/domain boundaries, one local contract tooling test, both TypeScript projects, all 229 unit/component checks and production build passed. This includes the existing 156 foundation/domain cases and 73 grid cases, with the original 2,300 generated property cases preserved. The temporary copy excluded real secrets, Git/dependency/build artifacts and was removed afterward. Public-feed access is not part of ordinary tests/CI.
+- Documentation/source assertions passed: eighteen guidance/spec files, 102 local links, numbered documents exactly 01–14 with no 15/16, all seven earlier research hashes unchanged, recorded capture digest unchanged, no fixture imports in server/grid and no whitespace errors. The historical M00 verifier was intentionally not rerun against a scaffolded app. No previous source/test was removed or weakened.
+
+**G03:** passed. All five phase tasks have implemented outputs and required local/live evidence. Current M00–M03 regression checks have no remaining failures. Accounts/Auth/RLS, persisted plans, AI, public proof/contract/ledger and hosting are still outside these completed phases. The visible shell correctly keeps recommendations unavailable until M04/M05 integrate the live journey.
+
+### Current handoff — M03
+
+```text
+Task: M03.05
+Status: passed; G03 passed; stop here under U14
+Scope/spec version used: roadmap 2.3; PRD 1.4; architecture/data 1.2; stack/tests 1.3; API/manual setup 1.1; unchanged carbonshift-gb-uniform-v1 method
+Dependencies and external gates: G00–G03 passed; public national grid read observed above; G-DB/G-AI/G-CHAIN/G-HOST remain unverified. S05/S06 isolated Supabase/Auth preparation is required for M04's real integration gate.
+Changed files: src/server/grid modules, grid provider fixture helper and five grid test suites, recorded provider fixture, scripts/check-grid.ts, package script and affected root/spec/status files listed above
+Checks run and observed results: targeted adapter/cache/failure/replay suites passed; fresh-copy install/lint/typechecks/229 unit-component checks/local contract tooling/build passed; root production build and 15 Chromium checks passed; live forecast and actual reads passed; preserved research/documentation/capture hashes checked
+Manual/live checks and environment: macOS arm64, Node 24.11.1, pnpm 10.34.4; real national API URLs/retrieval timestamps and assumptions recorded above; no authenticated model/DB/testnet/hosting check
+Unresolved failures or decisions: no M00–M03 check failure. M04 needs isolated DB/Auth access; account/email/provider budgets and later service gates remain unverified. Cache is process-local; database durability is M04. A snapshot hash proves storage-byte integrity, not input truth or physical execution.
+Next ready task: M04.01 (local implementation can begin on authorization; live migration/RLS evidence needs G-DB)
+Exact command/action to resume: On M04 authorization, read AGENTS.md, index/status and all fourteen numbered documents. Inspect current gridClient entry, shared schemas, environment loader and docs 06/07/11. Check presence of isolated Supabase configuration without printing values. Implement incremental migrations and ownership/immutability constraints in M04.01, with isolated DB tests when available. Never reset a deployed database, trust client owner IDs/totals, use captured grid data as live fallback or bypass an unverified DB gate. Stop at G04.
+Relevant commit or reviewable diff: M03 follows c04891a in nine focused commits under U15; inspect git log c04891a..main, git status and origin/main for publication state. The initial 32-commit history is preserved; no M04 work is included.
+```
+
+## 12. M03 source publication — 21 October 2026
+
+The user authorized committing and pushing M03, requesting the count be announced before pushing. Announced nine new commits with three files each (27 changed/new files), for 41 total commits on main. Messages describe the adapter, failure handling, replay verification and documentation changes. This extends the published history normally; it does not reconstruct or force-push the earlier commits.
+
+Fresh pre-commit verification: `pnpm lint`, `pnpm typecheck` and `pnpm test` exited 0, with all 229 unit/component checks passing. The M03 execution record retains the separately observed clean-install/build, browser, contract and live-read evidence. Git identity is read from the user's global configuration. Publication checks cover the exact changed-file set, nine commit/file counts, clean working tree and matching local/remote main after a normal push. Phase authorization still stops at G03; M04 is not started.

@@ -1,6 +1,6 @@
 # CarbonShift — manual setup guide for the builder
 
-Version 1.0 · 20 October 2026 · Preparation instructions; no accounts, keys, infrastructure, or purchases were created by writing this guide.
+Version 1.1 · 21 October 2026 · Preparation instructions; no accounts, keys, infrastructure, or purchases were created by writing this guide. M03 public grid access is separately checked.
 
 ## 1. Division of work
 
@@ -39,6 +39,8 @@ S03–S08 can be prepared while Codex builds the manual UI/domain modules. Authe
 | S10 privacy contact and input choices | Review input assumptions at M00; supply contact by M10 | Public invitation and finalized privacy page |
 
 M00 records missing configuration without claiming the accounts do not exist. No API key or paid service is required to finish M00 or implement M01/M02 locally. Store secrets only in the ignored environment files/host settings prepared by Codex, never in this checklist.
+
+M03 also requires no API key: `pnpm check:grid` performs a bounded public forecast/range read. Normal tests use isolated replay data and work without that feed. Before M04's integration gate, prepare S05/S06: an isolated Supabase project/local environment, project URL and appropriate keys entered securely into ignored `.env.local`, plus development confirmation/recovery settings. Do not paste credentials into chat. Local M03 success does not establish database/email access.
 
 ## 3. Gemini
 
