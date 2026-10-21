@@ -1,0 +1,22 @@
+{
+  "fixtureVersion": "carbonshift-authored-accounting-v1",
+  "mode": "demo",
+  "dataOrigin": "authored_synthetic",
+  "label": "Authored accounting vectors — estimates only, no measured or achieved impact.",
+  "oddEnergy": { "energyWh": 1001, "durationMinutes": 90, "expectedBins": [334, 334, 333] },
+  "overlap": { "energyWhBins": [500], "startUtc": "2026-10-21T07:15:00Z", "actualFactors": [100, 200], "expectedMg": 75000 },
+  "roundOnce": { "energyWhBins": [25, 25], "startUtc": "2026-10-21T07:01:00Z", "actualFactors": [0, 3, 0], "expectedMg": 75, "incorrectPerFragmentOrBinMg": 76 },
+  "zero": { "factors": [0, 0, 0, 0, 0, 0, 0, 0], "expectedDifferenceMg": 0, "expectedPercent": null },
+  "tie": { "factors": [100, 100, 100, 100, 100, 100, 100, 100], "expectedStartUtc": "2026-10-21T07:00:00Z" },
+  "singleCandidate": { "deadlineUtc": "2026-10-21T08:00:00Z", "factors": [300, 340], "expectedStartUtc": "2026-10-21T07:00:00Z", "expectedDifferenceMg": 0 },
+  "updated": {
+    "reportedStartUtc": "2026-10-21T09:00:00Z",
+    "reportCreatedAtUtc": "2026-10-21T10:01:00Z",
+    "nowUtc": "2026-10-21T12:00:00Z",
+    "actualFactors": [180, 200, 240, 240, 320, 360, 400, 400],
+    "expectedBaselineMg": 190000, "expectedReportedMg": 340000, "expectedDifferenceMg": -150000,
+    "missingFactorIndex": 4, "missingStatus": "actual_pending", "nonRunStatus": "did_not_run",
+    "changedProfileStatus": "outside_supported_window", "changedProfileReason": "PROFILE_CHANGED"
+  },
+  "blockedDeviation": { "startUtc": "2026-10-21T08:00:00Z", "endUtc": "2026-10-21T09:00:00Z", "reportedStartUtc": "2026-10-21T08:15:00Z", "expectedDeviations": ["DIFFERENT_START", "BLOCKED_PERIOD"] }
+}
