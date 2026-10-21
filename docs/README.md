@@ -1,6 +1,6 @@
 # CarbonShift documentation
 
-Prepared 20 October 2026; M02 update 21 October. This is the index and reading guide for **14 project documents plus three guidance files**. The application foundation and deterministic domain engine now exist; the complete product and its service integrations remain unfinished. See the root README and status log for verified current behavior.
+Prepared 20 October 2026; M03 update 21 October. This is the index and reading guide for **14 project documents plus three guidance files**. The foundation, deterministic core and tested live grid adapter exist; the complete product, accounts, AI and receipt integrations remain unfinished. See the root README and status log for verified current behavior.
 
 ## Start here
 

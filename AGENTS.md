@@ -4,9 +4,9 @@
 
 At the start of every phase, read `docs/README.md`, `docs/decisions-and-status.md`, and all fourteen numbered documents, as the user requested on 21 October 2026. Within the phase, revisit the sections linked by the current task in `docs/13-development-roadmap-and-codex-tasks.md`. Read existing code before editing it.
 
-The user selected CarbonShift, builds solo, and has authorized M02 domain work after M00/M01. Check the status log, existing code, and package.json for actual implementation and checks. Installed tools and tested domain functions do not imply configured accounts, keys, working product integrations, deployments, or completed feature acceptance.
+The user selected CarbonShift, builds solo, and has authorized M03 grid integration after M00–M02. Check the status log, existing code, and package.json for actual implementation and checks. Installed tools and tested modules do not imply configured accounts, keys, working later integrations, deployments, or completed feature acceptance.
 
-The documented scope is the working baseline for the authorized phase. Follow subsequent user corrections and record consequential changes. The user authorized M02; complete M02.01–M02.05 and stop at G02. Later phases and purchases are not authorized by this request.
+The documented scope is the working baseline for the authorized phase. Follow subsequent user corrections and record consequential changes. The user authorized M03; complete M03.01–M03.05, check existing M00–M02 behavior, and stop at G03. Later phases and purchases are not authorized by this request.
 
 ## Product boundaries
 

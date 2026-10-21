@@ -2,7 +2,7 @@
 
 Thoughtful timing for everyday electricity use. CarbonShift is a ClimateChain project in the Renewable Energy & Energy Trading track.
 
-**Current build:** M02 deterministic domain engine plus the M01 application foundation. Shared validation, London/UTC time handling, feasible scheduling, exact carbon arithmetic, and updated-result projections exist. The public shell still says recommendations are unavailable: the planner UI, accounts, live grid integration, AI assistance, and receipts belong to later phases.
+**Current build:** M03 live grid adapter, M02 deterministic domain engine and M01 foundation. Real national forecasts and historical actual factors reach the validated calculator, with bounded caching/retry and explicit failure states. The public shell still says recommendations are unavailable: planner UI, accounts, AI assistance and receipts belong to later phases.
 
 ## Run locally
 
@@ -67,7 +67,7 @@ The GitHub workflow runs the implemented foundation/domain checks. Its actions a
 
 Read [repository guidance](AGENTS.md), the [documentation index](docs/README.md), and [current status/handoff](docs/decisions-and-status.md). The user requires all fourteen numbered documents to be read at each phase start. The [roadmap](docs/13-development-roadmap-and-codex-tasks.md) owns task scope and exit gates.
 
-The next phase is M03, the real grid adapter. Supabase is needed for M04, Gemini/Groq for M06, and funded Sepolia/RPC access for M09. Detailed ownership and timing are in the [manual setup guide](docs/14-manual-setup-guide.md).
+The next phase is M04, accounts/data and private plan APIs. Prepare an isolated Supabase project and development email authentication before its live integration checks. Gemini/Groq are needed for M06, and funded Sepolia/RPC access for M09. Detailed ownership and timing are in the [manual setup guide](docs/14-manual-setup-guide.md).
 
 ## Domain interfaces
 
@@ -84,5 +84,19 @@ pnpm exec tsx scripts/benchmark-domain.ts
 ```
 
 It measures 200 comparisons after 20 warmups for each of the 30- and 180-minute profiles over the full horizon, including validation. It reports hardware/runtime and local timing only, with no service latency or achieved climate-impact claim.
+
+## Grid integration
+
+`src/server/grid/index.ts` is the server-only live entry point. `getForecast({fromUtc,toUtc})` requires aligned UTC bounds and complete forecast coverage; `getActual({fromUtc,toUtc})` expands minute bounds to grid intervals and preserves missing actual data. Both use fixed national provider endpoints and return immutable snapshot records with truthful source/retrieval metadata, server IDs, storage digests and attribution. Database persistence belongs to M04; public proof hashing belongs to M08.
+
+The process-local cache retains up to 32 records for five minutes and coalesces identical in-flight requests. Reads use eight-second attempts, at most one transient retry and a twenty-second total deadline. Redirects, unexpected request fields, oversized/invalid responses, and incomplete forecast factors are rejected. An expired record or fixture never becomes a successful outage fallback.
+
+Run the explicit public-feed check separately from offline tests:
+
+```sh
+pnpm check:grid
+```
+
+It retrieves a six-hour planning window and a completed historical range, and computes an example using explicitly illustrative energy. No key, account, paid provider, appliance operation or user-plan write is involved. The recorded fixture in `src/fixtures/grid/` is frozen historical replay evidence. `pnpm check:grid --capture` refuses to overwrite it; normal tests/CI never run a live grid read. Module contracts and failure policy are in [document 07](docs/07-api-and-integrations.md), with observed evidence in the status log.
 
 The dated `research/phase-0/verify-readiness.py` is historical M00 evidence and intentionally rejects a scaffolded app. Do not use it as the current app test suite. Preserve all earlier research as background rather than a competing implementation specification.
