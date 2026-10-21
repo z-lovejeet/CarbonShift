@@ -1,6 +1,6 @@
 # CarbonShift — tech stack and folder structure
 
-Version 1.2 · 21 October 2026 · M01/M02 versions pinned; phase checks are recorded in the status log. Later integrations remain unimplemented.
+Version 1.3 · 21 October 2026 · M01/M02 versions pinned; M03 adds the native-fetch grid adapter without new dependencies. Phase evidence is in the status log; later integrations remain unimplemented.
 
 ## 1. Selected stack
 
@@ -10,7 +10,7 @@ Version 1.2 · 21 October 2026 · M01/M02 versions pinned; phase checks are reco
 | Styling | Tailwind CSS and small accessible components | Consistent tokens; no large animated component library |
 | Validation | Zod + explicit JSON Schemas | Shared boundary validation; provider-specific schemas derived and tested |
 | Data/auth | Supabase Postgres + Auth + SSR integration | Relational transactions and row-level ownership |
-| Grid data | Server adapter for NESO Carbon Intensity API | National GB inputs; schema/coverage verified locally |
+| Grid data | Server adapter for NESO Carbon Intensity API | National GB inputs; native Node fetch, schema/coverage, cache and live read verified in M03 |
 | AI | Official `@google/genai` and `groq-sdk` packages | Small provider adapters, exact model IDs configured |
 | Dates | `@js-temporal/polyfill` behind one time module | Explicit timezone/disambiguation and elapsed-time handling |
 | Charts | Recharts, dynamically loaded | One intensity chart with separate accessible HTML table |
@@ -49,7 +49,7 @@ TypeScript 5.9 remains within typescript-eslint's declared support range; its la
 
 ## 3. Proposed repository tree
 
-This is the full target tree. M01 creates the foundation/configuration/tooling/shell subset; M02 adds domain constraints/time/profile/carbon/grid/scheduling/result modules, shared schemas, authored demo fixtures and domain tests/benchmark. `domain/proof.ts` and service/UI integrations remain future work. Check the filesystem and status log for actual files. Keep research intact. `src/config/` contains environment parsing without ambient reads; server/worker wrappers supply the relevant process environment. Contract-tool smoke fixtures are separate from the M08 product contract.
+This is the full target tree. M01 creates the foundation/configuration/tooling/shell subset; M02 adds domain modules, schemas, authored fixtures and tests; M03 adds `server/grid/`, recorded grid replay, adapter/failure tests and the explicit grid check script. `domain/proof.ts`, database/AI/publication and product UI integrations remain future work. Check the filesystem and status log for actual files. Keep research intact. `src/config/` contains environment parsing without ambient reads; server/worker wrappers supply the relevant process environment. Contract-tool smoke fixtures are separate from the M08 product contract.
 
 ```text
 AGENTS.md
@@ -163,7 +163,7 @@ Keep route handlers thin: validate/authenticate, invoke service, serialize respo
 | `pnpm worker:ledger` | Single leased worker with clean shutdown |
 | `pnpm ledger:reconcile` | Compare persisted operations against chain without duplicate issuance |
 
-M01 implements `dev`, `build`, `start`, `lint`, `typecheck`, `test`, `test:e2e`, `contracts:test`, and `check:env`, plus the foundation helper `verify:clean`. Inspect `package.json` for exact command bodies. `test:integration`, deployment, AI evaluation, live integration checking, and ledger worker/reconciliation remain unimplemented targets and are not registered as passing placeholders. The contract test currently covers a tooling fixture; it does not certify the M08 registry.
+M01 implements `dev`, `build`, `start`, `lint`, `typecheck`, `test`, `test:e2e`, `contracts:test`, and `check:env`, plus `verify:clean`. M03 adds `pnpm check:grid` for explicit live forecast/range smoke checks; `--capture` writes the first immutable replay fixture and refuses overwriting it. Inspect `package.json` for exact command bodies. The broader `test:integration`, deployment, AI evaluation, authenticated integration checking, and ledger worker/reconciliation remain future targets. The contract test covers a tooling fixture; it does not certify the M08 registry. Normal tests and CI never execute `check:grid` or require public API access.
 
 ## 5. Configuration ownership
 

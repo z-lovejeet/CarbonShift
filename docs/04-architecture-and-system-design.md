@@ -1,6 +1,6 @@
 # CarbonShift — architecture and system design
 
-Version 1.1 · 21 October 2026 · Working architecture and backend quality requirements; no services deployed.
+Version 1.2 · 21 October 2026 · Working architecture and backend quality requirements; M03 grid reads work locally, with no services deployed.
 
 ## 1. Architectural choice
 
@@ -133,3 +133,9 @@ Local tests use an isolated database and local chain. Live deployment uses its o
 Proposed web host: Vercel; data/auth: Supabase; ledger worker: explicit local Node process for the prototype. The public web app can run while the local worker is offline, but publication cannot complete then. Always-on external deployment requires moving that same worker to an approved persistent host and testing its restart behavior.
 
 Deployment/manual steps are in [14](14-manual-setup-guide.md). Source versions and folder layout are in [05](05-tech-stack-and-folder-structure.md). Database authority is [06](06-data-model-and-state-machines.md); wire contracts are [07](07-api-and-integrations.md).
+
+## 10. M03 integration boundary
+
+`server/grid/index.ts` is the server-only product entry point. It owns a process-local client with real fetch and server time. `client.ts` exposes dependency injection only for isolated replay tests and the explicit local check script. Provider parsing, bounded transport and immutable snapshot identity are separate modules, reusing the pure M02 validators/calculator. Neither server module imports the demo or recorded fixtures. No public unauthenticated grid proxy or new page is added.
+
+The cache is a bounded optimization per process, not durable storage or a source of new retrieval timestamps. Its loss may cause another public read; a failed read cannot become a fixture or stale successful comparison. The returned record supplies `id/hash/snapshot/attribution` for M04 to persist transactionally. M04 must still authenticate, validate the trusted live clock, check ownership, map typed failures and freeze reviewed comparisons; M03 does not implement that API lifecycle.

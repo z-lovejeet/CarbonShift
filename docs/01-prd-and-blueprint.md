@@ -1,12 +1,12 @@
 # CarbonShift — PRD and product blueprint
 
-Version 1.3 · 21 October 2026 · Working product baseline; M01 foundation and M02 domain core exist, while integrated product journeys remain unimplemented.
+Version 1.4 · 21 October 2026 · Working product baseline; M01 foundation, M02 domain core and M03 grid adapter exist, while integrated product journeys remain unimplemented.
 
 ## 1. Intent and authority
 
 CarbonShift helps a person choose a lower-carbon time for one flexible washing-machine cycle, understand the assumptions, and optionally publish an inspectable record of the plan and reported outcome.
 
-The user has selected CarbonShift, is a solo builder using Codex with their chosen GPT-6.1 Sol configuration, and requires Gemini and Groq APIs in the product. On 21 October 2026 the user authorized M00, M01, then M02, requested all documents be read before every phase, and specified premium, modern, clean, minimal UI/UX plus real functional backend behavior. M01 implements the foundation and M02 the deterministic core within that bounded design; the planner UI, accounts and service integrations belong to later phases. No new account, deployed contract, evaluated model, user study, or measured climate benefit is implied.
+The user has selected CarbonShift, is a solo builder using Codex with their chosen GPT-6.1 Sol configuration, and requires Gemini and Groq APIs in the product. On 21 October 2026 the user authorized M00 through M03, requested all documents be read before every phase, and specified premium, modern, clean, minimal UI/UX plus real functional backend behavior. M01 implements the foundation, M02 the deterministic core and M03 the live national grid adapter within that bounded design; the planner UI, accounts, AI and receipt integrations belong to later phases. No new account, deployed contract, evaluated model, user study, or measured climate benefit is implied.
 
 The user removed standalone deployment/operations and submission documents. Essential deployment steps appear in document 14 and implementation tasks in document 13. Do not recreate the removed documents.
 
