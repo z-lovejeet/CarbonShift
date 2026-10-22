@@ -4,9 +4,11 @@
 
 At the start of every phase, read `docs/README.md`, `docs/decisions-and-status.md`, and all fourteen numbered documents, as the user requested on 21 October 2026. Within the phase, revisit the sections linked by the current task in `docs/13-development-roadmap-and-codex-tasks.md`. Read existing code before editing it.
 
-The user selected CarbonShift, builds solo, and has authorized M03 grid integration after M00–M02. Check the status log, existing code, and package.json for actual implementation and checks. Installed tools and tested modules do not imply configured accounts, keys, working later integrations, deployments, or completed feature acceptance.
+The user selected CarbonShift, builds solo, and has authorized M07 after M00–M06. Check the status log, existing code, and package.json for actual implementation and checks. Installed tools and tested modules do not imply configured accounts, keys, working later integrations, deployments, or completed feature acceptance.
 
-The documented scope is the working baseline for the authorized phase. Follow subsequent user corrections and record consequential changes. The user authorized M03; complete M03.01–M03.05, check existing M00–M02 behavior, and stop at G03. Later phases and purchases are not authorized by this request.
+The documented scope is the working baseline for the authorized phase. Follow subsequent user corrections and record consequential changes. Complete M07.01–M07.05 in roadmap order, preserve the manual planner and Google/GitHub accounts, and stop at G07. M07 passed locally; use the current G07 handoff and wait for explicit M08 authorization. Later phases and paid activation remain unauthorized. U29 authorizes only committing and normally pushing the current M04–M07 source batch; it does not authorize future automatic publication.
+
+M06 is complete locally under the documented manual-first experimental quality policy; current evidence and next-phase boundaries are in the status log. Follow documents 09/11 and the task breakdown in 13. Key presence/catalog visibility is not role qualification. The policy loader/template/local setup have migrated to AI_POLICY_JSON; legacy model fields are rejected with enabled AI. Keep the two bounded roles. Current local evaluated routes are enabled; new/unevaluated routes must remain excluded until their own evidence exists. Timing assistance remains visibly experimental with explicit review. Keep the public UK profile unresolved until its deployment decision. Extra agents/features and paid activation remain outside scope.
 
 ## Product boundaries
 

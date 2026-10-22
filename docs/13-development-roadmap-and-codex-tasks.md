@@ -1,6 +1,6 @@
 # CarbonShift — phased development roadmap for Codex
 
-Version 2.3 · 21 October 2026 · 12 phases, 60 primary tasks. M00–M03 passed; M04.01 is next, with real database access required for its integration evidence. The current request stops at G03. Actual execution evidence lives in the status log.
+Version 2.8 · 22 October 2026 · 12 phases, 60 primary tasks. M00–M07 passed locally, with M06 using the documented manual-first experimental quality policy. Current Lite/Groq roles and the real assisted journey are evaluated; unavailable/unevaluated routes remain excluded. M07 private lifecycle is implemented; M08 requires separate authorization. Actual execution evidence lives in the status log.
 
 ## 1. How to execute this roadmap
 
@@ -8,7 +8,7 @@ This is the execution guide for a solo builder using Codex with the user's selec
 
 Use one primary coding session at a time. One task should deliver a coherent, testable change. A phase may span several sessions; a session should not attempt an entire phase simply because the model has context available. If a task becomes too large, split it into lettered substeps such as `M09.03a` and `M09.03b`, preserving the parent task and its exit conditions.
 
-This roadmap was created as a planning document. The user subsequently authorized M00 through M03. Use the status log for the current phase and stopping point; do not infer purchases or later-phase execution. Within authorized work, do not repeatedly ask for approval of routine choices already covered by the existing scope.
+This roadmap was created as a planning document. The user subsequently authorized M00 through M05. Use the status log for the current phase and stopping point; do not infer purchases or later-phase execution. Within authorized work, do not repeatedly ask for approval of routine choices already covered by the existing scope.
 
 ### Standard task loop
 
@@ -32,7 +32,7 @@ Do not request a fresh user confirmation after every task. Continue through auth
 | M03 — Grid integration | Validated real grid snapshots and failure handling | M02 | F05; T05 |
 | M04 — Accounts and data | Auth, RLS, immutable private plans, API operations | M01/M02; M03 adapter contract | F02/F07; T02/T07 |
 | M05 — Manual planning | Complete usable manual planning journey | M03/M04 gates passed | F01/F03/F05/F06/F07 |
-| M06 — Product AI | Evaluated Gemini/Groq assistance with manual fallback | M05; AI access for live evaluation | F04; T04 |
+| M06 — Product AI | Evaluated quota-aware Gemini/Groq assistance, login/submission hardening, manual fallback | M05; verified free access/limits for live evaluation | F02/F04/F07 hardening; T02/T04/T07 |
 | M07 — Completion lifecycle | Reports, updated estimates, corrections, private history | M05; independent of M06 | F09/F12; T09/T12 |
 | M08 — Proof and contract | Canonical bundles, local verifier, tested contract | M02; frozen M07 report/result contracts | F08/F10/F11 core rules |
 | M09 — Publication | Consented publication, durable worker, actual testnet record | M07/M08; DB and testnet access | F08/F10; T08/T10 |
@@ -68,9 +68,9 @@ The M07→M08 edge means the report/result interfaces are frozen; implementation
 | Gate | Needed for | Work that can continue without it |
 |---|---|---|
 | G-DB: isolated Supabase/local test environment and Auth access | Real migrations, RLS/Auth integration and saved-plan validation | Pure domain logic, schema design, fixture UI |
-| G-AI: keys, selected-model access, approved usage budget | Live Gemini/Groq smoke tests and held-out evaluation | Provider interfaces, validation, mocks, manual planner, completion flow |
+| G-AI: keys, selected-model access, actual shared request/token limits, permitted free usage/profile | Live Gemini/Groq smoke tests and held-out evaluation | Provider interfaces, atomic admission, validation, mocks, manual planner; later phases still require authorization |
 | G-CHAIN: correct RPC, dedicated signer, faucet ETH | Sepolia deployment and actual publication | Hashing, local contract tests, local worker tests, fixture receipt UI |
-| G-HOST: host access, deployment settings, usable email delivery | Fresh external-user deployment verification | Local production builds and isolated end-to-end tests |
+| G-HOST: host access, deployment settings, usable Google/GitHub OAuth | Fresh external-user deployment verification | Local production builds and isolated end-to-end tests |
 
 Record each gate as `available`, `unavailable`, or `unverified`, with the affected tasks. Do not block the entire project on an unavailable optional account early in the build.
 
@@ -172,17 +172,17 @@ Record each gate as `available`, `unavailable`, or `unverified`, with the affect
 
 **Entry:** G01/G02 passed; M03 adapter interface fixed. G-DB is required for migration/RLS integration evidence.
 
-**Work area:** `supabase/migrations/`, `src/server/auth/`, `src/server/db/`, private plan services/routes, login/recovery routes, isolated integration tests.
+**Work area:** `supabase/migrations/`, `src/server/auth/`, `src/server/db/`, private plan services/routes, login/OAuth routes, isolated integration tests.
 
 | Task | Deliverable | Verification / done condition |
 |---|---|---|
 | M04.01 | Incremental migrations for profiles, snapshots, comparisons, plans, mutation keys, and required permissions | Apply cleanly to an isolated database; uniqueness/FKs/check constraints behave as specified; no destructive reset against deployed data |
-| M04.02 | Supabase SSR login/signup/confirmation/recovery/sign-out and validated server identity | P02 plus recovery/callback route flows work in the test environment; redirects are allowlisted |
+| M04.02 | Supabase SSR Google/GitHub OAuth PKCE start/callback/session/sign-out and validated server identity | P02 plus OAuth callback/cancellation/error route flows work in the test environment; redirects are allowlisted |
 | M04.03 | RLS and service authorization with two test users | Cross-user SELECT/INSERT/UPDATE/DELETE and direct function attempts are denied; privileged paths enforce ownership |
 | M04.04 | Comparison creation, immutable acceptance, owner list/detail APIs, idempotency and optimistic conflict handling | Real adapter connection plus injected fixtures; duplicate acceptance returns the same plan; changed body/key conflicts correctly |
 | M04.05 | Transaction/concurrency/error tests and exact response-contract checks | T02/T07 targeted assertions pass; database failure cannot return a successful acceptance |
 
-**Exit gate G04:** a test member can save a plan through the API and another member cannot access it. External email delivery remains separately checked before public onboarding in M11.
+**Exit gate G04:** a test member can save a plan through the API and another member cannot access it. Real Google/GitHub sign-in must be checked separately from seeded identity tests; public deployment callbacks are checked again in M11.
 
 **Human input:** isolated Supabase project/local test-environment access and authentication settings. Prefer already-configured services; do not invent successful migrations.
 
@@ -210,25 +210,27 @@ Record each gate as `available`, `unavailable`, or `unverified`, with the affect
 
 ### M06 — Phase 06: add and evaluate Gemini/Groq assistance
 
-**Goal:** provide useful bounded AI assistance without moving arithmetic or decision authority into model output.
+**Goal:** provide useful bounded AI assistance with quota-aware selection and server abuse controls, preserving deterministic arithmetic and human authority.
 
 **Read:** [09](09-ai-agents-models-and-workflow.md), AI contracts in [07](07-api-and-integrations.md), quotas/privacy in [11](11-security-privacy-and-abuse.md), evaluation in [12](12-testing-and-ai-evaluation.md).
 
-**Entry:** G05 passed. G-AI is required for live smoke tests/evaluation, not for adapter scaffolding and mock tests.
+**Entry:** G05 passed and M06 implementation authorized. G-AI is required for live smoke tests/evaluation, not local schemas, admission or mocks. Keys being present does not pass G-AI. Use eligible free development; no paid activation is implied.
 
-**Work area:** `src/server/ai/`, AI schemas/prompts, reviewed-constraint UI, usage metadata/atomic quota migration, evaluation fixtures/script.
+**Work area:** `src/config/ai-*`, `src/server/ai/`, shared `server/limits`, new operational migrations, existing Auth/mutation handlers, planner clarification/reason states, AI schemas/prompts, fixtures/evaluation script and related tests. No new product page or autonomous agent.
 
 | Task | Deliverable | Verification / done condition |
 |---|---|---|
-| M06.01 | Versioned interpreter/explanation schemas, prompt contracts, 20 development and 40 held-out examples | Human-check reference labels; split by example family; required ambiguity/source spans/limitation codes covered |
-| M06.02 | Gemini provider adapter and configured-model smoke checks | Validate structured output locally; log metadata only; record actual model access, latency, and usage |
-| M06.03 | Groq adapter with strict output where supported and configured-model smoke checks | Same application interface and local validation; do not assume SDK parameters match Gemini |
-| M06.04 | Bounded router/fallback, atomic quotas, reviewed suggestions, and deterministic explanation templates | Injection/timeout/429/schema-failure paths pass; no autonomous tools or auto-acceptance; manual path stays usable |
-| M06.05 | Held-out evaluation per model/prompt version and integrated browser flow | Record actual accuracy, corrections, latency, cost and failures; meet release policy or clearly default to manual/experimental mode |
+| M06.01 | Versioned schemas/prompts; allowlisted candidate/strict policy configuration; shared admission/task-key substrate; 20 development and 40 held-out examples | Split families/human label review; atomic quota/reservation/lease tests; migrate legacy configuration with disabled startup preserved; no provider call before limits verified |
+| M06.02 | Gemini adapter and explicitly bounded candidate smoke checks | Check available 3.8/3.6/3.5-Lite IDs, schema/SDK, actual shared quotas/reset; 17/day Flash ceiling, documented Lite default; all calls use M06.01 accounting; log metadata only |
+| M06.03 | Groq strict-schema adapter and bounded model smoke checks | Same interface and local validation; confirm actual organization budgets/access; preserve independent cross-provider path and shared accounting |
+| M06.04 | Quota-aware router, bounded failure fallback/circuits; OAuth/mutation throttling; reviewed suggestions and nonblocking explanation UI | At most two real calls; skip capped/unqualified candidates without dispatch; concurrency/duplicate/OAuth/retry/privacy tests; no autonomous action or bypassed confirmation |
+| M06.05 | Staged per-model/role held-out evaluation and integrated regression/browser flow | Promote only evaluated routes; record accuracy/usage/latency/failures and disabled candidates; test shared/reset boundaries, manual/template recovery and M00–M05 regression |
 
-**Exit gate G06:** both required providers are integrated and evaluated, failures are exposed, and no model output bypasses human constraint confirmation. If quality misses a target, follow the explicit manual-first policy and record the measured limitation. Missing live evaluation remains a blocker to claiming this phase complete.
+Split M06.01 sequentially into `.01a` schemas/prompts, `.01b` policy/parser/registry migration, `.01c` durable task/reservation/lease substrate and isolated tests, `.01d` separated fixtures/label review. This puts admission before any real adapter request. Split M06.04 into `.04a` routing/circuit/SDK retry bounds, `.04b` login/callback/private-mutation hardening, `.04c` reviewed suggestions/explanation cache and UI, `.04d` adversarial integration checks. Lettered work preserves the five primary task IDs and their complete exit conditions.
 
-**Human input:** keys/budget and gold-label review. While keys are pending, work on M07/M08 rather than adding more models or fake responses.
+**Exit gate G06:** both required providers and every promoted candidate/role have live schema/quality evidence; unverified/unavailable candidates stay disabled with reasons. Shared quota/reset/concurrency/task-key protection, login/submission recovery and manual/template fallback pass. No output bypasses confirmation. Quality misses follow the explicit manual-first/experimental policy; pending live evaluation still blocks a complete G06. At 17 calls/day a 60-example Flash sweep needs at least four quota days before extra smoke/repeat calls. Stage work honestly; do not expand limits or mark the phase complete to fit one session. UK public profile selection remains a deployment decision before public activation.
+
+**Human input:** actual account quota/model evidence, permitted free tier/profile and gold-label review. Both key fields have already been supplied locally; do not ask for them in chat. The builder supplied 3.8 Flash and Lite RPM/TPM and approved the labels; 3.6 and exact provider bucket sharing remain unverified. Use conservative shared buckets and keep 3.6 disabled. Continue eligible local M06 work while blocked; M07/M08 require their own authorization. No extra agents/features or paid requests are implied.
 
 ### M07 — Phase 07: finish reports, corrections, history, and private controls
 
@@ -333,12 +335,12 @@ Record each gate as `available`, `unavailable`, or `unverified`, with the affect
 | M11.01 | Complete feature/page/API coverage audit and integrated local acceptance run | All F01–F12/T01–T12 covered; no route/feature remains a stub; full local production build works |
 | M11.02 | Security/privacy/failure regression and retention cleanup | Cross-user tests, secret scan, quota tests, provider outage, cancellation/deletion races, dry-run cleanup and actual test-environment cleanup pass |
 | M11.03 | Responsive/accessibility/performance review with measured results | 360/768/1440 px, keyboard, zoom, reduced motion, screen-reader smoke check; report latency hardware/sample size honestly |
-| M11.04 | Web deployment, Auth redirect/email verification, worker startup, fresh external-user journey | Record actual URL/build/contract; signup/recovery and real plan/publication work; laptop-worker availability limit is visible |
+| M11.04 | Web deployment, Auth redirect/OAuth verification, worker startup, fresh external-user journey | Record actual URL/build/contract; Google/GitHub sign-in and real plan/publication work; laptop-worker availability limit is visible |
 | M11.05 | Final reproducibility check and evidence-backed handoff | New checkout follows verified setup; current README/specs/status agree; remaining limitations and exact outstanding actions are explicit |
 
 **Exit gate G11:** required acceptance evidence exists for the actual build/environment. If a required live check is blocked, deliver the tested subset and name the incomplete gate; do not call the whole product finished.
 
-**Human input:** hosting/email settings, any paid-plan decision, and fresh-user/reviewer checks where available. Standalone operations/submission documents remain excluded as requested.
+**Human input:** hosting/OAuth settings, any paid-plan decision, and fresh-user/reviewer checks where available. Standalone operations/submission documents remain excluded as requested.
 
 ## 4. Contracts and file ownership across phases
 
@@ -360,7 +362,7 @@ Default to one writer per shared file. Do not spawn extra coding agents merely b
 | Scope | Primary delivery | Final integration check |
 |---|---|---|
 | P01 landing, P03 dashboard, P04 planner, P05 plan detail | M05; detail extended in M07/M09 | M11.01 |
-| P02 login plus recovery/callback | M04.02 | M11.04 external email flow |
+| P02 Google/GitHub login plus callback | M04.02 | M11.04 external OAuth flow |
 | P06 completion and P07 settings | M07 | M09.04/M11.02 publication-aware deletion |
 | P08 receipt and P09 verifier | M10.01–M10.03 | M11.04 actual published record |
 | P10 methodology and P11 privacy | M10.04 | M11.05 claims match behavior |
@@ -383,7 +385,7 @@ The following include **target script names** from document 05. M01 implements t
 | Domain math/time/schema | `pnpm typecheck`, targeted `pnpm test`; independent expected-value/property fixtures |
 | Database/Auth/API | Targeted `pnpm test:integration` against an isolated environment; two-user authorization checks |
 | UI and browser behavior | Relevant component tests and `pnpm test:e2e`; keyboard/mobile/manual checks |
-| AI adapters | Mocked contract/failure tests; explicit `pnpm eval:ai` for paid holdout evaluation |
+| AI adapters | Mocked contract/failure tests; explicit bounded `pnpm ai:evaluate` for reviewed free-tier evaluation |
 | Contract/hash/worker | `pnpm contracts:test`, digest parity tests, worker failure tests; explicit testnet evidence separately |
 | Phase integration / release | `pnpm lint`, `pnpm typecheck`, applicable suites, `pnpm build`, fresh environment smoke checks |
 
@@ -465,3 +467,5 @@ Simplify presentation polish, motion, and optional explanation detail before red
 After each phase, the app should either have a demonstrable new capability or a tested prerequisite used by the next phase. If a phase has produced only empty screens, broad scaffolding, or unverified generated code, its gate has not passed.
 
 This roadmap ends at a verified, handed-off application. It does not recreate the removed standalone operations or hackathon-submission documents.
+
+M05 estimate checkpoint: the manual live grid/Auth/save journey is now implemented and exercised on desktop/mobile, rather than inferred from isolated modules. AI account access/evaluation, completion/corrections, canonical proof/contract, funded testnet publication and deployment remain substantial separate work. No measured time log supports a tighter remaining-hours estimate; retain the original full-build estimate as provisional, not a delivery promise. Check the current official deadline again before allocating future work.

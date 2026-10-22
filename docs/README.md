@@ -1,6 +1,6 @@
 # CarbonShift documentation
 
-Prepared 20 October 2026; M03 update 21 October. This is the index and reading guide for **14 project documents plus three guidance files**. The foundation, deterministic core and tested live grid adapter exist; the complete product, accounts, AI and receipt integrations remain unfinished. See the root README and status log for verified current behavior.
+Prepared 20 October 2026; M07 implementation revision 22 October. This is the index and reading guide for **14 project documents plus three guidance files**. M00–M07 run locally. M06 timing assistance remains experimental/manual-first after measured quality misses; private completion is implemented; public receipts remain unfinished. See the root README and status log for actual evidence.
 
 ## Start here
 
@@ -52,6 +52,16 @@ Use one focused task at a time. The roadmap specifies required reading, work are
 
 Each subject has one owner above. Other documents link to it instead of redefining it. A code-driven change to a schema, method, role, or scope must update the owning document and affected tests.
 
+### 22 October pre-M06 revision
+
+Document 09 now owns the quota-aware Gemini 3.8 → available/qualified 3.6 → 3.5 Flash-Lite candidate order, Groq recovery and two-call bound; an exhausted candidate is skipped before dispatch. The requested Flash ceiling is 17/day, Lite's safety ceiling is 425/day against a builder-reported 500. Minute/token limits are now supplied; exact provider bucket sharing remains unverified and conservative shared buckets apply. Documents 06/07/11 specify shared admission, task-key deduplication, login/submission throttling and privacy; 12/13 specify tests and phased execution. Document 14 describes the completed migration from legacy model fields to server-only `AI_POLICY_JSON`. No new product page or autonomous AI role was added.
+
+M06 is now complete locally under its documented manual-first experimental policy. Policy migration, shared admission, provider adapters, private AI endpoints, reviewed UI and Auth/submission controls are implemented; use the status log for current verification. Both authenticated catalogs were read and bounded Groq/Gemini Lite smokes passed. The builder approved the labels. Current local roles are enabled after actual evaluation and a passed assisted save/reload journey; unevaluated roles remain excluded and unknown sharing uses conservative common buckets. The 17/day Flash evaluation budget may span several quota days. Free Gemini eligibility for a public UK audience remains an explicit deployment decision, never an assumed billing upgrade. Historical research/proposals do not override the revised owners.
+
 “Proposed” means a design decision. “Verified source” means an official reference was inspected. “Implemented” and “passed” require code and actual execution evidence. No benchmark, account access, deployment, or integration result has been established merely by writing these files.
 
 The [earlier build guide](../research/wave-2/top-three-build-guide.md) and [project assessment](../research/wave-2/project-ideas-claude-analysis.md) remain background. Their alternative projects, rough estimates, and broader ideas do not override this bounded CarbonShift specification.
+
+### M07 private lifecycle implementation
+
+M07.01–M07.05 implement append-only reports/results, actual-factor refresh, corrections/history, cancellation and recently reauthenticated private/account deletion. Versioned envelopes and commands are in 06/07. Public/chain-aware deletion remains M09/M11. The status log distinguishes isolated, live and authored-fixture evidence. M08 requires new authorization.
