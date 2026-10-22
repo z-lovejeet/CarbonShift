@@ -1,0 +1,193 @@
+{
+  "runId": "00ba3479-005e-428a-bffe-f893cd252272",
+  "role": "explanation",
+  "model": "openai/gpt-oss-120b",
+  "datasetSha256": "874545d24422f3047b6ded7d8337b21d10eb209d941e00b311a7c473597d007f",
+  "promptVersion": "explanation-v1",
+  "review": {
+    "datasetSha256": "874545d24422f3047b6ded7d8337b21d10eb209d941e00b311a7c473597d007f",
+    "reviewedBy": "CarbonShift builder (explicit approval in this chat)",
+    "reviewedAtUtc": "2026-10-21T20:07:38.936Z"
+  },
+  "maximumRequests": 4,
+  "checkedAtUtc": "2026-10-21T20:28:52.445Z",
+  "intervalMs": 0,
+  "automaticPromotion": false,
+  "billedCost": null,
+  "results": [
+    {
+      "caseId": "explain-lower-open",
+      "selection": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "LOWER_FORECAST_ESTIMATE",
+          "DEADLINE_MET"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL",
+          "SELF_REPORTED"
+        ]
+      },
+      "templateBaseline": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "LOWER_FORECAST_ESTIMATE",
+          "DEADLINE_MET"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "schemaAndGroundingPassed": true,
+      "latencyMs": 3659,
+      "errorCode": null,
+      "attempts": [
+        {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "state": "succeeded",
+          "latency_ms": 1455,
+          "input_tokens": 411,
+          "output_tokens": 434,
+          "total_tokens": 845,
+          "prompt_version": "explanation-v1",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "preferenceBenefitMeasured": false
+    },
+    {
+      "caseId": "explain-lower-blocked",
+      "selection": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "LOWER_FORECAST_ESTIMATE",
+          "DEADLINE_MET",
+          "BLOCKED_PERIODS_AVOIDED"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL",
+          "SELF_REPORTED"
+        ]
+      },
+      "templateBaseline": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "LOWER_FORECAST_ESTIMATE",
+          "DEADLINE_MET",
+          "BLOCKED_PERIODS_AVOIDED"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "schemaAndGroundingPassed": true,
+      "latencyMs": 3525,
+      "errorCode": null,
+      "attempts": [
+        {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "state": "succeeded",
+          "latency_ms": 1243,
+          "input_tokens": 419,
+          "output_tokens": 391,
+          "total_tokens": 810,
+          "prompt_version": "explanation-v1",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "preferenceBenefitMeasured": false
+    },
+    {
+      "caseId": "explain-baseline-open",
+      "selection": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "BASELINE_ALREADY_BEST",
+          "DEADLINE_MET"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "templateBaseline": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "BASELINE_ALREADY_BEST",
+          "DEADLINE_MET"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "schemaAndGroundingPassed": true,
+      "latencyMs": 4270,
+      "errorCode": null,
+      "attempts": [
+        {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "state": "succeeded",
+          "latency_ms": 1817,
+          "input_tokens": 409,
+          "output_tokens": 484,
+          "total_tokens": 893,
+          "prompt_version": "explanation-v1",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "preferenceBenefitMeasured": false
+    },
+    {
+      "caseId": "explain-baseline-blocked",
+      "selection": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "BASELINE_ALREADY_BEST",
+          "DEADLINE_MET",
+          "BLOCKED_PERIODS_AVOIDED"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "templateBaseline": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "BASELINE_ALREADY_BEST",
+          "DEADLINE_MET",
+          "BLOCKED_PERIODS_AVOIDED"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "schemaAndGroundingPassed": true,
+      "latencyMs": 5133,
+      "errorCode": null,
+      "attempts": [
+        {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "state": "succeeded",
+          "latency_ms": 2856,
+          "input_tokens": 417,
+          "output_tokens": 701,
+          "total_tokens": 1118,
+          "prompt_version": "explanation-v1",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "preferenceBenefitMeasured": false
+    }
+  ]
+}

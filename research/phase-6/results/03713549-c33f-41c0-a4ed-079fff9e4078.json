@@ -1,0 +1,195 @@
+{
+  "runId": "03713549-c33f-41c0-a4ed-079fff9e4078",
+  "role": "explanation",
+  "model": "gemini-3.5-flash-lite",
+  "datasetSha256": "874545d24422f3047b6ded7d8337b21d10eb209d941e00b311a7c473597d007f",
+  "promptVersion": "explanation-v1",
+  "review": {
+    "datasetSha256": "874545d24422f3047b6ded7d8337b21d10eb209d941e00b311a7c473597d007f",
+    "reviewedBy": "CarbonShift builder (explicit approval in this chat)",
+    "reviewedAtUtc": "2026-10-21T20:07:38.936Z"
+  },
+  "maximumRequests": 4,
+  "checkedAtUtc": "2026-10-21T20:29:06.810Z",
+  "intervalMs": 0,
+  "automaticPromotion": false,
+  "billedCost": null,
+  "results": [
+    {
+      "caseId": "explain-lower-open",
+      "selection": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "LOWER_FORECAST_ESTIMATE",
+          "DEADLINE_MET"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL",
+          "SELF_REPORTED"
+        ]
+      },
+      "templateBaseline": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "LOWER_FORECAST_ESTIMATE",
+          "DEADLINE_MET"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "schemaAndGroundingPassed": true,
+      "latencyMs": 3896,
+      "errorCode": null,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1575,
+          "input_tokens": 125,
+          "output_tokens": 77,
+          "total_tokens": 202,
+          "prompt_version": "explanation-v1",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "preferenceBenefitMeasured": false
+    },
+    {
+      "caseId": "explain-lower-blocked",
+      "selection": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "LOWER_FORECAST_ESTIMATE",
+          "DEADLINE_MET",
+          "BLOCKED_PERIODS_AVOIDED"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL",
+          "SELF_REPORTED"
+        ]
+      },
+      "templateBaseline": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "LOWER_FORECAST_ESTIMATE",
+          "DEADLINE_MET",
+          "BLOCKED_PERIODS_AVOIDED"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "schemaAndGroundingPassed": true,
+      "latencyMs": 3282,
+      "errorCode": null,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1097,
+          "input_tokens": 135,
+          "output_tokens": 90,
+          "total_tokens": 225,
+          "prompt_version": "explanation-v1",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "preferenceBenefitMeasured": false
+    },
+    {
+      "caseId": "explain-baseline-open",
+      "selection": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "BASELINE_ALREADY_BEST",
+          "DEADLINE_MET"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL",
+          "SELF_REPORTED"
+        ]
+      },
+      "templateBaseline": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "BASELINE_ALREADY_BEST",
+          "DEADLINE_MET"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "schemaAndGroundingPassed": true,
+      "latencyMs": 3206,
+      "errorCode": null,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1061,
+          "input_tokens": 124,
+          "output_tokens": 75,
+          "total_tokens": 199,
+          "prompt_version": "explanation-v1",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "preferenceBenefitMeasured": false
+    },
+    {
+      "caseId": "explain-baseline-blocked",
+      "selection": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "BASELINE_ALREADY_BEST",
+          "DEADLINE_MET",
+          "BLOCKED_PERIODS_AVOIDED"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL",
+          "SELF_REPORTED"
+        ]
+      },
+      "templateBaseline": {
+        "schemaVersion": 1,
+        "reasonCodes": [
+          "BASELINE_ALREADY_BEST",
+          "DEADLINE_MET",
+          "BLOCKED_PERIODS_AVOIDED"
+        ],
+        "limitationCodes": [
+          "ASSUMED_ENERGY",
+          "NATIONAL_SIGNAL"
+        ]
+      },
+      "schemaAndGroundingPassed": true,
+      "latencyMs": 3500,
+      "errorCode": null,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1083,
+          "input_tokens": 134,
+          "output_tokens": 88,
+          "total_tokens": 222,
+          "prompt_version": "explanation-v1",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "preferenceBenefitMeasured": false
+    }
+  ]
+}
