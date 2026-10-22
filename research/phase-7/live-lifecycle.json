@@ -1,0 +1,46 @@
+{
+  "checkedAtUtc": "2026-10-22T16:16:04Z",
+  "basis": {
+    "privateJourney": "real development Auth/database, live forecast, normal pages/API",
+    "completionMath": "authored historical plan held only in memory with live national actual factors",
+    "reauthentication": "real provider-start redirects; callback success/identity checks isolated; signed fixture receipt used only for temporary-account deletion"
+  },
+  "noAiOrLedger": true,
+  "privateJourney": {
+    "passed": true,
+    "futureReportRejected": true,
+    "cancellationTerminal": true,
+    "originalForecastPreserved": true,
+    "retryStable": true,
+    "ownerIsolation": true,
+    "deletionReceiptEnforced": true,
+    "temporaryAccountRemoved": true,
+    "unrelatedMemberRetained": true,
+    "desktopMobileChecks": true,
+    "axeViolations": 0,
+    "browserErrors": 0
+  },
+  "actualIntegration": {
+    "passed": true,
+    "originalForecast": "authored fixture kept only in memory",
+    "actualSource": "https://api.carbonintensity.org.uk/intensity/2026-10-22T05:00Z/2026-10-22T08:00Z",
+    "actualRetrievedAtUtc": "2026-10-22T16:16:36Z",
+    "actualIntervals": 7,
+    "updatedResult": {
+      "status": "actual_estimate",
+      "executionBasis": "self_reported",
+      "energyBasis": "user_estimate",
+      "methodVersion": "carbonshift-gb-uniform-v1",
+      "reportId": "b7f05f7d-7b52-49d6-b31a-ae1f4a17c86d",
+      "snapshotHash": "0xa5b512c27b865dbf4a90994b720ae5034b0d76f84d4a32c26b9700dfcc938e3c",
+      "baselineActualMg": 83999,
+      "reportedActualMg": 95812,
+      "differenceMg": -11813,
+      "differencePercent": -14.063262657888785,
+      "reasonCodes": [],
+      "deviationCodes": []
+    },
+    "applicationDatabaseWrites": 0
+  },
+  "cleanupPassed": true
+}
