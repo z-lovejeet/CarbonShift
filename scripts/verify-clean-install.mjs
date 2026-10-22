@@ -5,7 +5,7 @@ import { spawnSync } from "node:child_process";
 
 const root = process.cwd();
 const temporary = await mkdtemp(join(tmpdir(), "carbonshift-foundation-"));
-const excluded = new Set([".git", ".next", "node_modules", "test-results", "playwright-report", "coverage", ".vercel", "artifacts", "cache"]);
+const excluded = new Set([".git", ".next", ".temp", ".branches", "node_modules", "test-results", "playwright-report", "coverage", ".vercel", "artifacts", "cache"]);
 const environment = { ...process.env };
 for (const key of Object.keys(environment)) {
   if (/^(NEXT_PUBLIC_|SUPABASE_|AI_|LEDGER_|SEPOLIA_)/.test(key) ||

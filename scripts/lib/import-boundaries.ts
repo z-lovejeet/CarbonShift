@@ -26,7 +26,7 @@ export function inspectImportBoundaries(files: ReadonlyMap<string, string>): str
     const visit = (name: string, chain: string[]) => {
       if (visited.has(name)) return;
       visited.add(name);
-      if (name.startsWith("src/server/") || name.startsWith("src/worker/") || name === "src/config/environment.ts") {
+      if (name.startsWith("src/server/") || name.startsWith("src/worker/") || name.startsWith("src/config/ai-") || name === "src/config/environment.ts") {
         errors.add(`Client imports backend configuration: ${chain.join(" -> ")}`);
         return;
       }
