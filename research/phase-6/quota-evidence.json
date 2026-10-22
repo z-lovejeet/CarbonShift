@@ -1,0 +1,49 @@
+{
+  "recordedAtUtc": "2026-10-21T20:07:38Z",
+  "accountTier": "both accounts builder-confirmed free",
+  "gemini": {
+    "source": "builder AI Studio active limit transcription",
+    "models": {
+      "gemini-3.8-flash": {
+        "rpm": 5,
+        "rpd": 20,
+        "tpm": 250000,
+        "appRpd": 17
+      },
+      "gemini-3.5-flash-lite": {
+        "rpm": 15,
+        "rpd": 500,
+        "tpm": 250000,
+        "appRpd": 425
+      }
+    },
+    "sharedQuotaConfirmed": false,
+    "conservativeSharedProjectCaps": {
+      "rpm": 4,
+      "tpm": 212500,
+      "rpd": 425
+    },
+    "resetTimezone": "America/Los_Angeles",
+    "bootstrapAccess": "authenticated catalog only; one bounded smoke per selected role before evaluation",
+    "disabled": {
+      "gemini-3.6-flash": "minute/token limits unverified; builder suspects discontinuation, not confirmed",
+      "gemini-3.7-flash": "not configured or catalog-listed"
+    }
+  },
+  "groq": {
+    "source": "builder Free Plan screenshot; live smoke headers confirmed RPD1000 and TPM8000",
+    "rpm": 30,
+    "rpd": 1000,
+    "tpm": 8000,
+    "tpd": 200000,
+    "appCaps": {
+      "rpm": 24,
+      "rpd": 850,
+      "tpm": 8000,
+      "tpd": 170000
+    },
+    "sharedScope": "all configured Groq roles/models conservatively share organization buckets"
+  },
+  "applicationDailyCap": 200,
+  "automaticPromotion": false
+}

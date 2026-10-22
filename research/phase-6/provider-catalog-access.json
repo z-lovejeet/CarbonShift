@@ -1,0 +1,30 @@
+{
+  "checkedAtUtc": "2026-10-21T19:41:19.728Z",
+  "operation": "authenticated model catalog GET only",
+  "inferenceRequests": 0,
+  "accountTier": "builder-reported-free",
+  "accountQuotasVerified": false,
+  "inferenceAccessVerified": false,
+  "roleQualityVerified": false,
+  "providers": [
+    {
+      "provider": "gemini",
+      "status": "authenticated_catalog_read",
+      "visibleCandidates": [
+        "gemini-3.8-flash",
+        "gemini-3.6-flash",
+        "gemini-3.5-flash-lite"
+      ],
+      "partialListing": false
+    },
+    {
+      "provider": "groq",
+      "status": "authenticated_catalog_read",
+      "visibleCandidates": [
+        "openai/gpt-oss-120b",
+        "openai/gpt-oss-20b"
+      ],
+      "partialListing": false
+    }
+  ]
+}

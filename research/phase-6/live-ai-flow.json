@@ -1,0 +1,42 @@
+{
+  "checkedAtUtc": "2026-10-21T20:30:40.946Z",
+  "result": "passed",
+  "maximumProviderAttempts": 4,
+  "planId": "57b46992-cfd8-4d67-a561-52b22f5d67a0",
+  "comparisonId": "6d4cc8b4-f91b-42c8-aaba-4909757f4629",
+  "snapshotId": "8c3691dc-aa8f-48a3-8cc6-367d041ccf24",
+  "checks": [
+    "real AI interpretation with review/apply",
+    "exact energy unchanged",
+    "finished/changed task keys rejected",
+    "real deterministic grid comparison",
+    "grounded live AI explanation",
+    "owner code cache hit",
+    "immutable save/reload",
+    "axe/overflow"
+  ],
+  "physicalExecutionVerified": false,
+  "providerObservationWindowStartUtc": "2026-10-21T20:30:00Z",
+  "providerAttempts": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.5-flash-lite",
+      "state": "succeeded",
+      "prompt_version": "constraints-v3",
+      "latency_ms": 2184,
+      "input_tokens": 296,
+      "output_tokens": 276,
+      "total_tokens": 572
+    },
+    {
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "state": "succeeded",
+      "prompt_version": "explanation-v1",
+      "latency_ms": 1971,
+      "input_tokens": 411,
+      "output_tokens": 712,
+      "total_tokens": 1123
+    }
+  ]
+}
