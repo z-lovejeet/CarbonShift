@@ -1,6 +1,6 @@
 # CarbonShift — testing, AI evaluation, and acceptance
 
-Version 1.3 · 21 October 2026 · Full product acceptance specification. M01/M02 checks and M03 adapter/live-read checks have run; full T01–T12 product acceptance remains incomplete. See the status log for actual results.
+Version 1.6 · 22 October 2026 · Pre-M06 quota-aware routing and abuse tests specified. M00–M05 evidence remains scoped; new AI/hardening and full acceptance remain incomplete.
 
 ## 1. Verification strategy
 
@@ -15,9 +15,9 @@ No unit test may depend on the current date, changing grid data, a paid provider
 | Test ID | Features | Required acceptance evidence |
 |---|---|---|
 | T01 | F01 | Public demo works without account/network AI; every example state says demo; reset restores fixture |
-| T02 | F02 | Signup/login/recovery/sign-out work; A cannot read/write/delete B's plans through API or DB |
+| T02 | F02 | OAuth start/callback/session/sign-out and server throttling/recovery work; cancellation, invalid code and unsafe redirects fail safely; A cannot access B's plans |
 | T03 | F03 | Invalid energy/duration/dates/blocks rejected; ambiguous local time requires disambiguation |
-| T04 | F04 | Structured suggestions editable; no acceptance before confirmation; outage/manual path succeeds |
+| T04 | F04 | Both bounded roles evaluated; quota-aware selection and duplicate protection; suggestions editable; no acceptance before confirmation; outage/manual/template path succeeds |
 | T05 | F05 | Valid grid schema ingested; nulls/gaps/duplicates/staleness do not become recommendations |
 | T06 | F06 | Minimum feasible candidate matches brute-force reference; known arithmetic and tie rules pass |
 | T07 | F07 | Acceptance freezes exact reviewed inputs; expired/replayed/conflicting requests handled correctly |
@@ -81,6 +81,10 @@ Each fixture includes reference date, raw text, expected fields, required ambigu
 
 Run each configured interpreter path and fallback independently, recording model/prompt/schema IDs. Rerun unstable/failing cases and report repeat count. Do not tune on the holdout and continue describing it as untouched.
 
+Every candidate promoted into a role's live order requires its own access/schema and role-quality evidence. Catalog-only, unavailable or unqualified entries remain disabled; do not call an untested lower-priority model just because its quota is larger. Gemini 3.7 is not a configured candidate. Evaluate 3.8 Flash, available 3.6 Flash, Lite and Groq interpreter paths under the same reviewed fixtures where they are being promoted. Record model-specific failures instead of averaging them into a single provider score.
+
+Live smoke/evaluation is explicit opt-in network work on verified free tiers under the same project/organization reservations, request limits and application budget. An unpromoted candidate can be tested deliberately by the evaluation runner, but never through a public/user route. Begin at concurrency one; increase only with measured token/headroom evidence. A 60-example sweep at 17 calls/day needs at least **four quota days**, before extra smoke/repeat calls; the 40-example holdout alone needs at least three. Stage the work across resets; do not rotate keys, raise ceilings silently, tune on holdout or claim G06 passed early. The 200-call application ceiling still applies across models/roles. A paid evaluation needs separate explicit spending approval.
+
 Metrics:
 
 - Exact populated-field accuracy, including correct nulls.
@@ -94,6 +98,16 @@ Metrics:
 Proposed release targets: ≥95% field accuracy, ≥90% whole-example critical accuracy, and zero **silently accepted** known critical errors across the suite after local validation/review gating. These are targets, not a statistical guarantee or achieved score. If unmet, make manual input the default, keep AI visibly experimental, and report actual metrics.
 
 For explanation selection, test every eligible/ineligible code combination. Required limitations must always appear after deterministic validation. Compare with the template-only baseline; retain the fallback even when the model performs well.
+
+### M06 isolated router/admission acceptance
+
+- Fill the 3.8 daily bucket to 16; concurrent requests can admit only the one remaining local slot, then select a qualified lower candidate without sending an 18th request. Fill Lite to its configured cap and verify recovery to Groq/manual. Unknown 3.6 limits/qualification keep it disabled.
+- Test shared project/model buckets across two roles, users, keys and server instances; only genuinely distinct configured buckets add capacity. Check rolling minute/token reservations, long/unknown outputs, 429 headers, daily exhaustion and UTC/Pacific reset boundaries including DST. Reserve conservative unknown usage on timeout/crash.
+- Test global 200/day and user 5/minute/20/day jointly. Cached code selections and rejected duplicate task keys make no model call. In-flight/finished/conflicting keys cannot trigger duplicate extraction; never replay fabricated lost suggestions or leak fingerprints.
+- Count all dispatch attempts, including SDK behavior: at most two within the original absolute deadline. No parallel model race, retry storm, fallback on ambiguity/refusal, unqualified model or silent paid-profile promotion. A Gemini outage prefers an eligible independent provider.
+- Verify one task/user and two provider requests/application across instances, lease expiry/recovery, daily charges surviving lease expiry, three-failure circuit opening and one half-open probe. Quota-store outage makes no provider call and leaves manual planning usable.
+- Exercise login start/callback browser/IP thresholds independently, trusted/untrusted forwarded metadata, shared networks, generic 429 recovery, expired callback restart, retained session and sign-out. Test repeated comparison/save submissions, stable uncertain-save keys, unchanged permanent uniqueness and no raw callback codes in logs.
+- Browser tests cover editable source-backed suggestions/clarifications, actual pending/limited/unavailable states, manual fallback, truthful retry time and nonblocking comparison explanations. Run the existing M00–M05 regression after runtime integration; documentation checks alone prove none of these controls.
 
 ## 6. Contract and worker tests
 
@@ -165,3 +179,33 @@ The suites named `src/test/unit/domain-*.test.ts` cover T03/T06 domain rules and
 `pnpm check:grid` is the separate explicit live read: a six-hour forecast comparison with illustrative energy plus a completed historical actual range. It uses the real server clock/transport, no account or paid model. `--capture` writes `src/fixtures/grid/neso-national-recorded-v1.json` only if absent; it is frozen historical evidence. Recording a new version requires a distinct fixture/version and review of expected outputs. The script does not save a user plan or claim measured avoided emissions.
 
 M03 regression includes the existing M01 shell/domain browser suite and fresh-copy install/static/unit/local-contract/build checks. The M00 research verifier intentionally rejects a scaffolded app; check preserved research hashes and documentation consistency instead. No hosted CI, Supabase, AI or testnet pass is inferred from these local checks.
+
+## 12. M04 account, authorization and transaction verification
+
+`auth-routes`, `session`, `request-body`, `plan-api` and `plan-repository` unit suites exercise Google/GitHub start/callback/error/sign-out, fixed redirect policy, validated `getUser()` identity, strict input/output shapes, origin/size/time bounds, sanitized outages, quota/conflict mapping, owner checks before elevation and saved snapshot integrity. These inject services/transports and make no live requests.
+
+`pnpm test:integration` provisions a disposable native PostgreSQL cluster, bootstraps isolated Supabase-like Auth roles/schema, applies every migration and executes the real SQL. It covers two-user RLS, direct SELECT/INSERT/UPDATE/DELETE/function denials, composite ownership constraints, immutable records/payloads, snapshot digests, stale/expired acceptance, same/different-key retries, concurrent acceptance/quota and transactional rollback. It never reads application DB credentials or resets a configured database. Native server tools are required; `CARBONSHIFT_PG_BINDIR` selects their directory. CI can supply only a dedicated fresh loopback `carbonshift_test` service via `CARBONSHIFT_CI_DATABASE_URL` with `CI=true`; the runner refuses a nonempty fixture. CI's PostgreSQL 17 service image is pinned by digest. Local verification of this branch is distinct from an observed hosted GitHub run.
+
+`accounts.spec.ts` exercises P02 availability/error copy, provider labels, no password form, keyboard return navigation, owner-route protection and axe/overflow assertions across three viewport projects. Its production server clears Supabase environment fields, so the test suite does not contact hosted Auth or reuse real browser sessions. The separate configured anonymous probe checks enabled provider buttons, keyboard order, axe and 200% zoom in a fresh context. With native submission prevented only for inspection, it also checks provider progress, duplicate-submit locking and back/forward-cache restoration; actual OAuth remains the separate builder check. Screenshots are ignored local artifacts, visually inspected for desktop/mobile layout.
+
+`pnpm check:accounts` is an explicit live dev integration check, requiring the configured hosted development project and the local server. It provisions two temporary Auth users/sessions in memory via administrative test helpers, performs real grid → comparison → immutable plan → owner read/list/page/retry checks, attempts foreign API/RLS/function access, and deletes only the fixture users. It sends no email, changes no provider settings and does not count as a real Google/GitHub sign-in. The builder independently checked both providers, signed-in confirmation and sign-out. Public production callbacks remain M11 checks.
+
+M04's regression command set includes lint, both typechecks, unit/component tests, isolated DB tests, local contract tooling, production build, browser suite and clean-copy reproduction. Actual counts, failures diagnosed during development and live references are in the status log. Completion/report/publication/deletion UX and full T01–T12 acceptance remain later phases; no paid model or testnet pass is inferred.
+
+## 13. M05 scoped manual journey verification
+
+`task-input` covers exact decimal Wh conversion, London repeated/gap times, feasible baselines, blocked ranges and horizon validation without mutating drafts. `planner-flow` covers explicit review, field preservation, expiry, stable same-key uncertain-save retries (including after expiry), rejection of a mismatched save response, and a server-referenced UI clock under a wrong device wall clock. `forecast-view` checks exact domain amounts, accessible factors and zero-baseline percentage suppression. `planning-api-client` rejects malformed responses, sanitizes unknown errors and sends only acceptance references; `plan-list` tests truthful emptiness and failed-pagination recovery. Owner comparison-read/API/repository cases extend the existing M04 suites.
+
+`planning.spec.ts` runs the shared manual flow via the explicitly labeled public demo at desktop/tablet/mobile widths. It checks review-before-compare/save, accurate authored factors/totals, accessible chart table, alternatives, precision/impossible-window errors, reset, a zero-improvement baseline, keyboard-only completion, 200% zoom and no network mutations. These are offline fixture UI checks; they do not claim a hosted save.
+
+`pnpm check:planner` is an explicit separate live command. It uses the selected development project/local server, creates two temporary legitimate seeded Auth sessions, drives ordinary P03/P04/P05 pages on desktop/mobile in an Asia/Kolkata browser, enters decimal energy and a blocked first interval, compares the real national grid snapshot, checks exact frozen payload equality after acceptance/reload, tests owner dashboard linkage and foreign page/comparison/plan 404, and checks comparison axe/overflow. It cleans up only its created fixture users. It changes no provider settings, sends no email and calls no AI/ledger. Screenshots omit account credentials. Builder usability review was offered and explicitly deferred; screen-reader/other-browser/public-deployment evidence remains separate.
+
+## 14. M06 scoped AI journey verification
+
+`pnpm check:ai-flow` is the explicit live development browser/API check after role evaluation. A fresh fixture member consents to authored non-personal timing input, reviews/applies the suggestion, retains the exact energy assumption, explicitly confirms constraints and compares real national grid data. It checks finished/changed AI request keys, grounded explanation codes, an owner cache hit without another AI dispatch, and immutable save/reload. It checks axe/overflow and cleans its own temporary member. The maximum is four provider attempts across two normal tasks, under the same shared limits; no automatic retry or model qualification is performed. Actual success is recorded separately from isolated browser harness checks.
+
+## 15. M07 private lifecycle verification
+
+Unit/component checks exercise strict commands, profile confirmation, future/unfinished runs, non-execution, current-report corrections, provider outage/null estimates, signed negative differences, stable retries and recent reauthentication/account deletion. Zero-byte DELETE streams are accepted; nonempty data is rejected. SQL checks cover atomicity/rollback, concurrent sequence allocation, actual snapshot persistence/RLS, unchanged refresh reuse, changed actual factors, terminal cancellation, deletion/orphan cleanup and owner-consistent reads.
+
+`pnpm check:lifecycle` drives the ordinary development planner/save/P06/P07/cancellation/deletion journey with real Auth/database/forecast and temporary members. It checks future-report rejection, preserved forecast, duplicate cancellation, foreign 404, deletion without confirmation 403, provider start redirects, desktop/mobile layout, axe and cleanup. Callback success/owner-switch rejection are isolated tests; temporary deletion uses a signed fixture receipt. A separate authored historical plan stays in memory and consumes real actual-grid data; it is never saved as a live comparison. No appliance operation, measured execution, human reauthentication pass or deployed product is inferred. See phase-7 evidence and status for actual outcomes.
