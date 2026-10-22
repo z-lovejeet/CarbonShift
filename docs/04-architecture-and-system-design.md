@@ -1,6 +1,6 @@
 # CarbonShift — architecture and system design
 
-Version 1.2 · 21 October 2026 · Working architecture and backend quality requirements; M03 grid reads work locally, with no services deployed.
+Version 1.6 · 22 October 2026 · M04–M06 run locally, including evaluated AI routes and shared admission. Timing assistance is experimental/manual-first. Web deployment and ledger remain later work.
 
 ## 1. Architectural choice
 
@@ -47,12 +47,21 @@ The database is the source of private application records. The contract is the s
 | `domain/proof` | Versioned manifest → canonical bytes/hash and checks | Shared browser/server, no secrets |
 | `server/grid` | Requested UTC range → validated snapshot | NESO adapter, bounded cache |
 | `server/ai` | Task context → validated suggestions/explanation keys | Gemini/Groq, limits, telemetry |
+| `server/limits` | Trusted request/task identity + operation → atomic admission/lease or retry guidance | Postgres shared counters/reservations, no model calls |
 | `server/plans` | Authenticated command → immutable plan/report/result | Transactional DB operations |
 | `server/publication` | Explicit consent + immutable revision → outbox operation | Publication validation, authorization |
 | `worker/ledger` | Durable job → signed/broadcast/confirmed state | Dedicated testnet signer and RPC |
 | `server/receipts` | Public receipt ID → approved manifest revisions | Sanitized projection only |
 
 Dependencies flow inward toward `domain`; pure domain modules never import server modules.
+
+### M06 orchestration boundary — target
+
+The router authenticates/validates consent, deduplicates the logical AI action, checks the selected deployment profile and atomically reserves applicable user/application/provider/model capacity before network dispatch. It skips unavailable/unqualified/capped candidates in the ordered registry; this is separate from its maximum two real attempts/task. Quotas and circuit/concurrency leases are shared across instances, not process-local counters. Shared provider quota IDs prevent model aliases or different AI roles from creating fictitious capacity. Full policy is in [09](09-ai-agents-models-and-workflow.md), abuse limits in [11](11-security-privacy-and-abuse.md), and target records in [06](06-data-model-and-state-machines.md).
+
+The two AI roles remain interpretation and explanation. Human confirmation separates interpretation from deterministic scheduling. The existing comparison-explanation endpoint loads optional reason codes after the actual result is visible; no model response blocks grid calculation, acceptance or manual input. Independent users may execute within leased capacity; no speculative parallel model race or autonomous tool loop is added. AI task/attempt bookkeeping cannot become plan acceptance or publication consent.
+
+M06 implements shared server limits on login starts/callbacks and private mutation dispatches, preserving PKCE/redirect behavior and stable save retries. Trust IP metadata only from an explicitly configured deployment proxy; production proxy coverage remains an M11 gate. Existing per-member comparison limits remain; no generic throttle replaces ownership, RLS or transactional idempotency. The policy/parser supersedes the four legacy model fields. Web AI remains disabled until qualification; operational checks and live evidence are separated in the status log.
 
 ### Functional backend requirement
 
@@ -85,6 +94,14 @@ sequenceDiagram
 
 A stale comparison causes a new comparison and user review. The server must not accept one comparison while displaying another. Acceptance uses an idempotency key and a unique comparison-to-plan relationship.
 
+### M04 implemented service boundary
+
+`server/auth/session.ts` validates identity with Supabase `getUser()`; it never authorizes from cookie claims alone. SSR PKCE exchanges and sign-out run in route handlers. `src/proxy.ts` refreshes sessions and guards `/app/*`; each private API also validates independently. Cookies are HttpOnly, SameSite Lax and Secure on HTTPS. Local OAuth uses the exact configured loopback origin. The M05 default post-login destination is `/app`; invalid/external return destinations still fall back safely to `/login`.
+
+`server/plans/handlers.ts` validates strict request contracts, records its own clock, reserves an atomic per-member comparison quota, invokes the real grid adapter and pure scheduler, then persists the comparison. Its injectable factory is for isolated tests; the production entry has no fixture/clock override. User-scoped reads apply RLS plus an explicit owner filter before elevated acceptance. Fixed-search-path, service-only database functions implement snapshot/comparison insertion and locked immutable acceptance. Database errors become sanitized HTTP failures, never successful saves. Every returned detail revalidates the saved snapshot digest and domain payload.
+
+`server/db/database.types.ts` is generated from the linked development schema. SDK types catch schema drift at compilation; Zod still validates untrusted runtime responses. Supabase HTTP calls have an eight-second timeout. Private responses are non-cacheable; request bodies are bounded by size and time. Next's incoming development request logging is disabled to avoid recording callback authorization codes.
+
 ## 5. Publication and reconciliation
 
 1. Server builds the public manifest from allowlisted immutable fields.
@@ -102,7 +119,7 @@ The worker checks cancellation and commit deadline again immediately before sign
 
 ## 6. Completion and corrections
 
-A completion report is immutable. Recalculation fetches an actual-factor snapshot for both baseline and reported run; pending values yield a result with unavailable observed comparison. A later refresh creates another result revision referencing the same report. Editing the report creates a new report and result revision with a reason.
+A completion report is immutable. Recalculation fetches an actual-factor snapshot for both baseline and reported run; pending values yield a result with unavailable observed comparison. A later refresh creates another result revision referencing the same report only when relevant actual factors or result semantics change; retrieval-only changes reuse the prior revision. Editing the report creates a new report and result revision with a reason.
 
 Private corrections do not automatically disclose new data publicly. A member separately previews/consents to each published result. Public revision numbers are consecutive and may skip private result revisions; both identifiers remain in the manifest. This prevents a hidden correction from being silently represented as publicly acknowledged.
 
@@ -138,4 +155,12 @@ Deployment/manual steps are in [14](14-manual-setup-guide.md). Source versions a
 
 `server/grid/index.ts` is the server-only product entry point. It owns a process-local client with real fetch and server time. `client.ts` exposes dependency injection only for isolated replay tests and the explicit local check script. Provider parsing, bounded transport and immutable snapshot identity are separate modules, reusing the pure M02 validators/calculator. Neither server module imports the demo or recorded fixtures. No public unauthenticated grid proxy or new page is added.
 
-The cache is a bounded optimization per process, not durable storage or a source of new retrieval timestamps. Its loss may cause another public read; a failed read cannot become a fixture or stale successful comparison. The returned record supplies `id/hash/snapshot/attribution` for M04 to persist transactionally. M04 must still authenticate, validate the trusted live clock, check ownership, map typed failures and freeze reviewed comparisons; M03 does not implement that API lifecycle.
+The cache is a bounded optimization per process, not durable storage or a source of new retrieval timestamps. Its loss may cause another public read; a failed read cannot become a fixture or stale successful comparison. The returned record supplies `id/hash/snapshot/attribution`, now persisted transactionally by M04. M04 authenticates, validates the trusted live clock, checks ownership, maps typed failures and freezes reviewed comparisons; M03 does not implement that API lifecycle.
+
+## 11. M05 manual interface boundary
+
+`contracts/planning.ts` owns the shared Zod API schemas; the M04 server path re-exports them for compatibility. Browser code never imports server credentials or database modules. P03/P05 use validated server identity plus the existing repository; load failures cannot become empty success. P04 supplies the current server time to a browser controller; local prevalidation shares the pure date/profile/constraint modules, while the API recomputes every authoritative value. UI expiry is advisory and uses monotonic elapsed time relative to a server reference.
+
+The live controller posts confirmed fields, then reads `GET /comparisons/{id}` for the already-saved snapshot and verifies that the returned comparison equals the issued response. No extra grid request changes its forecast. Saving sends only ID/version and a stable random retry key; a valid-looking response for different reviewed inputs is rejected. Uncertain saves may be retried with that same key after UI expiry to discover an already-committed result; a definite expiry/version failure requires another reviewed comparison.
+
+The shared planner receives a live or demo adapter. Only the dedicated demo module imports the synthetic fixture and fixed clock; its discriminated interface exposes no save function and only creates a local preview. No demo server mode, fake-login switch or fixture-backed live endpoint was added. Offline browser tests exercise the shared UI via the labeled demo; the explicit `check:planner` command separately provisions two temporary development Auth sessions and drives ordinary protected pages/API against real grid/Supabase services. These seeded sessions are not evidence of new OAuth provider sign-ins.

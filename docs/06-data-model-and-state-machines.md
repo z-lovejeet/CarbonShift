@@ -1,6 +1,6 @@
 # CarbonShift — database, domain model, and state machines
 
-Version 1.2 · 21 October 2026 · Shared domain contracts and M03 grid records implemented; relational persistence and full state lifecycle remain later work.
+Version 1.6 · 22 October 2026 · M04 persistence and M06 operational migrations implemented. Current local AI role evidence is recorded; M07 private completion is implemented; publication remains pending.
 
 ## 1. Representation rules
 
@@ -9,7 +9,7 @@ Version 1.2 · 21 October 2026 · Shared domain contracts and M03 grid records i
 - Energy: positive integer Wh. Carbon factors: nonnegative integer gCO₂/kWh. Calculation output: integer mgCO₂; render grams by dividing by 1,000.
 - Durations: integer minutes; all calculation intervals are half-open `[start, end)`.
 - Money is absent. Unknown numeric values use `null` with a status/reason, never zero.
-- All authoritative records have `created_at`. Mutable operations additionally have `updated_at` and a version for optimistic concurrency.
+- Authoritative records have a creation timestamp (`created_at`, or `accepted_at` for plans). Mutable operations additionally have `updated_at` and a version for optimistic concurrency.
 
 ## 2. Core types
 
@@ -42,7 +42,7 @@ UTC inputs require canonical whole-second `YYYY-MM-DDTHH:mm:ssZ` strings, with v
 
 The pure updated-result projection uses `reportId`, `snapshotHash`, `baselineActualMg`, `reportedActualMg`, `differenceMg`, nullable `differencePercent`, `status`, `reasonCodes`, and `deviationCodes`, alongside the evidence/method labels. No report yields `forecast_only`; a run with missing factors yields `actual_pending` with all updated amounts null. Report persistence, correction sequencing and cancellation authorization remain M07 responsibilities. Private report IDs are UUIDs; `did_not_run` after cancellation is a separate service-layer transition, not a bypass flag in the calculator.
 
-M03's `GridSnapshotRecord` wraps the unchanged shared snapshot with server-generated `id`, `hash` and `attribution`. `hash` is SHA-256 over `CarbonShift:grid-snapshot:v1\n` followed by the normalized strict schema's fixed-order JSON projection. It includes truthful retrieval/source/license metadata; object input key order is normalized before hashing. It is a storage identity, distinct from M08's public JCS manifest/method hashes. Cache hits retain the entire original record; future M04 persistence must not rewrite snapshots. Empty actual responses return null, not an invalid empty snapshot or zero-valued factors.
+M03's `GridSnapshotRecord` wraps the unchanged shared snapshot with server-generated `id`, `hash` and `attribution`. `hash` is SHA-256 over `CarbonShift:grid-snapshot:v1\n` followed by the normalized strict schema's fixed-order JSON projection. It includes truthful retrieval/source/license metadata; object input key order is normalized before hashing. It is a storage identity, distinct from M08's public JCS manifest/method hashes. Cache hits retain the entire original record; M04 persistence does not rewrite snapshots. Empty actual responses return null, not an invalid empty snapshot or zero-valued factors.
 
 ## 3. Relational records
 
@@ -61,10 +61,34 @@ M03's `GridSnapshotRecord` wraps the unchanged shared snapshot with server-gener
 | `mutation_keys` | owner, route scope, idempotency key, request digest, response reference, expiry | Unique owner/scope/key; mismatch returns conflict |
 | `ai_runs` | request ID, owner nullable, task, provider, model, prompt version, latency, token counts, outcome | Metadata only by default; no raw user text |
 | `usage_buckets` | hashed subject, bucket type, window start, count | Atomic server-only limits; no arbitrary member writes |
+| `ai_tasks` | owner, role, client task key, keyed input fingerprint, absolute deadline, state, timestamps | Unique owner/role/key; running/completed duplicates cannot redispatch; no raw text or extracted fields |
+| `usage_reservations` | operation/attempt reference, shared bucket ID, metric, conservative amount, timestamps/expiry | Atomic rolling-window/request/token admission; unknown usage remains charged |
+| `service_leases` | hashed scope, holder/fencing identity, expiry, cooldown/failure metadata | Cross-instance AI concurrency and one half-open provider probe; no member access |
+| `ai_explanation_cache` | owner/comparison FK, task/prompt/schema/policy versions, validated code selection, creation/expiry | No raw model prose/timing text; owner-bound lookup; render current templates from immutable facts |
 
 Use FK constraints, unique indexes, CHECK constraints, and database transactions rather than relying on a UI sequence. Restrict administrative SQL functions; secure any elevated function with fixed `search_path` and explicit authorization.
 
+### M06 operational bookkeeping contract
+
+Create the AI/reservation/lease/cache records in a new migration; never edit applied M04 migrations. `ai_tasks` states are `reserved`, `running`, `succeeded`, `failed`, `abandoned`. Allocate a durable `ai_runs` attempt number (1 or 2, unique per task) and reserve every affected bucket before dispatch. Lock bucket identities in stable order. Record dispatch intent before network I/O; interruption may leave a conservatively consumed reservation rather than justify a third call. Expired leases release concurrency, not daily charges or the task's dispatch history. Terminal task keys stay protected for 24 hours; an expired active task becomes abandoned, not silently restarted.
+
+The keyed fingerprint binds role, exact timing text/reference context or comparison identity, prompt/schema versions and consent. The database binds that HMAC to the original policy digest; duplicate checks use the frozen digest even after a configuration edit. Source-span text is never trimmed or rewritten. Extraction outputs remain request/browser-memory data; do not persist them just to offer replay. A duplicate completed extraction yields its non-sensitive status, not a fabricated reconstruction. Task keys/input fingerprints are cleared after 24 hours by retention maintenance, while content-free run metadata follows seven days. Explanation cache entries contain only locally validated codes, expire within 24 hours and are invalidated by owner/comparison/version mismatch. They do not hold model prose or override mandatory limitations.
+
+User/application daily windows use UTC. Gemini daily windows use explicit America/Los_Angeles calendar boundaries; rolling reservations use their actual expiry rather than a fixed “24 hours” approximation for a 23-/25-hour calendar day. Models/roles sharing a provider bucket reference the same stable ID. Per-user quota/lease subjects and login client identifiers use scoped HMACs; no raw IP/cookie/code/key is stored in these tables. Auth callback query codes never enter a fingerprint or log. Cleanup waits until every associated quota window/lease has expired; AI operational metadata retains the seven-day policy in document 11.
+
+All new operational tables/functions are service-only with fixed search paths and RLS/no direct member writes. Validate identity and ownership before elevation. Account deletion removes task/cache links and eligible records without prematurely refunding shared provider/application reservations; retain only de-identified quota metadata until expiry. AI bookkeeping does not modify immutable accepted plan payloads. These targets do not claim an applied migration or working limiter.
+
 For publications, use `ON DELETE SET NULL` on private plan/owner links; for published results, use it on the private result link. Published manifests contain their own sanitized snapshots and remain interpretable without those private rows. Account deletion can therefore remove private plans/reports/comparisons while retaining the disclosed proof and clearing owner links. Never cascade-delete an already-published proof by accident. Full retention policy is in [11](11-security-privacy-and-abuse.md).
+
+### Implemented M04 storage contract
+
+Migrations `20261021000100_private_planning.sql` and `20261021000200_acceptance_guards.sql` create only profiles, grid snapshots, comparisons, plans, mutation keys and usage buckets. The other rows above are later-phase targets. Existing applied migrations are immutable; corrections use a new migration.
+
+Snapshots retain exact normalized `payload_text`, generated JSONB `snapshot`, retrieval time and digest. PostgreSQL recomputes the versioned storage hash over those bytes. Comparison JSON remains the strict domain `ComparisonV1`; API envelope IDs/versions are stored in relational columns. Constraints bind snapshot ID/hash and `(comparison_id,owner_id)` to their parents. The plan insert guard requires `accepted_payload` to equal the referenced comparison exactly. All accepted timestamps have whole-second precision so list cursors remain lossless. M04 blocks all plan updates; M07 must introduce narrowly controlled status transitions before cancellation exists.
+
+`cs_create_comparison` atomically inserts the snapshot and comparison, checks freshness/expiry and rejects conflicting snapshot identities. `cs_accept_plan` serializes each owner/scope/key with an advisory lock and locks the comparison row; it checks owner, version, expiry, forecast age and the ten-minute start buffer, inserts one permanent plan per comparison and records its idempotency reference atomically. An identical retry returns that plan even after proposal expiry; an altered body with an unexpired reused key conflicts. Mutation keys last 24 hours; permanent comparison uniqueness still applies after key expiry. `cs_comparison_quota` atomically permits ten comparisons per hashed member/minute. Failed transactions roll back their associated records.
+
+RLS grants members owner-only SELECT on profiles/comparisons/plans and SELECT on snapshots referenced by their own comparisons. No member or anonymous role can directly INSERT/UPDATE/DELETE any M04 table or execute privileged functions. Service writes use validated server identity; the secret key stays server-only. The trigger-created profile contains no copied email or provider profile. Account deletion cascades private M04 records; later publication migrations must add the documented retention/severing behavior first. Immutable snapshots may remain orphaned for the retention policy; they are inaccessible through member RLS without an owned comparison.
 
 ## 4. Relationships
 
@@ -142,3 +166,11 @@ Confirmation policy: two blocks after inclusion plus matching chain ID, contract
 Use user-scoped Supabase clients for owner reads. Privileged services performing writes must check validated Auth identity and ownership before use; never accept `owner_id` from the request body.
 
 RLS tests must attempt cross-user SELECT, INSERT, UPDATE, DELETE and direct function calls. Public reads are dedicated allowlisted views/service projections filtered by explicit consent and visibility, never `SELECT *` on private tables.
+
+### M07 private lifecycle wire/storage detail
+
+`completion_reports` and `result_revisions` store immutable version-1 documents plus relational IDs, owner, plan and sequence. Reports have `id`, `planId`, `sequence`, `createdAtUtc`, `kind`, `reportedStartUtc`, `profileStillApplicable`, `correctsReportId`, `reason`, and `source` (`report` or `cancellation`). The bounded `note` field defaults to an empty string and retains the human cancellation explanation separately from `reason: cancelled_before_start`. Results have `id`, `planId`, `sequence`, `reportId`, `createdAtUtc`, `reason` (`submitted`, `correction`, `refresh`, `cancelled`), `actualSnapshotId` nullable, and the existing deterministic `result` object. Plan detail includes ascending `reports` and `revisions`, their latest entries, and derived completion. Snapshot lookup is owner-scoped through either comparisons or result revisions.
+
+Lifecycle mutation responses are immutable acknowledgements `{planId, planVersion, reportId, resultId, changed, deleted}`. A 24-hour private mutation record preserves that exact response, including deletion acknowledgements; no report content is duplicated there. Parent-plan locks protect sequence allocation and expected current-report/result checks. Only plan status/version may change; accepted payload, owner, IDs and acceptance time remain immutable. Fresh actual retrieval metadata alone does not create a result revision: the semantic identity comprises result fields other than snapshot hash plus the actual factors overlapping the baseline/reported windows. Changed relevant factors create a revision even if rounded totals agree.
+
+Private plan deletion also deletes its now-unreferenced comparison and releases orphan snapshots. Account deletion cascades private records, retains only expiring quota/admission metadata under existing retention, and removes orphan snapshots. Future public revisions must use nullable private links and extend deletion transactions before M09 activation.
