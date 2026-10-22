@@ -1,0 +1,12 @@
+import { beforeEach, expect, it, vi } from "vitest";
+const mocks = vi.hoisted(() => ({ remove: vi.fn(), signOut: vi.fn(), reauth: vi.fn(), ingress: vi.fn() }));
+vi.mock("@/server/auth/session", () => ({ requireMember: async () => ({ userId: "8d46189a-7ef2-46f2-a674-aea5b026d06e", client: { auth: { signOut: mocks.signOut } } }) }));
+vi.mock("@/server/auth/reauth", () => ({ assertRecentReauth: mocks.reauth }));
+vi.mock("@/server/limits/ingress", () => ({ mutationIngress: mocks.ingress }));
+vi.mock("@/server/db/clients", () => ({ databaseConfiguration: () => ({ origin: "http://127.0.0.1:3000" }), createServiceClient: () => ({ auth: { admin: { deleteUser: mocks.remove } } }) }));
+import { POST } from "@/app/api/v1/account/delete/route";
+const request = () => new Request("http://127.0.0.1:3000/api/v1/account/delete", { method: "POST", headers: { Origin: "http://127.0.0.1:3000", "Content-Type": "application/json", "Idempotency-Key": "account-retry-key" }, body: JSON.stringify({ acknowledgeDeletion: true }) });
+beforeEach(() => { mocks.remove.mockReset().mockResolvedValue({ error: null }); for (const mock of [mocks.signOut, mocks.reauth, mocks.ingress]) mock.mockReset().mockResolvedValue(undefined); });
+it("T02 deletes only the server-authenticated identity", async () => { expect((await POST(request())).status).toBe(200); expect(mocks.remove).toHaveBeenCalledWith("8d46189a-7ef2-46f2-a674-aea5b026d06e"); });
+it("T09 acknowledges a concurrent same-account deletion already completed after authentication", async () => { mocks.remove.mockResolvedValue({ error: { code: "user_not_found" } }); expect((await POST(request())).status).toBe(200); });
+it("T09 keeps an uncertain administrative failure visible without leaking details", async () => { mocks.remove.mockResolvedValue({ error: { code: "unexpected", message: "private-canary" } }); const response = await POST(request()); expect(response.status).toBe(503); expect(await response.text()).not.toContain("private-canary"); });
