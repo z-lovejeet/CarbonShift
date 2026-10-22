@@ -18,6 +18,6 @@ export default defineConfig({
     url: "http://127.0.0.1:3100/api/v1/health",
     reuseExistingServer: false,
     timeout: 30_000,
-    env: { AI_ENABLED: "false", LEDGER_ENABLED: "false", NEXT_TELEMETRY_DISABLED: "1" },
+    env: { APP_ORIGIN: "", NEXT_PUBLIC_SUPABASE_URL: "", NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "", SUPABASE_SECRET_KEY: "", RATE_LIMIT_HMAC_SECRET: "", AI_ENABLED: "false", LEDGER_ENABLED: "false", NEXT_TELEMETRY_DISABLED: "1" },
   },
 });
