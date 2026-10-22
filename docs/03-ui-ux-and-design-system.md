@@ -1,6 +1,6 @@
 # CarbonShift — UI/UX and design system
 
-Version 1.2 · 21 October 2026 · Visual specification; M01 shell rendered and inspected, with full product flows pending.
+Version 1.6 · 22 October 2026 · M05/M06 interfaces implemented locally, including reviewed experimental timing assistance and truthful quota/login recovery.
 
 ## 1. Experience goal
 
@@ -16,7 +16,7 @@ The user requires a **premium, modern, clean, minimal** frontend and UI/UX, with
 
 Do not substitute repetitive card grids, oversized decorative heroes, gradient blobs, gratuitous pills, stock environmental counters, or distracting motion for the actual planning interface. Every visible action must have its real implemented behavior or an explicit unavailable state. Loading, empty, validation, error, pending, and success states require the same visual care as the primary screen.
 
-Review actual rendered screens at the specified responsive widths before marking UI tasks passed. The token table is a starting system; visual quality and accessibility require inspection of the implementation. M00 recorded the brief; M01 now implements a small responsive shell, with planning explicitly unavailable. Navigation to unimplemented plans/account/methodology routes is withheld until those routes exist; current home/approach links work.
+Review actual rendered screens at the specified responsive widths before marking UI tasks passed. The token table is a starting system; visual quality and accessibility require inspection of the implementation. M00 recorded the brief; M01 now implements a small responsive shell, with planning explicitly unavailable. M04 adds the responsive P02 OAuth/account page with current account navigation, provider buttons, approved error/unavailable states and sign-out. Plans/methodology navigation remains withheld until those routes exist; current home/approach/account links work.
 
 ## 2. Information hierarchy
 
@@ -163,10 +163,26 @@ Do not animate a carbon total counting upward. Do not convert estimates to trees
 
 Numbers and dates are inserted by code. The explanation agent selects approved explanation keys; it cannot rewrite labels or numerical values.
 
+### M06 assistance and retry states
+
+Keep optional AI beside the manual fields, with its provider-processing notice and explicit action. Highlight ambiguous/missing fields and the supporting source span; resolve questions by editing confirmed fields, not a model debate. A short real state such as “Interpreting your timing…” may be shown only while the request is active. Do not display invented agent activity, progress percentages or internal prompt text.
+
+Quota recovery: “AI assistance has reached its current limit. Your entries are kept; use the timing form.” Show a retry time/countdown only when supplied by the server and announce changes sparingly. Login recovery: “Too many sign-in attempts. Please wait before trying again.” Preserve navigation to the public demo. The provider buttons already prevent accidental repeated submission; M06 adds server enforcement and accessible 429 recovery. A login throttle does not mean credentials are wrong.
+
+Disable duplicate actions while pending, retain the same task/save key for the same attempt, and require a deliberate new AI action after a completed response was lost. Suggestions never replace manual fields without review. Render the comparison and deterministic explanation immediately; optional AI-selected reasons may arrive independently and cannot alter values or required limitations. Keep source details, assumptions and existing alternatives available on the same pages. No agent dashboard, new chat page or additional decorative content is introduced.
+
 ## 9. Accessibility and performance acceptance
 
-Complete the core flow using keyboard only and a screen reader smoke test. Focus moves to step headings and first invalid fields; asynchronous updates use appropriate live regions without excessive announcements. Dialogs trap and restore focus. Password inputs support paste/managers. Error text is associated with the field.
+Complete the core flow using keyboard only and a screen reader smoke test. Focus moves to step headings and first invalid fields; asynchronous updates use appropriate live regions without excessive announcements. Dialogs trap and restore focus. OAuth buttons clearly name Google/GitHub, indicate pending navigation, and expose cancellation/error recovery without password fields. Error text is associated with the field.
 
 Respect reduced motion. Route transitions need no animation; micro-feedback should remain under 200 ms. Optimize the initial planner for ordinary mobile connections: defer chart and proof tools until needed, avoid large media, and keep form interaction independent of model responses.
 
 UI validation and responsive checks are part of [12](12-testing-and-ai-evaluation.md). M01 generated browser screenshots and inspected the desktop/mobile shell; production-browser checks passed at 360/768/1440 px with no observed axe violations. This establishes only the current shell's scoped checks, not accessibility or completeness of future planner/receipt pages. Actual evidence is recorded in the status log.
+
+## 10. M05 rendering boundary
+
+The existing tokens remain in use. Native labeled controls handle units and London dates; repeated hours expose an offset selector. A constraints review precedes comparison and a separate unchecked acknowledgment precedes save. Stage headings receive focus, errors name recovery actions, and interrupted saves preserve their retry identity. Desktop navigation and the native mobile menu reflow under 200% zoom.
+
+Recharts is dynamically loaded only when a comparison is rendered. Its step series uses actual half-hour tick positions, a zero-based y-axis, a hatched baseline window and a suggested-time band, plus text labels and an adjacent keyboard-accessible table. It has no animation or hidden hover-only information. Source/time/energy/method details remain inspectable; cross-midnight schedules expose the finish date. Zero improvements do not acquire a positive headline.
+
+The plan detail displays the frozen forecast and explicit initial execution/publication states; later lifecycle actions remain unavailable until implemented. Demo mode has a persistent synthetic-data/fixed-clock notice and a reset, and its final action says preview. Automated axe/keyboard/zoom checks and visual screenshots are scoped evidence, not a screen-reader or cross-browser certification. The builder deferred personal M05 review; actual observations belong in the status log.

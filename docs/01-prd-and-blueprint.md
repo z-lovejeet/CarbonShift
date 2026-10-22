@@ -1,16 +1,18 @@
 # CarbonShift — PRD and product blueprint
 
-Version 1.4 · 21 October 2026 · Working product baseline; M01 foundation, M02 domain core and M03 grid adapter exist, while integrated product journeys remain unimplemented.
+Version 1.9 · 22 October 2026 · M00–M07 run locally. AI timing is experimental/manual-first under the documented quality policy; private completion is implemented; receipts remain later work.
 
 ## 1. Intent and authority
 
 CarbonShift helps a person choose a lower-carbon time for one flexible washing-machine cycle, understand the assumptions, and optionally publish an inspectable record of the plan and reported outcome.
 
-The user has selected CarbonShift, is a solo builder using Codex with their chosen GPT-6.1 Sol configuration, and requires Gemini and Groq APIs in the product. On 21 October 2026 the user authorized M00 through M03, requested all documents be read before every phase, and specified premium, modern, clean, minimal UI/UX plus real functional backend behavior. M01 implements the foundation, M02 the deterministic core and M03 the live national grid adapter within that bounded design; the planner UI, accounts, AI and receipt integrations belong to later phases. No new account, deployed contract, evaluated model, user study, or measured climate benefit is implied.
+The user has selected CarbonShift, is a solo builder using Codex with their chosen GPT-6.1 Sol configuration, and requires Gemini and Groq APIs in the product. On 21 October 2026 the user authorized M00 through M05, requested all documents be read before every phase, and specified premium, modern, clean, minimal UI/UX plus real functional backend behavior. M01 implements the foundation, M02 the deterministic core, M03 the live national grid adapter and M04 OAuth/private plan APIs within that bounded design. The development Supabase project and two provider sign-ins have been checked; M05 now connects manual constraints, real grid comparison and immutable saving through private screens; M06 adds locally evaluated AI assistance and shared abuse controls. M07 implements private completion, history and deletion; publication and receipts remain later phases. No deployed web app/contract, user study or measured climate benefit is implied.
 
 The user removed standalone deployment/operations and submission documents. Essential deployment steps appear in document 14 and implementation tasks in document 13. Do not recreate the removed documents.
 
 This document owns product scope. Other documents define implementation details. [Decisions and status](decisions-and-status.md) distinguishes user requirements from proposed defaults.
+
+On 22 October the user requested document updates before M06: free-model selection must consider quota headroom, repeated login/submission requests need server protection, and agent/workflow proposals must be assessed for practical benefit. The user subsequently authorized M06. Both providers now have bounded live evidence; Lite timing missed proposed quality targets and remains experimental, opt-in and reviewed. Groq/Lite explanation checks and a real assisted planning journey passed. No paid service or public AI deployment was authorized.
 
 ## 2. Problem and audience
 
@@ -45,10 +47,10 @@ Prior-art context: [existing SmartThings/Electricity Maps scheduling](https://bl
 | Planning horizon | Up to 48 elapsed hours, subject to actual feed coverage |
 | Energy | User-confirmed estimated cycle Wh, distributed uniformly; demo defaults explicitly illustrative |
 | Constraints | Earliest start, finish deadline, preferred baseline start, explicit blocked time intervals |
-| AI | Constraint interpreter and explanation selector; both providers integrated with bounded fallback |
+| AI | Two bounded roles: constraint interpreter and explanation selector; both providers integrated/evaluated, quota-aware model selection and at most two calls/task |
 | Execution evidence | Self-reported completion time or “did not run”; no hardware verification |
 | Blockchain | Opt-in publication of an operator-issued commitment and append-only results on Sepolia |
-| Accounts | Email/password login for saved live plans; public fixture demo without signup |
+| Accounts | Google/GitHub OAuth login for saved live plans; public fixture demo without signup |
 | Device control | User operates their appliance; app does not start or stop it |
 | Fees/rewards | No payments, tokens, credits, financial rewards, or tariff optimization |
 
@@ -69,6 +71,10 @@ Energy ranges and algorithm behavior are authoritative in [08](08-scheduling-and
 ## 6. Feature priorities
 
 All `F01`–`F12` in [02](02-features-pages-and-flows.md) belong to the bounded MVP. Their depth is deliberately limited. The core path must remain available through manual input when AI is unavailable.
+
+Strengthen existing pages with editable clarification questions, visible reasons/assumptions, honest quota/outage recovery, comparison alternatives and the already-planned history/receipt checks. Login throttling, repeated-submission control and shared AI request/token budgets are M06 hardening requirements. These do not add pages, appliances or an autonomous agent platform. Orchestration, validation, scheduling, carbon arithmetic and evidence verification are deterministic services, not extra AI agents.
+
+A third receipt/chat assistant and other proposed extra features remain deferred until a distinct user need and explicit scope change are established. Agent count is not a release criterion. Model order, quota reset rules, evaluation/promotion and the unresolved public UK deployment profile are owned by [09](09-ai-agents-models-and-workflow.md); no free Gemini UK launch is implied.
 
 Deferred: meters/CSV uploads, regional routing, multiple appliances, recurring schedules, automatic reoptimization, push/email reminders, social leaderboards, utility APIs, tariffs, native apps, trading, custom forecasting, vision, chat history, model training, autonomous agents, and incentive settlement.
 
