@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { ConfigurationError, parseWebEnvironment, parseWorkerEnvironment } from "../../config/environment";
+import { policyFixture } from "../fixtures/ai-policy";
 
 const database = {
   NEXT_PUBLIC_SUPABASE_URL: "https://project.supabase.co",
@@ -9,8 +10,7 @@ const database = {
 };
 const ai = {
   ...database, AI_ENABLED: "true", GEMINI_API_KEY: "authored-gemini-canary", GROQ_API_KEY: "authored-groq-canary",
-  AI_CONSTRAINT_PRIMARY_MODEL: "gemini-4-argon", AI_CONSTRAINT_FALLBACK_MODEL: "openai/gpt-oss-120b",
-  AI_EXPLANATION_PRIMARY_MODEL: "openai/gpt-oss-120b", AI_EXPLANATION_FALLBACK_MODEL: "gemini-3.8-flash",
+  AI_POLICY_JSON: JSON.stringify(policyFixture()),
 };
 const ledger = {
   ...database, LEDGER_ENABLED: "true", LEDGER_CHAIN_ID: "11155111", SEPOLIA_RPC_URL: "https://rpc.example.test/credential",
@@ -49,11 +49,11 @@ describe("web configuration boundaries", () => {
   it("rejects a privileged key in the publishable-key field", () => {
     expect(() => parseWebEnvironment({ ...database, NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: "sb_secret_canary" })).toThrow(ConfigurationError);
   });
-  it("requires both provider credentials and exact model configuration when AI is enabled", () => {
-    expect(() => parseWebEnvironment({ AI_ENABLED: "true" })).toThrow("GEMINI_API_KEY");
+  it("requires credentials and a qualified strict routing policy when AI is enabled", () => {
+    expect(() => parseWebEnvironment({ AI_ENABLED: "true" })).toThrow("GROQ_API_KEY");
     expect(parseWebEnvironment(ai).ai.enabled).toBe(true);
   });
-  it("rejects floating model aliases and wrong-provider routing", () => {
+  it("rejects legacy model fields instead of keeping two routing authorities", () => {
     expect(() => parseWebEnvironment({ ...ai, AI_CONSTRAINT_PRIMARY_MODEL: "gemini-latest" })).toThrow(ConfigurationError);
     expect(() => parseWebEnvironment({ ...ai, AI_CONSTRAINT_PRIMARY_MODEL: "openai/gpt-oss-120b" })).toThrow(ConfigurationError);
   });

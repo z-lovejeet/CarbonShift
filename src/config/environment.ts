@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { candidates, parseAiPolicy, type AiPolicy } from "./ai-policy";
 
 export type EnvironmentSource = Readonly<Record<string, string | undefined>>;
 
@@ -34,8 +35,6 @@ const address = text.refine((value) => value === undefined ||
 const block = text.refine((value) => value === undefined ||
   (/^\d+$/.test(value) && Number.isSafeInteger(Number(value))))
   .transform((value) => value === undefined ? undefined : Number(value));
-const model = text.refine((value) => value === undefined ||
-  (/^[a-zA-Z0-9./_-]+$/.test(value) && !value.toLowerCase().includes("latest")));
 const hmac = text.refine((value) => value === undefined || value.length >= 32);
 const keyOrder = BigInt("0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141");
 const signingKey = text.refine((value) => value === undefined ||
@@ -60,10 +59,7 @@ const webSchema = z.object({
   AI_ENABLED: flag,
   GEMINI_API_KEY: text,
   GROQ_API_KEY: text,
-  AI_CONSTRAINT_PRIMARY_MODEL: model,
-  AI_CONSTRAINT_FALLBACK_MODEL: model,
-  AI_EXPLANATION_PRIMARY_MODEL: model,
-  AI_EXPLANATION_FALLBACK_MODEL: model,
+  AI_POLICY_JSON: text,
   PRIVACY_CONTACT: text,
   ...ledgerFields,
 }).superRefine((data, ctx) => {
@@ -84,14 +80,7 @@ const webSchema = z.object({
     }
   }
   if (data.AI_ENABLED) {
-    for (const field of ["SUPABASE_SECRET_KEY", "GEMINI_API_KEY", "GROQ_API_KEY", "AI_CONSTRAINT_PRIMARY_MODEL",
-      "AI_CONSTRAINT_FALLBACK_MODEL", "AI_EXPLANATION_PRIMARY_MODEL", "AI_EXPLANATION_FALLBACK_MODEL"] as const) missing(field);
-    for (const field of ["AI_CONSTRAINT_PRIMARY_MODEL", "AI_EXPLANATION_FALLBACK_MODEL"] as const) {
-      if (data[field] && !data[field].startsWith("gemini-")) ctx.addIssue({ code: "custom", path: [field], message: "Gemini model required" });
-    }
-    for (const field of ["AI_CONSTRAINT_FALLBACK_MODEL", "AI_EXPLANATION_PRIMARY_MODEL"] as const) {
-      if (data[field] && !data[field].includes("/")) ctx.addIssue({ code: "custom", path: [field], message: "Groq model required" });
-    }
+    for (const field of ["SUPABASE_SECRET_KEY", "GROQ_API_KEY", "AI_POLICY_JSON"] as const) missing(field);
   }
   if (data.LEDGER_ENABLED) {
     for (const field of ["SUPABASE_SECRET_KEY", "SEPOLIA_RPC_URL", "LEDGER_CHAIN_ID",
@@ -124,6 +113,17 @@ export function parseWebEnvironment(source: EnvironmentSource) {
   if (source.LEDGER_PRIVATE_KEY?.trim()) throw new ConfigurationError(["LEDGER_PRIVATE_KEY (worker only)"]);
   if (forbidden.length) throw new ConfigurationError(forbidden.map((name) => /^[A-Z0-9_ ()]+$/.test(name) ? name : "UNRECOGNIZED_PUBLIC_VARIABLE"));
   const data = parse(webSchema, source);
+  let aiPolicy: AiPolicy | undefined;
+  if (data.AI_ENABLED) {
+    const legacy = ["AI_CONSTRAINT_PRIMARY_MODEL", "AI_CONSTRAINT_FALLBACK_MODEL", "AI_EXPLANATION_PRIMARY_MODEL", "AI_EXPLANATION_FALLBACK_MODEL"];
+    if (legacy.some((key) => source[key]?.trim())) throw new ConfigurationError(["AI_POLICY_JSON (remove legacy model fields)"]);
+    try {
+      aiPolicy = parseAiPolicy(data.AI_POLICY_JSON!);
+      if (["constraints", "explanation"].some((role) => candidates(aiPolicy!, role as "constraints" | "explanation").length === 0)) throw new Error();
+      if (aiPolicy.models.some((m) => m.enabled && m.id.startsWith("gemini-")) && !data.GEMINI_API_KEY) throw new Error();
+      if (data.NODE_ENV === "production" && aiPolicy.profile === "eligible_free_development") throw new Error();
+    } catch { throw new ConfigurationError(["AI_POLICY_JSON"]); }
+  }
   return Object.freeze({
     nodeEnv: data.NODE_ENV,
     appOrigin: data.APP_ORIGIN ? new URL(data.APP_ORIGIN).origin : data.NODE_ENV === "production" ? null : "http://127.0.0.1:3000",
@@ -135,12 +135,9 @@ export function parseWebEnvironment(source: EnvironmentSource) {
     }) : Object.freeze({ configured: false as const }),
     ai: data.AI_ENABLED ? Object.freeze({
       enabled: true as const,
-      geminiApiKey: data.GEMINI_API_KEY!,
+      geminiApiKey: data.GEMINI_API_KEY ?? null,
       groqApiKey: data.GROQ_API_KEY!,
-      constraintPrimaryModel: data.AI_CONSTRAINT_PRIMARY_MODEL!,
-      constraintFallbackModel: data.AI_CONSTRAINT_FALLBACK_MODEL!,
-      explanationPrimaryModel: data.AI_EXPLANATION_PRIMARY_MODEL!,
-      explanationFallbackModel: data.AI_EXPLANATION_FALLBACK_MODEL!,
+      policy: aiPolicy!,
     }) : Object.freeze({ enabled: false as const }),
     ledger: data.LEDGER_ENABLED ? Object.freeze({
       enabled: true as const,
