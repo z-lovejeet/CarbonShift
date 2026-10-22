@@ -15,6 +15,20 @@ jobs:
   foundation:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:17@sha256:a63c1ea3f6a3a5a1621f97d2aba3b30faecfab4224c1b0000cc85ced57bb1939
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: carbonshift_ci_fixture
+          POSTGRES_DB: carbonshift_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d carbonshift_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     env:
       NEXT_TELEMETRY_DISABLED: '1'
       AI_ENABLED: 'false'
@@ -35,6 +49,9 @@ jobs:
       - run: pnpm contracts:test
       - run: pnpm typecheck
       - run: pnpm test
+      - run: pnpm test:integration
+        env:
+          CARBONSHIFT_CI_DATABASE_URL: postgres://postgres:carbonshift_ci_fixture@127.0.0.1:5432/carbonshift_test
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e
