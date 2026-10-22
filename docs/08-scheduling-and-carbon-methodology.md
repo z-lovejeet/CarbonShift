@@ -1,6 +1,6 @@
 # CarbonShift — scheduling and carbon calculation methodology
 
-Version 1.1 · 21 October 2026 · Method ID `carbonshift-gb-uniform-v1`; M02 implementation clarifications preserve this accounting method.
+Version 1.2 · 21 October 2026 · Method ID `carbonshift-gb-uniform-v1`; M02 implementation and M05 UI-clock clarifications preserve this accounting method.
 
 ## 1. What the number means
 
@@ -143,7 +143,7 @@ A verification bundle includes the method ID/hash, confirmed constraints, normal
 
 An unknown method version yields `unsupported_method`, not a guessed calculation. A changed input with unchanged committed digest yields a mismatch. A matching hash establishes integrity relative to the commitment, not truth of a self-report.
 
-Tests and fixture targets are specified in [12](12-testing-and-ai-evaluation.md). M02's domain checks exercise the implemented method; live grid integration, report persistence and public proof verification remain later work. Exact executed evidence is in the status log.
+Tests and fixture targets are specified in [12](12-testing-and-ai-evaluation.md). M02 domain checks exercise this method; M03 grid integration and M04 private acceptance now consume it. Report persistence and public proof verification remain later work. Exact executed evidence is in the status log.
 
 ## 11. M02 implementation clarifications
 
@@ -151,6 +151,8 @@ The timing form's kWh value is converted from decimal text to integer Wh without
 
 The domain accepts an injected `nowUtc`; it never reads the ambient clock. A deadline beyond `nowUtc + 48 elapsed hours` is rejected rather than silently clamped. Constraint timestamps and blocked periods are canonical UTC seconds; starts are enumerated every 1,800 seconds. Local form input uses date plus `HH:mm` and an optional `earlier`/`later` offset choice. A nonexistent time is rejected even when an offset choice is supplied. Both halves of a repeated hour remain distinct.
 
-Forecast retrieval must not be in the future and may be exactly 30 minutes old. Acceptance is valid only while `nowUtc < expiresAtUtc`, with at least ten minutes until both relevant starts; expiry equality is expired. The exact chain cutoff is the earlier start; the app's operational cutoff is ten minutes earlier. Comparisons include creation/expiry and are deeply frozen on return. Hashing and acceptance persistence are later phases.
+Forecast retrieval must not be in the future and may be exactly 30 minutes old. Acceptance is valid only while `nowUtc < expiresAtUtc`, with at least ten minutes until both relevant starts; expiry equality is expired. The exact chain cutoff is the earlier start; the app's operational cutoff is ten minutes earlier. Comparisons include creation/expiry and are deeply frozen on return. M03 storage digests and M04 private acceptance consume these rules; public proof hashing remains M08.
 
 For updated calculations, a report has a recorded creation timestamp: it cannot precede acceptance or follow the injected clock. A `ran` cycle must have ended by report creation (not merely by a later refresh). A normal `did_not_run` report is permitted after the selected cycle ends; early cancellation remains a separate transactional M07 operation. Deviation flags identify a different selected start, a start before the original earliest time, finish after deadline, and blocked-period overlap. A changed profile takes precedence over a late-window reason; either suppresses numeric estimates. A supported report without a snapshot yields `ACTUAL_SNAPSHOT_UNAVAILABLE`; incomplete required factors yield `MISSING_ACTUAL_FACTORS`. Missingness is never partial numeric success.
+
+M05 UI clock clarification: form prevalidation and advisory expiry use a server-provided UTC reference plus monotonic browser elapsed time, rather than trusting the device wall clock. A new comparison resets that reference to its stored creation instant. Network delay can leave the display behind server time by a few seconds; the API/database always recheck actual server time before acceptance. This changes no calculation or acceptance rule.

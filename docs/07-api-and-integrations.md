@@ -1,6 +1,6 @@
 # CarbonShift — API and external integration contracts
 
-Version 1.1 · 21 October 2026 · Wire contracts, with the M03 internal grid integration implemented. Base path `/api/v1`; private product endpoints remain later work.
+Version 1.5 · 22 October 2026 · Base path `/api/v1`. M04–M07 private planning, evaluated local AI/admission and lifecycle contracts are implemented; public APIs remain later work.
 
 ## 1. Common conventions
 
@@ -30,9 +30,10 @@ All normal request bodies max 16 KB; local proof imports max 256 KB and never po
 
 | Method/path | Input | Output and rule |
 |---|---|---|
-| `POST /ai/constraints` | `{text, localReferenceDate, timezone:"Europe/London"}` | `ConstraintSuggestionV1`; authenticated, explicit AI consent, rate-limited |
+| `POST /ai/constraints` | `{text, localReferenceDate, timezone:"Europe/London", aiConsent:true}` + `AI-Task-Key` | `ConstraintSuggestionV1`; authenticated, shared quota-aware dispatch, explicit review required |
 | `POST /comparisons` | Reviewed constraint fields; baseline may request `earliest_feasible` before normalization | Saved `ComparisonV1`, confirmed baseline; incomplete coverage is 422/503 as appropriate |
-| `POST /comparisons/{id}/explanation` | No additional user text | Validated explanation keys and template text; owner only; cached by comparison/task version |
+| `GET /comparisons/{id}` | None | Owner-only `{comparison:ComparisonDocumentV1,forecastSnapshot:GridSnapshotV1}` from immutable saved records; no new forecast/recalculation |
+| `POST /comparisons/{id}/explanation` | `{aiConsent:true}` + `AI-Task-Key`; no additional user text/totals | Validated explanation codes and template text from owned immutable facts; owner/version-bound cache |
 | `POST /plans` | `{comparisonId, comparisonVersion}` + idempotency key | Immutable accepted plan; reject expired/time-invalid comparisons |
 | `GET /plans` | Cursor and page size ≤20 | Owner's summaries; no global emissions totals |
 | `GET /plans/{id}` | None | Owner plan, latest report/result, public status, revision list |
@@ -51,7 +52,9 @@ All normal request bodies max 16 KB; local proof imports max 256 KB and never po
 | `POST /account/delete` | Recent reauthentication + explicit acknowledgement + key | Removes eligible private records/account; handles public disclosure retention separately |
 | `GET /health` | None | Minimal application health; no provider keys, balances, account details |
 
-Auth signup/login/password recovery use supported Supabase Auth flows rather than custom password storage. The callback destination is an allowlisted internal path.
+Google/GitHub OAuth uses Supabase SSR PKCE. POST `/auth/sign-in` validates the provider and same origin; GET `/auth/callback` exchanges the single-use code using its verifier cookie; POST `/auth/sign-out` clears the session. The callback destination is an allowlisted internal path. No password signup, recovery or email OTP product route is included under U16.
+
+M06 adds login-start/callback server throttling and a coarse private-mutation admission layer using document 11's policies. The existing OAuth POST/PKCE contract remains; a throttled start does not call the provider or destroy a valid session. A callback admission failure must not consume/exchange its code, log its query, or redirect in an automatic retry loop. Render a safe recovery response with Retry-After and a link to restart sign-in if the code expires; do not claim a callback code can always be replayed.
 
 Publication preview expires after five minutes and before the live precommit cutoff, whichever is earlier. Publication rechecks freshness/time/state. Any difference produces `409 PREVIEW_CHANGED` and another preview; consent is never transferred to changed data.
 
@@ -81,7 +84,21 @@ This is an authored request illustration; timestamps must be regenerated from th
 }
 ```
 
-Server converts the baseline union to `ConfirmedConstraintsV1.baselineStartUtc/baselineOrigin`, records confirmation time, validates coverage, calculates, and persists. It returns one authoritative snapshot and numbers; the client never sends carbon totals.
+Server converts the baseline union to `ConfirmedConstraintsV1.baselineStartUtc/baselineOrigin`, records confirmation time, validates coverage, calculates, and persists. It returns server-calculated numbers and a persisted snapshot reference; the client never sends carbon totals. `baseline` is strictly either `{kind:"user_selected",startUtc}` or `{kind:"earliest_feasible"}`. Extra fields (including owner IDs, totals or clocks) are rejected.
+
+### M04/M05 response contracts
+
+The executable authority is `src/contracts/planning.ts` (re-exported at the M04 `src/server/plans/contracts.ts` path), built on the strict domain schemas in document 06:
+
+- `POST /comparisons`: `data` is `ComparisonV1` plus `schemaVersion:1`, server UUID `id` and `version:1`. It includes `forecastSnapshotId`/`forecastSnapshotHash`, rather than the entire forecast. Confirmation time and comparison expiry come from the server. No client authority fields are accepted.
+- `GET /comparisons/{id}` (M05): returns `{comparison,forecastSnapshot}` using the same saved domain payload, ID/version and digest-validated snapshot. Owner reads only; foreign/missing IDs both 404, including expired comparisons (expiry affects acceptance, not historical reading). This supplies the chart/table without refreshing or changing the reviewed comparison.
+- `POST /plans`: requires exactly `{comparisonId,comparisonVersion}` and an `Idempotency-Key` of 8–128 letters/digits/underscores/hyphens. `data` is `PlanV1`: `schemaVersion`, `id`, `version`, `comparisonId`, `mode:"live"`, `status`, `acceptedAtUtc`, the exact accepted `comparison`, and its validated `forecastSnapshot`. M04's derived fields are `completion:"not_reported"`, `publication:"private"`, `latestReport:null`, `latestResult:null`, `revisions:[]`; no completion/publication records exist yet. These explicit initial states are not simulated results.
+- `GET /plans/{id}`: the same `PlanV1`, owner-only; missing/foreign IDs both return 404. Responses exclude owner IDs, Auth metadata and internal mutation/quota fields.
+- `GET /plans?limit=20&cursor=...`: `data` is `{items:PlanSummaryV1[],nextCursor:string|null}`. A summary includes `schemaVersion,id,version,comparisonId,mode,status,acceptedAtUtc,baseline,selected,differenceMg,completion,publication`. Order is accepted time descending, then UUID descending; the opaque base64url cursor encodes the last whole-second UTC time and UUID. `limit` is 1–20 (default 20). Repeated or unknown query fields and malformed cursor contents are rejected before database filters are constructed.
+
+All these JSON responses use the common request-ID envelope and `Cache-Control: private, no-store`; no global statistics or climate-impact aggregation is returned. JSON bodies require `application/json`; `413` means oversized, `415` wrong media type, `403` wrong/missing mutation origin. Quota failure returns `429` with `Retry-After:60`. Missing identity is 401; absent configuration or unavailable Auth/database is 503. Body reading is limited to 16 KiB/eight seconds. Same-origin mutations must use the exact `APP_ORIGIN` (local development `http://127.0.0.1:3000`).
+
+OAuth form bodies have a separate 1 KiB cap and accept only `provider=google` or `provider=github`. Successful start/callback/sign-out returns a 303 with non-cacheable, no-referrer headers; provider errors use approved static copy. The callback never reflects raw provider errors or accepts an external return URL. No OAuth code/token is written to application logs.
 
 ## 4. Grid provider adapter
 
@@ -126,6 +143,16 @@ Implement provider-native requests behind this boundary; do not assume identical
 
 No browsing, code execution, shell, arbitrary URLs, external tools, private database access, or contract signing is enabled for either product AI role. Keys remain server-only.
 
+### M06 logical-task and recovery contract
+
+Both AI endpoints require a UUID `AI-Task-Key` scoped to the validated member and role. It is separate from a persisted mutation's `Idempotency-Key`: raw extraction results are not stored for replay. Same key/different keyed fingerprint returns `409 AI_TASK_CONFLICT`; running returns `409 AI_TASK_IN_PROGRESS`; a completed/abandoned extraction returns `409 AI_TASK_FINISHED` with safe manual/new-explicit-request guidance and no second extraction. Reusing the key must not restart SDK/router calls or consume a fresh logical-task allowance. The keyed fingerprint includes current trusted reference date and schema/prompt/policy versions. Never log the original text or an OAuth code.
+
+Authenticate, check origin/body/consent and comparison ownership first. An explanation cache hit may return validated codes without another AI task/provider charge, but the lightweight inbound throttle still applies. Resolve stored codes against current immutable facts and required limitations before rendering. A miss uses the same task/reservation contract as extraction. Model metadata and quota internals are not authority for user-visible facts.
+
+Return `429 AI_RATE_LIMITED` for exhausted user/application capacity or a pool whose otherwise valid candidates are all quota-blocked, with bounded integer-second `Retry-After` derived from the earliest valid recovery across applicable windows. Return sanitized `503 AI_UNAVAILABLE` for unavailable/configuration/provider failures without usable fallback. Preserve the draft/manual/template path. Unknown recovery time is not invented. The common M06 error helper now carries actual retry guidance without changing response envelopes or echoing provider errors. Legacy comparison limits retain their existing 60-second default when no more precise recovery value is supplied.
+
+Model candidates and shared budgets come exclusively from the validated server policy in document 09. Skipping a capped model emits no request; every real attempt reserves capacity and fits the task's two-call/deadline bound. No user request chooses a provider URL/model/bucket or supplies carbon facts. New mutation throttles must retain current permanent plan uniqueness and same-key recovery; quotas do not replace idempotency.
+
 ## 6. Blockchain read/write adapter
 
 Network pin: Sepolia chain ID `11155111`. Contract address and deployment block are configuration written only after actual deployment verification. No fabricated default address.
@@ -145,3 +172,13 @@ Reports and public revision allocation lock their parent row. Two tabs cannot cr
 Record request ID, operation type, status code, duration, provider/model ID, schema version, and sanitized failure code. Do not record passwords, bearer cookies, raw timing text, or private manifest contents by default.
 
 Emit counters for incomplete grid coverage, model fallback, schema rejection, accepted comparisons, pending publications, and mismatched proofs. Counts are operational diagnostics, not climate-impact evidence.
+
+### M07 concrete private commands
+
+Reports accept exactly `{kind, reportedStartUtc, profileStillApplicable, correctsReportId, reason}`; reason is trimmed, at most 500 characters, and required for corrections. A first report uses `correctsReportId: null`. Cancellation accepts exactly `{reason}` with a nonempty reason. Refresh accepts exactly `{expectedResultRevision}` (positive integer). DELETE plan has no body. Account deletion accepts exactly `{acknowledgeDeletion: true}`. All commands require an 8–128 character Idempotency-Key and same-origin authenticated requests. Private deletion additionally requires recent same-account provider reauthentication.
+
+Lifecycle acknowledgements are `{planId, planVersion, reportId, resultId, changed, deleted}`; report/result IDs may be null for deletion. Read detail after acknowledgement for the current history; a replay returns the original acknowledgement even after a later correction. Keys are scoped by owner, plan and command for 24 hours; changed input conflicts. Stale corrections/refreshes return 409. A deleted plan key can replay its acknowledgement for its authenticated owner. Account deletion removes the authentication identity; a subsequent request without that identity returns 401 rather than implying the account still exists.
+
+Reauthentication starts at the existing `/auth/sign-in` form with provider and `intent=reauth`; no client return URL is accepted. The server signs a short-lived request nonce bound to the current owner, stores the nonce in a signed HttpOnly intent cookie bound to the browser’s PKCE flow, preserving the existing allowlisted callback URL, and requires a newly exchanged PKCE session for that same owner. The resulting HttpOnly, SameSite=Lax receipt is bound to its Supabase session ID and expires after ten minutes. Normal sign-in, session refresh and a query parameter alone cannot mint it. Provider SSO may reuse its own login; this proves a fresh provider exchange, not forced password entry.
+
+Primary references checked for M07: [OAuth sign-in](https://supabase.com/docs/reference/javascript/auth-signinwithoauth), [server-side admin deletion](https://supabase.com/docs/reference/javascript/auth-admin-deleteuser). Administrative deletion stays server-only.
