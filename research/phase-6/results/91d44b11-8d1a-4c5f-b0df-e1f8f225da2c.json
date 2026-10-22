@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "runId": "91d44b11-8d1a-4c5f-b0df-e1f8f225da2c",
+  "model": "gemini-3.5-flash-lite",
+  "role": "constraints",
+  "promptVersion": "constraints-v3",
+  "datasetVersion": "carbonshift-ai-development-v1",
+  "datasetSha256": "965360c9eb21ff5e9b4a6676c347a719abf245a7116020cae885cc9b49d9ace4",
+  "reviewedBy": "CarbonShift builder (explicit approval in this chat)",
+  "reviewedAtUtc": "2026-10-21T20:07:38.936Z",
+  "startedAtUtc": "2026-10-21T20:15:19.248Z",
+  "updatedAtUtc": "2026-10-21T20:15:43.889Z",
+  "maximumRequests": 6,
+  "intervalMs": 16000,
+  "accountTier": "builder-reported-free",
+  "billedCost": null,
+  "automaticPromotion": false,
+  "scope": "validated pipeline; authored examples; no field-user benefit claim",
+  "outcomes": [
+    {
+      "caseId": "dev-15",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4519,
+      "fields": 16,
+      "correctFields": 16,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 3,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2072,
+          "input_tokens": 269,
+          "output_tokens": 350,
+          "total_tokens": 619,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "d9393375bc757edc30a0ea5f8910cc6dea89975f500a68369ef3f1e00d8f0d3e"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "dev-16",
+      "errorCode": "AI_UNAVAILABLE",
+      "validationFlags": {
+        "schemaValid": false,
+        "sourceBoundsValid": null,
+        "populatedFieldsSupported": null
+      },
+      "latencyMs": 4119,
+      "fields": 16,
+      "correctFields": 0,
+      "wrongFields": [
+        "blockedLocal.0.startDate",
+        "blockedLocal.0.startTime",
+        "blockedLocal.0.endDate",
+        "blockedLocal.0.endTime",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length",
+        "unsupportedRequests"
+      ],
+      "criticalCorrect": false,
+      "requiredQuestions": 3,
+      "detectedQuestions": 0,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [
+        "earliestLocal",
+        "deadlineLocal",
+        "durationMinutes"
+      ],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 19,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "invalid",
+          "latency_ms": 2091,
+          "input_tokens": 269,
+          "output_tokens": 352,
+          "total_tokens": 621,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "d9393375bc757edc30a0ea5f8910cc6dea89975f500a68369ef3f1e00d8f0d3e"
+        }
+      ],
+      "manualCorrectionObserved": null
+    }
+  ],
+  "metrics": {
+    "fieldAccuracy": 0.5,
+    "criticalAccuracy": 0.5,
+    "ambiguityRecall": 0.5,
+    "falseAmbiguityRate": null,
+    "p50LatencyMs": 4119,
+    "p95LatencyMs": 4519
+  }
+}

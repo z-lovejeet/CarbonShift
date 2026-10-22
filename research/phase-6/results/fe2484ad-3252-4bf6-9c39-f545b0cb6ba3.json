@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "runId": "fe2484ad-3252-4bf6-9c39-f545b0cb6ba3",
+  "model": "gemini-3.5-flash-lite",
+  "role": "constraints",
+  "promptVersion": "constraints-v3",
+  "datasetVersion": "carbonshift-ai-development-v1",
+  "datasetSha256": "965360c9eb21ff5e9b4a6676c347a719abf245a7116020cae885cc9b49d9ace4",
+  "reviewedBy": "CarbonShift builder (explicit approval in this chat)",
+  "reviewedAtUtc": "2026-10-21T20:07:38.936Z",
+  "startedAtUtc": "2026-10-21T20:15:00.339Z",
+  "updatedAtUtc": "2026-10-21T20:15:05.613Z",
+  "maximumRequests": 1,
+  "intervalMs": 0,
+  "accountTier": "builder-reported-free",
+  "billedCost": null,
+  "automaticPromotion": false,
+  "scope": "validated pipeline; authored examples; no field-user benefit claim",
+  "outcomes": [
+    {
+      "caseId": "dev-14",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 5274,
+      "fields": 16,
+      "correctFields": 16,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 3,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2791,
+          "input_tokens": 269,
+          "output_tokens": 350,
+          "total_tokens": 619,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "d9393375bc757edc30a0ea5f8910cc6dea89975f500a68369ef3f1e00d8f0d3e"
+        }
+      ],
+      "manualCorrectionObserved": null
+    }
+  ],
+  "metrics": {
+    "fieldAccuracy": 1,
+    "criticalAccuracy": 1,
+    "ambiguityRecall": 1,
+    "falseAmbiguityRate": null,
+    "p50LatencyMs": 5274,
+    "p95LatencyMs": 5274
+  }
+}
