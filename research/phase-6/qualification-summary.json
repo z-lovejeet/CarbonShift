@@ -1,0 +1,309 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUtc": "2026-10-21T20:30:03.569Z",
+  "gate": "G06 passed for local manual-first experimental development release",
+  "profile": "eligible_free_development",
+  "humanLabelApproval": "explicit builder approval; exact-hash receipts",
+  "interpreter": {
+    "model": "gemini-3.5-flash-lite",
+    "promptVersion": "constraints-v3",
+    "schemaVersion": 1,
+    "releaseMode": "experimental_manual_first_opt_in_reviewed",
+    "proposedQualityTargetsMet": false,
+    "firstAttemptMetrics": {
+      "cases": 60,
+      "correctFields": 724,
+      "fields": 767,
+      "fieldAccuracy": 0.9439374185136897,
+      "criticalCorrect": 51,
+      "criticalAccuracy": 0.85,
+      "ambiguityRecall": 0.936,
+      "falseAmbiguityRate": 0.017543859649122806,
+      "rejections": 2,
+      "p50TaskLatencyMs": 4456,
+      "p95TaskLatencyMs": 4954
+    },
+    "development": {
+      "cases": 20,
+      "correctFields": 224,
+      "fields": 256,
+      "fieldAccuracy": 0.875,
+      "criticalCorrect": 18,
+      "criticalAccuracy": 0.9,
+      "ambiguityRecall": 0.8636363636363636,
+      "falseAmbiguityRate": 0,
+      "rejections": 2,
+      "p50TaskLatencyMs": 4438,
+      "p95TaskLatencyMs": 4936
+    },
+    "holdout": {
+      "cases": 40,
+      "correctFields": 500,
+      "fields": 511,
+      "fieldAccuracy": 0.9784735812133072,
+      "criticalCorrect": 33,
+      "criticalAccuracy": 0.825,
+      "ambiguityRecall": 0.9753086419753086,
+      "falseAmbiguityRate": 0.024390243902439025,
+      "rejections": 0,
+      "p50TaskLatencyMs": 4456,
+      "p95TaskLatencyMs": 5023
+    },
+    "repeatCount": 9,
+    "repeats": [
+      {
+        "caseId": "dev-14",
+        "criticalCorrect": true,
+        "errorCode": null,
+        "report": "fe2484ad-3252-4bf6-9c39-f545b0cb6ba3.json"
+      },
+      {
+        "caseId": "dev-16",
+        "criticalCorrect": true,
+        "errorCode": null,
+        "report": "4d7f81c9-7e3e-4ab6-853d-78cf6b1809a4.json"
+      },
+      {
+        "caseId": "hold-23",
+        "criticalCorrect": false,
+        "errorCode": null,
+        "report": "cb3c7c95-a2da-4830-ba7c-48b419aa8a55.json"
+      },
+      {
+        "caseId": "hold-27",
+        "criticalCorrect": false,
+        "errorCode": null,
+        "report": "a5d3e71b-cd8c-4f3c-b571-e021bc31adc4.json"
+      },
+      {
+        "caseId": "hold-32",
+        "criticalCorrect": true,
+        "errorCode": null,
+        "report": "68d13e07-8c7f-4052-b7fb-add6cdb7b66b.json"
+      },
+      {
+        "caseId": "hold-34",
+        "criticalCorrect": false,
+        "errorCode": null,
+        "report": "77fb08b7-696e-4d3e-b8bc-d56de5ceac8d.json"
+      },
+      {
+        "caseId": "hold-36",
+        "criticalCorrect": false,
+        "errorCode": null,
+        "report": "56b19240-0d1f-46a7-bd19-2fc372736fb7.json"
+      },
+      {
+        "caseId": "hold-38",
+        "criticalCorrect": false,
+        "errorCode": null,
+        "report": "7f70852f-9b7b-455e-adf0-a22578a9638e.json"
+      },
+      {
+        "caseId": "hold-40",
+        "criticalCorrect": false,
+        "errorCode": null,
+        "report": "b3c24466-ef41-4a6c-a6b9-5fdb031c95bc.json"
+      }
+    ],
+    "knownCriticalMisses": [
+      {
+        "caseId": "dev-14",
+        "errorCode": "AI_UNAVAILABLE",
+        "wrongFields": [
+          "blockedLocal.0.startDate",
+          "blockedLocal.0.startTime",
+          "blockedLocal.0.endDate",
+          "blockedLocal.0.endTime",
+          "earliestLocal.date",
+          "earliestLocal.time",
+          "earliestLocal.offsetChoice",
+          "deadlineLocal.date",
+          "deadlineLocal.time",
+          "deadlineLocal.offsetChoice",
+          "baselineLocal.date",
+          "baselineLocal.time",
+          "baselineLocal.offsetChoice",
+          "durationMinutes",
+          "blockedLocal.length",
+          "unsupportedRequests"
+        ],
+        "missedQuestions": [
+          "earliestLocal",
+          "deadlineLocal",
+          "durationMinutes"
+        ],
+        "report": "0b651f98-e270-4b9a-b40a-4efab622d5f1.json"
+      },
+      {
+        "caseId": "dev-16",
+        "errorCode": "AI_UNAVAILABLE",
+        "wrongFields": [
+          "blockedLocal.0.startDate",
+          "blockedLocal.0.startTime",
+          "blockedLocal.0.endDate",
+          "blockedLocal.0.endTime",
+          "earliestLocal.date",
+          "earliestLocal.time",
+          "earliestLocal.offsetChoice",
+          "deadlineLocal.date",
+          "deadlineLocal.time",
+          "deadlineLocal.offsetChoice",
+          "baselineLocal.date",
+          "baselineLocal.time",
+          "baselineLocal.offsetChoice",
+          "durationMinutes",
+          "blockedLocal.length",
+          "unsupportedRequests"
+        ],
+        "missedQuestions": [
+          "earliestLocal",
+          "deadlineLocal",
+          "durationMinutes"
+        ],
+        "report": "91d44b11-8d1a-4c5f-b0df-e1f8f225da2c.json"
+      },
+      {
+        "caseId": "hold-23",
+        "errorCode": null,
+        "wrongFields": [
+          "deadlineLocal.time"
+        ],
+        "missedQuestions": [
+          "deadlineLocal"
+        ],
+        "report": "b52e8bb9-1dbb-4683-a3f8-cf0f7d1e2bea.json"
+      },
+      {
+        "caseId": "hold-27",
+        "errorCode": null,
+        "wrongFields": [
+          "blockedLocal.0.startDate",
+          "blockedLocal.0.startTime",
+          "blockedLocal.0.endDate",
+          "blockedLocal.0.endTime"
+        ],
+        "missedQuestions": [
+          "blockedLocal"
+        ],
+        "report": "b52e8bb9-1dbb-4683-a3f8-cf0f7d1e2bea.json"
+      },
+      {
+        "caseId": "hold-32",
+        "errorCode": null,
+        "wrongFields": [
+          "deadlineLocal.offsetChoice"
+        ],
+        "missedQuestions": [],
+        "report": "9254742e-47d8-43ec-8221-24eb14af5d93.json"
+      },
+      {
+        "caseId": "hold-34",
+        "errorCode": null,
+        "wrongFields": [
+          "unsupportedRequests"
+        ],
+        "missedQuestions": [],
+        "report": "9254742e-47d8-43ec-8221-24eb14af5d93.json"
+      },
+      {
+        "caseId": "hold-36",
+        "errorCode": null,
+        "wrongFields": [
+          "earliestLocal.time",
+          "earliestLocal.date"
+        ],
+        "missedQuestions": [],
+        "report": "9254742e-47d8-43ec-8221-24eb14af5d93.json"
+      },
+      {
+        "caseId": "hold-38",
+        "errorCode": null,
+        "wrongFields": [
+          "unsupportedRequests"
+        ],
+        "missedQuestions": [],
+        "report": "9254742e-47d8-43ec-8221-24eb14af5d93.json"
+      },
+      {
+        "caseId": "hold-40",
+        "errorCode": null,
+        "wrongFields": [
+          "unsupportedRequests"
+        ],
+        "missedQuestions": [],
+        "report": "9254742e-47d8-43ec-8221-24eb14af5d93.json"
+      }
+    ],
+    "sourceReports": [
+      "0b651f98-e270-4b9a-b40a-4efab622d5f1.json",
+      "fe2484ad-3252-4bf6-9c39-f545b0cb6ba3.json",
+      "91d44b11-8d1a-4c5f-b0df-e1f8f225da2c.json",
+      "4d7f81c9-7e3e-4ab6-853d-78cf6b1809a4.json",
+      "b718a92c-409d-451b-a821-436078eb558f.json",
+      "b52e8bb9-1dbb-4683-a3f8-cf0f7d1e2bea.json",
+      "9254742e-47d8-43ec-8221-24eb14af5d93.json",
+      "cb3c7c95-a2da-4830-ba7c-48b419aa8a55.json",
+      "a5d3e71b-cd8c-4f3c-b571-e021bc31adc4.json",
+      "68d13e07-8c7f-4052-b7fb-add6cdb7b66b.json",
+      "77fb08b7-696e-4d3e-b8bc-d56de5ceac8d.json",
+      "56b19240-0d1f-46a7-bd19-2fc372736fb7.json",
+      "7f70852f-9b7b-455e-adf0-a22578a9638e.json",
+      "b3c24466-ef41-4a6c-a6b9-5fdb031c95bc.json"
+    ],
+    "knownTokensIncludingRepeats": {
+      "input": 17889,
+      "output": 20539,
+      "total": 38428
+    },
+    "automaticPlanAcceptance": false,
+    "postHumanReviewAccuracyMeasured": false,
+    "fieldUserBenefitMeasured": false
+  },
+  "explanations": [
+    {
+      "model": "openai/gpt-oss-120b",
+      "report": "00ba3479-005e-428a-bffe-f893cd252272.json",
+      "cases": 4,
+      "passed": 4,
+      "preferenceBenefitMeasured": false,
+      "tokenUsage": 3666
+    },
+    {
+      "model": "gemini-3.5-flash-lite",
+      "report": "03713549-c33f-41c0-a4ed-079fff9e4078.json",
+      "cases": 4,
+      "passed": 4,
+      "preferenceBenefitMeasured": false,
+      "tokenUsage": 848
+    }
+  ],
+  "excluded": [
+    {
+      "model": "gemini-3.8-flash",
+      "reason": "Two transient access failures, second HTTP503; no quality qualification; disabled; 17/day cap preserved"
+    },
+    {
+      "model": "gemini-3.6-flash",
+      "reason": "Minute/token limits and inference/quality unverified; disabled; discontinuation not claimed"
+    },
+    {
+      "model": "openai/gpt-oss-120b",
+      "role": "constraints",
+      "reason": "Role not selected for this release; no full current-prompt dataset evaluation; excluded from interpretation recovery"
+    },
+    {
+      "model": "openai/gpt-oss-20b",
+      "reason": "Not selected/evaluated; no live route"
+    }
+  ],
+  "billedCost": null,
+  "limitations": [
+    "Authored 60-case pipeline evaluation, not field-user data",
+    "Original failures remain in first-attempt scores; repeat successes never replace them",
+    "Interrupted runs resumed at the next recorded case; lost in-flight usage stays charged",
+    "Explanation checks prove schema/grounding, not benefit over templates",
+    "Public UK profile/deployment not approved or activated"
+  ],
+  "liveJourneyEvidence": "live-ai-flow.json"
+}
