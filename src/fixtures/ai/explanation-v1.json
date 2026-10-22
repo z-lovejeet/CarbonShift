@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "carbonshift-explanation-v1",
+  "authored": true,
+  "humanReviewed": false,
+  "description": "Four fact combinations derived from the deterministic explanation contract. Each is checked against its template baseline; this does not measure user preference or usefulness.",
+  "cases": [
+    {"id":"explain-lower-open","classification":"lower_forecast","deadlineMet":true,"blocksAvoided":false,"energyBasis":"user_estimate","geography":"GB_national","eligibleReasonCodes":["LOWER_FORECAST_ESTIMATE","DEADLINE_MET"],"eligibleLimitationCodes":["ASSUMED_ENERGY","NATIONAL_SIGNAL","SELF_REPORTED"],"requiredLimitationCodes":["ASSUMED_ENERGY","NATIONAL_SIGNAL"]},
+    {"id":"explain-lower-blocked","classification":"lower_forecast","deadlineMet":true,"blocksAvoided":true,"energyBasis":"user_estimate","geography":"GB_national","eligibleReasonCodes":["LOWER_FORECAST_ESTIMATE","DEADLINE_MET","BLOCKED_PERIODS_AVOIDED"],"eligibleLimitationCodes":["ASSUMED_ENERGY","NATIONAL_SIGNAL","SELF_REPORTED"],"requiredLimitationCodes":["ASSUMED_ENERGY","NATIONAL_SIGNAL"]},
+    {"id":"explain-baseline-open","classification":"baseline_best","deadlineMet":true,"blocksAvoided":false,"energyBasis":"illustrative_default","geography":"GB_national","eligibleReasonCodes":["BASELINE_ALREADY_BEST","DEADLINE_MET"],"eligibleLimitationCodes":["ASSUMED_ENERGY","NATIONAL_SIGNAL","SELF_REPORTED"],"requiredLimitationCodes":["ASSUMED_ENERGY","NATIONAL_SIGNAL"]},
+    {"id":"explain-baseline-blocked","classification":"baseline_best","deadlineMet":true,"blocksAvoided":true,"energyBasis":"illustrative_default","geography":"GB_national","eligibleReasonCodes":["BASELINE_ALREADY_BEST","DEADLINE_MET","BLOCKED_PERIODS_AVOIDED"],"eligibleLimitationCodes":["ASSUMED_ENERGY","NATIONAL_SIGNAL","SELF_REPORTED"],"requiredLimitationCodes":["ASSUMED_ENERGY","NATIONAL_SIGNAL"]}
+  ]
+}

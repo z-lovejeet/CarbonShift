@@ -1,0 +1,809 @@
+{
+  "schemaVersion": 1,
+  "datasetVersion": "carbonshift-ai-development-v1",
+  "authored": true,
+  "humanReviewed": false,
+  "cases": [
+    {
+      "id": "dev-01",
+      "family": "dev-clock-words",
+      "text": "Finish tomorrow by noon.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "deadlineLocal.date": "2026-10-23",
+        "deadlineLocal.time": "12:00",
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-02",
+      "family": "dev-clock-words",
+      "text": "Finish at 00:00 at the start of tomorrow.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "deadlineLocal.date": "2026-10-23",
+        "deadlineLocal.time": "00:00",
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-03",
+      "family": "dev-clock-words",
+      "text": "Finish tomorrow by 6 pm.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "deadlineLocal.date": "2026-10-23",
+        "deadlineLocal.time": "18:00",
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-04",
+      "family": "dev-clock-words",
+      "text": "Finish tomorrow by 8 am.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "deadlineLocal.date": "2026-10-23",
+        "deadlineLocal.time": "08:00",
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-05",
+      "family": "dev-iso-window",
+      "text": "On 2026-10-23 start no earlier than 08:00 and finish by 14:00.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "earliestLocal.date": "2026-10-23",
+        "earliestLocal.time": "08:00",
+        "deadlineLocal.date": "2026-10-23",
+        "deadlineLocal.time": "14:00",
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-06",
+      "family": "dev-iso-window",
+      "text": "On 2026-10-23 start no earlier than 10:00 and finish by 18:00.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "earliestLocal.date": "2026-10-23",
+        "earliestLocal.time": "10:00",
+        "deadlineLocal.date": "2026-10-23",
+        "deadlineLocal.time": "18:00",
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-07",
+      "family": "dev-iso-window",
+      "text": "On 2026-10-23 start no earlier than 12:00 and finish by 22:00.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "earliestLocal.date": "2026-10-23",
+        "earliestLocal.time": "12:00",
+        "deadlineLocal.date": "2026-10-23",
+        "deadlineLocal.time": "22:00",
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-08",
+      "family": "dev-iso-window",
+      "text": "On 2026-10-23 start no earlier than 09:00 and finish by 20:00.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "earliestLocal.date": "2026-10-23",
+        "earliestLocal.time": "09:00",
+        "deadlineLocal.date": "2026-10-23",
+        "deadlineLocal.time": "20:00",
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-09",
+      "family": "dev-cycle-duration",
+      "text": "My washing cycle lasts 30 minutes.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "durationMinutes": 30,
+        "earliestLocal.date": null,
+        "deadlineLocal.time": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "durationMinutes",
+        "earliestLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-10",
+      "family": "dev-cycle-duration",
+      "text": "My washing cycle lasts 60 minutes.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "durationMinutes": 60,
+        "earliestLocal.date": null,
+        "deadlineLocal.time": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "durationMinutes",
+        "earliestLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-11",
+      "family": "dev-cycle-duration",
+      "text": "My washing cycle lasts 90 minutes.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "durationMinutes": 90,
+        "earliestLocal.date": null,
+        "deadlineLocal.time": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "durationMinutes",
+        "earliestLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-12",
+      "family": "dev-cycle-duration",
+      "text": "My washing cycle lasts 120 minutes.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "durationMinutes": 120,
+        "earliestLocal.date": null,
+        "deadlineLocal.time": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "durationMinutes",
+        "earliestLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-13",
+      "family": "dev-single-block",
+      "text": "On 2026-10-23 I cannot run the wash between 10:00 and 11:00.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "blockedLocal.0.startDate": "2026-10-23",
+        "blockedLocal.0.startTime": "10:00",
+        "blockedLocal.0.endDate": "2026-10-23",
+        "blockedLocal.0.endTime": "11:00",
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.time": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 1
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "blockedLocal.0.startDate",
+        "blockedLocal.0.startTime",
+        "blockedLocal.0.endDate",
+        "blockedLocal.0.endTime",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-14",
+      "family": "dev-single-block",
+      "text": "On 2026-10-23 I cannot run the wash between 11:00 and 12:30.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "blockedLocal.0.startDate": "2026-10-23",
+        "blockedLocal.0.startTime": "11:00",
+        "blockedLocal.0.endDate": "2026-10-23",
+        "blockedLocal.0.endTime": "12:30",
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.time": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 1
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "blockedLocal.0.startDate",
+        "blockedLocal.0.startTime",
+        "blockedLocal.0.endDate",
+        "blockedLocal.0.endTime",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-15",
+      "family": "dev-single-block",
+      "text": "On 2026-10-23 I cannot run the wash between 14:00 and 16:00.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "blockedLocal.0.startDate": "2026-10-23",
+        "blockedLocal.0.startTime": "14:00",
+        "blockedLocal.0.endDate": "2026-10-23",
+        "blockedLocal.0.endTime": "16:00",
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.time": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 1
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "blockedLocal.0.startDate",
+        "blockedLocal.0.startTime",
+        "blockedLocal.0.endDate",
+        "blockedLocal.0.endTime",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-16",
+      "family": "dev-single-block",
+      "text": "On 2026-10-23 I cannot run the wash between 16:30 and 17:00.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "blockedLocal.0.startDate": "2026-10-23",
+        "blockedLocal.0.startTime": "16:30",
+        "blockedLocal.0.endDate": "2026-10-23",
+        "blockedLocal.0.endTime": "17:00",
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.time": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 1
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "blockedLocal.0.startDate",
+        "blockedLocal.0.startTime",
+        "blockedLocal.0.endDate",
+        "blockedLocal.0.endTime",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-17",
+      "family": "dev-vague",
+      "text": "Do it later.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "earliestLocal.date": null,
+        "deadlineLocal.time": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "earliestLocal.date",
+        "deadlineLocal.time",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-18",
+      "family": "dev-automation",
+      "text": "Start my washing machine automatically.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "durationMinutes": null,
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.time": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [
+        "automatic_control"
+      ],
+      "criticalFields": [
+        "durationMinutes",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-19",
+      "family": "dev-price",
+      "text": "Use the cheapest electricity tariff.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "deadlineLocal.time": null,
+        "earliestLocal.date": null,
+        "earliestLocal.time": null,
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [
+        "tariff"
+      ],
+      "criticalFields": [
+        "deadlineLocal.time",
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    },
+    {
+      "id": "dev-20",
+      "family": "dev-gap",
+      "text": "Start 2027-03-28 at 01:30 London time.",
+      "localReferenceDate": "2026-10-22",
+      "timezone": "Europe/London",
+      "expectedFields": {
+        "earliestLocal.date": "2027-03-28",
+        "earliestLocal.time": "01:30",
+        "earliestLocal.offsetChoice": null,
+        "deadlineLocal.date": null,
+        "deadlineLocal.time": null,
+        "deadlineLocal.offsetChoice": null,
+        "baselineLocal.date": null,
+        "baselineLocal.time": null,
+        "baselineLocal.offsetChoice": null,
+        "durationMinutes": null,
+        "blockedLocal.length": 0
+      },
+      "requiredQuestions": [
+        "earliestLocal",
+        "deadlineLocal",
+        "durationMinutes"
+      ],
+      "unsupportedRequests": [],
+      "criticalFields": [
+        "earliestLocal.date",
+        "earliestLocal.time",
+        "earliestLocal.offsetChoice",
+        "deadlineLocal.date",
+        "deadlineLocal.time",
+        "deadlineLocal.offsetChoice",
+        "baselineLocal.date",
+        "baselineLocal.time",
+        "baselineLocal.offsetChoice",
+        "durationMinutes",
+        "blockedLocal.length"
+      ]
+    }
+  ],
+  "labelScope": "Complete timing scalars including unknown/nulls; known block endpoints/count; exact unsupported codes. Unclear blocks may be empty or null placeholders but may not invent endpoints."
+}
