@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "runId": "a5d3e71b-cd8c-4f3c-b571-e021bc31adc4",
+  "model": "gemini-3.5-flash-lite",
+  "role": "constraints",
+  "promptVersion": "constraints-v3",
+  "datasetVersion": "carbonshift-ai-holdout-v1",
+  "datasetSha256": "87685bd3268ec05bf8c472416f8b996094b2f24431df12165fa99f73832f7d40",
+  "reviewedBy": "CarbonShift builder (explicit approval in this chat)",
+  "reviewedAtUtc": "2026-10-21T20:07:38.936Z",
+  "startedAtUtc": "2026-10-21T20:28:06.633Z",
+  "updatedAtUtc": "2026-10-21T20:28:10.923Z",
+  "maximumRequests": 1,
+  "intervalMs": 0,
+  "accountTier": "builder-reported-free",
+  "billedCost": null,
+  "automaticPromotion": false,
+  "scope": "validated pipeline; authored examples; no field-user benefit claim",
+  "outcomes": [
+    {
+      "caseId": "hold-27",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4290,
+      "fields": 15,
+      "correctFields": 11,
+      "wrongFields": [
+        "blockedLocal.0.startDate",
+        "blockedLocal.0.startTime",
+        "blockedLocal.0.endDate",
+        "blockedLocal.0.endTime"
+      ],
+      "criticalCorrect": false,
+      "requiredQuestions": 4,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [
+        "blockedLocal"
+      ],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 5,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1970,
+          "input_tokens": 246,
+          "output_tokens": 350,
+          "total_tokens": 596,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    }
+  ],
+  "metrics": {
+    "fieldAccuracy": 0.7333333333333333,
+    "criticalAccuracy": 0,
+    "ambiguityRecall": 0.75,
+    "falseAmbiguityRate": null,
+    "p50LatencyMs": 4290,
+    "p95LatencyMs": 4290
+  }
+}

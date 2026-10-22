@@ -1,0 +1,1039 @@
+{
+  "schemaVersion": 1,
+  "runId": "b52e8bb9-1dbb-4683-a3f8-cf0f7d1e2bea",
+  "model": "gemini-3.5-flash-lite",
+  "role": "constraints",
+  "promptVersion": "constraints-v3",
+  "datasetVersion": "carbonshift-ai-holdout-v1",
+  "datasetSha256": "87685bd3268ec05bf8c472416f8b996094b2f24431df12165fa99f73832f7d40",
+  "reviewedBy": "CarbonShift builder (explicit approval in this chat)",
+  "reviewedAtUtc": "2026-10-21T20:07:38.936Z",
+  "startedAtUtc": "2026-10-21T20:20:36.514Z",
+  "updatedAtUtc": "2026-10-21T20:25:02.417Z",
+  "maximumRequests": 40,
+  "intervalMs": 5500,
+  "accountTier": "builder-reported-free",
+  "billedCost": null,
+  "automaticPromotion": false,
+  "scope": "validated pipeline; authored examples; no field-user benefit claim",
+  "outcomes": [
+    {
+      "caseId": "hold-01",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4376,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 0,
+      "detectedQuestions": 0,
+      "negativeQuestions": 3,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1770,
+          "input_tokens": 277,
+          "output_tokens": 274,
+          "total_tokens": 551,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-02",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4798,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 0,
+      "detectedQuestions": 0,
+      "negativeQuestions": 3,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2399,
+          "input_tokens": 269,
+          "output_tokens": 273,
+          "total_tokens": 542,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-03",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4372,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2134,
+          "input_tokens": 260,
+          "output_tokens": 264,
+          "total_tokens": 524,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-04",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 5023,
+      "fields": 16,
+      "correctFields": 16,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2374,
+          "input_tokens": 277,
+          "output_tokens": 376,
+          "total_tokens": 653,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-05",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4191,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1838,
+          "input_tokens": 282,
+          "output_tokens": 325,
+          "total_tokens": 607,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-06",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 5153,
+      "fields": 20,
+      "correctFields": 20,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 3,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2588,
+          "input_tokens": 274,
+          "output_tokens": 414,
+          "total_tokens": 688,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-07",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4550,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2142,
+          "input_tokens": 261,
+          "output_tokens": 265,
+          "total_tokens": 526,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-08",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4562,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2268,
+          "input_tokens": 264,
+          "output_tokens": 266,
+          "total_tokens": 530,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-09",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4783,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2314,
+          "input_tokens": 274,
+          "output_tokens": 312,
+          "total_tokens": 586,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-10",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4626,
+      "fields": 16,
+      "correctFields": 16,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2219,
+          "input_tokens": 277,
+          "output_tokens": 376,
+          "total_tokens": 653,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-11",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4325,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 0,
+      "detectedQuestions": 0,
+      "negativeQuestions": 3,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1916,
+          "input_tokens": 265,
+          "output_tokens": 339,
+          "total_tokens": 604,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-12",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4780,
+      "fields": 16,
+      "correctFields": 16,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 3,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2410,
+          "input_tokens": 272,
+          "output_tokens": 398,
+          "total_tokens": 670,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-13",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4183,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1896,
+          "input_tokens": 261,
+          "output_tokens": 341,
+          "total_tokens": 602,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-14",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4009,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 2,
+      "detectedQuestions": 2,
+      "negativeQuestions": 1,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1723,
+          "input_tokens": 254,
+          "output_tokens": 229,
+          "total_tokens": 483,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-15",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4639,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 2,
+      "detectedQuestions": 2,
+      "negativeQuestions": 1,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2203,
+          "input_tokens": 253,
+          "output_tokens": 264,
+          "total_tokens": 517,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-16",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4761,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2418,
+          "input_tokens": 267,
+          "output_tokens": 406,
+          "total_tokens": 673,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-17",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4453,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2163,
+          "input_tokens": 262,
+          "output_tokens": 342,
+          "total_tokens": 604,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-18",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4456,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 2,
+      "detectedQuestions": 2,
+      "negativeQuestions": 1,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2025,
+          "input_tokens": 263,
+          "output_tokens": 311,
+          "total_tokens": 574,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-19",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4255,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 2,
+      "detectedQuestions": 2,
+      "negativeQuestions": 1,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1937,
+          "input_tokens": 251,
+          "output_tokens": 264,
+          "total_tokens": 515,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-20",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 5169,
+      "fields": 16,
+      "correctFields": 16,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 2,
+      "detectedQuestions": 2,
+      "negativeQuestions": 1,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2735,
+          "input_tokens": 274,
+          "output_tokens": 493,
+          "total_tokens": 767,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-21",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4141,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 3,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1805,
+          "input_tokens": 245,
+          "output_tokens": 286,
+          "total_tokens": 531,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-22",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4272,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 3,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1859,
+          "input_tokens": 244,
+          "output_tokens": 250,
+          "total_tokens": 494,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-23",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4442,
+      "fields": 12,
+      "correctFields": 11,
+      "wrongFields": [
+        "deadlineLocal.time"
+      ],
+      "criticalCorrect": false,
+      "requiredQuestions": 3,
+      "detectedQuestions": 2,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [
+        "deadlineLocal"
+      ],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 2,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1918,
+          "input_tokens": 248,
+          "output_tokens": 229,
+          "total_tokens": 477,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-24",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4802,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 2,
+      "detectedQuestions": 2,
+      "negativeQuestions": 1,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2438,
+          "input_tokens": 262,
+          "output_tokens": 379,
+          "total_tokens": 641,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-25",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4303,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 1,
+      "detectedQuestions": 1,
+      "negativeQuestions": 2,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1909,
+          "input_tokens": 267,
+          "output_tokens": 274,
+          "total_tokens": 541,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-26",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4695,
+      "fields": 12,
+      "correctFields": 12,
+      "wrongFields": [],
+      "criticalCorrect": true,
+      "requiredQuestions": 3,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 0,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2255,
+          "input_tokens": 258,
+          "output_tokens": 285,
+          "total_tokens": 543,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    },
+    {
+      "caseId": "hold-27",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4718,
+      "fields": 15,
+      "correctFields": 11,
+      "wrongFields": [
+        "blockedLocal.0.startDate",
+        "blockedLocal.0.startTime",
+        "blockedLocal.0.endDate",
+        "blockedLocal.0.endTime"
+      ],
+      "criticalCorrect": false,
+      "requiredQuestions": 4,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [
+        "blockedLocal"
+      ],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 5,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2291,
+          "input_tokens": 246,
+          "output_tokens": 350,
+          "total_tokens": 596,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    }
+  ],
+  "metrics": {
+    "fieldAccuracy": 0.9857549857549858,
+    "criticalAccuracy": 0.9259259259259259,
+    "ambiguityRecall": 0.9555555555555556,
+    "falseAmbiguityRate": 0,
+    "p50LatencyMs": 4550,
+    "p95LatencyMs": 5153
+  }
+}

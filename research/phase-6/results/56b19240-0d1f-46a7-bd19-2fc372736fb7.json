@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "runId": "56b19240-0d1f-46a7-bd19-2fc372736fb7",
+  "model": "gemini-3.5-flash-lite",
+  "role": "constraints",
+  "promptVersion": "constraints-v3",
+  "datasetVersion": "carbonshift-ai-holdout-v1",
+  "datasetSha256": "87685bd3268ec05bf8c472416f8b996094b2f24431df12165fa99f73832f7d40",
+  "reviewedBy": "CarbonShift builder (explicit approval in this chat)",
+  "reviewedAtUtc": "2026-10-21T20:07:38.936Z",
+  "startedAtUtc": "2026-10-21T20:28:21.219Z",
+  "updatedAtUtc": "2026-10-21T20:28:25.632Z",
+  "maximumRequests": 1,
+  "intervalMs": 0,
+  "accountTier": "builder-reported-free",
+  "billedCost": null,
+  "automaticPromotion": false,
+  "scope": "validated pipeline; authored examples; no field-user benefit claim",
+  "outcomes": [
+    {
+      "caseId": "hold-36",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4413,
+      "fields": 12,
+      "correctFields": 8,
+      "wrongFields": [
+        "earliestLocal.time",
+        "earliestLocal.date",
+        "baselineLocal.date",
+        "baselineLocal.time"
+      ],
+      "criticalCorrect": false,
+      "requiredQuestions": 2,
+      "detectedQuestions": 2,
+      "negativeQuestions": 1,
+      "falseQuestions": 1,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [],
+      "correctionsNeeded": 4,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1948,
+          "input_tokens": 262,
+          "output_tokens": 309,
+          "total_tokens": 571,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    }
+  ],
+  "metrics": {
+    "fieldAccuracy": 0.6666666666666666,
+    "criticalAccuracy": 0,
+    "ambiguityRecall": 1,
+    "falseAmbiguityRate": 1,
+    "p50LatencyMs": 4413,
+    "p95LatencyMs": 4413
+  }
+}

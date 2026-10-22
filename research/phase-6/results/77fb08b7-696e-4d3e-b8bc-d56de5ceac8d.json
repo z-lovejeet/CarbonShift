@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "runId": "77fb08b7-696e-4d3e-b8bc-d56de5ceac8d",
+  "model": "gemini-3.5-flash-lite",
+  "role": "constraints",
+  "promptVersion": "constraints-v3",
+  "datasetVersion": "carbonshift-ai-holdout-v1",
+  "datasetSha256": "87685bd3268ec05bf8c472416f8b996094b2f24431df12165fa99f73832f7d40",
+  "reviewedBy": "CarbonShift builder (explicit approval in this chat)",
+  "reviewedAtUtc": "2026-10-21T20:07:38.936Z",
+  "startedAtUtc": "2026-10-21T20:28:16.146Z",
+  "updatedAtUtc": "2026-10-21T20:28:20.839Z",
+  "maximumRequests": 1,
+  "intervalMs": 0,
+  "accountTier": "builder-reported-free",
+  "billedCost": null,
+  "automaticPromotion": false,
+  "scope": "validated pipeline; authored examples; no field-user benefit claim",
+  "outcomes": [
+    {
+      "caseId": "hold-34",
+      "errorCode": null,
+      "validationFlags": {
+        "schemaValid": true,
+        "schemaIssues": [],
+        "sourceBoundsValid": true,
+        "populatedFieldsSupported": true
+      },
+      "latencyMs": 4694,
+      "fields": 12,
+      "correctFields": 11,
+      "wrongFields": [
+        "unsupportedRequests"
+      ],
+      "criticalCorrect": false,
+      "requiredQuestions": 3,
+      "detectedQuestions": 3,
+      "negativeQuestions": 0,
+      "falseQuestions": 0,
+      "missedQuestions": [],
+      "missedUnsupported": [],
+      "extraUnsupported": [
+        "other"
+      ],
+      "correctionsNeeded": 1,
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 2092,
+          "input_tokens": 260,
+          "output_tokens": 257,
+          "total_tokens": 517,
+          "prompt_version": "constraints-v3",
+          "policy_digest": "8f0d2d084af5701ff0ee5fa038335e2c3bb3a09550c1a1d5e17c0709bc91b397"
+        }
+      ],
+      "manualCorrectionObserved": null
+    }
+  ],
+  "metrics": {
+    "fieldAccuracy": 0.9166666666666666,
+    "criticalAccuracy": 0,
+    "ambiguityRecall": 1,
+    "falseAmbiguityRate": null,
+    "p50LatencyMs": 4694,
+    "p95LatencyMs": 4694
+  }
+}
