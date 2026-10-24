@@ -9,6 +9,7 @@ import { ErrorNotice } from "@/components/planner/error-notice";
 
 export function PlanList({ initial }: { initial: PlanPage }) {
   const [page, setPage] = useState(initial), [busy, setBusy] = useState(false), [error, setError] = useState<Error | null>(null);
+  const [filter, setFilter] = useState("all");
   const loading = useRef(false);
   async function more() {
     if (!page.nextCursor || loading.current) return;
@@ -20,8 +21,11 @@ export function PlanList({ initial }: { initial: PlanPage }) {
     finally { loading.current = false; setBusy(false); }
   }
   if (!page.items.length) return <section className="empty-state"><p className="eyebrow">A fresh start</p><h2>Your first wash plan starts here.</h2><p>Choose a window that works for you. We’ll compare the forecast with the time you would otherwise run it.</p><Link href="/app/plan/new" className="button">Plan a wash</Link></section>;
+  const visible = page.items.filter((plan) => filter === "all" || (filter === "private") === (plan.publication === "private"));
   return <>
-    <ul className="plan-list">{page.items.map((plan) => <li key={plan.id}>
+    <div className="field"><label className="field-label" htmlFor="publication-filter">Show plans</label><select id="publication-filter" value={filter} onChange={(event) => setFilter(event.target.value)}><option value="all">All plans</option><option value="private">Private only</option><option value="public">Public copy requested</option></select><p className="field-hint">Filters the history loaded below. Load more to include older plans.</p></div>
+    {!visible.length ? <p className="notice">No matching plans in the loaded history.</p> : null}
+    <ul className="plan-list">{visible.map((plan) => <li key={plan.id}>
       <div><p className="eyebrow">Washing plan · {plan.publication === "private" ? "Private" : plan.publication}</p><h2><Link href={`/app/plans/${plan.id}`}>{londonLabel(plan.selected.startUtc)}</Link></h2><p>Finish {londonLabel(plan.selected.endUtc)}</p><p className="muted">Original forecast · {plan.status === "cancelled" ? "cancelled" : plan.completion === "ran" ? "execution self-reported" : plan.completion === "did_not_run" ? "reported not run" : "execution not reported"}</p></div>
       <div className="plan-list-estimate"><strong>{grams(plan.selected.estimatedMg)} g CO₂</strong><span>estimated grid-associated CO₂</span><span>{plan.differenceMg === 0 ? "No estimated improvement" : `${grams(plan.differenceMg)} g lower than your baseline`}</span></div>
     </li>)}</ul>
