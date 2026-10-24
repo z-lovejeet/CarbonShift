@@ -10,3 +10,5 @@ export type ModelId = keyof typeof AI_REGISTRY;
 export type AiProvider = "gemini" | "groq";
 export type AiRole = "constraints" | "explanation";
 export const AI_MODEL_IDS = Object.keys(AI_REGISTRY) as [ModelId, ...ModelId[]];
+
+export type AiVariant = "activity-v2" | "schedule-explanation-v2";

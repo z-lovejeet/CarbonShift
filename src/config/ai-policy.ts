@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { AI_MODEL_IDS, AI_REGISTRY, type AiRole } from "./ai-registry";
+import { AI_MODEL_IDS, AI_REGISTRY, type AiRole, type AiVariant } from "./ai-registry";
 
 const stamp = z.string().regex(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/).refine((s) => Number.isFinite(Date.parse(s)) && new Date(s).toISOString().replace(".000Z", "Z") === s);
 const name = z.string().regex(/^[a-zA-Z0-9_-]{1,64}$/);
@@ -8,6 +8,7 @@ const role = z.enum(["constraints", "explanation"]);
 const unique = <T>(items: T[]) => new Set(items).size === items.length;
 const modelSchema = z.strictObject({
   id: z.enum(AI_MODEL_IDS), enabled: z.boolean(), accessVerifiedAtUtc: stamp.nullable(),
+  qualifiedVariants: z.array(z.enum(["activity-v2", "schedule-explanation-v2"])).max(2).refine(unique).optional(),
   qualifiedRoles: z.array(role).max(2).refine(unique), bucketIds: z.array(name).max(16).refine(unique),
 });
 const bucketSchema = z.strictObject({
@@ -52,10 +53,10 @@ export function parseAiPolicy(text: string): AiPolicy {
   if (new TextEncoder().encode(text).length > 16384) throw new Error("AI policy is too large");
   return aiPolicySchema.parse(JSON.parse(text));
 }
-export function candidates(policy: AiPolicy, role: AiRole, evaluation = false) {
+export function candidates(policy: AiPolicy, role: AiRole, evaluation = false, variant?: AiVariant) {
   return policy.roles[role].flatMap((id) => {
     const model = policy.models.find((m) => m.id === id);
-    return model?.enabled && (evaluation || model.qualifiedRoles.includes(role)) ? [model] : [];
+    return model?.enabled && (evaluation || ((variant ? (role === (variant === "activity-v2" ? "constraints" : "explanation") && model.qualifiedVariants?.includes(variant)) : model.qualifiedRoles.includes(role)))) ? [model] : [];
   });
 }
 export const disabledAiPolicy: AiPolicy = { schemaVersion: 1, profile: "eligible_free_development",
