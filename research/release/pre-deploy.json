@@ -1,0 +1,90 @@
+{
+  "date": "2026-10-25",
+  "scope": "M11 local release checks and GitHub-to-Vercel preparation",
+  "baseCommit": "44f3c5aa4fd873951fc7e5081232e2352e0a62b1",
+  "localChecks": {
+    "frozenCleanInstall": "passed",
+    "unconfiguredEnvironment": "passed",
+    "eslintAndImportBoundaries": "passed",
+    "applicationAndContractTypes": "passed",
+    "unitComponent": {
+      "files": 54,
+      "passed": 532
+    },
+    "isolatedPostgres": {
+      "files": 7,
+      "passed": 86
+    },
+    "contracts": {
+      "passed": 10
+    },
+    "productionFixtureBuild": "passed",
+    "productionBrowser": {
+      "passed": 54,
+      "durationSeconds": 26.0,
+      "widthsPx": [
+        360,
+        768,
+        1440
+      ]
+    },
+    "hostedRetention": "dry-run only; busy=false; no private records removed"
+  },
+  "recoveredFailures": [
+    "Missing route crashed active navigation; nullable route now guarded and regression tested.",
+    "Authored AI browser harness competed with landing hydration; isolated test document preserves production styles.",
+    "Methodology source links needed a non-colour affordance; reading links now underlined."
+  ],
+  "reproducibility": "Clean-copy install/static/types/unit/contract/build passed; initial clean-copy browser failed on the harness. After the harness and accessibility fixes, the rebuilt production application passed all 54 browser checks. No blanket claim that the earlier failed combined invocation passed.",
+  "hosting": {
+    "provider": "Vercel",
+    "project": "carbonshift",
+    "scope": "z-lovejeets-projects",
+    "assignedDomain": "carbonshift-mocha.vercel.app",
+    "productionEnvironmentEntriesPrepared": 18,
+    "selectedAiProfile": "uk_public_paid_gemini",
+    "billingActivatedByAgent": false,
+    "billingVerified": false,
+    "workerSignerUploaded": false,
+    "gitConnection": "builder will connect in dashboard after source push",
+    "publicDeployment": "not yet performed"
+  },
+  "auth": {
+    "localSite": "http://127.0.0.1:3001",
+    "allowedCallbacks": [
+      "http://127.0.0.1:3000/auth/callback",
+      "http://127.0.0.1:3001/auth/callback",
+      "https://carbonshift-mocha.vercel.app/auth/callback"
+    ],
+    "googleEnabled": true,
+    "githubEnabled": true,
+    "emailEnabled": false,
+    "freshHumanProviderJourney": "pending on current deployment"
+  },
+  "worker": {
+    "startupObserved": "idle_or_pending",
+    "hosting": "local process; not always-on"
+  },
+  "publicationBatch": {
+    "plannedCommits": 45,
+    "branch": "main",
+    "remote": "https://github.com/z-lovejeet/CarbonShift.git",
+    "preserveGlobalGitIdentity": true
+  },
+  "pendingG11": [
+    "Actual GitHub-connected production build/URL and cron invocation",
+    "Fresh Google/GitHub OAuth and external-user private/public journey",
+    "Deployed trusted proxy spoofing check",
+    "Production AI availability and account billing prerequisite",
+    "Actual screen-reader smoke and measured release performance",
+    "Persistent worker availability decision"
+  ],
+  "claimsExcluded": [
+    "G11 complete",
+    "public application deployed",
+    "Google billing enabled",
+    "all model variants qualified",
+    "always-on signer",
+    "measured climate savings"
+  ]
+}

@@ -1,8 +1,10 @@
 # CarbonShift documentation
 
-Prepared 20 October 2026; M07 implementation revision 22 October. This is the index and reading guide for **14 project documents plus three guidance files**. M00–M07 run locally. M06 timing assistance remains experimental/manual-first after measured quality misses; private completion is implemented; public receipts remain unfinished. See the root README and status log for actual evidence.
+Prepared 20 October 2026; household acceptance revision 24 October. This is the index and reading guide for **14 project documents plus three guidance files**. M00–M09 passed their scoped gates; G09 includes actual Sepolia and exported-proof verification. M06 timing assistance remains experimental/manual-first after measured quality misses. U34 household simulation/planning/reporting and revised local M10 public receipt/verifier pages are implemented and passed their scoped acceptance; M11 public release remains pending. See the root README and status log for actual evidence.
 
 ## Start here
+
+**Latest direction, U33/U34:** the user has requested a household electricity simulator plus separate task and day planners, replacing washing-only as the product target. Read the [approved expansion design](superpowers/specs/2026-10-23-household-electricity-design.md), PRD section 0 and status section 25 before further phase work. X00–X05 and revised local M10 are implemented; status section 27 and the final household evidence distinguish isolated checks, real service journeys and Sepolia confirmations. Each owner now has an approved U34 target section alongside historical v1 contracts. The [implementation plan](superpowers/plans/2026-10-23-household-electricity-plan.md) was reviewed and sequential execution approved; the sequence is in roadmap section 10. This supporting design does not recreate removed documents 15/16.
 
 For product review, read [01 — PRD](01-prd-and-blueprint.md), [08 — calculation methodology](08-scheduling-and-carbon-methodology.md), and [10 — blockchain/evidence](10-blockchain-and-evidence-specification.md) first. They contain the most consequential scope and trust choices.
 
@@ -46,7 +48,7 @@ The other guidance files are this index, root `AGENTS.md`, and `docs/decisions-a
 
 ## How documents stay consistent
 
-Feature IDs `F01`–`F12` map to tests `T01`–`T12`; pages use `P01`–`P12`; implementation phases preserve milestone IDs `M00`–`M11`. Each phase has tasks `.01`–`.05`, such as `M02.03`, and a specific exit gate.
+Historical feature IDs `F01`–`F12` map to tests `T01`–`T12`; U34 adds `F13`–`F20`/`T13`–`T20` and `P13`/`P14`. Existing pages retain their IDs; implementation phases preserve milestone IDs `M00`–`M11`. Each phase has tasks `.01`–`.05`, such as `M02.03`, and a specific exit gate.
 
 Use one focused task at a time. The roadmap specifies required reading, work areas, expected outputs, checks, external dependencies, and prompts for starting or resuming work. Record task evidence in the decision/status log; an unavailable API key blocks its dependent integration, not unrelated local development.
 
@@ -64,4 +66,25 @@ The [earlier build guide](../research/wave-2/top-three-build-guide.md) and [proj
 
 ### M07 private lifecycle implementation
 
-M07.01–M07.05 implement append-only reports/results, actual-factor refresh, corrections/history, cancellation and recently reauthenticated private/account deletion. Versioned envelopes and commands are in 06/07. Public/chain-aware deletion remains M09/M11. The status log distinguishes isolated, live and authored-fixture evidence. M08 requires new authorization.
+M07.01–M07.05 implement append-only reports/results, actual-factor refresh, corrections/history, cancellation and recently reauthenticated private/account deletion. Versioned envelopes and commands are in 06/07. Public/chain-aware deletion remains M09/M11. The status log distinguishes isolated, live and authored-fixture evidence. M08 local proof/verifier/contract is implemented under U30; publication, funded signer and deployment require M09 authorization.
+
+### M08 local proof boundary
+
+The browser-safe entry is `src/domain/proof.ts`; server-only allowlist builders are in `src/server/proof/`. Document 10 version 1.1 owns exact exported fields, pinned method, separate verification states and trusted-observation boundary. The generated versioned contract ABI/build fingerprints and authored goldens are checked by ordinary local tests. No public routes, wallet setup, publication table or hosted/testnet transaction was added. See status section 22 for actual G08 evidence and the next handoff.
+
+### M09 publication gate
+
+Exact previews/consent, private/public revision mapping, fenced outbox worker, persistence-before-broadcast, canonical reconciliation and owner UI/export are implemented. The real Sepolia plan and separately consented cancellation result passed all seven independent checks; see status section 24 and `research/phase-9/`. Current Groq explanation/cache passed live; two Gemini timing requests timed out and manual recovery remains available. This is historical M09 evidence. Revised local M10 pages subsequently passed for v1/v2 under U34; M11 release remains pending.
+
+### Household acceptance — 24 October 2026
+
+[Status section 27](decisions-and-status.md#27-household-expansion-and-revised-local-m10--final-acceptance) records X02–X05 and M10.01–M10.05 gates, exact checks, live AI and testnet identifiers. [Final evidence](../research/household/final/README.md) describes the actual mixed-day journey and its self-report/pending-factor limits. The three entry pages are `/app/simulate`, `/app/plan/new` and `/app/day/new`; no new account, paid service or source publication was introduced.
+
+
+### U37 interface alignment — builder review
+
+The builder approved the new landing appearance and requested the same visual quality and detail across the rest of the app. Shared page/form/report styles and page-specific guidance are implemented; see document 03 and status section 29. Compilation/lint checks passed. Browser and functional testing of this presentation update are intentionally left to the builder, so earlier acceptance evidence is not a new visual pass for these changes.
+
+### M11 current release work
+
+The builder authorized final release checks, the 40–50 commit GitHub publication batch, and GitHub-based Vercel deployment. They will connect the repository in the existing project dashboard. Privacy contact and local OAuth port alignment are configured; production billing/profile, deployment OAuth and worker availability require actual evidence. See status section 31 and the M11 section of document 14. Earlier no-publication/testing-deferral notes remain historical.

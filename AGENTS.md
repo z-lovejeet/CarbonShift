@@ -2,18 +2,20 @@
 
 ## Start here
 
+Latest user correction U33 requests a household electricity simulator, one/multi-task planning, a separate whole-day planner, broader electrical activities and richer real-data content. Washing-only is the implemented v1 baseline, not the revised product target. Read PRD section 0, status section 25, roadmap section 10 and `docs/superpowers/specs/2026-10-23-household-electricity-design.md` and the approved implementation plan before continuing. U34 approved the written expansion design and the executable plan in `docs/superpowers/plans/2026-10-23-household-electricity-plan.md`, selecting sequential execution of X01–X05 and revised local M10 in this chat. All fourteen owner documents have U34 target sections. X00–X05 and revised local M10 passed scoped acceptance on 24 October; consult status section 27 and research/household/final/README.md. Preserve existing v1 calculations/records/receipts and distinguish final v2 evidence from historical M00–M09 checks. User scope corrections override the older no-new-pages/appliances restrictions below; they do not authorize paid activation or Git publication.
+
 At the start of every phase, read `docs/README.md`, `docs/decisions-and-status.md`, and all fourteen numbered documents, as the user requested on 21 October 2026. Within the phase, revisit the sections linked by the current task in `docs/13-development-roadmap-and-codex-tasks.md`. Read existing code before editing it.
 
-The user selected CarbonShift, builds solo, and has authorized M07 after M00–M06. Check the status log, existing code, and package.json for actual implementation and checks. Installed tools and tested modules do not imply configured accounts, keys, working later integrations, deployments, or completed feature acceptance.
+The user selected CarbonShift, builds solo, and has authorized M09 after M00–M08. Check the status log, existing code, and package.json for actual implementation and checks. Installed tools and tested modules do not imply configured accounts, keys, working later integrations, deployments, or completed feature acceptance.
 
-The documented scope is the working baseline for the authorized phase. Follow subsequent user corrections and record consequential changes. Complete M07.01–M07.05 in roadmap order, preserve the manual planner and Google/GitHub accounts, and stop at G07. M07 passed locally; use the current G07 handoff and wait for explicit M08 authorization. Later phases and paid activation remain unauthorized. U29 authorizes only committing and normally pushing the current M04–M07 source batch; it does not authorize future automatic publication.
+The documented scope is the working baseline for the authorized phase. Follow subsequent user corrections and record consequential changes. M08.01–M08.05 passed locally at G08; U32 now authorizes M09 publication, worker and dedicated Sepolia deployment/testing plus integration checks. Preserve the manual planner, Google/GitHub accounts and private lifecycle. M09.01–M09.05 passed G09 locally/on Sepolia; use status section 24. U34 subsequently authorized revised local M10, now complete. Public release, paid activation and automatic source publication remain separate decisions. U29's source publication batch finished before M08.
 
 M06 is complete locally under the documented manual-first experimental quality policy; current evidence and next-phase boundaries are in the status log. Follow documents 09/11 and the task breakdown in 13. Key presence/catalog visibility is not role qualification. The policy loader/template/local setup have migrated to AI_POLICY_JSON; legacy model fields are rejected with enabled AI. Keep the two bounded roles. Current local evaluated routes are enabled; new/unevaluated routes must remain excluded until their own evidence exists. Timing assistance remains visibly experimental with explicit review. Keep the public UK profile unresolved until its deployment decision. Extra agents/features and paid activation remain outside scope.
 
 ## Product boundaries
 
 - Primary track: Renewable Energy & Energy Trading.
-- Working MVP baseline: one washing cycle, GB national signal, Europe/London scheduling, assumed energy profile, self-reported execution.
+- Current product: separate household simulator/task/day workspaces, up to twelve tasks, GB national signal, Europe/London scheduling, confirmed energy assumptions and per-task self-reports. Existing washing-only records retain v1.
 - Gemini and Groq are product providers. Codex's development model is separate.
 - Scheduling, carbon arithmetic, authorization, and verification are deterministic software.
 - No hidden appliance automation, tariffs, tokens, credits, global coverage, or new pages beyond the approved scope.
@@ -40,6 +42,10 @@ Never present an estimate as measured avoided emissions, a self-report as applia
 
 Keep keys out of code, logs, browser bundles, and model prompts. The testnet signer belongs only in the worker environment. Use RLS plus server ownership checks; never trust client-supplied owner IDs or carbon totals.
 
+## Current execution correction
+
+U35 (24 October 2026) requests completing the approved expansion implementation first, followed by one combined verification/end-to-end pass. Avoid repeated per-slice testing; diagnose earlier only when an error blocks implementation. Preserve existing evidence and do not mark unfinished work passed.
+
 ## Verification and handoff
 
 Roadmap version 2 divides the build into phases `M00`–`M11` and tasks `Mxx.01`–`Mxx.05`. Execute ready tasks sequentially within the authorized scope. Check the phase's entry conditions, required reading, work area, and exit gate. Do not mark a phase passed while required live checks are pending; continue eligible independent work when an external dependency is unavailable.
@@ -51,3 +57,18 @@ Before marking a task done, record actual changed files, executed checks, observ
 Use the roadmap's task handoff format, including the next ready task and exact resume action. Preserve the existing interfaces and completed work when starting a fresh coding session.
 
 Do not invent model access, benchmarks, transaction hashes, deployment URLs, or successful tests. Preserve user edits and existing research. Make focused changes and keep interface/document updates with the implementation.
+
+## Household acceptance handoff
+
+X00–X05 and revised local M10 are complete with final isolated, real development service, AI/cache and Sepolia evidence in status section 27. Keep the U35 testing economy: do not repeat passing suites or spend model/testnet quota without changed behavior or a concrete failure. The next work is M11 release readiness; privacy contact, public AI profile and hosting/OAuth/always-on worker remain unresolved. The local app uses port 3001 while another project occupies 3000; original OAuth redirects remain 3000. Do not terminate the other project or silently reinterpret that as a new OAuth pass. No Git commit/push was made.
+
+
+## Latest UI direction — U37
+
+The builder tested/approved the U36 landing appearance and requested consistent premium, clean styling and useful detail across all pages. The presentation update is implemented; see document 03 and status section 29. The builder explicitly owns testing for this update. Run only static compilation/lint checks for this UI work; do not automatically run browser, functional, provider or blockchain tests. Do not infer that earlier U34/U36 acceptance passed the changed screens. Preserve routes, deterministic methods, backend authorization, private/public consent and the approved landing design.
+
+## M11 current authorization — 25 October 2026
+
+The builder authorized M11 implementation and release checks, superseding U37's earlier deferral of browser testing. Privacy contact is lovejeet1225@gmail.com. Hosting is Vercel using the GitHub repository; the builder will connect it manually after the source batch is pushed. The latest instruction explicitly authorizes 40–50 professional commits (planned batch: 45), a clean working tree and GitHub push. Do not treat older no-Git-publication statements as current prohibitions. Preserve global Git identity and existing history.
+
+The builder selected Gemini plus Groq with qualified fallback, intends to enable Google billing and completed Vercel login. Billing activation is not yet verified; role qualification cannot be inferred from that choice. No direct CLI deployment is needed while the builder handles the Git connection. Read status section 31 for actual progress and remaining G11 gates. Local OAuth now allows 3001 without removing 3000; another project still owns 3000.

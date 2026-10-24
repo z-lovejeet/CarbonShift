@@ -1,6 +1,6 @@
 # CarbonShift — decisions and implementation status
 
-Updated 22 October 2026.
+Updated 23 October 2026.
 
 ## 1. Confirmed user instructions
 
@@ -34,6 +34,10 @@ Updated 22 October 2026.
 | U26 | Explicitly reviewed and approved the expected example labels | Exact hashes and actual approval-recording UTC time in research/phase-6/review-{development,holdout,explanation}.json; no dataset bytes changed by recording approval |
 | U28 | Start and complete M07 according to all documents | Completed M07.01–M07.05 locally at G07; all fourteen numbered documents, index and status read first; no M08+, publication or paid activation |
 | U29 | Commit the current work professionally, normally 1–3 files per commit; increase group size if necessary to stay within 50, then push after the tree is clean | Current M04–M07 publication batch authorized; 209 changed files require 70 commits at three files each, so 50 focused groups are used with larger related groups as permitted |
+| U30 | Start and complete M08 according to all documents | Completed local M08.01–M08.05 at G08; stop before M09. No funded signer, deployment or automatic commit/push |
+| U31 | Prepare/test Sepolia access and local worker credentials; add existing Supabase settings after the builder securely enters the dedicated key | Local preparation and read-only checks recorded in section 23; does not authorize starting M09, signing, deployment or source publication |
+| U32 | Start and complete M09 according to all documents, then check existing features/integration wiring including AI and blockchain | M09 authorized, including its dedicated Sepolia deployment and live check; no paid activation, M10 pages or automatic Git publication |
+| U33 | Expand beyond washing to household electrical activities; separate simulation, task planning and whole-day planning pages; editable task/time inputs, conflicts and lower-carbon alternatives, useful reports and richer real-data content | Revised product direction recorded in PRD section 0 and section 25 below. Written design and proposed X00–X05 sequence prepared for review; no expansion product code implemented |
 | U27 | Reduce unnecessary test repetition; focus on real testing and finish M06 promptly | Reused passing broad regression; completed only remaining reviewed live cases, known-case repeats, explanation checks, targeted changed UI/static checks and one real assisted planning journey |
 
 ## 2. Working baseline decisions
@@ -43,7 +47,7 @@ The existing D01–D12 defaults are adopted as the working baseline under the us
 | ID | Decision | Reason / trade-off | Owner document |
 |---|---|---|---|
 | D01 | National GB signal and Europe/London scheduling | Accessible feed with comparable national actual series; limited geography | 01, 08 |
-| D02 | One washing cycle, assumed uniform energy profile | Bounded build; cannot claim measured appliance energy | 01, 08 |
+| D02 | Implemented v1: one washing cycle, assumed uniform energy profile; U33 requests a broader versioned activity engine | Preserve historical calculations while reviewing the expansion; cannot claim measured appliance energy | 01, 08 |
 | D03 | Self-report only; no meter/CSV/device control | Avoid unavailable integrations; execution remains unverified | 01, 06 |
 | D04 | Manual-first workflow with two bounded AI roles | Useful during provider outages; evaluate whether AI reduces effort | 09 |
 | D05 | Eligible-development interpreter pool: Gemini 3.8 → available/qualified 3.6 → 3.5 Lite; Groq 120B recovery; explanation prefers Groq then Lite | U21/U22 supersede single-primary proposal; skip capped models before dispatch, maximum two attempts; actual account/role qualification pending; public UK profile remains unresolved | 09 |
@@ -63,12 +67,12 @@ The existing D01–D12 defaults are adopted as the working baseline under the us
 | Item | Next action | Blocks |
 |---|---|---|
 | Reviewer need / differentiation | Obtain feedback on frozen-baseline and portable-receipt utility; compare prior art | Strong novelty/usefulness claim, not writing a prototype |
-| Scope review | M00.01 adopts the bounded baseline under U10; future consequential changes update the owning documents | Resolved for M00; no expansion authorized |
+| Scope review | U33 replaces washing-only as the product target; review the written household expansion and align the owner documents before implementation | Expansion design review and precise v2 contracts pending; existing v1 evidence retained |
 | Model account access | Current Lite/Groq roles have user-reported free quotas, access/schema/quality evidence and a real integrated journey. Flash/3.6/extra roles remain excluded; sharing remains conservatively pooled | Additional candidates and public release; no remaining current G06 live check |
 | Budget | U20 requests free model candidates; verify account tiers/quotas and resolve UK release profile; no paid spend authorized | Paid calls and optional paid services |
 | Runtime/dependency compatibility | M01 foundation matrix resolved and checked; pin deferred SDKs when their consuming phases begin | Resolved for foundation and M04 DB/Auth; M06 Gemini/Groq SDKs pinned and current routes checked |
 | OAuth provider verification | M04 local URLs/configuration, two-user API/RLS isolation and builder-observed Google/GitHub sign-in/sign-out verified | Deployment callbacks must be retested in M11; no public onboarding claim yet |
-| Testnet RPC/faucet | Verify chain and fund dedicated issuer | Actual ledger deployment |
+| Testnet RPC/faucet | Dedicated issuer, chain, funds, deployment and publication verified in section 24 | Resolved for M09; worker/host availability remains an operational limitation |
 | Privacy contact | Builder supplies actual operator contact | Inviting real users |
 | Real user/partner evidence | Collect consented feedback if available | Field usefulness/independence claims |
 | Public UK AI profile | Select explicitly approved paid Gemini or Groq-only public routing before public activation; no billing approval exists | Public UK Gemini availability/deployment |
@@ -77,9 +81,9 @@ No partner, external reviewer, benchmark result, deployed URL, or contract addre
 
 ## 4. Work status
 
-Documentation: fourteen numbered specifications and guidance remain the working baseline. M07 lifecycle implementation/evidence and the current handoff are in section 20. M06 role evaluation and its experimental timing policy are preserved in section 19. Historical phase evidence remains separately recorded.
+Documentation: fourteen numbered specifications and guidance remain the working baseline. M07 lifecycle implementation/evidence is in section 20; the current M09/G09 handoff is in section 24. M06 role evaluation and its experimental timing policy are preserved in section 19. Historical phase evidence remains separately recorded.
 
-Roadmap version 2 preserves phase IDs with five tasks each. M00–M07 passed locally: forty tasks completed; M06 timing uses the documented experimental quality policy. G-DB is verified for the hosted development project/local application. M06/G06 is complete locally with measured quality limitations and manual-first controls. M08–M11 remain unstarted. G-AI is available for the evaluated local Lite/Groq roles; unverified/unavailable roles are excluded, and no public UK profile is implied. Task evidence below is authoritative; do not duplicate the whole backlog in another tracker.
+Roadmap version 2 preserves phase IDs with five tasks each. M00–M09 passed their scoped gates: fifty tasks completed; M06 timing uses the documented experimental quality policy. G-DB is verified for the hosted development project/local application. M06/G06 is complete locally with measured quality limitations and manual-first controls. M09 is implemented and verified on Sepolia; M10–M11 remain unstarted. G-AI is available for the evaluated local Lite/Groq roles; unverified/unavailable roles are excluded, and no public UK profile is implied. Task evidence below is authoritative; do not duplicate the whole backlog in another tracker.
 
 | Milestone | State | Evidence |
 |---|---|---|
@@ -91,8 +95,8 @@ Roadmap version 2 preserves phase IDs with five tasks each. M00–M07 passed loc
 | M05 Planner UI | Passed locally | G05: manual task/review/real comparison/save/detail/dashboard, immutable recovery and local demo; 305 unit/component, 33 SQL, 33 browser checks and real two-user desktop/mobile journey; builder review deferred |
 | M06 Product AI | Passed locally — experimental/manual-first | 60 reviewed timing cases, nine separate repeats, 4/4 explanation cases per provider and real assisted compare/cache/save/reload passed; timing targets missed, so explicit review/experimental labeling remain mandatory |
 | M07 Completion/history | Passed locally | G07: 426 unit/component checks, 67 isolated SQL checks, 45 browser checks, real private lifecycle and in-memory historical fixture + live actual factors |
-| M08 Contract/proof | Not started | Interface specified; no Solidity implementation |
-| M09 Testnet publication | Not started | No deployment or key generated |
+| M08 Contract/proof | Passed locally | G08: sanitized manifests, pinned method/JCS goldens, pure verifier, generated ABI/build fingerprints, actual isolated-EVM live/demo round trips and browser parity |
+| M09 Testnet publication | Passed locally and on Sepolia | G09: exact consent/outbox/worker, real plan/non-run result, export and seven independent chain/calculation checks; evidence in section 24 |
 | M10 Receipt/verifier UI | Not started | Page behavior specified |
 | M11 Release checks | Not started | Foundation/core run locally; full product/deployment acceptance remains pending |
 
@@ -822,3 +826,460 @@ Fresh pre-commit verification passed:
 - Before the batch, `git fetch origin` showed local and remote `main` at the same commit with zero divergence. `git diff --check` passed.
 
 This record belongs to the batch’s final commit. The authorized push follows only after all 50 commits are checked and the working tree/index contain no remaining changes. Its acknowledgement must be verified against the remote `main` reference; Git status and the execution response are the authority for actual push completion. No subsequent phase or automatic future push is authorized.
+
+## 22. M08 local proof and contract — 22 October 2026
+
+U30 authorizes the whole local phase. All fourteen numbered documents, index, guidance and current handoff were read before implementation. Entry: G02 and G07 passed, immutable accepted comparisons/reports/results available. Published main starts at `44f3c5aa4fd873951fc7e5081232e2352e0a62b1`, clean working tree. No funded wallet or new API needed.
+
+Document 10 version 1.1 resolves reproducibility gaps before code: comparison/result creation instants, bounded public cancellation source, separately reviewed correction text, explicit nonce injection and trusted chain observation boundary. Existing private schemas, calculation method and stored snapshot digest semantics remain stable. Planned sequence: strict public builders → canonical hashes/goldens/browser parity → pure verifier → local contract/artifact → full local-chain recheck. Task completion evidence will be appended after actual checks.
+
+### M08.01 — passed local projection checks
+
+Added strict public schemas and method descriptor (`src/domain/proof/`), server-only allowlist export builders and cryptographic identity factory (`src/server/proof/`). Builders check accepted snapshot identity and retained report/result pairing, omit private identifiers/notes/reasons/percentages, preserve false profile/null amounts and terminal cancellation, and require supplied retry-stable nonce. Existing private schemas/digests unchanged. Five focused builder checks passed; full phase check follows. M09 must persist the generated identity before any preview; no new publication persistence or UI is claimed.
+
+### M08.02 — passed local canonical/golden checks
+
+Pinned browser-compatible `canonicalize@5.1.0` and `@noble/hashes@2.4.0`; inspected installed canonicalizer implementation, restricted pure dependency imports to the canonical module. Added finite safe integer/plain JSON/Unicode validation, 256-KiB bounded duplicate-key-aware integer JSON import, JCS and domain-separated SHA-256. Authored golden bundle/digests are explicit synthetic data, independently SHA-256 checked using Node crypto. Key permutations, meaningful mutation, malformed/unsafe input and nonce reuse tested. Browser parity remains scheduled in final verification. Combined M08 builder/canonical/verifier targeted run: **40 passed**, no API/RPC calls.
+
+### M08.03 — passed local verifier checks
+
+`src/domain/proof.ts` exports a browser-safe pure verifier. It recomputes full feasible optimum, baseline/profile and actual overlap amounts using original clocks; recognizes only the pinned descriptor; checks terminal cancellation, correction/public sequence and skipped private revision semantics. Separate schema/integrity/method/calculation/timing/history/evidence states preserve unavailable chain evidence and assumed/self-reported limitations. Trusted chain observations are separate caller input, never inferred from bundle metadata. Synthetic failure cases cover wrong context/cutoff/events, omitted latest history, factor/total mutations, inferior feasible schedule and unknown self-hashed method. Full local-EVM observations and browser parity remain M08.05 work.
+
+### M08.04 — passed local contract and artifact checks
+
+Implemented non-upgradeable `contracts/ShiftReceipt.sol` with OpenZeppelin Ownable2Step, nonzero/unique commitments, exact live vs demo cutoff, immutable original issuer and consecutive hash-linked result events. Five product contract scenarios and the existing tooling smoke passed; the two complete proof round trips also passed (**8 local contract checks** total). Covered unauthorized calls, payments/zero owner, duplicate IDs/retry rejection without extra event, zero digests, skipped/out-of-order/wrong-previous/repeated hashes, exact cutoff, distinct same-window cycles and two-step transfer. Application idempotent request replay remains M09; the contract itself rejects duplicates.
+
+`pnpm proof:artifacts` compiled the pinned solc 0.8.37 / optimizer 200 / Cancun contract and generated versioned ABI plus source/ABI/creation/runtime SHA-256 fingerprints under `src/generated/`. `contracts:test` now rejects stale generated artifacts. Contract tests use this typed ABI, not hand-copied signatures or missing ignored generated type declarations. The local `proof` network uses an authored clock and in-process chain only. No deployable account/key or public testnet evidence is claimed.
+
+### M08.05 — passed independent local-EVM and browser recheck
+
+The complete live/demo round trips commit an actual locally deployed contract address, append pending/updated results (including a skipped private revision and signed negative estimate), transfer ownership between revisions, read through the generated ABI and collect actual block/event positions. The exported/imported bundle independently matches all seven verifier checks. Original issuer survives transfer and renunciation; current owner can be zero without corrupting existing content. Offline reads retain unavailable chain states and mutated factors fail integrity/calculation. No transaction/address in this isolated EVM is Sepolia deployment evidence.
+
+`src/test/e2e/proof.spec.ts` injects the actual browser-safe module into real Chromium and agrees with server golden hashes, JCS export, local calculations and trusted observations across desktop/tablet/mobile in an India timezone. The fixture folder documents its synthetic origin. No public application route/page was added.
+
+### G08 final acceptance — 22 October 2026
+
+| Task | State | Evidence |
+|---|---|---|
+| M08.01 | Passed | Strict manifests/method, retained-parent/snapshot allowlist projection, private text/ID omission, profile/cancellation handling and explicit supplied nonce |
+| M08.02 | Passed | Frozen golden plan/result/method digests independently checked with Node SHA-256; UTF-16 JCS order, mutation, safe bounded JSON and browser parity |
+| M08.03 | Passed | Pure recomputation of feasible global optimum, baseline/profile/forecast/actual amounts, supported method, chronological correction/public chain and independent evidence states |
+| M08.04 | Passed | Small non-upgradeable contract; owner/zero/duplicate/cutoff/revision/transfer guards; generated ABI/build fingerprints match actual compiler output |
+| M08.05 | Passed | Actual isolated-EVM reads/events validate full live/demo portable proofs, timing, original/current owner and immutable result chain; browser/server parity |
+
+Executed checks and observed outcomes:
+- `pnpm verify:clean` passed a strict frozen install, unconfigured environment check, lint/purity, all **8 local contract checks**, both TypeScript projects, **466 unit/component checks** across 42 files, and production build in a temporary copy without credentials, cache or generated raw artifacts. It removed only its own temporary copy. Contract fingerprints reproduced when both Solidity sources were freshly compiled together.
+- Final `pnpm contracts:test`: **8/8 passed**, including both actual local-EVM round trips through transfer and renunciation, with generated ABI/source/creation/runtime fingerprints matching. No RPC, funded key, fork, oracle, token or proxy.
+- `pnpm test:e2e`: **48/48 passed** against a freshly built production server. This includes the existing 45 browser checks and three proof parity checks. Following the final configured-context/outage refinement, targeted proof/domain-boundary tests passed **58/58**, final lint/types passed and browser proof parity passed **3/3**. No broad regression was needlessly repeated after that narrow change.
+- The main working-copy production build passed using a command-only HTTPS example origin and disabled/unconfigured external integrations; ignored development configuration was not edited. Existing app routes remained unchanged.
+- Resolved validation findings: the purity checker correctly flagged a schema variable named `window`; renamed it without relaxing ambient-capability rules. Contract test types initially lacked the ignored Hardhat declaration augmentation; switched to the versioned generated typed ABI and a shared event-position shape. Playwright's Node ESM loader required explicit JSON import attributes in the new harness; added the same syntax already used by existing fixtures. The final verifier also reports a known configured-context mismatch even if RPC observations are unavailable. All targeted rechecks passed; no unresolved G08 failure.
+- Database/Auth/grid/AI implementation and provider policy were untouched. Retained G07 SQL/live lifecycle evidence was not recast as a fresh hosted check. No inference, paid activation, hosted migration, wallet generation, real testnet deployment, commit or push occurred in M08. `git diff --check` passed.
+
+### Current handoff — M08 complete
+
+```text
+Task: M08.01–M08.05 / G08
+Status: passed locally; stop before M09
+Scope/spec version used: Roadmap 2.9, proof specification 1.1, unchanged carbonshift-gb-uniform-v1 calculator and frozen M07 private envelopes; all fourteen numbered documents/index/guidance read at phase start
+Dependencies and external gates: G02/G07 preserved. G08 needs no account/key. G-CHAIN (dedicated testnet issuer/faucet/RPC) is required for M09 deployment/publication. Public AI profile/privacy contact/deployed OAuth remain M11 release decisions
+Changed files: src/domain/proof.ts and proof/{schemas,canonical,method-descriptor,observations,verifier}.ts; src/server/proof/{identity,builders}.ts; contracts/ShiftReceipt.sol, local config and tests; generated ABI/build metadata; scripts/receipt-artifacts.ts and narrow import allowlist; package/lockfile; authored proof fixtures, unit/browser harnesses; docs 04/05/07/08/10/12/13/14, index, README and guidance
+Checks run and observed results: clean reproduction including 466 unit/component and 8 local contracts; current local 8 contracts/fingerprint check, 48 browser plus final targeted 3 proof browsers and 58 proof/boundary checks; final lint/types; production build; diff whitespace
+Manual/live checks and environment: no human input required; isolated in-process EVM, injected authored clocks and synthetic national-grid fixtures; real Chromium. No live provider or actual Sepolia evidence claimed
+Unresolved failures or decisions: no current G08 failure. M09 must persist nonce/receipt identity before preview and reuse bytes on retries, obtain exact consent, add immutable public persistence/outbox and RPC/worker/deployment handling. M10 adds public import/download/verification UI. M06 experimental timing and deferred optional M05 builder usability review remain unchanged
+Next ready task: M09.01 only after explicit phase authorization
+Exact command/action to resume: On M09 authorization read AGENTS.md, docs/README.md, this log and all fourteen numbered documents. Revisit roadmap M09 and owners 04/06/07/10/11/14. Inspect src/server/proof/builders.ts, src/domain/proof.ts, generated ABI/build metadata and lifecycle locks/deletion before designing immutable previews/public revisions/outbox. Continue isolated work if G-CHAIN is missing; do not claim G09 until real deployment/confirmed publication evidence exists. Never copy isolated-EVM addresses into runtime configuration
+Relevant commit or reviewable diff: uncommitted M08 work on top of published 44f3c5aa4fd873951fc7e5081232e2352e0a62b1; no history rewrite or source publication in this phase
+```
+
+## 23. M09 credential preparation — 23 October 2026
+
+The builder obtained faucet funds and entered the dedicated signer locally. Under U31, copied the existing development Supabase project URL and privileged secret key from `.env.local` into `.env.worker.local`, preserving the configured Sepolia RPC and signer. Verified the copied values match, the file has mode `0600`, is Git-ignored and is not tracked. No credential values were printed or added to source/docs. Document 14 now reflects the actual preparation state.
+
+Read-only outcomes:
+- The signer derives the builder's funded public address `0x07084317B02a2fdc23F4E1bcA5749d849461A4E3`. The real RPC reports chain ID **11155111** and native balance **0.53 Sepolia ETH**.
+- Supabase `profiles.user_id` with a zero-row limit returned **HTTP 200** using the copied worker credentials. The first probe selected nonexistent `profiles.id` and returned HTTP 400; inspecting the migration identified `user_id`, and the corrected probe passed. No database records were read into output or changed.
+- `LEDGER_ENABLED=false` is preserved. Full worker validation still correctly requires activation plus a real `LEDGER_CONTRACT_ADDRESS` and `LEDGER_DEPLOYMENT_BLOCK`; those will follow authorized deployment, never fabricated placeholders. No signing, deployment, hosted migration, AI call, paid activation, commit or push occurred.
+
+```text
+Task: Pre-M09 local credential preparation under U31
+Status: preparation complete; M09 not started
+Scope/spec version used: Roadmap 2.9 and existing worker environment schema; G08 remains the latest phase gate
+Dependencies and external gates: Dedicated funded test wallet, matching key, correct-chain RPC and existing Supabase API access checked. Actual deployment/publication and G09 remain pending
+Changed files: ignored .env.worker.local; docs/14-manual-setup-guide.md; docs/decisions-and-status.md
+Checks run and observed results: local key/address match, copied configuration equality, file mode/ignored/untracked checks; read-only Sepolia chain/balance; Supabase zero-row HTTP 200
+Manual/live checks and environment: builder-controlled dedicated test account; real Sepolia and existing development Supabase; no transaction submitted
+Unresolved failures or decisions: no remaining credential-preparation failure. Contract metadata, worker implementation and deployment belong to M09; full worker activation remains intentionally disabled
+Next ready task: M09.01 only after explicit phase authorization
+Exact command/action to resume: On M09 authorization read all required phase documents and follow section 22's handoff; use the prepared ignored worker configuration without exposing its contents
+Relevant commit or reviewable diff: existing uncommitted M08 plus preparation documentation; no source publication
+```
+
+## 24. M09 publication implementation — 23 October 2026
+
+U32 authorizes M09. G07/G08 and prepared development Supabase/dedicated Sepolia access are the entry evidence. Read the fourteen numbered owners, index, guidance and status before implementation. Existing uncommitted M08 work is preserved. M09 uses the approved written architecture/task plan: persisted immutable previews and exact-hash consent, transactional outbox, one leased signer, durable raw transaction before broadcast, canonical receipt/event reconciliation, P05 controls and publication-aware deletion. No new AI role or public M10 page is added.
+
+M09.01 interface clarification in document 07: result previews accept separately reviewed `correctionExplanation`; private notes/reasons never become public implicitly. Owner-only state/bundle routes bridge M09's exportable gate without implementing M10 public routes. Plan preview expiry respects the ten-minute operational buffer. Task sequence: .01 previews/consent → .02 outbox/leases → .03 signing/reconciliation → .04 UI/deletion races → .05 real Sepolia + integrated check. Actual evidence follows after each task's checks.
+
+### M09.01 / M09.02 checkpoint
+
+Implemented `20261023000800_publication.sql`, strict shared publication contracts, allowlist preview/state/export service and owner-authenticated routes. Receipt identity persists before preview; concurrent identical result previews reuse stored nonce/bytes, exact-hash consent is transactional with the uniquely keyed outbox. Result preview text is separately reviewed; no private correction auto-publishes. New `20261023000900_ledger_worker.sql` adds fenced signer leases, prepare/persist locks and cancellation/account-detachment guards. Existing private plan/detail/page schemas now accept actual publication states. No hosted migrations/deployment yet.
+
+Observed isolated integration run: **75/75 passed**, including the previous 67 cases plus concurrent identity/preview/consent reuse, stale/hash/path/expiry conflicts, commitment quota, RLS/direct invocation denial, immutable public copies, lease fencing and unsigned versus signed cancellation/deletion retention. These checks use explicit isolated fixtures; they are not real testnet evidence. Worker adapter/processor and UI are still being completed; M09.03–.05/G09 remain pending.
+
+### M09.03 / M09.04 local integration checkpoint
+
+Worker processor, Supabase store, real viem signing/broadcast/inspection adapter and explicit CLI now exist. Generated linked database types are retained as generated; `server/db/schema.ts` narrowly corrects the generator's missing nullability for nullable publication/observation RPC arguments. No runtime validator was weakened. Both incremental migrations 008/009 applied after their isolated checks, and linked schema types regenerated. New routes use the existing API `[id]` directory; an initial conflicting `[planId]` directory was caught by the development server and moved before live publication.
+
+Observed checks: **483 unit/component**, **76 isolated SQL**, **9 local contract/adapter** and **48 production-browser** checks passed; main production build, lint/import boundaries and both typechecks passed. The adapter test uses the actual production signing/broadcast/reconciliation implementation against the isolated EVM, including the two-block waiting policy and changed-block-hash handling. Worker unit checks cover persistence/crash/uncertain/fencing scenarios; SQL covers plan and result consent, replay, retained public copies and deletion/cancellation locks. P05 now renders exact-field preview, unchecked consent, actual queued/signing/submitted/confirmed/failed/uncertain status, unpublished private changes, separate result review and owner bundle download. Account deletion explains public-copy retention.
+
+Live integration observations so far: real hosted migrations applied; two current Gemini timing attempts timed out at the 12-second primary bound and the endpoint returned sanitized `503 AI_UNAVAILABLE`. No extra candidate was promoted or timeout/quota raised to manufacture success. Existing evaluated-role policy remains experimental/manual-first. The current integrated AI success check is therefore unavailable, not passing. The Sepolia deployment initially stopped unsigned because the provisional 2-million gas cap was below the RPC's observed 4,081,590 estimate; the bounded deployment cap was revised to 6 million with the existing fee/balance checks. No original failed attempt broadcast or consumed a nonce. Real deployment/publication evidence is still pending at this checkpoint.
+
+### M09.05 — real Sepolia acceptance passed
+
+Deployed and independently checked the pinned runtime at **`0xddc904b894669e4f00a3b4dfbaad58f90e9f7040`**, transaction `0x4357d49ace21861481be1149975d6195a6ac83781461a7a8a2ddf38038a93ebd`, block **11971755**, issuer `0x07084317b02a2fdc23f4e1bca5749d849461a4e3`. Actual bytecode/owner/canonical block and two further blocks verified. The original raw deployment bytes persisted before broadcast; no replacement nonce was used. Real contract address/block/RPC were configured in ignored web/worker environments; the private key remains exclusively in the worker file. Both environment checks passed.
+
+The final `pnpm check:publication` exited **0**. It exercised ordinary local protected pages and APIs, actual hosted Auth/database and national forecast, with an explicitly authored 875 Wh cycle assumption. While its worker was offline, manual comparison/save and exact-preview consent worked and the operation stayed queued. The real worker committed the plan, the owner cancelled before start, then separately reviewed/consented to the non-run result. Both transactions confirmed only after inclusion plus two further blocks. Same-key retries returned the original operations; the foreign member could read neither operation nor bundle; false consent was rejected. Cancellation has null result amounts and no benefit claim.
+
+Final receipt: `0x6d003462646e188e4d9c5e3ba223ad4563f655ea272c91b6cad1217fd0aee655`. Plan transaction **`0x111ef656fd5476ec11a163b0b3309a2abecb79c84e1c0c94dd01c65e747bc22c`**; result transaction **`0x9dacedf203a94352e4e5d61f03a6fcd458b1e04cc8d504148eb0e0bf98e1ba53`**. Exported/imported the actual owner bundle and separately read canonical blocks, contract state and exact transaction events: **schema, plan integrity, supported method, calculation, timing, result history and evidence basis all matched**. Altering a factor actually used by the baseline failed integrity and calculation. Desktop/mobile screenshots inspected; zero observed axe violations, horizontal overflow or browser errors. The harness stopped its worker and deleted only its two temporary fixture accounts; public copies retained without owner/private links. No human provider reauthentication, physical appliance run or measured climate impact is claimed.
+
+Resolved live findings, preserved honestly:
+- The initial worker cap of 500,000 gas was below the observed **582,702** estimate (**699,242** with the implemented margin). This safely deferred signing; the cap was revised to a bounded **1,000,000** without changing fees, chain, identity or consent. The actual adapter/local-contract checks were rerun and passed. The first harness wait expired around recovery; its signed transaction was retained/reconciled after account cleanup. No fresh nonce replaced it and no falsely confirmed state was shown.
+- A subsequent real flow confirmed both transactions and exported a valid proof but failed the test's final tamper assertion: NESO retains an extra leading interval outside the calculation window. Changing it changes the digest while legitimately leaving arithmetic unchanged. A read-only diagnosis confirmed this, then the check was changed to mutate the actual baseline factor. The final full flow passed; earlier disclosed copies remain retained. No product calculator, source data or expected real number was changed to force a pass.
+- Current Gemini timing availability: two attempts timed out at the existing twelve-second bound; the route returned `503 AI_UNAVAILABLE`. Normal manual planning worked. A separate ordinary authenticated Groq explanation endpoint with real forecast facts, grounded limitations and owner cache passed, as did one admitted Groq schema smoke. No timing fallback was promoted without evaluation and no policy/limit/billing change was made. This is a remaining external availability limitation, not a passing current Gemini inference claim. See `research/phase-9/ai-integration-status.json`.
+
+### G09 final scoped verification
+
+| Task | State | Evidence |
+|---|---|---|
+| M09.01 | Passed | Immutable stable identity/previews, exact consent/hash/context/path/expiry checks and private/public revision mapping; private corrections never auto-publish |
+| M09.02 | Passed | Applied transactional copy/outbox/acknowledgement, permanent operation identity, daily caps, RLS and fenced signer lease; no web signing key |
+| M09.03 | Passed | Persist-before-broadcast/unique nonce and same-byte recovery; crash/unknown receipt/reorganization checks; real adapter signs/broadcasts/reconciles against isolated EVM and actual Sepolia |
+| M09.04 | Passed | P05 exact review/status/export, loaded-history publication filter, separate result consent, honest uncertainty, cancellation locks and account-link detachment/public retention |
+| M09.05 | Passed | Verified actual deployment and confirmed real plan/non-run result; independent export/chain checks, retry/ownership/outage separation and cleanup |
+
+Executed checks: `pnpm test` **483/483** across 45 files; `pnpm test:integration` **76/76** on a new isolated native PostgreSQL cluster; `pnpm contracts:test` **9/9** including the actual production adapter on an isolated EVM and current fingerprints; `pnpm test:e2e` **48/48** production-browser checks; lint/import boundaries, both typechecks and production build passed. `pnpm verify:clean` passed strict frozen install, disabled/unconfigured startup, lint, all nine local contract/adapter checks, both types, 483 unit/component checks and production build in a temporary copy without environment credentials. It removed its own copy. The recovery journal was subsequently added to the copy exclusion list; no deployed journal is needed by tests/build. Narrow final UI/service changes received targeted checks rather than another full regression. The new public-history filter remains explicitly limited to loaded pages, with normal load-more recovery.
+
+Additional live evidence: both environment configurations passed; real ordinary Groq explanation/cache passed; `pnpm ledger:reconcile` exited 0 without signing/rebroadcast. Exact local secret-value scan passed across 342 then-publishable files; all three local environment files have mode 0600 and, along with the signed deployment journal, are ignored/untracked. Existing Google/GitHub configuration/accounts preserved; no new human OAuth pass or public UK AI release approval inferred. Public M10 pages, M11 external release checks and paid activation remain outside this phase. No commit/push occurred.
+
+### Current handoff — M09 complete
+
+Final handoff checks: linked migration dry run passed with no pending M09 migrations; 19 guidance/evidence Markdown files and 111 local links passed structural/link checks; final lint/boundaries and both typechecks passed. Final lifecycle/publication/history UI selection passed **9/9** after updating its explicit evidence-label expectation to the intended M09 wording. This corrected a stale copy assertion, not a calculation or authorization failure. `git diff --check` passed. Development app health returned HTTP 200. After the harness stopped its worker, a separate normal local worker was started for builder review and observed returning `idle_or_pending`; both local app and worker are running at handoff. Closing the process or sleeping the computer stops publication processing. No commit/push or M10 work was performed.
+
+```text
+Task: M09.01–M09.05 / G09
+Status: passed locally and on Sepolia; stop before M10
+Scope/spec version used: Roadmap 2.10, proof 1.2 and unchanged carbonshift-gb-uniform-v1; all fourteen numbered owners/index/guidance read at phase start; U32 authorizes this phase and its dedicated testnet deployment/checks
+Dependencies and external gates: G07/G08 preserved; development Supabase migrations 008/009 applied; G-CHAIN actual deployment/publication/export verified. Current Gemini timing unavailable; Groq explanation/cache and manual path verified. Public AI profile/privacy contact/G-HOST remain release decisions
+Changed files: new publication contracts/repository/service/handlers/routes and SQL 008/009; worker contracts/processor/store/chain/CLI; deployment and explicit live-check tools; generated schema and narrow nullable-RPC correction; P05 publication panel, lifecycle/account copy, actual publication-state hydration and loaded-history filter; dependency/script configuration; isolated API/component/SQL/worker/local-EVM checks; phase-9 evidence, owning docs/index/README/guidance. Existing M08 work preserved
+Checks run and observed results: 483 unit/component,76 isolated SQL,9 local contract/adapter,48 browser; clean-copy reproduction, final targeted checks/static/types/build; actual Sepolia deployment/plan/non-run result and all seven independent export checks; Groq ordinary endpoint/cache/smoke; current Gemini timeouts documented honestly
+Manual/live checks and environment: local Next app, existing Free Supabase, real national forecast, dedicated Sepolia issuer and RPC. Authored energy and self-reported cancellation; no appliance measured. Temporary accounts removed/public links severed. Desktop/mobile screenshots inspected; no observed axe/browser/overflow failures
+Unresolved failures or decisions: no remaining G09 failure. Gemini timing requests currently time out; manual-first recovery remains. Public UK AI profile, privacy contact, external OAuth/hosting/reviewer checks and M10 public receipt/verifier pages remain pending. A local worker is required for publication and is not always-on hosting
+Next ready task: M10.01 only after explicit phase authorization
+Exact command/action to resume: On M10 authorization reread all fourteen owners/index/guidance/current status. Inspect src/server/publication, immutable public tables/operations, src/domain/proof and phase-9 actual bundle/observation before implementing allowlisted public receipt/bundle/chain projections. Add shared public-read admission before the public RPC endpoint. Preserve owner APIs, receipt identities, raw signed-byte isolation, experimental AI policy and immutable public/private history. Do not redeploy the contract or regenerate identity to reuse the proof
+Relevant commit or reviewable diff: uncommitted M08/M09 changes on published 44f3c5aa4fd873951fc7e5081232e2352e0a62b1; no history rewrite or automatic publication
+```
+
+
+## 25. Household electricity expansion — 23 October 2026
+
+U33 requests broader electrical activities, separate simulation/task/day-planning workflows, time-window errors and alternatives, useful reports, more home content, and real current data. This supersedes washing-only as the product target, while M00–M09 remain scoped evidence for the existing implementation.
+
+Read the current scope/pages/design, architecture/stack, method/AI policies, API/security/testing requirements, roadmap and latest handoff; inspected the actual method/profile/carbon/scheduling modules, grid adapter, home page and Solidity contract. The implementation fixes durations to 30–180 minutes, applies a wash-oriented uniform profile and freezes a v1 method. A dropdown change alone would not implement the request. The contract accepts method hashes without hardcoding v1, but expanded worker/export compatibility has not been tested.
+
+Prepared `docs/superpowers/specs/2026-10-23-household-electricity-design.md` for review. It proposes separate workflows, sourced/manual activity energy, short-task integration, deterministic joint scheduling, explicit baseline/constraint-relaxation logic, bounded-search honesty, two revised AI roles, per-task completion and versioned proof compatibility. Proposed defaults are GB national coverage, up to twelve tasks and five-minute flexible start candidates. These defaults have not received design approval. The source check confirmed published NESO interface boundaries and an institutional appliance-energy estimation reference; it was not a new live application/API/model test.
+
+Updated PRD section 0, documentation index and AGENTS guidance to distinguish the new requested target from implemented v1. Added proposed X00–X05 sequencing to roadmap section 10. Detailed remaining owner documents must be aligned during X00 after review. No product code, runtime settings, provider limits, database, deployment or Git history changed in this documentation task.
+
+Documentation verification: `git diff --check` passed; six changed guidance/design files passed code-fence and local-link checks (83 local links, zero errors). The new design has no TODO/TBD placeholders. These checks validate the proposal files, not the unimplemented capabilities.
+
+```text
+Task: U33 scope clarification and household expansion design
+Status: written proposal ready for review; implementation not started
+Scope/spec version used: current v1 code and docs plus U33; proposed household design dated 23 October 2026
+Dependencies and external gates: design choices and v2 contracts pending; sourced profile entries, joint-search performance and expanded-role qualification need implementation evidence
+Changed files: AGENTS.md; docs/README.md; docs/01-prd-and-blueprint.md; docs/13-development-roadmap-and-codex-tasks.md; docs/decisions-and-status.md; new household-electricity design
+Checks run and observed results: read-only code/interface inspection and official/institutional source research; documentation checks recorded below. No application tests or new live inference/chain calls were required or run for this proposal
+Manual/live checks and environment: no new user trial or real household measurement; existing runtime untouched
+Unresolved failures or decisions: review the proposed GB-only first release, twelve-task cap and search resolution; retain existing Gemini timeout/public-profile limitations
+Next ready task: review the written design, then X00 owner-document alignment and implementation planning
+Exact command/action to resume: Read PRD section 0, this section, roadmap section 10 and the linked design. Incorporate the user's corrections and approval; align numbered owners and write the concrete implementation plan before product changes. Preserve v1 artifacts, existing uncommitted work and passed evidence
+Relevant commit or reviewable diff: documentation changes atop existing uncommitted M08/M09; no commit or push
+```
+
+
+## 26. U34 — approved household build and X00 alignment — 23 October 2026
+
+The user requested “lets build this” after the written expansion design, then explicitly reviewed the detailed plan and selected “Proceed sequentially in this chat.” This authorizes X01–X05 and revised local M10, preserving v1 and without paid activation or Git publication. GB national data, London time, twelve-task input limit, five-minute candidate starts and bounded-search honesty remain the approved first expansion. Public deployment and public AI profile remain separate decisions.
+
+X00.01–X00.04 align all fourteen numbered owners: new F13–F20/T13–T20 and P13/P14, precise integer energy integration, source provenance, versioned APIs/storage, report aggregation, AI variant qualification, consent/proof and setup boundaries. Existing v1 sections retain historical contracts. The concrete executable plan lists thirty X tasks with files/interfaces/checks and downstream M10/M11 boundaries. X00.05 plan review is complete; documentation checks are recorded below. No new application, database, provider or chain capability is claimed by these edits.
+
+```text
+Task: X00.01–X00.05
+Status: alignment and explicit plan review complete; verification pending below
+Scope/spec version used: U33/U34 household design and executable plan; U34 owner sections
+Dependencies and external gates: public AI/hosting/contact remain release decisions; new schema qualification must precede enablement
+Changed files: all fourteen numbered docs, docs/README.md, AGENTS.md, design, new executable plan, status
+Checks run and observed results: see verification entry below; no product tests required for this documentation-only slice
+Manual/live checks and environment: user approved sequential plan execution; runtime/secrets/database untouched
+Unresolved failures or decisions: no remaining plan-review gate; do not transfer v1 evidence to v2
+Next ready task: X01.01 activity contracts and method descriptor
+Exact command/action to resume: read U34 owners 06/08/12 and existing domain source; add isolated v2 activity domain without changing v1 method or accepted records
+Relevant commit or reviewable diff: uncommitted expansion docs atop existing M08/M09 work; no commit/push
+```
+
+X00 verification: `git diff --check` passed. A local link/fence check inspected 19 guidance/owner/design/plan files and 109 local links with zero errors. The user explicitly selected sequential execution. X00 passed; no new code capability is implied.
+
+### X01.01–X01.05 — activity calculation foundation
+
+```text
+Task: X01.01–X01.05
+Status: passed locally for the v2 calculation foundation
+Scope/spec version used: U34 sections of 06/08/12 and approved household plan
+Dependencies and external gates: reference data are explicitly confirmed scenarios; other categories require manual energy. No universal device API or household measurement is claimed
+Changed files: src/domain/activities/{method,schemas,energy,carbon,index}.ts; compatible calendar/coverage helpers in src/domain/time.ts; src/data/activity-profiles.ts; src/test/unit/activities.test.ts; research/household/activity-reference-review.md
+Checks run and observed results: targeted activity and frozen v1 fixture run passed 18 tests across 2 files; pnpm exec tsc --noEmit passed; ESLint on changed source/test files passed; import/environment/domain-purity checker passed
+Manual/live checks and environment: primary source records reviewed for four exact appliance scenarios; no provider inference, database change or testnet transaction in this slice
+Unresolved failures or decisions: UI, simulation API, expanded AI, multi-task solver/storage and proof remain upcoming work; the activity engine alone does not implement those features
+Next ready task: X02.01 owner-safe simulation API
+Exact command/action to resume: use existing Auth/grid client/admission, add strict v2 simulation/profile contracts and handlers, then integrate the separate simulator page and revised AI variants
+Relevant commit or reviewable diff: uncommitted v2 additions alongside preserved M08/M09 changes; no commit/push
+```
+
+### X02 implementation and live simulator evidence — 24 October 2026
+
+The user directed Codex to review the 24 authored expanded-role labels itself. Reviewed and corrected D05/H05 (explicitly car cleaning) and H03 (explicitly clothes washing); `research/household/ai/review.json` binds that review to the dataset hash. This is agent review, not independent human review. No repeated approval request is needed.
+
+Implemented authenticated v2 profile/simulation/interpretation endpoints, variant-bound AI routing, shared editor, optional interpretation review, responsive simulator and current-grid breakdown. A UI walkthrough caught extra timezone properties leaking into a strict local-time input; fixed by constructing only the supported date/time/offset fields. `scripts/check-simulator.mjs` then passed desktop/mobile against real Auth and GB grid, including accessibility, horizontal overflow, source labels and hiding old results after unconfirmed edits. Evidence: `research/household/simulator-live.json`; screenshots in `test-results/live-simulator-*.png`. CarbonShift runs at port 3001 during this check because port 3000 belongs to another local project; that process was left untouched. Existing OAuth dashboard URLs were not changed.
+
+Focused activity/domain/API/AI boundary tests: 24 passed across three files; TypeScript and focused ESLint passed before subsequent scheduler work. The simulator shows energy during a grid outage and never substitutes a fake CO₂ value. Five-minute visible-page refresh and cancellation are implemented. Planner handoff is pending the new planner interface.
+
+Expanded live AI is still being qualified. Initial Gemini request failed with provider schema configuration, then a simplified provider schema reached inference but returned schemaVersion 1; output was rejected. Initial Groq examples exposed missing intended baseline and an invalid response; all attempts remain recorded, with no silent promotion. Provider shape and prompt changes retain strict server validation. Failed candidates remain excluded from web v2 assistance. Latest run evidence is in `research/household/ai/results/`; no v2 qualification is implied by v1 policy.
+
+```text
+Task: X02.01–X02.05, with independent X03 domain work begun
+Status: manual simulator live journey passed; full X02 gate pending expanded AI evaluation and planner handoff
+Scope/spec version used: approved U34 design/plan and owner sections 02/03/07/09/11/12
+Changed files: src/contracts/{activities,activity-ai}.ts; src/server/activities/; src/server/ai/{activity-variant,provider-schema,prompts,router,identity}.ts; AI config variant qualification; src/app/api/v2/activities/; src/app/app/simulate/; src/components/activities/; src/lib/activity-*; shell navigation/styles; focused tests and evaluation/browser scripts; research/household/
+Checks run and observed results: 24 focused tests passed; real desktop/mobile simulator checks passed; bounded live AI failures/successes retained separately, no completion claim for interpreter
+Manual/live checks and environment: real grid and temporary authenticated fixture users, cleaned after browser check; no device measurement, paid activation, Git publication or new blockchain transaction
+Unresolved failures or decisions: v2 model qualification and handoff remain; X03 storage/planner, X04 day/reporting, X05 proof/home and revised M10 remain unfinished
+Next ready task: complete new AI qualification while implementing independent X03.01/X03.02 deterministic scheduling
+Exact command/action to resume: inspect latest authored evaluation evidence; preserve disabled unqualified routes; finish solver checks, additive schedule storage and shared task planning UI, then validate actual save/reload
+Relevant commit or reviewable diff: uncommitted work; existing M08/M09 retained
+```
+
+### X02/X03 working slice — 24 October 2026
+
+`activity-v2.3` on Gemini Flash-Lite passed all 24 agent-reviewed authored cases, including held-out extraction, ambiguity, quantities, fixed timing and explicit wash-before-dry. Evidence `research/household/ai/results/0b2c81ea-4981-4b33-be5b-674cfe452508.json`. Enabled only that interpreter variant in ignored local policy, with existing quotas/role qualifications retained. This is experimental authored-case evidence, not real-user accuracy. Groq's new interpreter remains unqualified after an injection case tried unsupported energy and was safely rejected; no v1 qualification was changed.
+
+X03 now has normalized windows, DAG validation, resource/attention constraints, five-minute/boundary candidates, baseline incumbent, stable ties and bounded joint search. Seven focused scheduler tests passed, including an independent exhaustive two-task oracle and twelve independent tasks. New strict v2 comparison/save/list/detail contracts and owner-safe APIs back the shared task editor, baseline review, alternatives, separate optional window extension and immutable saved report. Small/short loads retain mWh units. No hardcoded impact values enter the live workflow.
+
+Migration `20261024001000_household_schedules.sql` passed isolated SQL checks, then linked dry-run identified only that migration. Applied it to development without reset and regenerated types. Four new schedule SQL cases cover complete atomic saves, retries/choice conflicts, owner isolation/direct-write denial, expiry/immutability and rollback of a failed child insert. Combined isolated SQL run: 80 passed across five files. The explanation-cache migration 011 subsequently passed the same migration/regression run, was dry-run/applied and types regenerated.
+
+Live `scripts/check-household-planner.mjs` passed on desktop and mobile after fixing keyboard focus on the mobile scrolling table. Actual task edits → current GB grid comparison → authenticated atomic save → reload → foreign-account denial passed. Evidence `research/household/planner-live.json` and screenshots. Simulator handoff and sign-out clearing are implemented; direct handoff journey remains to be checked. Saved v1 renderer is retained via explicit separate-store lookup. Source profile records are currently code-owned; their immutable database mirror still needs seeding. Optional schedule explanation has deterministic templates and an owner cache, but its new model candidate is not enabled after an invalid live selection; that evaluation remains a separate gap.
+
+```text
+Task: X02.01–X02.05; X03.01–X03.05
+Status: simulator and private task-planning slices work locally/live; final phase acceptance pending direct handoff/extension regression, profile mirror and explanation qualification decision
+Scope/spec version used: approved U34 owners and household implementation plan
+Changed files: src/domain/activities/{constraints,scheduler}.ts; src/contracts/schedules.ts; src/server/schedules/; v2 schedule routes; activity task editor/planner/comparison/saved report/list; schedule-input; account handoff clearing; SQL 010/011; generated DB types; focused unit/SQL/live scripts and evidence
+Checks run and observed results: 7 scheduler cases, 14 scheduler/AI-grounding cases, 80 isolated SQL cases, TypeScript, focused ESLint and desktop/mobile real planning all passed at the times recorded above; full integrated suite is not yet run
+Manual/live checks and environment: real development Auth/DB/grid, fixture users cleaned; one qualified local Gemini activity variant; failed Groq/new explanation candidates excluded; no new chain broadcast or source publication
+Unresolved failures or decisions: X04 per-task lifecycle/day UI and X05/M10 remain unimplemented; optional explanation qualification, profile mirror and direct handoff checks remain
+Next ready task: finish remaining X03 checks and proceed with X04 day/lifecycle slice
+Exact command/action to resume: retain v1 interfaces; add strict per-task append-only report/result contracts and additive lifecycle SQL, then separate day workspace/timeline and actual-source checks. Revisit owner 06/07/08/11 and current plan before editing
+Relevant commit or reviewable diff: uncommitted changes, no push
+```
+
+### U35 — implementation first, one final verification pass — 24 October 2026
+
+The user explicitly requests finishing the whole approved expansion before end-to-end testing and combined checks, avoiding repeated testing of the same behavior. This supersedes the earlier per-slice test order. From this correction onward, implementation proceeds through remaining X04/X05/revised M10; existing evidence is retained without rerunning it. Only an error that blocks implementation warrants an earlier diagnostic. No unfinished capability will be marked passed before the final combined verification. Paused/rejected AI variants remain excluded; do not spend live quota repeatedly during implementation.
+
+The day route, visual/accessibility timeline, per-task report/correction/refresh controls, deterministic partial aggregates and additive lifecycle SQL are now written. V2 public schemas, safe version dispatch, sanitizer, arithmetic/lineage verifier and shared worker support are being implemented. SQL 012/013 and their generated types are not yet applied; this is implementation in progress, not passed migration or live evidence. Existing ignored secrets and v1 records remain untouched by this work.
+
+
+## 27. Household expansion and revised local M10 — final acceptance
+
+24 October 2026. Completed the U34 expansion sequentially in this chat under U35's implementation-first direction, then ran the combined regression and real-service acceptance. X00–X05 and revised local M10 are complete for the approved local scope. Earlier “pending/unimplemented” entries in sections 25/26 are historical checkpoints, superseded by this entry. Public deployment remains M11; no commit/push, paid activation or contract redeployment occurred.
+
+### Final behavior and task gates
+
+| Tasks | State and actual delivered behavior |
+|---|---|
+| X01.01–X01.05 | Passed: strict v2 activity/energy contracts, reviewed exact-model profile records, exact mWh/rational carbon integration, minute-level coverage, London calendar boundaries and frozen v1 compatibility |
+| X02.01–X02.05 | Passed: authenticated source-aware simulation/profile/interpretation APIs; separate responsive simulator; edit/race/cancellation/partial states; reviewed same-owner planner handoff; qualified local Gemini activity variant and complete manual path |
+| X03.01–X03.05 | Passed: feasible explicit baselines, five-minute/boundary candidates, fixed/resource/attention/DAG constraints, bounded joint search/alternatives, separate thirty-minute proposal with re-review, atomic owner-safe save/history and v1 renderer |
+| X04.01–X04.05 | Passed: separate day workspace and accessible timeline; mixed four-task real save/reload; per-task completion/non-run, append-only corrections, actual-factor refresh and honest partial aggregates |
+| X05.01–X05.05 | Passed: pinned v2 canonical digests, explicit v1/v2 verification, sanitized exact consent, shared fenced worker, existing local/Sepolia contract compatibility, real plan/result and richer source-aware home/dashboard/report content |
+| M10.01–M10.05 revised | Passed locally: anonymous allowlisted receipt/bundle/observation APIs and shared read budgets; public receipt page; local-file browser verifier with separate trusted-chain checks; methodology/privacy/authored demo; desktop/mobile public/private checks |
+
+The source-profile mirror is now immutable and server-owned when persisted. API contracts re-export pure domain-owned schemas, keeping calculation modules independent of database/UI/AI/network. Migrations `20261024001000` through `20261024001300` were checked against isolated PostgreSQL, then dry-run/applied incrementally to the existing development project without reset; generated types reflect those migrations. Existing Auth/provider settings and records were preserved.
+
+Unknown appliance energy still requires user input or an exact reviewed reference, and grid CO₂ is an estimate derived from that energy plus source factors. Broad categories do not imply automatic device measurement. Whole-day reports count each task's latest report/result once; missing, non-run and changed-profile tasks never manufacture a complete aggregate or avoided-emissions claim.
+
+### Combined software checks
+
+- `pnpm test`: **52 files, 521 passed** in the combined run.
+- `pnpm test:integration`: **6 files, 83 passed** on isolated native PostgreSQL, including additive migration/atomicity/isolation and v1 regression.
+- `pnpm contracts:test`: **10 passed**, including a v2 plan/result through the actual adapter and existing contract on an isolated EVM; ABI/build fingerprints matched.
+- `pnpm test:e2e`: **48 passed** across production-fixture desktop/tablet/mobile; fixtures were explicitly separated from live services.
+- `pnpm typecheck`: application and contract checks passed.
+- `pnpm build`: passed with account/AI/ledger credentials cleared in its process. The intentionally forbidden production free-development Gemini profile was not enabled or bypassed.
+- ESLint full source passed after concrete corrections; the final affected-file run and the import/domain/environment boundary check passed. An initial boundary false positive treated a local `window` variable as a browser global; renaming that variable removed the ambiguity. No calculation changed for that correction.
+- Added fixed v2 method/plan/result golden digests after the combined pass; the affected proof file passed **3/3**, with targeted ESLint passing. This supplements the combined 521 count rather than claiming another full-suite run.
+- Exact local secret-value scan across **476** then-publishable files found **zero matches**. Local environments/session journals remain ignored; fixture session credentials were removed from the journal after cleanup while keeping duplicate-publication protection. Final documentation/whitespace verification is recorded below.
+
+Passing suites were not broadly rerun after documentation or golden-fixture changes. Verification addressed actual failures and uncovered acceptance paths rather than repeatedly consuming model/testnet quota.
+
+### Real Auth/database/grid and UI evidence
+
+`research/household/final/integration.json` records a real source-backed simulator → reviewed handoff → mixed-day comparison → immutable save/reload → owner/foreign access journey through normal local routes and APIs. Four tasks retained fixed TV and wash-before-dry order. Non-run reporting, append-only correction and unchanged refresh passed. Six connected routes passed desktop/mobile accessibility/overflow checks; the desktop day report and responsive home screenshots were inspected.
+
+A one-minute authored completed-run self-report was submitted after acceptance without overriding the clock. The reviewed baseline was still in the future, so updated comparison correctly remains pending and whole-schedule totals remain null. A separate retrospective simulator request consumed actual-grid factors and returned **1697 mg** for its authored inputs. This checks wiring and evidence states, not a real appliance or achieved climate benefit. The final public result has zero comparable tasks, one non-run, one pending reported run and two unreported tasks.
+
+`research/household/final/windows.json` records the remaining review-boundary path: an exact-fit task yields zero improvement, a separate thirty-minute extension preserves baseline/energy and uses its own fresh comparison, applying it returns to unconfirmed review, and an insufficient window returns `WINDOW_TOO_SHORT`. No model or chain request was made for this focused check.
+
+### Expanded AI qualification and normal-route wiring
+
+Gemini Lite `activity-v2.3` passed **24/24** agent-reviewed authored cases; evidence remains `research/household/ai/results/0b2c81ea-4981-4b33-be5b-674cfe452508.json`. The user requested agent review, not another approval prompt. Gemini Lite `schedule-explanation-v2.3` passed **6/6** grounded code selections, recorded in `research/household/ai/schedule-explanation.json`. Enabled only those evidenced local variants, keeping policy quotas, shared admission and the two-attempt bound. Existing v1 qualifications were preserved separately. Expanded Groq interpreter validation failures remain recorded and that variant remains excluded; manual/template recovery works.
+
+`research/household/final/ai-wiring.json` confirms the ordinary authenticated v2 endpoints: ambiguous car cleaning requested equipment, duration and energy instead of inventing consumption; the saved-plan explanation selected an eligible code; the second read used the owner cache without new inference. Two admitted provider tasks, zero chain requests. These are experimental authored-case results, not independent user research or population accuracy. An earlier one-off check raced fixture cleanup; the separate fresh fixture check passed and cleaned its own user.
+
+### Actual v2 Sepolia/public verification
+
+Reused `0xddc904b894669e4f00a3b4dfbaad58f90e9f7040`; no redeployment or mainnet funds. One exact-consent v2 plan and separately consented result confirmed, with canonical chain observations and inclusion plus two further blocks:
+
+- Receipt: `0x2b6c26c7126e95abd482a3710b493073808259d7bb2c63a4037a42f34f267fbb`.
+- Plan digest: `0xde71024e0200f8b5c2eb261d0ea61e935ff29a03938915ee296869617b581934`; transaction `0xa30c8b779398af2c0671a687d4ef4236ea1fb1bebfc63a781c5a0f40931ad9ec`, block **11983596**.
+- Result digest: `0x1ffd69d4f1a7506c99344b39cd075c8bd8e86898af97643160da2064e2e087ac`; transaction `0x968fc7fb01b39505bc37406f99b7e247449667fa20c1513783d6dd73d339c2ff`, block **11983604**.
+
+Anonymous receipt and downloaded `research/household/final/sepolia-v2-bundle.json` worked. The browser local verifier plus independent operator RPC observations showed **all seven separate checks matched**. V1 fixture/worker/export checks still passed. Content hashes do not measure energy or prove physical savings. Temporary users were removed and consented public copies retained without private owner links. The main live harness's ignored journal prevents another redundant commitment; do not remove/bypass it merely to repeat acceptance.
+
+### Current handoff — expansion and local M10 complete
+
+The local application is running at `http://127.0.0.1:3001` because another project owns port 3000. The normal ledger worker was restarted after fixture cleanup and observed `idle_or_pending`. A sleeping/stopped local machine is not always-on hosting. Original Google/GitHub dashboard redirects still target 3000; a fresh human OAuth flow on 3001 was not verified. Preserve the other project and align the chosen local port/redirects explicitly before fresh sign-in. No existing provider configuration was overwritten.
+
+```text
+Task: X02.01–X05.05 and revised M10.01–M10.05; X00/X01 preserved
+Status: passed for approved local scope; public release remains M11
+Scope/spec version used: U33/U34 approved household design/plan and all fourteen owner target sections; U35 implementation-first combined verification order
+Dependencies and external gates: development migrations 010–013 applied; existing Supabase/grid/qualified local Gemini/worker/Sepolia used; no paid upgrade or new account required
+Changed files: domain activities/time/proof-v2/version dispatch; pure shared contract owners; source profile registry; simulation/schedule/lifecycle/explanation/publication server services and routes; additive SQL 010–013/generated types; separate simulator/task/day UI and shared editors/timeline/reports/history; anonymous receipts/local verifier; home/methodology/privacy/demo/navigation; AI variant policy/prompts/provider schema; worker version dispatch; evaluation/live tools and isolated tests; owner docs/guidance/final evidence
+Checks run and observed results: combined 521 unit/component,83 SQL,10 contract,48 browser; types/build/static/boundaries passed; affected proof goldens3/3 and final focused lint; real service/AI-cache/Sepolia/browser-bundle evidence recorded above
+Manual/live checks and environment: authored inputs/self-reports with real development Auth/DB/grid, dedicated Sepolia; inspected desktop/mobile UI; no household measurement or human usability study claimed
+Unresolved failures or decisions: no remaining local expansion acceptance failure. New Groq interpreter intentionally excluded; public AI profile, actual privacy contact, web/worker hosting, deployment HTTPS/OAuth and fresh human sign-in remain M11. Current local alternate port requires explicit callback alignment for fresh sign-in
+Next ready task: M11 release-readiness review; deployment only after concrete account/profile/budget choices
+Exact command/action to resume: read docs index/status and fourteen owners; inspect current feature/route matrix and final evidence, not historical unimplemented checkpoints. Prepare concrete remaining privacy/public-AI/hosting/OAuth decisions, preserve current services and contract, and verify only changed/deployed paths. For original local account setup use pnpm dev on port3000 when free; run pnpm worker:ledger separately. Never delete journals to generate another nonce or requalify unchanged roles solely for a larger test count
+Relevant commit or reviewable diff: existing uncommitted M08/M09 plus U34 expansion on published 44f3c5aa4fd873951fc7e5081232e2352e0a62b1; no commit/push
+```
+
+Final handoff verification: `git diff --check` passed; twenty guidance/owner/plan/evidence Markdown files and 129 local links passed structural checks, and final JSON evidence parsed successfully. The running app health returned HTTP 200. The local ledger worker remains running after its observed idle state. No further full test, live model evaluation or testnet transaction was run for this documentation handoff.
+
+
+## 28. U36 — landing refinement and exact activity catalogue
+
+24 October 2026. The user requested a stronger landing design, additional useful content and the supported-activity count. Replaced the sparse home composition with a split hero/real grid outlook, a keyboard-accessible workspace chooser, the full catalogue, a four-step explanation, private/public evidence content and expanded FAQs. Counts derive from the actual category/profile/method definitions: eleven named categories plus custom, four reviewed exact appliance references and up to twelve tasks in a plan.
+
+Files: `src/components/home/{landing.tsx,landing.module.css,workflow-picker.tsx}`, thin `src/app/page.tsx`, `src/components/activities/grid-summary.tsx`, `src/server/grid/summary.ts`, affected foundation browser assertions, document 03 and `research/household/home-redesign.json`. The summary re-selects the current interval after cache reads and excludes supplier intervals outside its requested 24-hour outlook. No AI inference, chain write, paid activation or Git publication was needed.
+
+Observed before U37: lint/boundaries, both typechecks and production fixture build passed. The affected production landing journey passed three desktop/tablet/mobile cases; the real development home had zero observed overflow/axe/browser errors at 1440/768/390px. The final source-window read showed 48 actual half-hours. An initial ad-hoc accessibility harness used the wrong browser-context entry; its context setup was corrected without changing application behavior. The user subsequently stated they tested the page, liked its appearance, and requested that direction throughout the app. This is approval of the landing baseline, not evidence for the later U37 screens.
+
+## 29. U37 — all-page visual quality and useful detail
+
+24 October 2026. The builder requests the same premium, clean appearance across every page and fuller useful content. They explicitly take testing themselves. Implemented the presentation update using the approved landing as the reference, preserving the existing backend/domain/consent flows. Do not treat this as authorization for M11 deployment, paid activation or source publication.
+
+### Implemented presentation coverage
+
+- Shared `product.css`: page scale, forest/paper surfaces, forms, task rail/editor, comparisons, source details, report history, publication controls, account screens, proof states, tables and responsive reflow.
+- Shared `PageHeader`, `PageGuide`, `WorkspaceNotes`, `ReadingLayout`; current-route states in primary/mobile navigation. Root loading, not-found and error pages use the same system and contain no fake values/progress.
+- Dashboard: three real workspace entry points, explicit loaded-history filtering and an actionable empty state. Counts describe loaded records rather than pretending to be account-wide totals.
+- Simulator, task planner and day planner: purpose-specific workflow guidance, energy-source explanation, usual-time/availability/ordering context, improved input grouping and source-aware result surfaces.
+- Saved v1/v2 report and completion: original-method context; forecast/report/publication wayfinding; retained coverage, corrections, source details and exact consent. V2 completion continues redirecting to the existing per-task reporting section.
+- Settings/login: household scope, provider sign-in, private/public data choices, recent identity confirmation and clear deletion retention, without changing the Auth callbacks.
+- Methodology/privacy: anchored contents navigation, source-backed reference inventory, exact method/formula/time/search explanations, reporting/proof boundaries, retention/disclosure context and honest contact configuration.
+- Demo/verifier: stronger import/scenario context and explanations, existing authored case controls, individual proof-state meanings and local-file/chain-trust boundaries.
+- Public receipt: direct recorded baseline/selected/energy figures, timing table, method/receipt identity, separate check states and consented result coverage; no invented confirmation or measured-impact claim.
+
+Changed source files: `src/app/product.css`, `src/app/layout.tsx`, `src/app/loading.tsx`, `src/components/ui/{page-header,page-guide}.tsx`, `src/components/layout/{app-shell,primary-navigation,mobile-navigation}.tsx`; private dashboard/simulator/task/day/settings/login pages; saved-plan/completion/public-receipt pages; demo/verifier/methodology/privacy/error/not-found; activity editor/list/comparison/saved-schedule and proof/demo presentation components. Existing dirty work is preserved; no domain method, API command, migration, quota, model policy, signer, environment or deployed contract changed. The power-reference description now uses its actual power basis rather than calling it cycle energy; arithmetic is unchanged.
+
+### Checks actually performed
+
+- `pnpm lint`: passed, including import/environment/domain boundaries.
+- Initial `pnpm typecheck` found that the new demo-description lookup inherited an optional `undefined` parameter type from the demo function. Narrowed the controlled select state with `NonNullable`, matching its actual options. This is a UI type correction; the fixture scenarios and calculator did not change.
+- Targeted lint on that corrected component passed, then `pnpm typecheck` passed both application and contract checks.
+- Production fixture `pnpm build` passed with account/AI/ledger credentials cleared in that process. This does not enable or qualify a public AI deployment.
+- `git diff --check` passed before final documentation handoff.
+
+No unit/component, browser/accessibility/end-to-end, live Auth/API/grid/model, SQL or blockchain tests were run for U37. No fixture accounts or testnet commitments were created. Visual/functional acceptance of the changed screens is intentionally pending the builder’s review; earlier green checks are not transferred to this new presentation.
+
+```text
+Task: U37 existing-page visual alignment and content
+Status: implementation complete; static checks passed; builder visual/functional testing pending by explicit instruction
+Scope/spec version used: U36 landing approved by the builder; U37 all-page premium/clean/detailed direction; document03 U37; existing U34 contracts preserved
+Dependencies and external gates: existing local app/services reused; no new account, dependency, API key or migration
+Changed files: shared product CSS/UI components/navigation/loading; dashboard/simulation/task/day/account/login; saved v1/v2/completion; public receipt/verifier/demo; methodology/privacy/errors; owning docs and status
+Checks run and observed results: lint/boundaries, both typechecks and production fixture build passed; one concrete demo select-state type error fixed; no functional/browser/provider/chain tests performed
+Manual/live checks and environment: builder approved the U36 landing; U37 review is left to the builder. Original OAuth port/callback setup preserved. Current local review server remains port3001
+Unresolved failures or decisions: no known compilation/lint failure. Actual screen/interaction review pending builder; M11 privacy contact/public AI/hosting/deployment decisions remain separate
+Next ready task: builder review of the updated pages; address concrete reported UI issues; then M11 readiness when requested
+Exact command/action to resume: use the running local app or pnpm dev on the configured free port; inspect any reported route and state before editing. Read this entry and document03. Keep U37 testing with the builder unless subsequently authorized; do not rerun prior AI/testnet journeys or infer deployment approval
+Relevant commit or reviewable diff: existing uncommitted work, with U36/U37 view changes; no Git commit/push
+```
+
+## 30. U38 — idle development recompile/reload loop
+
+24 October 2026. The builder reported repeated recompilation and page reloads with no interaction. This authorizes focused reproduction of the reported fault; U37's builder-led review of the other screens remains unchanged.
+
+Observed: one CarbonShift dev server on 3001, with the unrelated project on 3000. An isolated anonymous browser reproduced 46 document navigations in seven seconds. The reusable ten-second check then failed with 121 document loads, 34 explicit HMR `reloadPage` messages, 53 build messages and zero page runtime errors. The server repeatedly sent a Turbopack `restart` for its unchanged boot chunk. Sampled source/non-build files and that chunk's content hash did not change during the loop. This localizes the failure to the existing generated development/compiler state, rather than an observed application timer or runtime exception; the precise internal cache invalidation defect is not established.
+
+Recovery: stopped only CarbonShift, moved its generated `.next/dev` cache aside, and restarted the unchanged application with `APP_ORIGIN=http://127.0.0.1:3001 pnpm dev --port 3001`. The same ten-second idle check passed with zero document loads, reload messages, build messages and runtime errors. Stopped/restarted normally with the newly persisted cache; the strengthened check passed again with all four counts zero. Health returned HTTP200; the unrelated 3000 listener remained PID7495. The temporary stale-cache archive was discarded after recording these bounded results.
+
+Added `scripts/check-dev-stability.mjs` and recovery instructions in README/document14. Initial targeted ESLint identified the diagnostic's missing explicit Node URL import; corrected it and targeted ESLint passed. No application/configuration, model, environment-file, database, contract or consent flow changed. No broad suites, live AI or chain checks were run, and no Git commit/push was made. Evidence is in `research/household/dev-stability.json`.
+
+```text
+Task: U38 reported idle development reload loop
+Status: recovered; original symptom check passed with fresh cache and after normal restart
+Scope/spec version used: U38 concrete bug report; U35 testing economy; U37 builder-led remaining screen acceptance
+Dependencies and external gates: existing local development services; no new account/key/API dependency
+Changed files: focused diagnostic script, README, manual setup, status and bounded evidence; generated development cache regenerated
+Checks run and observed results: ten-second repro failed with 121 navigations; fresh-cache and persisted-cache restart each passed with all idle counters zero; targeted script ESLint passed; health HTTP200
+Manual/live checks and environment: local anonymous browser only, process origin3001; existing OAuth redirects preserved; unrelated port3000 project untouched
+Unresolved failures or decisions: internal compiler invalidation defect not isolated beyond the old cache; other U37 screen review and M11 release decisions remain with builder
+Next ready task: builder resumes local review; address specific reported failures
+Exact command/action to resume: open http://127.0.0.1:3001; server remains running. If this exact idle loop recurs, stop CarbonShift, regenerate only .next/dev, restart at the same origin, then run node scripts/check-dev-stability.mjs
+Relevant commit or reviewable diff: preexisting uncommitted work preserved plus focused U38 diagnostic/docs; no Git publication
+```
+
+## 31. M11 release preparation and authorized GitHub publication
+
+25 October 2026. The builder authorized full M11 implementation/checks and supplied privacy contact `lovejeet1225@gmail.com`, selected Vercel and requested both Gemini/Groq with qualified fallback. They intend to enable Google billing; this is not verified activation. Vercel CLI login succeeded. The latest instruction authorizes **40–50 professional commits**, preservation of global Git identity, a clean tree and GitHub push; the selected batch is **45**. The builder will connect the repository in the Vercel dashboard after notification that the pushed source is ready. Older no-publication and U37 testing-deferral notes are historical boundaries superseded by these instructions.
+
+### Implemented release fixes and observed local checks
+
+Planner errors now identify the exact task/window/date field before review, display concrete London planning bounds and direct overnight windows to task planning. Validation uses the server-supplied clock plus elapsed time, and server-side revalidation remains authoritative. Failed optional window extensions preserve the original comparison. Time/carbon methods and v1 accepted records are unchanged. Schedule reads no longer consume the submission mutation budget; paging rejects duplicate/unknown parameters. A nullable-path navigation crash found by the clean-copy run is fixed and regression tested.
+
+Production security headers are centralized. Migration 014 implements service-only, locked, bounded retention, explicit dry-run/apply tools and a bearer-protected daily cron route. Public consent and durable signed operations survive cleanup. The isolated retention fixture actually deletes eligible synthetic records; hosted execution was dry-run only. The maintenance bearer comparison checks bytes before constant-time equality. Privacy copy and the environment template describe actual behavior and limits.
+
+Observed checks: frozen clean-copy install/environment, lint/import boundaries, application and contract types, **532 unit/component checks**, **86 isolated PostgreSQL checks** and **10 local contract checks** passed. The production fixture build passed. Initial browser checks failed because the authored AI harness replaced DOM controlled by the landing's still-hydrating Next root; the harness now mounts an isolated document with production CSS. Reading-page source links also needed underlines. After these concrete fixes, the full production browser suite passed **54/54 in 26.0 seconds** at 360/768/1440 px, including keyboard, zoom, reduced motion, automated accessibility and security headers. The earlier failed combined clean-copy invocation is not reclassified as a pass. Current root lint/boundaries and the rebuilt production app pass. No unchanged live model or Sepolia journey was repeated for a larger test count.
+
+The pre-publication scan compared every Git-eligible file against local credential values and private-key-block signatures; zero matches were observed. Real `.env` files, Vercel login/OIDC material, signer/deployment journals and generated dependency/build folders remain ignored. The source batch retains all earlier authorized research and v1/v2 work. See `research/release/` for the feature/page coverage checkpoint and explicit remaining release gates.
+
+### Hosting and account preparation
+
+The existing authenticated Vercel project is **z-lovejeets-projects/carbonshift**, root `.`, Next.js, Node24.x. Its assigned domain is **carbonshift-mocha.vercel.app**, not yet a deployed success. Eighteen production environment entries were prepared through the official project environment API, using an explicit allowlist and encrypted storage. Provider credentials, Supabase and verified public ledger metadata are included; no worker signer, administration password or CLI token was uploaded. `AI_ENABLED` stays true, and the user-selected `uk_public_paid_gemini` policy retains current qualification/quotas. Google billing has not been activated or verified by Codex. Unqualified household Groq interpretation stays excluded; candidate availability does not imply successful role qualification.
+
+Supabase local Site URL now uses 3001; 3000/3001 callbacks remain allowed, with the exact production callback added. Google/GitHub stay enabled and Email disabled. The unrelated project on port3000 was preserved. Fresh human Google/GitHub sign-in on the current deployed origin remains pending. The separate ledger worker was restarted and observed `idle_or_pending`; it remains a local process. The daily 03:17 UTC Vercel retention job is declared but requires a real deployment/invocation check. A production trusted-proxy setting has not been guessed or enabled without its deployment check.
+
+```text
+Task: M11.01–M11.05 release preparation; authorized 45-commit source batch
+Status: local fixes/checks and hosting configuration prepared; G11 remains open
+Scope/spec version used: U34 household target, U35 testing economy, U37 visual direction, subsequent full M11 authorization and GitHub deployment correction
+Dependencies and external gates: existing Supabase, Vercel login/project, current provider policy and dedicated Sepolia contract; builder handles Git connection and Google billing
+Changed files: planner constraints/error mapping/editor; schedule read validation; nullable navigation; security headers/environment; retention SQL/RPC/route/tool/tests; clean-copy/browser harness/release checks; Vercel config; privacy/methodology and owner/status/evidence documents; preexisting M08/M09/household work preserved in publication batch
+Checks run and observed results: clean install/environment/lint/types, 532 unit/component, 86 SQL, 10 contracts, production fixture build, final 54 browser cases; hosted retention dry-run; zero observed credential matches; worker idle_or_pending
+Manual/live checks and environment: actual Vercel login/project/environment API and Supabase partial Auth updates; no production deployment, fresh human OAuth, paid inference or new testnet transaction claimed
+Unresolved failures or decisions: actual deployment/OAuth/proxy/AI/cron/external journey, billing prerequisite, screen-reader smoke, measured release performance and persistent worker availability remain release gates
+Next ready task: publish the verified 45-commit batch and notify builder to connect GitHub; then M11.04 actual deployed-environment verification
+Exact command/action to resume: verify main's commit count from 44f3c5a, clean tree and origin equality after push; connect z-lovejeet/CarbonShift in existing carbonshift project Settings → Git, use main and root '.', inspect actual build; preserve prepared encrypted environment and do not create another project. Then verify actual production URL and update Site URL when ready; keep both local callbacks. Do not mark G11 passed from Git or environment preparation alone
+Relevant commit or reviewable diff: batch base 44f3c5aa4fd873951fc7e5081232e2352e0a62b1; final handoff commit subject 'Record release evidence and the GitHub-to-Vercel handoff'
+```
