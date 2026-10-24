@@ -1,0 +1,35 @@
+{
+  "checkedAtUtc": "2026-10-24T15:05:17.310Z",
+  "basis": "normal development home page; real grid or explicit unavailable state; no AI or blockchain requests",
+  "results": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "overflow": false,
+      "violations": [],
+      "errors": [],
+      "forecastBars": 96
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "overflow": false,
+      "violations": [],
+      "errors": [],
+      "forecastBars": 96
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "overflow": false,
+      "violations": [],
+      "errors": [],
+      "forecastBars": 96
+    }
+  ],
+  "finalForecastWindow": {
+    "bars": 48,
+    "coverage": "48 actual source half-hours; source surplus outside the requested 24-hour window excluded",
+    "checkedAtUtc": "2026-10-24T15:07:39.513Z"
+  }
+}
