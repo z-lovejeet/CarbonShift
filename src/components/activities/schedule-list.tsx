@@ -1,0 +1,15 @@
+"use client";
+import Link from "next/link";
+import { useState } from "react";
+import { schedulePageSchema, selectedSchedule } from "@/contracts/schedules";
+import { activityRequest } from "@/lib/activity-api";
+import { activityKwh } from "@/lib/activity-input";
+import { londonLabel, grams } from "@/lib/presentation";
+import type { z } from "zod";
+export function ScheduleList({ initial }: { initial: z.infer<typeof schedulePageSchema> }) {
+  const [filter, setFilter] = useState("all");
+  const [page, setPage] = useState(initial), [busy, setBusy] = useState(false), [error, setError] = useState<string | null>(null);
+  async function more() { if (!page.nextCursor || busy) return; setBusy(true); setError(null); try { const next = await activityRequest(`/schedules?cursor=${encodeURIComponent(page.nextCursor)}`, schedulePageSchema); setPage({ items: [...page.items, ...next.items.filter((n) => !page.items.some((p) => p.id === n.id))], nextCursor: next.nextCursor }); } catch { setError("Older schedules could not be loaded. Try again."); } finally { setBusy(false); } }
+  const visible = page.items.filter((plan) => filter === "all" || (filter === "private" ? plan.publicationStatus === "private" : plan.publicationStatus !== "private"));
+  return <><div className="list-toolbar"><div className="task-form"><label htmlFor="household-publication-filter">Household schedules</label><select id="household-publication-filter" value={filter} onChange={(e) => setFilter(e.target.value)}><option value="all">All loaded schedules</option><option value="private">Private only</option><option value="public">Public copy requested</option></select></div><p>{page.items.length} loaded {page.items.length === 1 ? "schedule" : "schedules"}. Filters apply to this loaded history; use “Load older schedules” for earlier records. Each displayed amount is its original accepted forecast.</p></div>{!visible.length ? <div className="list-filter-empty"><h3>No loaded schedules match this filter.</h3><p>Choose another filter or load older schedules. This does not change your saved records.</p></div> : null}<ul className="plan-list">{visible.map((plan) => { const selected = selectedSchedule(plan); return <li key={plan.id}><div><p className="eyebrow">{plan.comparison.input.kind === "day" ? "Day plan" : "Task plan"} · {plan.publicationStatus === "private" ? "Private" : `Public copy: ${plan.publicationStatus}`}</p><h2><Link href={`/app/plans/${plan.id}`}>{plan.comparison.input.tasks.map((t) => t.activity.name).join(" · ")}</Link></h2><p>Saved {londonLabel(plan.acceptedAtUtc)}</p><p className="muted">{selected.tasks.length} activities · {activityKwh(selected.energyMwh)} kWh estimated</p></div><div className="plan-list-estimate"><strong>{grams(selected.estimatedMg)} g CO₂</strong><span>Original grid forecast estimate</span></div></li>; })}</ul>{error ? <p role="alert">{error}</p> : null}{page.nextCursor ? <button className="button secondary" disabled={busy} onClick={() => void more()}>{busy ? "Loading…" : "Load older schedules"}</button> : null}</>;
+}
