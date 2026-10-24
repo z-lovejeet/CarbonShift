@@ -1,0 +1,16 @@
+{
+  "checkedAtUtc": "2026-10-22T20:00:00.501Z",
+  "passed": true,
+  "source": "ai",
+  "comparisonId": "0aed0716-3a1d-4b17-b7e1-f365a1a1db82",
+  "cacheSource": "cache",
+  "checks": [
+    "real Auth/ownership",
+    "real national forecast",
+    "ordinary admitted explanation endpoint",
+    "grounded limitations",
+    "cache without another AI task"
+  ],
+  "maximumProviderAttempts": 2,
+  "physicalExecutionVerified": false
+}

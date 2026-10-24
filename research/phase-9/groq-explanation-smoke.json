@@ -1,0 +1,42 @@
+{
+  "checkedAtUtc": "2026-10-22T19:55:14.719Z",
+  "model": "openai/gpt-oss-120b",
+  "role": "explanation",
+  "maximumRequests": 1,
+  "success": true,
+  "errorCode": null,
+  "latencyMs": 4654,
+  "quotaHeaders": {
+    "x-ratelimit-limit-requests": "1000",
+    "x-ratelimit-limit-tokens": "8000",
+    "x-ratelimit-remaining-requests": "999",
+    "x-ratelimit-remaining-tokens": "7096",
+    "x-ratelimit-reset-requests": "1m26.4s",
+    "x-ratelimit-reset-tokens": "6.78s"
+  },
+  "transportChecks": [
+    {
+      "status": 200,
+      "networkFailure": false
+    }
+  ],
+  "validationChecks": null,
+  "attempts": [
+    {
+      "provider": "groq",
+      "model": "openai/gpt-oss-120b",
+      "state": "succeeded",
+      "latency_ms": 1453,
+      "input_tokens": 411,
+      "output_tokens": 531,
+      "total_tokens": 942,
+      "prompt_version": "explanation-v1",
+      "policy_digest": "9d63045ce6532f3bab4fb90733d9bc30df9b3dc44edeba0f1b1b94658fd13615"
+    }
+  ],
+  "accountTier": "builder-confirmed-free",
+  "quotaSource": "builder-supplied Free Plan table; response headers checked where provided",
+  "roleQualityQualified": false,
+  "webAiEnabled": false,
+  "billedCost": null
+}

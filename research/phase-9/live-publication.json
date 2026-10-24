@@ -1,0 +1,79 @@
+{
+  "checkedAtUtc": "2026-10-22T20:03:04.362Z",
+  "basis": "Real development Auth/database, national forecast, ordinary publication UI/API and dedicated Sepolia worker. Authored 875 Wh assumption; no appliance operated; cancellation has no numeric benefit.",
+  "workerOfflinePlanningAndQueue": true,
+  "publication": {
+    "receiptId": "0x6d003462646e188e4d9c5e3ba223ad4563f655ea272c91b6cad1217fd0aee655",
+    "planOperation": {
+      "id": "a67c2d53-c3e5-40a9-b379-4b7157a8ec11",
+      "kind": "plan",
+      "status": "confirmed",
+      "manifestHash": "0xdbf7c17f613f5ec61ca119ca921a7e0fcdf3396dff6e47d3dde503808c3098cd",
+      "transactionHash": "0x111ef656fd5476ec11a163b0b3309a2abecb79c84e1c0c94dd01c65e747bc22c",
+      "blockNumber": 11971799,
+      "checkedAtUtc": "2026-10-22T20:04:12Z",
+      "failureCode": null
+    },
+    "resultOperation": {
+      "id": "20dcce21-6e99-459e-93a0-f90b43e8b6b6",
+      "kind": "result",
+      "status": "confirmed",
+      "manifestHash": "0x349fc80d1462a9f5338e2a2fc91ba22dcf9688cc270a82ded37b602621a0e5c7",
+      "transactionHash": "0x9dacedf203a94352e4e5d61f03a6fcd458b1e04cc8d504148eb0e0bf98e1ba53",
+      "blockNumber": 11971805,
+      "checkedAtUtc": "2026-10-22T20:05:25Z",
+      "failureCode": null
+    },
+    "exactRetryAcknowledged": true,
+    "ownerIsolation": true,
+    "explicitConsentEnforced": true,
+    "cancellationNoNumericBenefit": true,
+    "verification": {
+      "checks": {
+        "schema": {
+          "state": "match",
+          "detail": "Strict version-1 schemas and bounded integer JSON."
+        },
+        "planIntegrity": {
+          "state": "match",
+          "detail": "Canonical plan digest matches the independently supplied commitment and event."
+        },
+        "method": {
+          "state": "match",
+          "detail": "Pinned method descriptor and version recognized."
+        },
+        "calculation": {
+          "state": "match",
+          "detail": "Recomputed feasibility, global optimum, forecast and all updated amounts."
+        },
+        "timing": {
+          "state": "match",
+          "detail": "Live commitment mined after acceptance and before both starts."
+        },
+        "resultHistory": {
+          "state": "match",
+          "detail": "All public result digests, events, order and latest pointers agree."
+        },
+        "evidenceBasis": {
+          "state": "match",
+          "detail": "Live: execution not observed at planning, results self-reported, energy assumed."
+        }
+      },
+      "planHash": "0xdbf7c17f613f5ec61ca119ca921a7e0fcdf3396dff6e47d3dde503808c3098cd",
+      "resultHashes": [
+        "0x349fc80d1462a9f5338e2a2fc91ba22dcf9688cc270a82ded37b602621a0e5c7"
+      ],
+      "originalIssuer": "0x07084317b02a2fdc23f4e1bca5749d849461a4e3",
+      "currentOwner": "0x07084317b02a2fdc23f4e1bca5749d849461a4e3",
+      "limitations": [
+        "Hashes bind recorded content; source authenticity and physical execution remain unverified.",
+        "Energy is assumed and execution is self-reported; national estimates are not measured avoided emissions."
+      ]
+    },
+    "tamperingDetected": true,
+    "axeViolations": 0,
+    "browserErrors": 0,
+    "responsive": true
+  },
+  "cleanupPassed": true
+}
