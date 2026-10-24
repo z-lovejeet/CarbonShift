@@ -1,0 +1,10 @@
+import type { ScheduleComparison } from "@/contracts/schedules";
+import { londonDayBounds, epochSeconds } from "@/domain/time";
+import { shortLondon } from "@/lib/presentation";
+export function DayTimeline({ comparison, optionIndex = 0 }: { comparison: ScheduleComparison; optionIndex?: number }) {
+  if (!comparison.input.dayDate) return null;
+  const day = londonDayBounds(comparison.input.dayDate), from = epochSeconds(day.startUtc), seconds = epochSeconds(day.endUtc) - from;
+  const selected = optionIndex === 0 ? comparison.solution.selected : comparison.solution.alternatives[optionIndex - 1]!;
+  const bar = (start: string, end: string) => ({ left: `${(epochSeconds(start) - from) / seconds * 100}%`, width: `${(epochSeconds(end) - epochSeconds(start)) / seconds * 100}%` });
+  return <section className="day-timeline" aria-label="Usual and selected day timeline"><div className="timeline-heading"><h3>Your day at a glance</h3><p>{comparison.input.dayDate} · {seconds / 3600} hours in Europe/London</p></div><p className="timeline-legend"><span>Usual time</span><span>Selected time</span></p><div className="timeline-axis"><span>00:00</span><span>Next midnight</span></div>{comparison.input.tasks.map((task) => { const baseline = comparison.solution.baseline.tasks.find((t) => t.taskId === task.activity.id)!, target = selected.tasks.find((t) => t.taskId === task.activity.id)!; return <div className="timeline-task" key={task.activity.id}><div className="timeline-task-title"><strong>{task.activity.name}</strong><span>{task.fixedStartUtc ? "Fixed" : "Flexible"} · {shortLondon(target.startUtc)}–{shortLondon(target.endUtc)}</span></div><div className="timeline-lane" aria-hidden="true"><span className="timeline-baseline" style={bar(baseline.startUtc, baseline.endUtc)} /><span className="timeline-selected" style={bar(target.startUtc, target.endUtc)} /></div></div>; })}<p className="field-hint">The complete accessible table below lists every start, finish and estimate. Overlapping bars on separate rows are allowed unless they share equipment, attention or a task-order constraint.</p></section>;
+}
