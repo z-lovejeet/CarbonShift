@@ -1,0 +1,9 @@
+{
+  "fixture": "Authored synthetic M08 v1; independently hashed with Node crypto",
+  "planHash": "0x811692cf211653c05e0bdde4922875baffbb5b93a0f98954f5582f28df7f5523",
+  "resultHashes": [
+    "0x922e44bff9dccc9bd7ea1cee081d9571fd8c3c8ddb59f3a204589a8ce4d507f5",
+    "0xe98782c19014dd8d47436ff1e8e9d8d7f55d183f9b70d6d40d40f49ed3101511"
+  ],
+  "methodHash": "0xfa7e337b043fc55656eaa4eb038de5234e5987313545a7c5e442062f2a361f9d"
+}

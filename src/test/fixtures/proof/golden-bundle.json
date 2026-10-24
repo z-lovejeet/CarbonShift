@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "plan": {
+    "schemaVersion": 1,
+    "type": "plan",
+    "receiptId": "0x2222222222222222222222222222222222222222222222222222222222222222",
+    "nonce": "0x3333333333333333333333333333333333333333333333333333333333333333",
+    "mode": "live",
+    "chainId": 11155111,
+    "contractAddress": "0x1111111111111111111111111111111111111111",
+    "methodVersion": "carbonshift-gb-uniform-v1",
+    "methodHash": "0xfa7e337b043fc55656eaa4eb038de5234e5987313545a7c5e442062f2a361f9d",
+    "comparisonCreatedAtUtc": "2026-10-21T06:00:00Z",
+    "acceptedAtUtc": "2026-10-21T06:01:00Z",
+    "commitBeforeUtc": "2026-10-21T07:00:00Z",
+    "constraints": {
+      "geography": "GB_NATIONAL",
+      "timezone": "Europe/London",
+      "earliestStartUtc": "2026-10-21T07:00:00Z",
+      "deadlineUtc": "2026-10-21T11:00:00Z",
+      "durationMinutes": 60,
+      "energyWh": 1000,
+      "energyBasis": "user_estimate",
+      "blockedIntervals": [],
+      "baselineStartUtc": "2026-10-21T07:00:00Z",
+      "baselineOrigin": "user_selected",
+      "confirmedAtUtc": "2026-10-21T06:00:00Z"
+    },
+    "energyWhBins": [
+      500,
+      500
+    ],
+    "forecastSnapshot": {
+      "geography": "GB_NATIONAL",
+      "sourceUrl": "https://api.carbonintensity.org.uk/intensity/2026-10-21T07:00Z/fw48h",
+      "retrievedAtUtc": "2026-10-21T06:00:00Z",
+      "providerIssuedAtUtc": null,
+      "license": "CC BY 4.0",
+      "intervals": [
+        {
+          "fromUtc": "2026-10-21T07:00:00Z",
+          "toUtc": "2026-10-21T07:30:00Z",
+          "forecastGPerKwh": 300,
+          "actualGPerKwh": 300
+        },
+        {
+          "fromUtc": "2026-10-21T07:30:00Z",
+          "toUtc": "2026-10-21T08:00:00Z",
+          "forecastGPerKwh": 340,
+          "actualGPerKwh": 340
+        },
+        {
+          "fromUtc": "2026-10-21T08:00:00Z",
+          "toUtc": "2026-10-21T08:30:00Z",
+          "forecastGPerKwh": 260,
+          "actualGPerKwh": 260
+        },
+        {
+          "fromUtc": "2026-10-21T08:30:00Z",
+          "toUtc": "2026-10-21T09:00:00Z",
+          "forecastGPerKwh": 220,
+          "actualGPerKwh": 220
+        },
+        {
+          "fromUtc": "2026-10-21T09:00:00Z",
+          "toUtc": "2026-10-21T09:30:00Z",
+          "forecastGPerKwh": 100,
+          "actualGPerKwh": 100
+        },
+        {
+          "fromUtc": "2026-10-21T09:30:00Z",
+          "toUtc": "2026-10-21T10:00:00Z",
+          "forecastGPerKwh": 140,
+          "actualGPerKwh": 140
+        },
+        {
+          "fromUtc": "2026-10-21T10:00:00Z",
+          "toUtc": "2026-10-21T10:30:00Z",
+          "forecastGPerKwh": 280,
+          "actualGPerKwh": 280
+        },
+        {
+          "fromUtc": "2026-10-21T10:30:00Z",
+          "toUtc": "2026-10-21T11:00:00Z",
+          "forecastGPerKwh": 300,
+          "actualGPerKwh": 300
+        }
+      ]
+    },
+    "baseline": {
+      "startUtc": "2026-10-21T07:00:00Z",
+      "endUtc": "2026-10-21T08:00:00Z",
+      "estimatedMg": 320000
+    },
+    "selected": {
+      "startUtc": "2026-10-21T09:00:00Z",
+      "endUtc": "2026-10-21T10:00:00Z",
+      "estimatedMg": 120000
+    },
+    "differenceMg": 200000,
+    "executionBasis": "not_observed",
+    "attribution": "Authored synthetic fixture; NESO API format, CC BY 4.0"
+  },
+  "results": [
+    {
+      "schemaVersion": 1,
+      "type": "result",
+      "receiptId": "0x2222222222222222222222222222222222222222222222222222222222222222",
+      "nonce": "0x4444444444444444444444444444444444444444444444444444444444444444",
+      "mode": "live",
+      "chainId": 11155111,
+      "contractAddress": "0x1111111111111111111111111111111111111111",
+      "methodVersion": "carbonshift-gb-uniform-v1",
+      "methodHash": "0xfa7e337b043fc55656eaa4eb038de5234e5987313545a7c5e442062f2a361f9d",
+      "planHash": "0x811692cf211653c05e0bdde4922875baffbb5b93a0f98954f5582f28df7f5523",
+      "publicRevision": 1,
+      "previousResultHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "privateResultRevisionNumber": 1,
+      "reportedKind": "ran",
+      "reportedStartUtc": "2026-10-21T09:15:00Z",
+      "reportCreatedAtUtc": "2026-10-21T12:00:00Z",
+      "resultCreatedAtUtc": "2026-10-21T12:00:00Z",
+      "reportSource": "report",
+      "profileStillApplicable": true,
+      "executionBasis": "self_reported",
+      "energyBasis": "user_estimate",
+      "resultStatus": "actual_pending",
+      "baselineActualMg": null,
+      "reportedActualMg": null,
+      "differenceMg": null,
+      "actualSnapshot": null,
+      "reasonCode": "ACTUAL_SNAPSHOT_UNAVAILABLE",
+      "correctionExplanation": ""
+    },
+    {
+      "schemaVersion": 1,
+      "type": "result",
+      "receiptId": "0x2222222222222222222222222222222222222222222222222222222222222222",
+      "nonce": "0x5555555555555555555555555555555555555555555555555555555555555555",
+      "mode": "live",
+      "chainId": 11155111,
+      "contractAddress": "0x1111111111111111111111111111111111111111",
+      "methodVersion": "carbonshift-gb-uniform-v1",
+      "methodHash": "0xfa7e337b043fc55656eaa4eb038de5234e5987313545a7c5e442062f2a361f9d",
+      "planHash": "0x811692cf211653c05e0bdde4922875baffbb5b93a0f98954f5582f28df7f5523",
+      "publicRevision": 2,
+      "previousResultHash": "0x922e44bff9dccc9bd7ea1cee081d9571fd8c3c8ddb59f3a204589a8ce4d507f5",
+      "privateResultRevisionNumber": 3,
+      "reportedKind": "ran",
+      "reportedStartUtc": "2026-10-21T09:15:00Z",
+      "reportCreatedAtUtc": "2026-10-21T12:00:00Z",
+      "resultCreatedAtUtc": "2026-10-21T13:00:00Z",
+      "reportSource": "report",
+      "profileStillApplicable": true,
+      "executionBasis": "self_reported",
+      "energyBasis": "user_estimate",
+      "resultStatus": "actual_estimate",
+      "baselineActualMg": 100000,
+      "reportedActualMg": 500000,
+      "differenceMg": -400000,
+      "actualSnapshot": {
+        "geography": "GB_NATIONAL",
+        "sourceUrl": "https://api.carbonintensity.org.uk/intensity/2026-10-21T07:00Z/fw48h",
+        "retrievedAtUtc": "2026-10-21T13:00:00Z",
+        "providerIssuedAtUtc": null,
+        "license": "CC BY 4.0",
+        "intervals": [
+          {
+            "fromUtc": "2026-10-21T07:00:00Z",
+            "toUtc": "2026-10-21T07:30:00Z",
+            "forecastGPerKwh": 100,
+            "actualGPerKwh": 100
+          },
+          {
+            "fromUtc": "2026-10-21T07:30:00Z",
+            "toUtc": "2026-10-21T08:00:00Z",
+            "forecastGPerKwh": 100,
+            "actualGPerKwh": 100
+          },
+          {
+            "fromUtc": "2026-10-21T08:00:00Z",
+            "toUtc": "2026-10-21T08:30:00Z",
+            "forecastGPerKwh": 500,
+            "actualGPerKwh": 500
+          },
+          {
+            "fromUtc": "2026-10-21T08:30:00Z",
+            "toUtc": "2026-10-21T09:00:00Z",
+            "forecastGPerKwh": 500,
+            "actualGPerKwh": 500
+          },
+          {
+            "fromUtc": "2026-10-21T09:00:00Z",
+            "toUtc": "2026-10-21T09:30:00Z",
+            "forecastGPerKwh": 500,
+            "actualGPerKwh": 500
+          },
+          {
+            "fromUtc": "2026-10-21T09:30:00Z",
+            "toUtc": "2026-10-21T10:00:00Z",
+            "forecastGPerKwh": 500,
+            "actualGPerKwh": 500
+          },
+          {
+            "fromUtc": "2026-10-21T10:00:00Z",
+            "toUtc": "2026-10-21T10:30:00Z",
+            "forecastGPerKwh": 500,
+            "actualGPerKwh": 500
+          },
+          {
+            "fromUtc": "2026-10-21T10:30:00Z",
+            "toUtc": "2026-10-21T11:00:00Z",
+            "forecastGPerKwh": 500,
+            "actualGPerKwh": 500
+          }
+        ]
+      },
+      "reasonCode": null,
+      "correctionExplanation": "Actual factors became available."
+    }
+  ],
+  "method": {
+    "schemaVersion": 1,
+    "methodVersion": "carbonshift-gb-uniform-v1",
+    "algorithm": "gb-half-hour-uniform-integer-overlap-v1",
+    "constants": {
+      "geography": "GB_NATIONAL",
+      "timezone": "Europe/London",
+      "intervalSeconds": 1800,
+      "intervalMinutes": 30,
+      "minimumEnergyWh": 50,
+      "maximumEnergyWh": 5000,
+      "maximumProfileBins": 6,
+      "durationsMinutes": [
+        30,
+        60,
+        90,
+        120,
+        150,
+        180
+      ],
+      "maximumBlocks": 4,
+      "horizonSeconds": 172800,
+      "operationalBufferSeconds": 600,
+      "comparisonLifetimeSeconds": 300,
+      "maximumForecastAgeSeconds": 1800,
+      "resultStartExtensionSeconds": 86400,
+      "maximumAlternatives": 3
+    },
+    "rules": {
+      "profile": "Distribute integer Wh uniformly: floor(total/bins), then one extra Wh in each earliest remainder bin. Energy is assumed, never metered.",
+      "forecast": "Sum Wh times forecast g/kWh as integer mg, without per-bin rounding. Full aligned half-hour coverage and fresh snapshot required.",
+      "actual": "Use exact integer overlap seconds for the same assumed profile against national actual factors; round the final nonnegative rational mg half up once. Missing factors yield null amounts. Difference is baseline minus reported and may be negative.",
+      "selection": "Enumerate every feasible aligned start at comparison creation plus the operational buffer, subject to horizon, deadline and blocked intervals. Minimize integer mg; break ties by earliest UTC start. Acceptance must precede expiry.",
+      "evidence": "GB national consumption signal; one washing cycle. Live execution is self-reported, demo simulated. A matching hash proves recorded content, not physical action or measured avoided emissions.",
+      "cancellation": "Before selected start only, without a preceding report or result; terminal non-run, null profile and amounts. Ordinary non-run reporting requires selected end to have passed."
+    }
+  },
+  "chainReferences": null
+}
