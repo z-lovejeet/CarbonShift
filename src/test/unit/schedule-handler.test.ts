@@ -1,18 +1,28 @@
 import { beforeEach, expect, it, vi } from "vitest";
 const mocks = vi.hoisted(() => ({
-  ingress: vi.fn(), member: vi.fn(), page: vi.fn(), detail: vi.fn(), accept: vi.fn(),
+  ingress: vi.fn(), member: vi.fn(), page: vi.fn(), detail: vi.fn(), accept: vi.fn(), history: vi.fn(),
 }));
 vi.mock("@/server/auth/session", () => ({ requireMember: mocks.member }));
 vi.mock("@/server/db/clients", () => ({ databaseConfiguration: () => ({ origin: "https://example.invalid", hmac: "fixture" }), createServiceClient: () => ({}) }));
 vi.mock("@/server/limits/ingress", () => ({ mutationIngress: mocks.ingress }));
-vi.mock("@/server/schedules/repository", () => ({ createScheduleRepository: () => ({ page: mocks.page, detail: mocks.detail, accept: mocks.accept }) }));
+vi.mock("@/server/schedules/repository", () => ({ createScheduleRepository: () => ({ page: mocks.page, detail: mocks.detail, accept: mocks.accept, history: mocks.history }) }));
 import { scheduleRequest } from "@/server/schedules/handlers";
+import { scheduleLifecycle } from "@/server/schedules/lifecycle";
 beforeEach(() => {
   vi.clearAllMocks();
   mocks.member.mockResolvedValue({ userId: "fixture-member", client: {} });
   mocks.page.mockResolvedValue({ items: [], nextCursor: null });
   mocks.detail.mockResolvedValue({ id: "fixture" });
+  mocks.history.mockResolvedValue({ reports: [], results: [] });
   mocks.ingress.mockResolvedValue(undefined);
+});
+it("keeps owner-checked history reads out of the mutation budget", async () => {
+  const id = "4b004729-061e-482d-bf22-d51f06bf1222";
+  const response = await scheduleLifecycle(new Request(`https://example.invalid/api/v2/schedules/${id}/history`), id, "history");
+  expect(response.status).toBe(200);
+  expect(mocks.detail).toHaveBeenCalledWith(id);
+  expect(mocks.history).toHaveBeenCalledWith(id);
+  expect(mocks.ingress).not.toHaveBeenCalled();
 });
 it("keeps authenticated schedule reads out of the mutation budget", async () => {
   expect((await scheduleRequest(new Request("https://example.invalid/api/v2/schedules?limit=5"), "list")).status).toBe(200);

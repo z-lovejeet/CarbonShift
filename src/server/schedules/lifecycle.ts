@@ -22,7 +22,8 @@ export async function scheduleLifecycle(request: Request, scheduleId: string, ac
   const requestId = randomUUID();
   try {
     const config = databaseConfiguration(); if (request.method !== "GET") assertSameOrigin(request, config.origin);
-    const member = await requireMember(), writer = createServiceClient(); await mutationIngress(member.userId);
+    const member = await requireMember(), writer = createServiceClient();
+    if (request.method !== "GET") await mutationIngress(member.userId);
     if (!z.uuid().safeParse(scheduleId).success) throw new ApiError("NOT_FOUND", 404, "This schedule was not found.");
     const repository = createScheduleRepository(member.client, writer, member.userId), plan = await repository.detail(scheduleId);
     if (action === "delete") {
