@@ -1,0 +1,15 @@
+.git
+.next
+node_modules
+.env*
+.ledger-deployment.local.json
+research
+docs
+test-results
+playwright-report
+coverage
+contracts/artifacts
+contracts/cache
+*.log
+*.tsbuildinfo
+.DS_Store

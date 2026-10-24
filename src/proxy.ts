@@ -1,6 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import type { Database } from "@/server/db/database.types";
+import type { Database } from "@/server/db/schema";
 import { getWebEnvironment } from "@/server/env";
 import { boundedFetch } from "@/server/db/clients";
 

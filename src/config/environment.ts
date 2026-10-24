@@ -42,6 +42,7 @@ const signingKey = text.refine((value) => value === undefined ||
 
 const ledgerFields = {
   LEDGER_ENABLED: flag,
+  LEDGER_HOUSEHOLD_ENABLED: flag,
   SEPOLIA_RPC_URL: rpcUrl,
   LEDGER_CHAIN_ID: chainId,
   LEDGER_CONTRACT_ADDRESS: address,
@@ -61,6 +62,8 @@ const webSchema = z.object({
   GROQ_API_KEY: text,
   AI_POLICY_JSON: text,
   PRIVACY_CONTACT: text,
+  CRON_SECRET: hmac,
+  GRID_PUBLIC_SUMMARY_ENABLED: flag,
   ...ledgerFields,
 }).superRefine((data, ctx) => {
   const missing = (field: keyof typeof data) => {
@@ -141,6 +144,7 @@ export function parseWebEnvironment(source: EnvironmentSource) {
     }) : Object.freeze({ enabled: false as const }),
     ledger: data.LEDGER_ENABLED ? Object.freeze({
       enabled: true as const,
+      householdEnabled: data.LEDGER_HOUSEHOLD_ENABLED,
       rpcUrl: data.SEPOLIA_RPC_URL!,
       chainId: 11155111 as const,
       contractAddress: data.LEDGER_CONTRACT_ADDRESS!,
@@ -148,6 +152,8 @@ export function parseWebEnvironment(source: EnvironmentSource) {
     }) : Object.freeze({ enabled: false as const }),
     rateLimitHmacSecret: data.RATE_LIMIT_HMAC_SECRET ?? null,
     privacyContact: data.PRIVACY_CONTACT ?? null,
+    maintenanceSecret: data.CRON_SECRET ?? null,
+    publicGridSummary: data.GRID_PUBLIC_SUMMARY_ENABLED,
   });
 }
 
@@ -166,3 +172,11 @@ export function parseWorkerEnvironment(source: EnvironmentSource) {
 
 export type WebEnvironment = ReturnType<typeof parseWebEnvironment>;
 export type WorkerEnvironment = ReturnType<typeof parseWorkerEnvironment>;
+
+/** Worker-only deployment preparation before a real contract address exists. */
+export function parseDeploymentEnvironment(source: EnvironmentSource) {
+  const data = parse(z.object({ LEDGER_PRIVATE_KEY: signingKey, SEPOLIA_RPC_URL: rpcUrl, LEDGER_CHAIN_ID: chainId }).superRefine((value, context) => {
+    for (const key of ["LEDGER_PRIVATE_KEY", "SEPOLIA_RPC_URL", "LEDGER_CHAIN_ID"] as const) if (value[key] === undefined) context.addIssue({ code: "custom", path: [key], message: "Required for deployment" });
+  }), source);
+  return { privateKey: data.LEDGER_PRIVATE_KEY!, rpcUrl: data.SEPOLIA_RPC_URL!, chainId: 11155111 as const };
+}
