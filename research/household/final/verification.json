@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-24",
+  "scope": "U34 X00\u2013X05 and revised local M10",
+  "order": "U35 implementation then combined verification",
+  "combined": {
+    "unit": {
+      "files": 52,
+      "passed": 521
+    },
+    "postgres": {
+      "files": 6,
+      "passed": 83
+    },
+    "contracts": {
+      "passed": 10
+    },
+    "browser": {
+      "passed": 48
+    },
+    "typecheck": "passed",
+    "productionFixtureBuild": "passed",
+    "eslintAndBoundaries": "passed after concrete corrections"
+  },
+  "supplemental": {
+    "v2FixedDigests": {
+      "file": "src/test/unit/activity-proof.test.ts",
+      "passed": 3
+    },
+    "normalAiEndpoints": "ai-wiring.json",
+    "windowReview": "windows.json",
+    "liveJourney": "integration.json"
+  },
+  "secretScan": {
+    "publishableFiles": 476,
+    "matches": 0
+  },
+  "excludedClaims": [
+    "public deployment",
+    "public AI eligibility",
+    "fresh human OAuth at alternate port",
+    "measured appliance consumption",
+    "measured avoided emissions",
+    "competition outcome"
+  ],
+  "sourcePublication": false
+}

@@ -1,0 +1,40 @@
+{
+  "simulatorHandoff": "real grid → reviewed same-owner handoff passed",
+  "day": {
+    "scheduleId": "cecc38f2-e7f7-4b7c-bbb2-ba45bd52231e",
+    "taskCount": 4,
+    "fixedTask": "retained",
+    "dependency": "retained",
+    "privateReload": true,
+    "foreignDenied": true,
+    "reportSequence": 2,
+    "unchangedRefresh": true
+  },
+  "plan": {
+    "receiptId": "0x2b6c26c7126e95abd482a3710b493073808259d7bb2c63a4037a42f34f267fbb",
+    "manifestHash": "0xde71024e0200f8b5c2eb261d0ea61e935ff29a03938915ee296869617b581934",
+    "transactionHash": "0xa30c8b779398af2c0671a687d4ef4236ea1fb1bebfc63a781c5a0f40931ad9ec",
+    "block": 11983596
+  },
+  "retrospective": {
+    "source": "actual grid API",
+    "estimatedMg": 1697
+  },
+  "completion": {
+    "reportSequence": 1,
+    "basis": "authored self-report after acceptance; future baseline makes updated comparison pending"
+  },
+  "result": {
+    "manifestHash": "0x1ffd69d4f1a7506c99344b39cd075c8bd8e86898af97643160da2064e2e087ac",
+    "transactionHash": "0x968fc7fb01b39505bc37406f99b7e247449667fa20c1513783d6dd73d339c2ff",
+    "block": 11983604,
+    "covered": 0,
+    "didNotRun": 1,
+    "notReported": 2
+  },
+  "publicReceipt": "anonymous consented projection and independent check states rendered",
+  "browserVerification": "all seven local/RPC checks matched",
+  "responsiveAndAccessibility": "six connected routes at desktop/mobile",
+  "checkedAtUtc": "2026-10-24T11:51:26.767Z",
+  "basis": "real development Auth/DB/grid, authored self-reports, dedicated Sepolia plan+result, normal local pages/APIs"
+}

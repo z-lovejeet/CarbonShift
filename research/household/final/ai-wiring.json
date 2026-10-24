@@ -1,0 +1,23 @@
+{
+  "checkedAtUtc": "2026-10-24T11:53:51.612Z",
+  "source": "normal authenticated v2 routes; authored non-personal inputs",
+  "interpretation": {
+    "energyUnknown": true,
+    "questions": [
+      "equipment",
+      "duration",
+      "energy",
+      "timing"
+    ]
+  },
+  "explanation": {
+    "firstSource": "ai",
+    "secondSource": "cache",
+    "codes": [
+      "LOWER_ESTIMATE"
+    ]
+  },
+  "providerTasks": 2,
+  "cachedLookup": "no new inference",
+  "blockchainRequests": 0
+}
