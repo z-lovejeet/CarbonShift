@@ -43,7 +43,7 @@ it("T08/T09 result UI shows a signed higher estimate with its assumptions", asyn
   await createLifecycleService({ repository: { detail: async () => plan, replay: async () => null, commit }, now: () => "2026-10-21T12:00:00Z", actual: async () => createGridSnapshotRecord(data) }).report(id, { kind: "ran", reportedStartUtc: comparison.selected.startUtc, profileStillApplicable: true, correctsReportId: null, reason: "" }, "report-key", "a".repeat(64));
   const written = commit.mock.calls[0]![0];
   render(<ResultHistory plan={{ ...plan, latestReport: written.report, latestResult: written.revision, reports: [written.report], revisions: [written.revision] }} />);
-  expect(screen.getAllByText("Higher updated estimate")[0]).toBeVisible(); expect(screen.getAllByText(/-400 g CO₂/)[0]).toBeVisible(); expect(screen.getByText("Self-reported · energy assumed · private")).toBeVisible();
+  expect(screen.getAllByText("Higher updated estimate")[0]).toBeVisible(); expect(screen.getAllByText(/-400 g CO₂/)[0]).toBeVisible(); expect(screen.getByText("Your history · self-reported · energy assumed")).toBeVisible();
 });
 it("T02 account deletion stays disabled until both recent confirmation and acknowledgement exist", () => {
   const view = render(<AccountControls reauthenticated={false} />);

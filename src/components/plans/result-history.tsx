@@ -14,7 +14,7 @@ export function UpdatedEstimate({ revision }: { revision: ResultRevision }) {
 }
 export function ResultHistory({ plan }: { plan: Plan }) {
   if (!plan.latestReport || !plan.latestResult) return <section className="completion-summary"><p className="eyebrow">Execution unreported</p><h2>Your forecast is saved.</h2><p>After the wash, report what happened to compare the actual national grid factors with your frozen baseline.</p></section>;
-  return <section className="completion-summary" aria-labelledby="execution-heading"><p className="eyebrow">Self-reported · energy assumed · private</p><h2 id="execution-heading">{plan.status === "cancelled" ? "Plan cancelled" : plan.latestReport.kind === "ran" ? "You reported a completed wash" : "You reported non-execution"}</h2>
+  return <section className="completion-summary" aria-labelledby="execution-heading"><p className="eyebrow">Your history · self-reported · energy assumed</p><h2 id="execution-heading">{plan.status === "cancelled" ? "Plan cancelled" : plan.latestReport.kind === "ran" ? "You reported a completed wash" : "You reported non-execution"}</h2>
     {plan.latestReport.reportedStartUtc ? <p>Reported start · {londonLabel(plan.latestReport.reportedStartUtc)}</p> : null}
     <UpdatedEstimate revision={plan.latestResult} />
     <details className="source-details"><summary>Report and result history ({plan.revisions.length})</summary><ol className="revision-list">{[...plan.revisions].reverse().map((revision) => {
