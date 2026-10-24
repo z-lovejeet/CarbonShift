@@ -1,0 +1,13 @@
+import Link from "next/link";
+import { LocalVerifier } from "@/components/proof/local-verifier";
+import { PageHeader } from "@/components/ui/page-header";
+import { PageGuide, WorkspaceNotes } from "@/components/ui/page-guide";
+export const metadata = { title: "Verify a proof — CarbonShift" };
+export default function VerifyPage() {
+  return <div className="product-page verifier-page"><PageHeader eyebrow="Inspect / The evidence behind a plan" title="Check the record yourself." description="Reproduce a saved calculation from its downloaded bundle. Inspect each evidence layer separately, with a clear view of what can and cannot be established." />
+    <PageGuide items={[{title:"Choose the exported bundle",text:"Load a CarbonShift JSON proof file. It is processed locally in this browser; selecting it does not upload it."},{title:"Read the individual checks",text:"Inspect the method, calculation, revision history and disclosures. A missing source of evidence remains unavailable."},{title:"Add chain context if you choose",text:"Look up operator RPC observations or supply your own trusted observation file. Chain trust is separate from local arithmetic."}]} />
+    <LocalVerifier />
+    <section className="product-section" aria-labelledby="check-meaning-heading"><div className="product-section-heading"><div><h2 id="check-meaning-heading">Read every state in context.</h2><p>The verifier does not combine different kinds of evidence into a single certification badge.</p></div></div><div className="proof-legend"><div><h3>Matches</h3><p>The available inputs satisfy this specific check. A matching digest means the checked content agrees with its commitment; it does not measure device use.</p></div><div><h3>Does not match</h3><p>The available evidence conflicts with this check. Inspect the reported detail rather than treating a different, passing check as a replacement.</p></div><div><h3>Unavailable</h3><p>Required evidence is missing, such as trusted chain observations. This state is different from an arithmetic mismatch.</p></div><div><h3>Unsupported</h3><p>The record uses a method or format the verifier cannot evaluate. It does not guess how to reproduce a different calculation.</p></div></div></section>
+    <WorkspaceNotes title="Content integrity and physical evidence are different." link={{href:"/methodology#proof",label:"How receipts are constructed"}}><p>CarbonShift records reviewed energy assumptions and self-reported execution. A matching bundle and chain record cannot establish true appliance wattage, whether equipment ran or measured avoided emissions. The <Link href="/privacy#publication">privacy details</Link> explain which routine information becomes public.</p></WorkspaceNotes>
+  </div>;
+}
