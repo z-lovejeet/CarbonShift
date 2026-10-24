@@ -1,7 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { parse } from "dotenv";
 import { createClient } from "@supabase/supabase-js";
-import type { Database } from "../src/server/db/database.types";
+import type { Database } from "../src/server/db/schema";
 const args = process.argv.slice(2);
 if (args.some((argument) => argument !== "--apply") || args.length > 1) throw new Error("Use no arguments to preview expired private retry metadata, or --apply to prune it.");
 try {
