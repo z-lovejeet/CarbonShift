@@ -3,7 +3,7 @@ import { createHash, randomUUID } from "node:crypto";
 import { parse } from "dotenv";
 import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
-import type { Database } from "../src/server/db/database.types";
+import type { Database } from "../src/server/db/schema";
 import { AI_MODEL_IDS, type ModelId } from "../src/config/ai-registry";
 import { evaluationConfiguration, evaluationDatasetSchema, scoreSuggestion, percentile } from "../src/server/ai/evaluation";
 import { createAiStore } from "../src/server/ai/store";

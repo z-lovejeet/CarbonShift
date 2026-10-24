@@ -1,7 +1,7 @@
 import "server-only";
 import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database, Json } from "@/server/db/database.types";
+import type { Database, Json } from "@/server/db/schema";
 import { ApiError } from "@/server/http/errors";
 import type { Budget } from "@/server/limits/budgets";
 import type { AiProvider, AiRole, ModelId } from "@/config/ai-registry";

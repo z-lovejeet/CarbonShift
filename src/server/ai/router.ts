@@ -1,16 +1,16 @@
 import "server-only";
 import { randomUUID } from "node:crypto";
 import { candidates, type AiPolicy } from "@/config/ai-policy";
-import { AI_REGISTRY, type AiProvider, type AiRole, type ModelId } from "@/config/ai-registry";
+import { AI_REGISTRY, type AiProvider, type AiRole, type ModelId, type AiVariant } from "@/config/ai-registry";
 import { ApiError } from "@/server/http/errors";
 import { canonicalJson, digest, memberBudgets, providerBudgets, subject, tokenReservation } from "@/server/limits/budgets";
-import { PROMPT_VERSION, responseSchema, SYSTEM_PROMPTS } from "./prompts";
+import { taskPrompt } from "./prompts";
 import { ProviderFailure, type ProviderAdapter } from "./providers";
 import type { AiStore, Usage } from "./store";
 import { inputFingerprint, type AiBinding } from "./identity";
 
 type Dependencies = { store: AiStore; adapters: Record<AiProvider, ProviderAdapter>; hmac: string; now?: () => number };
-type TaskInput<T> = { owner: string | null; actor: string; key: string; role: AiRole; policy: AiPolicy; input: unknown; binding?: AiBinding; validate: (value: unknown) => T; evaluation?: boolean; model?: ModelId; requestId?: string; signal?: AbortSignal };
+type TaskInput<T> = { owner: string | null; actor: string; key: string; role: AiRole; variant?: AiVariant; policy: AiPolicy; input: unknown; binding?: AiBinding; validate: (value: unknown) => T; evaluation?: boolean; model?: ModelId; requestId?: string; signal?: AbortSignal };
 export async function runAiTask<T>(task: TaskInput<T>, dependencies: Dependencies): Promise<T> {
   const now = dependencies.now ?? Date.now;
   const iso = () => new Date(now()).toISOString();
@@ -20,15 +20,16 @@ export async function runAiTask<T>(task: TaskInput<T>, dependencies: Dependencie
   const role = task.role;
   const input = canonicalJson(role === "constraints" && task.input && typeof task.input === "object" && "text" in task.input && typeof task.input.text === "string"
     ? { ...task.input, textUtf16Length: task.input.text.length } : task.input);
-  const models = candidates(policy, role, task.evaluation).filter((m) => !task.model || m.id === task.model);
+  const models = candidates(policy, role, task.evaluation, task.variant).filter((m) => !task.model || m.id === task.model);
   if (!models.length) throw new ApiError("AI_UNAVAILABLE", 503, "AI is unavailable. Continue with the manual fields.");
+  const prompt = taskPrompt(role, task.variant);
   const seconds = role === "constraints" ? 22 : 12, primaryMs = role === "constraints" ? 12000 : 6000;
   const begun = await dependencies.store.begin({ owner: task.owner, actor, key: task.key, role,
-    fingerprint: inputFingerprint(dependencies.hmac, role, task.input, task.binding),
+    fingerprint: inputFingerprint(dependencies.hmac, role, task.input, task.binding, task.variant),
     policyDigest, seconds, budgets: task.evaluation ? [] : memberBudgets(actor, iso()) });
   const deadline = Math.min(Date.parse(begun.deadline), now() + seconds * 1000);
-  const schema = responseSchema(role), outputCap = role === "constraints" ? 2048 : 1024;
-  const tokens = tokenReservation(SYSTEM_PROMPTS[role] + input, JSON.stringify(schema), outputCap);
+  const schema = prompt.schema, outputCap = role === "constraints" ? 2048 : 1024;
+  const tokens = tokenReservation(prompt.system + input, JSON.stringify(schema), outputCap);
   let attempts = 0, lastProvider: AiProvider | null = null, minRetry = Infinity;
   const remaining = [...models];
   try {
@@ -39,7 +40,7 @@ export async function runAiTask<T>(task: TaskInput<T>, dependencies: Dependencie
       const provider: AiProvider = AI_REGISTRY[model.id].provider;
       const scopes = [digest(`ai-circuit:provider:${provider}`), digest(`ai-circuit:model:${model.id}`)];
       let reservation: { id: string; attempt: number };
-      try { reservation = await dependencies.store.reserve({ task: begun.id, provider, model: model.id, requestId: task.requestId ?? randomUUID(), prompt: PROMPT_VERSION[role], scopes,
+      try { reservation = await dependencies.store.reserve({ task: begun.id, provider, model: model.id, requestId: task.requestId ?? randomUUID(), prompt: prompt.version, scopes,
         budgets: providerBudgets(policy, model, tokens, iso()) }); }
       catch (error) { if (error instanceof ApiError && error.code === "AI_RATE_LIMITED") { minRetry = Math.min(minRetry, error.retryAfterSeconds ?? 60); continue; } throw error; }
       attempts++; lastProvider = provider;
@@ -52,7 +53,7 @@ export async function runAiTask<T>(task: TaskInput<T>, dependencies: Dependencie
       let usage: Usage = {};
       try {
         const response = await Promise.race([
-          dependencies.adapters[provider]({ role, model: model.id, system: SYSTEM_PROMPTS[role], input, schema, outputCap, signal: controller.signal }),
+          dependencies.adapters[provider]({ role, model: model.id, system: prompt.system, input, schema, outputCap, signal: controller.signal }),
           new Promise<never>((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new ProviderFailure("transient")); }, Math.max(1, Math.min(attempts === 1 ? primaryMs : deadline - now(), deadline - now()))); }),
           new Promise<never>((_, reject) => { cancel = () => { controller.abort(); reject(new ProviderFailure("unknown")); }; task.signal?.addEventListener("abort", cancel, { once: true }); if (task.signal?.aborted) cancel(); }),
         ]);
