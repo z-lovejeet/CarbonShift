@@ -1,7 +1,7 @@
 import "server-only";
 import { z } from "zod";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "@/server/db/database.types";
+import type { Database } from "@/server/db/schema";
 import { comparisonSchema, gridSnapshotSchema } from "@/domain/schemas";
 import type { GridSnapshotRecord } from "@/server/grid/snapshot";
 import { hashGridSnapshot } from "@/server/grid/snapshot";
@@ -12,6 +12,8 @@ import { reportDocumentSchema, resultRevisionSchema } from "@/contracts/lifecycl
 export function databaseError(error: { message: string } | null) {
   if (!error) return;
   const failures: Record<string, [number, string]> = {
+    PREVIEW_CHANGED: [409, "This preview changed or expired. Review a fresh preview before consenting."], PUBLICATION_NOT_ALLOWED: [409, "Publication is unavailable for the current plan or preceding transaction state."],
+    PUBLICATION_RATE_LIMITED: [429, "The daily publication limit has been reached. Keep your private plan and try tomorrow."], PUBLISHED_PLAN_RETAINED: [409, "This plan has a consented public copy. Account deletion can remove its private data while retaining that public evidence."],
     PLAN_CANCELLED: [409, "This plan is cancelled. Create a new plan to run again."], INVALID_REPORT: [422, "Check the reported time and current plan state."],
     NOT_FOUND: [404, "This plan or comparison was not found."], COMPARISON_EXPIRED: [409, "Refresh and review the comparison before saving."],
     VERSION_CONFLICT: [409, "This comparison changed. Refresh and review it again."], IDEMPOTENCY_CONFLICT: [409, "This retry key was already used for a different request."],
@@ -37,7 +39,7 @@ export function createPlanRepository(reader: SupabaseClient<Database>, writer: S
     const response = await reader.rpc("cs_read_private_plan", { p_plan: id });
     databaseError(response.error);
     if (!response.data) throw new ApiError("NOT_FOUND", 404, "This plan was not found.");
-    const stored = z.object({ plan: storedPlanSchema, forecastSnapshot: gridSnapshotSchema, forecastHash: z.string(), reports: z.array(reportDocumentSchema), revisions: z.array(resultRevisionSchema) }).parse(response.data);
+    const stored = z.object({ plan: storedPlanSchema, forecastSnapshot: gridSnapshotSchema, forecastHash: z.string(), publicationStatus: planSchema.shape.publication.default("private"), reports: z.array(reportDocumentSchema), revisions: z.array(resultRevisionSchema) }).parse(response.data);
     const { plan: row, reports, revisions } = stored;
     if (row.owner_id !== userId || row.id !== id) throw new ApiError("NOT_FOUND", 404, "This plan was not found.");
     if (stored.forecastHash !== row.accepted_payload.forecastSnapshotHash || hashGridSnapshot(stored.forecastSnapshot) !== stored.forecastHash) throw new ApiError("DATABASE_UNAVAILABLE", 503, "The saved forecast could not be validated.");
@@ -46,7 +48,7 @@ export function createPlanRepository(reader: SupabaseClient<Database>, writer: S
     if ((latestReport === null) !== (latestResult === null) || latestResult && latestResult.reportId !== latestReport?.id) throw new ApiError("DATABASE_UNAVAILABLE", 503, "Your history could not be validated.");
     return planSchema.parse({ schemaVersion: 1, id: row.id, version: row.version, comparisonId: row.comparison_id, mode: row.mode, status: row.status,
       acceptedAtUtc: canonicalUtc(row.accepted_at), comparison: row.accepted_payload, forecastSnapshot: stored.forecastSnapshot,
-      completion: latestReport?.kind ?? "not_reported", publication: "private", latestReport, latestResult, reports, revisions });
+      completion: latestReport?.kind ?? "not_reported", publication: stored.publicationStatus, latestReport, latestResult, reports, revisions });
   }
   return {
     async comparison(id: string) {
@@ -91,10 +93,10 @@ export function createPlanRepository(reader: SupabaseClient<Database>, writer: S
       const result = await reader.rpc("cs_read_private_plan_page", { p_limit: limit, ...(cursor ? { p_before_time: cursor.acceptedAtUtc, p_before_id: cursor.id } : {}) });
       databaseError(result.error);
       if (!Array.isArray(result.data)) throw new ApiError("DATABASE_UNAVAILABLE", 503, "Your plans could not be loaded.", true);
-      const rows = result.data.slice(0, limit).map((input) => storedPlanSchema.extend({ completion: z.enum(["not_reported", "ran", "did_not_run"]) }).parse(input));
+      const rows = result.data.slice(0, limit).map((input) => storedPlanSchema.extend({ completion: z.enum(["not_reported", "ran", "did_not_run"]), publicationStatus: planSchema.shape.publication.default("private") }).parse(input));
       if (rows.some((row) => row.owner_id !== userId)) throw new ApiError("DATABASE_UNAVAILABLE", 503, "Your plans could not be validated.");
       const items = rows.map((row) => ({ schemaVersion: 1 as const, id: row.id, version: row.version, comparisonId: row.comparison_id, mode: row.mode, status: row.status,
-        acceptedAtUtc: canonicalUtc(row.accepted_at), baseline: row.accepted_payload.baseline, selected: row.accepted_payload.selected, differenceMg: row.accepted_payload.differenceMg, completion: row.completion, publication: "private" as const }));
+        acceptedAtUtc: canonicalUtc(row.accepted_at), baseline: row.accepted_payload.baseline, selected: row.accepted_payload.selected, differenceMg: row.accepted_payload.differenceMg, completion: row.completion, publication: row.publicationStatus }));
       const last = items.at(-1);
       return { items, nextCursor: result.data.length > limit && last ? Buffer.from(JSON.stringify({ acceptedAtUtc: last.acceptedAtUtc, id: last.id })).toString("base64url") : null };
     },

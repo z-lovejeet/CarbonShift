@@ -14,6 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      activity_profile_versions: {
+        Row: {
+          id: string
+          payload: Json
+          version: number
+        }
+        Insert: {
+          id: string
+          payload: Json
+          version: number
+        }
+        Update: {
+          id?: string
+          payload?: Json
+          version?: number
+        }
+        Relationships: []
+      }
       ai_explanation_cache: {
         Row: {
           cache_key: string
@@ -288,6 +306,131 @@ export type Database = {
         }
         Relationships: []
       }
+      ledger_operations: {
+        Row: {
+          attempts: number
+          block_hash: string | null
+          block_number: number | null
+          checked_at: string | null
+          created_at: string
+          expected_hash: string
+          failure_code: string | null
+          id: string
+          kind: string
+          publication_id: string
+          result_id: string | null
+          status: string
+          transaction_hash: string | null
+          updated_at: string
+        }
+        Insert: {
+          attempts?: number
+          block_hash?: string | null
+          block_number?: number | null
+          checked_at?: string | null
+          created_at?: string
+          expected_hash: string
+          failure_code?: string | null
+          id?: string
+          kind: string
+          publication_id: string
+          result_id?: string | null
+          status?: string
+          transaction_hash?: string | null
+          updated_at?: string
+        }
+        Update: {
+          attempts?: number
+          block_hash?: string | null
+          block_number?: number | null
+          checked_at?: string | null
+          created_at?: string
+          expected_hash?: string
+          failure_code?: string | null
+          id?: string
+          kind?: string
+          publication_id?: string
+          result_id?: string | null
+          status?: string
+          transaction_hash?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ledger_operations_publication_id_fkey"
+            columns: ["publication_id"]
+            isOneToOne: false
+            referencedRelation: "publications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ledger_operations_result_id_fkey"
+            columns: ["result_id"]
+            isOneToOne: true
+            referencedRelation: "published_results"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ledger_signed_transactions: {
+        Row: {
+          chain_id: number
+          created_at: string
+          nonce: number
+          operation_id: string
+          raw_transaction: string
+          signer: string
+          transaction_hash: string
+        }
+        Insert: {
+          chain_id: number
+          created_at?: string
+          nonce: number
+          operation_id: string
+          raw_transaction: string
+          signer: string
+          transaction_hash: string
+        }
+        Update: {
+          chain_id?: number
+          created_at?: string
+          nonce?: number
+          operation_id?: string
+          raw_transaction?: string
+          signer?: string
+          transaction_hash?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ledger_signed_transactions_operation_id_fkey"
+            columns: ["operation_id"]
+            isOneToOne: true
+            referencedRelation: "ledger_operations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ledger_worker_leases: {
+        Row: {
+          expires_at: string
+          fence: number
+          holder: string
+          scope: string
+        }
+        Insert: {
+          expires_at: string
+          fence?: number
+          holder: string
+          scope: string
+        }
+        Update: {
+          expires_at?: string
+          fence?: number
+          holder?: string
+          scope?: string
+        }
+        Relationships: []
+      }
       lifecycle_mutations: {
         Row: {
           expires_at: string
@@ -409,6 +552,206 @@ export type Database = {
         }
         Relationships: []
       }
+      publication_identities: {
+        Row: {
+          contract_address: string
+          nonce: string
+          owner_id: string
+          plan_id: string
+          receipt_id: string
+        }
+        Insert: {
+          contract_address: string
+          nonce: string
+          owner_id: string
+          plan_id: string
+          receipt_id: string
+        }
+        Update: {
+          contract_address?: string
+          nonce?: string
+          owner_id?: string
+          plan_id?: string
+          receipt_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "publication_identities_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: true
+            referencedRelation: "plans"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      publication_previews: {
+        Row: {
+          canonical_text: string
+          consent_version: string
+          created_at: string
+          expires_at: string
+          id: string
+          kind: string
+          manifest: Json
+          manifest_hash: string
+          owner_id: string
+          plan_id: string
+          plan_version: number
+          private_result_id: string | null
+        }
+        Insert: {
+          canonical_text: string
+          consent_version?: string
+          created_at?: string
+          expires_at: string
+          id?: string
+          kind: string
+          manifest: Json
+          manifest_hash: string
+          owner_id: string
+          plan_id: string
+          plan_version: number
+          private_result_id?: string | null
+        }
+        Update: {
+          canonical_text?: string
+          consent_version?: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+          kind?: string
+          manifest?: Json
+          manifest_hash?: string
+          owner_id?: string
+          plan_id?: string
+          plan_version?: number
+          private_result_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "publication_previews_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: false
+            referencedRelation: "plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "publication_previews_private_result_id_fkey"
+            columns: ["private_result_id"]
+            isOneToOne: false
+            referencedRelation: "result_revisions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      publications: {
+        Row: {
+          canonical_text: string
+          consent_version: string
+          consented_at: string
+          id: string
+          manifest: Json
+          manifest_hash: string
+          owner_id: string | null
+          plan_id: string | null
+          receipt_id: string
+          schedule_id: string | null
+        }
+        Insert: {
+          canonical_text: string
+          consent_version: string
+          consented_at?: string
+          id?: string
+          manifest: Json
+          manifest_hash: string
+          owner_id?: string | null
+          plan_id?: string | null
+          receipt_id: string
+          schedule_id?: string | null
+        }
+        Update: {
+          canonical_text?: string
+          consent_version?: string
+          consented_at?: string
+          id?: string
+          manifest?: Json
+          manifest_hash?: string
+          owner_id?: string | null
+          plan_id?: string | null
+          receipt_id?: string
+          schedule_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "publications_plan_id_fkey"
+            columns: ["plan_id"]
+            isOneToOne: true
+            referencedRelation: "plans"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "publications_schedule_id_fkey"
+            columns: ["schedule_id"]
+            isOneToOne: true
+            referencedRelation: "schedules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      published_results: {
+        Row: {
+          canonical_text: string
+          consent_version: string
+          consented_at: string
+          id: string
+          manifest: Json
+          manifest_hash: string
+          private_vector_digest: string | null
+          public_sequence: number
+          publication_id: string
+          result_revision_id: string | null
+        }
+        Insert: {
+          canonical_text: string
+          consent_version: string
+          consented_at?: string
+          id?: string
+          manifest: Json
+          manifest_hash: string
+          private_vector_digest?: string | null
+          public_sequence: number
+          publication_id: string
+          result_revision_id?: string | null
+        }
+        Update: {
+          canonical_text?: string
+          consent_version?: string
+          consented_at?: string
+          id?: string
+          manifest?: Json
+          manifest_hash?: string
+          private_vector_digest?: string | null
+          public_sequence?: number
+          publication_id?: string
+          result_revision_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "published_results_publication_id_fkey"
+            columns: ["publication_id"]
+            isOneToOne: false
+            referencedRelation: "publications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "published_results_result_revision_id_fkey"
+            columns: ["result_revision_id"]
+            isOneToOne: false
+            referencedRelation: "result_revisions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       result_revisions: {
         Row: {
           actual_snapshot_id: string | null
@@ -464,6 +807,374 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "completion_reports"
             referencedColumns: ["id", "plan_id", "owner_id"]
+          },
+        ]
+      }
+      schedule_comparisons: {
+        Row: {
+          created_at: string
+          expires_at: string
+          id: string
+          owner_id: string
+          payload: Json
+        }
+        Insert: {
+          created_at: string
+          expires_at: string
+          id: string
+          owner_id: string
+          payload: Json
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string
+          id?: string
+          owner_id?: string
+          payload?: Json
+        }
+        Relationships: []
+      }
+      schedule_explanation_cache: {
+        Row: {
+          cache_key: string
+          expires_at: string
+          owner_id: string
+          schedule_id: string
+          selection: Json
+        }
+        Insert: {
+          cache_key: string
+          expires_at: string
+          owner_id: string
+          schedule_id: string
+          selection: Json
+        }
+        Update: {
+          cache_key?: string
+          expires_at?: string
+          owner_id?: string
+          schedule_id?: string
+          selection?: Json
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schedule_explanation_cache_schedule_id_owner_id_fkey"
+            columns: ["schedule_id", "owner_id"]
+            isOneToOne: false
+            referencedRelation: "schedules"
+            referencedColumns: ["id", "owner_id"]
+          },
+        ]
+      }
+      schedule_lifecycle_keys: {
+        Row: {
+          created_at: string
+          digest: string
+          key: string
+          owner_id: string
+          response: Json
+          schedule_id: string
+          scope: string
+        }
+        Insert: {
+          created_at?: string
+          digest: string
+          key: string
+          owner_id: string
+          response: Json
+          schedule_id: string
+          scope: string
+        }
+        Update: {
+          created_at?: string
+          digest?: string
+          key?: string
+          owner_id?: string
+          response?: Json
+          schedule_id?: string
+          scope?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schedule_lifecycle_keys_schedule_id_fkey"
+            columns: ["schedule_id"]
+            isOneToOne: false
+            referencedRelation: "schedules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      schedule_mutation_keys: {
+        Row: {
+          created_at: string
+          key: string
+          owner_id: string
+          request_digest: string
+          response_reference: string
+          scope: string
+        }
+        Insert: {
+          created_at?: string
+          key: string
+          owner_id: string
+          request_digest: string
+          response_reference: string
+          scope: string
+        }
+        Update: {
+          created_at?: string
+          key?: string
+          owner_id?: string
+          request_digest?: string
+          response_reference?: string
+          scope?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schedule_mutation_keys_response_reference_fkey"
+            columns: ["response_reference"]
+            isOneToOne: false
+            referencedRelation: "schedules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      schedule_publication_previews: {
+        Row: {
+          canonical_text: string
+          consent_version: string
+          created_at: string
+          expires_at: string
+          id: string
+          kind: string
+          manifest: Json
+          manifest_hash: string
+          owner_id: string
+          private_vector: Json | null
+          schedule_id: string
+        }
+        Insert: {
+          canonical_text: string
+          consent_version?: string
+          created_at?: string
+          expires_at: string
+          id?: string
+          kind: string
+          manifest: Json
+          manifest_hash: string
+          owner_id: string
+          private_vector?: Json | null
+          schedule_id: string
+        }
+        Update: {
+          canonical_text?: string
+          consent_version?: string
+          created_at?: string
+          expires_at?: string
+          id?: string
+          kind?: string
+          manifest?: Json
+          manifest_hash?: string
+          owner_id?: string
+          private_vector?: Json | null
+          schedule_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schedule_publication_previews_schedule_id_fkey"
+            columns: ["schedule_id"]
+            isOneToOne: false
+            referencedRelation: "schedules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      schedule_receipt_identities: {
+        Row: {
+          contract_address: string
+          nonce: string
+          owner_id: string
+          receipt_id: string
+          schedule_id: string
+        }
+        Insert: {
+          contract_address: string
+          nonce: string
+          owner_id: string
+          receipt_id: string
+          schedule_id: string
+        }
+        Update: {
+          contract_address?: string
+          nonce?: string
+          owner_id?: string
+          receipt_id?: string
+          schedule_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schedule_receipt_identities_schedule_id_fkey"
+            columns: ["schedule_id"]
+            isOneToOne: true
+            referencedRelation: "schedules"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      schedule_reports: {
+        Row: {
+          id: string
+          owner_id: string
+          payload: Json
+          previous_report_id: string | null
+          schedule_id: string
+          sequence: number
+          task_id: string
+        }
+        Insert: {
+          id: string
+          owner_id: string
+          payload: Json
+          previous_report_id?: string | null
+          schedule_id: string
+          sequence: number
+          task_id: string
+        }
+        Update: {
+          id?: string
+          owner_id?: string
+          payload?: Json
+          previous_report_id?: string | null
+          schedule_id?: string
+          sequence?: number
+          task_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schedule_reports_previous_report_id_schedule_id_task_id_fkey"
+            columns: ["previous_report_id", "schedule_id", "task_id"]
+            isOneToOne: false
+            referencedRelation: "schedule_reports"
+            referencedColumns: ["id", "schedule_id", "task_id"]
+          },
+          {
+            foreignKeyName: "schedule_reports_schedule_id_task_id_owner_id_fkey"
+            columns: ["schedule_id", "task_id", "owner_id"]
+            isOneToOne: false
+            referencedRelation: "schedule_tasks"
+            referencedColumns: ["schedule_id", "task_id", "owner_id"]
+          },
+        ]
+      }
+      schedule_results: {
+        Row: {
+          id: string
+          owner_id: string
+          payload: Json
+          report_id: string
+          schedule_id: string
+          semantic_digest: string
+          sequence: number
+          task_id: string
+        }
+        Insert: {
+          id: string
+          owner_id: string
+          payload: Json
+          report_id: string
+          schedule_id: string
+          semantic_digest: string
+          sequence: number
+          task_id: string
+        }
+        Update: {
+          id?: string
+          owner_id?: string
+          payload?: Json
+          report_id?: string
+          schedule_id?: string
+          semantic_digest?: string
+          sequence?: number
+          task_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schedule_results_report_id_schedule_id_task_id_fkey"
+            columns: ["report_id", "schedule_id", "task_id"]
+            isOneToOne: false
+            referencedRelation: "schedule_reports"
+            referencedColumns: ["id", "schedule_id", "task_id"]
+          },
+          {
+            foreignKeyName: "schedule_results_schedule_id_task_id_owner_id_fkey"
+            columns: ["schedule_id", "task_id", "owner_id"]
+            isOneToOne: false
+            referencedRelation: "schedule_tasks"
+            referencedColumns: ["schedule_id", "task_id", "owner_id"]
+          },
+        ]
+      }
+      schedule_tasks: {
+        Row: {
+          owner_id: string
+          payload: Json
+          schedule_id: string
+          task_id: string
+        }
+        Insert: {
+          owner_id: string
+          payload: Json
+          schedule_id: string
+          task_id: string
+        }
+        Update: {
+          owner_id?: string
+          payload?: Json
+          schedule_id?: string
+          task_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schedule_tasks_schedule_id_owner_id_fkey"
+            columns: ["schedule_id", "owner_id"]
+            isOneToOne: false
+            referencedRelation: "schedules"
+            referencedColumns: ["id", "owner_id"]
+          },
+        ]
+      }
+      schedules: {
+        Row: {
+          accepted_at: string
+          accepted_payload: Json
+          comparison_id: string
+          id: string
+          option_index: number
+          owner_id: string
+        }
+        Insert: {
+          accepted_at?: string
+          accepted_payload: Json
+          comparison_id: string
+          id?: string
+          option_index: number
+          owner_id: string
+        }
+        Update: {
+          accepted_at?: string
+          accepted_payload?: Json
+          comparison_id?: string
+          id?: string
+          option_index?: number
+          owner_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "schedules_comparison_id_owner_id_fkey"
+            columns: ["comparison_id", "owner_id"]
+            isOneToOne: false
+            referencedRelation: "schedule_comparisons"
+            referencedColumns: ["id", "owner_id"]
           },
         ]
       }
@@ -578,6 +1289,16 @@ export type Database = {
           isSetofReturn: false
         }
       }
+      cs_accept_schedule: {
+        Args: {
+          p_comparison: string
+          p_digest: string
+          p_key: string
+          p_option: number
+          p_owner: string
+        }
+        Returns: string
+      }
       cs_ai_begin_task: {
         Args: {
           p_actor: string
@@ -642,6 +1363,56 @@ export type Database = {
         }
         Returns: string
       }
+      cs_create_schedule_comparison: {
+        Args: { p_owner: string; p_payload: Json }
+        Returns: string
+      }
+      cs_ledger_assert_lease: {
+        Args: { p_fence: number; p_holder: string; p_scope: string }
+        Returns: undefined
+      }
+      cs_ledger_lease: {
+        Args: { p_holder: string; p_scope: string }
+        Returns: number
+      }
+      cs_ledger_observe: {
+        Args: {
+          p_block: number
+          p_block_hash: string
+          p_code: string
+          p_fence: number
+          p_holder: string
+          p_operation: string
+          p_scope: string
+          p_status: string
+        }
+        Returns: undefined
+      }
+      cs_ledger_persist_signed: {
+        Args: {
+          p_fence: number
+          p_hash: string
+          p_holder: string
+          p_nonce: number
+          p_operation: string
+          p_raw: string
+          p_scope: string
+        }
+        Returns: boolean
+      }
+      cs_ledger_prepare: {
+        Args: {
+          p_fence: number
+          p_holder: string
+          p_operation: string
+          p_scope: string
+        }
+        Returns: boolean
+      }
+      cs_ledger_release: {
+        Args: { p_fence: number; p_holder: string; p_scope: string }
+        Returns: undefined
+      }
       cs_lifecycle_commit: {
         Args: {
           p_action: string
@@ -673,6 +1444,40 @@ export type Database = {
         Args: { p_ids: string[] }
         Returns: undefined
       }
+      cs_publication_consent: {
+        Args: {
+          p_consent: string
+          p_digest: string
+          p_hash: string
+          p_key: string
+          p_owner: string
+          p_plan: string
+          p_preview: string
+          p_revision: number
+        }
+        Returns: Json
+      }
+      cs_publication_identity: {
+        Args: {
+          p_contract: string
+          p_nonce: string
+          p_owner: string
+          p_plan: string
+          p_receipt: string
+        }
+        Returns: Json
+      }
+      cs_publication_preview: {
+        Args: {
+          p_hash: string
+          p_manifest: string
+          p_owner: string
+          p_plan: string
+          p_result: string
+          p_version: number
+        }
+        Returns: Json
+      }
       cs_read_private_plan: { Args: { p_plan: string }; Returns: Json }
       cs_read_private_plan_page: {
         Args: { p_before_id?: string; p_before_time?: string; p_limit: number }
@@ -682,6 +1487,55 @@ export type Database = {
         Args: { p_buckets: Json; p_operation: string }
         Returns: Json
       }
+      cs_retention: { Args: { p_apply?: boolean }; Returns: Json }
+      cs_schedule_history: { Args: { p_schedule: string }; Returns: Json }
+      cs_schedule_publication_consent: {
+        Args: {
+          p_digest: string
+          p_hash: string
+          p_key: string
+          p_owner: string
+          p_preview: string
+          p_schedule: string
+        }
+        Returns: Json
+      }
+      cs_schedule_publication_preview: {
+        Args: {
+          p_hash: string
+          p_owner: string
+          p_schedule: string
+          p_text: string
+          p_vector: Json
+        }
+        Returns: Json
+      }
+      cs_schedule_receipt_identity: {
+        Args: {
+          p_contract: string
+          p_nonce: string
+          p_owner: string
+          p_receipt: string
+          p_schedule: string
+        }
+        Returns: Json
+      }
+      cs_schedule_report_commit: {
+        Args: {
+          p_action: string
+          p_digest: string
+          p_expected: number
+          p_key: string
+          p_owner: string
+          p_report: Json
+          p_result: Json
+          p_schedule: string
+          p_semantic: string
+          p_task: string
+        }
+        Returns: Json
+      }
+      cs_schedule_vector: { Args: { p_schedule: string }; Returns: Json }
     }
     Enums: {
       [_ in never]: never

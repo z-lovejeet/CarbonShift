@@ -2,7 +2,7 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import { z } from "zod";
 import { createServiceClient } from "@/server/db/clients";
-import type { Json } from "@/server/db/database.types";
+import type { Json } from "@/server/db/schema";
 import { ApiError } from "@/server/http/errors";
 import type { Budget } from "./budgets";
 

@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { getWebEnvironment } from "@/server/env";
-import type { Database } from "./database.types";
+import type { Database } from "./schema";
 import { ApiError } from "@/server/http/errors";
 
 export const boundedFetch: typeof fetch = (input, init) => fetch(input, {

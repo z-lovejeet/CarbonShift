@@ -1,6 +1,6 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { Database } from "@/server/db/database.types";
+import type { Database } from "@/server/db/schema";
 import { lifecycleAckSchema, type ReportDocument, type ResultRevision } from "@/contracts/lifecycle";
 import type { GridSnapshotRecord } from "@/server/grid/snapshot";
 import { databaseError, type PlanRepository } from "./repository";

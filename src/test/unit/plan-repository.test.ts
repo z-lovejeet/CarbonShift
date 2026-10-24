@@ -1,6 +1,6 @@
 import { beforeEach, expect, it, vi } from "vitest";
 import { createClient } from "@supabase/supabase-js";
-import type { Database } from "@/server/db/database.types";
+import type { Database } from "@/server/db/schema";
 import { createPlanRepository } from "@/server/plans/repository";
 import { createGridSnapshotRecord } from "@/server/grid/snapshot";
 import { createComparison } from "@/domain/scheduling";
