@@ -1,0 +1,15 @@
+{
+  "datasetSha256": "7f132c455089259ce9cef899005444bee302d8dc2e3f8966916ebc2954c592a9",
+  "reviewedBy": "Codex, at the user\u2019s explicit request to check the labels",
+  "reviewedAtUtc": "2026-10-23T16:08:02.018807+00:00",
+  "humanReviewed": false,
+  "corrections": [
+    "D05/H05 now explicitly say car; pressure washing alone does not establish the object.",
+    "H03 explicitly specifies clothes washing, avoiding the ambiguous word laundry."
+  ],
+  "limitations": [
+    "Authored examples, not representative field-user accuracy.",
+    "Same agent reviewed the labels and implementation; no independent review claim.",
+    "Expected fields are partial; unspecified fields are not exact gold labels."
+  ]
+}
