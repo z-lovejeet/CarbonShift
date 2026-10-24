@@ -1,0 +1,763 @@
+{
+  "runId": "0b2c81ea-4981-4b33-be5b-674cfe452508",
+  "model": "gemini-3.5-flash-lite",
+  "variant": "activity-v2",
+  "promptVersion": "activity-v2.3",
+  "datasetSha256": "7f132c455089259ce9cef899005444bee302d8dc2e3f8966916ebc2954c592a9",
+  "review": {
+    "datasetSha256": "7f132c455089259ce9cef899005444bee302d8dc2e3f8966916ebc2954c592a9",
+    "reviewedBy": "Codex, at the user’s explicit request to check the labels",
+    "reviewedAtUtc": "2026-10-23T16:08:02.018807+00:00",
+    "humanReviewed": false,
+    "corrections": [
+      "D05/H05 now explicitly say car; pressure washing alone does not establish the object.",
+      "H03 explicitly specifies clothes washing, avoiding the ambiguous word laundry."
+    ],
+    "limitations": [
+      "Authored examples, not representative field-user accuracy.",
+      "Same agent reviewed the labels and implementation; no independent review claim.",
+      "Expected fields are partial; unspecified fields are not exact gold labels."
+    ]
+  },
+  "accountTier": "user-confirmed-free",
+  "automaticPromotion": false,
+  "updatedAtUtc": "2026-10-24T06:13:35.944Z",
+  "outcomes": [
+    {
+      "diagnostic": {},
+      "caseId": "D01",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 5127,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "television",
+            "durationMinutes": 60,
+            "quantity": null,
+            "energyText": "100 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": "2026-10-23T19:00",
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 50,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D02",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 3222,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "vacuuming",
+            "durationMinutes": 15,
+            "quantity": null,
+            "energyText": "900 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 43,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D03",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 13961,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "washing",
+            "durationMinutes": 213,
+            "quantity": null,
+            "energyText": "0.46 kWh",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 52,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D04",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 6255,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "car_cleaning",
+            "durationMinutes": null,
+            "quantity": null,
+            "energyText": null,
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 28,
+            "questions": [
+              "equipment",
+              "duration",
+              "timing",
+              "energy"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D05",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 5902,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "car_cleaning",
+            "durationMinutes": 10,
+            "quantity": null,
+            "energyText": "1.4 kW",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 60,
+            "questions": [
+              "equipment"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D06",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 6363,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "charging",
+            "durationMinutes": 90,
+            "quantity": null,
+            "energyText": "120 Wh",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 46,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D07",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 4195,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "fan",
+            "durationMinutes": 45,
+            "quantity": null,
+            "energyText": null,
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 52,
+            "questions": [
+              "energy"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D08",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 3452,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "lighting",
+            "durationMinutes": 120,
+            "quantity": 2,
+            "energyText": "10 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 34,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D09",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 4416,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "television",
+            "durationMinutes": 30,
+            "quantity": null,
+            "energyText": "85 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": "2026-10-23T20:00",
+            "fixed": true,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 66,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D10",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 3931,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "ironing",
+            "durationMinutes": 20,
+            "quantity": null,
+            "energyText": "800 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": true,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 58,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D11",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 3569,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "computer",
+            "durationMinutes": 30,
+            "quantity": 1,
+            "energyText": "200 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 6,
+            "sourceEnd": 63,
+            "questions": [
+              "timing"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "D12",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 5189,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "television",
+            "durationMinutes": 45,
+            "quantity": null,
+            "energyText": null,
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 23,
+            "questions": [
+              "energy"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H01",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 3742,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "television",
+            "durationMinutes": 25,
+            "quantity": null,
+            "energyText": "72 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 3,
+            "sourceEnd": 59,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H02",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 3556,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "vacuuming",
+            "durationMinutes": 8,
+            "quantity": null,
+            "energyText": "650 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 66,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H03",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 3590,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "washing",
+            "durationMinutes": 150,
+            "quantity": null,
+            "energyText": "0.7 kWh",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 4,
+            "sourceEnd": 82,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H04",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 3570,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "car_cleaning",
+            "durationMinutes": null,
+            "quantity": null,
+            "energyText": null,
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 11,
+            "sourceEnd": 21,
+            "questions": [
+              "equipment",
+              "energy",
+              "duration"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H05",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 4426,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "car_cleaning",
+            "durationMinutes": 12,
+            "quantity": null,
+            "energyText": "1800 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 60,
+            "questions": [
+              "equipment"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H06",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 4532,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "dishwasher",
+            "durationMinutes": 180,
+            "quantity": null,
+            "energyText": "0.8 kWh",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 52,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H07",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 4947,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "fan",
+            "durationMinutes": 35,
+            "quantity": null,
+            "energyText": null,
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 4,
+            "sourceEnd": 27,
+            "questions": [
+              "energy"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H08",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 4054,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "lighting",
+            "durationMinutes": 75,
+            "quantity": 3,
+            "energyText": "8 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 57,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H09",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 7639,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "television",
+            "durationMinutes": 50,
+            "quantity": null,
+            "energyText": "95 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": "2026-10-23T21:00",
+            "fixed": true,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 3,
+            "sourceEnd": 72,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H10",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 5754,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "ironing",
+            "durationMinutes": 10,
+            "quantity": null,
+            "energyText": "1200 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": true,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 71,
+            "questions": []
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H11",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 7015,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "computer",
+            "durationMinutes": 20,
+            "quantity": null,
+            "energyText": "140 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 70,
+            "questions": [
+              "timing"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "diagnostic": {},
+      "caseId": "H12",
+      "split": "holdout",
+      "errorCode": null,
+      "latencyMs": 7520,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "drying",
+            "durationMinutes": 60,
+            "quantity": null,
+            "energyText": "1 kWh",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [
+              1
+            ],
+            "sourceStart": 0,
+            "sourceEnd": 44,
+            "questions": []
+          },
+          {
+            "category": "washing",
+            "durationMinutes": 90,
+            "quantity": null,
+            "energyText": "0.5 kWh",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": null,
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 59,
+            "sourceEnd": 109,
+            "questions": []
+          }
+        ]
+      }
+    }
+  ]
+}

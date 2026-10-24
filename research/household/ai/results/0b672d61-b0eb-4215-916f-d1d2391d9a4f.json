@@ -1,0 +1,42 @@
+{
+  "runId": "0b672d61-b0eb-4215-916f-d1d2391d9a4f",
+  "model": "gemini-3.5-flash-lite",
+  "variant": "activity-v2",
+  "promptVersion": "activity-v2.1",
+  "datasetSha256": "7f132c455089259ce9cef899005444bee302d8dc2e3f8966916ebc2954c592a9",
+  "review": {
+    "datasetSha256": "7f132c455089259ce9cef899005444bee302d8dc2e3f8966916ebc2954c592a9",
+    "reviewedBy": "Codex, at the user’s explicit request to check the labels",
+    "reviewedAtUtc": "2026-10-23T16:08:02.018807+00:00",
+    "humanReviewed": false,
+    "corrections": [
+      "D05/H05 now explicitly say car; pressure washing alone does not establish the object.",
+      "H03 explicitly specifies clothes washing, avoiding the ambiguous word laundry."
+    ],
+    "limitations": [
+      "Authored examples, not representative field-user accuracy.",
+      "Same agent reviewed the labels and implementation; no independent review claim.",
+      "Expected fields are partial; unspecified fields are not exact gold labels."
+    ]
+  },
+  "accountTier": "user-confirmed-free",
+  "automaticPromotion": false,
+  "updatedAtUtc": "2026-10-23T16:10:06.371Z",
+  "outcomes": [
+    {
+      "caseId": "D01",
+      "split": "development",
+      "errorCode": "AI_UNAVAILABLE",
+      "latencyMs": 4507,
+      "correct": false,
+      "wrongFields": [
+        "taskCount",
+        "0.category",
+        "0.durationMinutes",
+        "0.energyText",
+        "0.baselineLocal"
+      ],
+      "answer": null
+    }
+  ]
+}

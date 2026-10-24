@@ -1,0 +1,121 @@
+{
+  "model": "gemini-3.5-flash-lite",
+  "variant": "schedule-explanation-v2",
+  "promptVersion": "schedule-explanation-v2.3",
+  "evaluatedAtUtc": "2026-10-24T11:42:34.043Z",
+  "accountTier": "user-confirmed-free",
+  "reviewedBy": "Codex; eligible/required codes are determined by program facts",
+  "authoredSynthetic": true,
+  "automaticPromotion": false,
+  "outcomes": [
+    {
+      "caseId": 1,
+      "valid": true,
+      "facts": {
+        "eligibleCodes": [
+          "LOWER_ESTIMATE"
+        ],
+        "requiredCodes": []
+      },
+      "selection": {
+        "schemaVersion": 2,
+        "codes": [
+          "LOWER_ESTIMATE"
+        ]
+      }
+    },
+    {
+      "caseId": 2,
+      "valid": true,
+      "facts": {
+        "eligibleCodes": [
+          "NO_IMPROVEMENT_FOUND"
+        ],
+        "requiredCodes": []
+      },
+      "selection": {
+        "schemaVersion": 2,
+        "codes": [
+          "NO_IMPROVEMENT_FOUND"
+        ]
+      }
+    },
+    {
+      "caseId": 3,
+      "valid": true,
+      "facts": {
+        "eligibleCodes": [
+          "LOWER_ESTIMATE",
+          "FIXED_TIMES_RETAINED"
+        ],
+        "requiredCodes": []
+      },
+      "selection": {
+        "schemaVersion": 2,
+        "codes": [
+          "FIXED_TIMES_RETAINED"
+        ]
+      }
+    },
+    {
+      "caseId": 4,
+      "valid": true,
+      "facts": {
+        "eligibleCodes": [
+          "LOWER_ESTIMATE",
+          "DEPENDENCIES_RESPECTED"
+        ],
+        "requiredCodes": []
+      },
+      "selection": {
+        "schemaVersion": 2,
+        "codes": [
+          "DEPENDENCIES_RESPECTED"
+        ]
+      }
+    },
+    {
+      "caseId": 5,
+      "valid": true,
+      "facts": {
+        "eligibleCodes": [
+          "NO_IMPROVEMENT_FOUND",
+          "SEARCH_LIMITED"
+        ],
+        "requiredCodes": [
+          "SEARCH_LIMITED"
+        ]
+      },
+      "selection": {
+        "schemaVersion": 2,
+        "codes": [
+          "SEARCH_LIMITED",
+          "NO_IMPROVEMENT_FOUND"
+        ]
+      }
+    },
+    {
+      "caseId": 6,
+      "valid": true,
+      "facts": {
+        "eligibleCodes": [
+          "LOWER_ESTIMATE",
+          "FIXED_TIMES_RETAINED",
+          "DEPENDENCIES_RESPECTED",
+          "SEARCH_LIMITED"
+        ],
+        "requiredCodes": [
+          "SEARCH_LIMITED"
+        ]
+      },
+      "selection": {
+        "schemaVersion": 2,
+        "codes": [
+          "SEARCH_LIMITED",
+          "FIXED_TIMES_RETAINED",
+          "DEPENDENCIES_RESPECTED"
+        ]
+      }
+    }
+  ]
+}

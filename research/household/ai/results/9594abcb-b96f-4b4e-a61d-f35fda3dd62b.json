@@ -1,0 +1,56 @@
+{
+  "runId": "9594abcb-b96f-4b4e-a61d-f35fda3dd62b",
+  "model": "openai/gpt-oss-120b",
+  "variant": "activity-v2",
+  "promptVersion": "activity-v2.2",
+  "datasetSha256": "7f132c455089259ce9cef899005444bee302d8dc2e3f8966916ebc2954c592a9",
+  "review": {
+    "datasetSha256": "7f132c455089259ce9cef899005444bee302d8dc2e3f8966916ebc2954c592a9",
+    "reviewedBy": "Codex, at the user’s explicit request to check the labels",
+    "reviewedAtUtc": "2026-10-23T16:08:02.018807+00:00",
+    "humanReviewed": false,
+    "corrections": [
+      "D05/H05 now explicitly say car; pressure washing alone does not establish the object.",
+      "H03 explicitly specifies clothes washing, avoiding the ambiguous word laundry."
+    ],
+    "limitations": [
+      "Authored examples, not representative field-user accuracy.",
+      "Same agent reviewed the labels and implementation; no independent review claim.",
+      "Expected fields are partial; unspecified fields are not exact gold labels."
+    ]
+  },
+  "accountTier": "user-confirmed-free",
+  "automaticPromotion": false,
+  "updatedAtUtc": "2026-10-24T06:08:49.205Z",
+  "outcomes": [
+    {
+      "diagnostic": {},
+      "caseId": "D01",
+      "split": "development",
+      "errorCode": null,
+      "latencyMs": 4898,
+      "correct": true,
+      "wrongFields": [],
+      "answer": {
+        "schemaVersion": 2,
+        "tasks": [
+          {
+            "category": "television",
+            "durationMinutes": 60,
+            "quantity": null,
+            "energyText": "100 W",
+            "earliestLocal": null,
+            "deadlineLocal": null,
+            "baselineLocal": "2026-10-23T19:00",
+            "fixed": null,
+            "requiresAttention": null,
+            "predecessorIndices": [],
+            "sourceStart": 0,
+            "sourceEnd": 50,
+            "questions": []
+          }
+        ]
+      }
+    }
+  ]
+}
