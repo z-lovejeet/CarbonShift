@@ -1,0 +1,20 @@
+{
+  "checkedAtUtc": "2026-10-24T11:07:20.917Z",
+  "source": "real hosted development Auth/DB and GB grid",
+  "evidence": [
+    {
+      "viewport": "desktop",
+      "tasks": 2,
+      "scheduleId": "86b33ef9-1834-4e37-9b50-a6640ea6ca80",
+      "comparisonId": "35d755e0-ee1e-4abe-a265-3f086f59701b",
+      "snapshotHash": "0x6f3760754f9c91e7d24d915524645b96f13fd37a4b1ad0a809bd7c0b5a293f03"
+    },
+    {
+      "viewport": "mobile",
+      "tasks": 1,
+      "scheduleId": "c0c3c4ed-0ff8-4c74-8c92-761782cb4740",
+      "comparisonId": "c4fa95c8-6526-460e-9e57-c1505bf873ee",
+      "snapshotHash": "0x6f3760754f9c91e7d24d915524645b96f13fd37a4b1ad0a809bd7c0b5a293f03"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "checkedAtUtc": "2026-10-24T06:07:23.000Z",
+  "source": "normal authenticated local pages/API, real GB grid",
+  "evidence": [
+    {
+      "viewport": "desktop",
+      "energyMwh": 100000,
+      "estimatedMg": 6563,
+      "snapshotHash": "0x4b608842bcb3bf9bcf5a46aa3ddf6fb5f5c7ac8db1aef01e8d3d03fdd7986376",
+      "retrievedAtUtc": "2026-10-24T06:07:18Z"
+    },
+    {
+      "viewport": "mobile",
+      "energyMwh": 100000,
+      "estimatedMg": 6563,
+      "snapshotHash": "0x4b608842bcb3bf9bcf5a46aa3ddf6fb5f5c7ac8db1aef01e8d3d03fdd7986376",
+      "retrievedAtUtc": "2026-10-24T06:07:18Z"
+    }
+  ]
+}
