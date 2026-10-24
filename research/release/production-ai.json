@@ -1,0 +1,101 @@
+{
+  "checkedAtUtc": "2026-10-24T20:15:55.546Z",
+  "origin": "https://carbonshift-mocha.vercel.app",
+  "basis": "Bounded builder-authorized development check from India against deployed authenticated routes. Authored non-personal inputs only; not public UK eligibility or a new accuracy evaluation.",
+  "accountBilling": "builder-confirmed-not-enabled",
+  "maximumTasks": 2,
+  "maximumProviderAttemptsPerTask": 2,
+  "requests": [
+    {
+      "path": "/api/v2/activities/interpret",
+      "status": 200,
+      "requestId": "4766c455-30d2-4f33-b58b-970c3577dbf4",
+      "elapsedMs": 4116
+    },
+    {
+      "path": "/api/v1/comparisons",
+      "status": 200,
+      "requestId": "80bb6fca-c078-4730-8c94-388acfbd3a75",
+      "elapsedMs": 1968
+    },
+    {
+      "path": "/api/v1/comparisons/0b177544-d4da-4b5a-941d-e8514ff772a2/explanation",
+      "status": 200,
+      "requestId": "672c6ff2-8ef4-44f9-8e01-8385f46ad8e9",
+      "elapsedMs": 4272
+    },
+    {
+      "path": "/api/v1/comparisons/0b177544-d4da-4b5a-941d-e8514ff772a2/explanation",
+      "status": 200,
+      "requestId": "dd6f5915-07ce-4500-ab60-b357e0855824",
+      "elapsedMs": 1654
+    }
+  ],
+  "blockchainRequests": 0,
+  "newModelQualification": false,
+  "interpretation": {
+    "passed": true,
+    "unknownEnergyPreserved": true,
+    "unknownDurationPreserved": true,
+    "questions": [
+      "equipment",
+      "energy",
+      "duration",
+      "timing"
+    ]
+  },
+  "tasks": [
+    {
+      "task": 1,
+      "state": "succeeded",
+      "attempts": [
+        {
+          "provider": "gemini",
+          "model": "gemini-3.5-flash-lite",
+          "state": "succeeded",
+          "latency_ms": 1113,
+          "input_tokens": 282,
+          "output_tokens": 157,
+          "total_tokens": 439,
+          "prompt_version": "activity-v2.3",
+          "policy_digest": "816272e135fa14629fc13ee28a6c5e267633fbcee19c5e656b1526ddf315ea17"
+        }
+      ],
+      "kind": "household-interpretation"
+    },
+    {
+      "task": 2,
+      "state": "succeeded",
+      "attempts": [],
+      "kind": "cached-explanation"
+    },
+    {
+      "task": 3,
+      "state": "succeeded",
+      "attempts": [
+        {
+          "provider": "groq",
+          "model": "openai/gpt-oss-120b",
+          "state": "succeeded",
+          "latency_ms": 930,
+          "input_tokens": 411,
+          "output_tokens": 369,
+          "total_tokens": 780,
+          "prompt_version": "explanation-v1",
+          "policy_digest": "816272e135fa14629fc13ee28a6c5e267633fbcee19c5e656b1526ddf315ea17"
+        }
+      ],
+      "kind": "v1-grounded-explanation"
+    }
+  ],
+  "explanation": {
+    "passed": true,
+    "source": "ai",
+    "cacheSource": "cache",
+    "requiredLimitationsPresent": true,
+    "cacheAddedProviderAttempts": 0
+  },
+  "success": true,
+  "fixtureCleanup": "member-removed-without-sending-email",
+  "completedAtUtc": "2026-10-24T20:16:11.420Z"
+}

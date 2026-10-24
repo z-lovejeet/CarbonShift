@@ -1329,3 +1329,35 @@ Next ready task: incorporate the builder's pending human sign-in/billing answers
 Exact command/action to resume: read research/release/deployment.json and this entry; open the live /login for both provider checks. After billing is confirmed, run a single admitted authored public AI request and inspect cache/usage without promoting unevaluated models. Preserve test-results/m11-deployment-journal.json and its confirmed receipt; do not create another testnet acceptance plan. Finish actual screen-reader review. Verify latest GitHub/Vercel status after documentation-only publication and keep the tree clean
 Relevant commit or reviewable diff: verified application 02344d8510f3915fed1721dcfa4714b3dfd6a7f6; documentation-only deployment evidence follows within the 50-commit maximum
 ```
+
+
+## 34. M11 production OAuth confirmation and bounded AI check
+
+25 October 2026. The builder explicitly confirmed that both Google and GitHub worked at the production login URL. This closes the human OAuth callback check, using the builder's own observation; the agent did not enter provider credentials. The builder also confirmed that Google billing is **not enabled**, and authorized a bounded development check from India. The later screen-reader question was answered “I’ll check later”; actual spoken review remains deferred, not passed.
+
+### Observed deployed AI result
+
+`research/release/production-ai.json` records actual HTTPS requests against `https://carbonshift-mocha.vercel.app` from 20:15:55 to 20:16:11 UTC on 24 October (25 October locally). An isolated temporary member and authored non-personal inputs were used. Normal authentication, ownership, input validation, role qualification, shared admission and response validation remained in force.
+
+- `/api/v2/activities/interpret` returned 200. DB telemetry confirms one succeeded `gemini-3.5-flash-lite` attempt, prompt `activity-v2.3`, 439 total tokens and 1,113ms provider latency (4,116ms whole HTTP request). Unknown car-cleaning equipment, energy and duration were left unresolved with questions; duration and energy were not invented.
+- A new actual national-grid v1 comparison was created without accepting or publishing a plan. Its normal explanation endpoint returned 200 with the required `ASSUMED_ENERGY` and `NATIONAL_SIGNAL` limitations. DB telemetry confirms one succeeded Groq `openai/gpt-oss-120b` attempt, prompt `explanation-v1`, 780 total tokens and 930ms provider latency (4,272ms whole HTTP request).
+- A deliberate repeat explanation returned `source: cache` with the same validated selection. Run metadata confirms **zero additional provider attempts**. Exactly two inference attempts succeeded overall. This was an access/wiring check, not a new accuracy benchmark, outage/fallback experiment or qualification of new roles. Existing limits, validators and excluded candidates were unchanged.
+- The temporary Auth member was removed without sending email. No blockchain request, paid activation, provider/profile change or production source edit was needed. The existing production publication journal remains confirmed and must not be replayed.
+
+Google's [current Gemini terms](https://ai.google.dev/gemini-api/terms), checked on 25 October, distinguish a developer's eligible-region access from making a client available to UK/EEA/Swiss users, for which Paid Services are required. The Indian development check proves API access on the deployed routes; it does not establish that public-audience prerequisite. The selected `uk_public_paid_gemini` profile name is configuration intent, not evidence of an active billing account. Both providers remain configured by the builder's explicit instruction; billing was not enabled and no spending authorization was inferred. G11 stays open for the named audience prerequisite and deferred actual screen-reader review.
+
+Before this documentation update, GitHub workflow `40128176863` for `06225315a61bb2a7d4e4a2dba5cdeef5341f2adb` completed successfully; Vercel `dpl_6eBzwDKxPX6oLitJGfNXgxsZxdMG` was READY at the production alias. Application code remains the verified `02344d8` build; intermediate updates are documentation/evidence only. Source publication remains within the builder's 40–50-commit instruction.
+
+```text
+Task: M11.04 remaining production OAuth/AI checks; M11.05 evidence handoff
+Status: production OAuth confirmed by builder; bounded deployed Gemini/Groq/cache checks passed; G11 remains open for two explicit items
+Scope/spec version used: existing M11 and household contracts; latest builder authorization for free authored development testing; no new feature/model role
+Dependencies and external gates: real Vercel/Supabase/Auth/grid/Gemini/Groq; billing confirmed not enabled; spoken screen-reader check deferred by builder
+Changed files: release deployment/AI evidence, root/index/release README, AI owner document, manual guide, roadmap, status and repository guidance
+Checks run and observed results: real authenticated 200 interpretation/comparison/explanation/cache responses; two succeeded provider-run records; cache added zero attempts; temporary member deleted; current GitHub CI success and Vercel READY observed
+Manual/live checks and environment: builder-confirmed production Google/GitHub callbacks; authored non-personal requests from India against live HTTPS; no provider credential entry by agent, no measured household claim
+Unresolved failures or decisions: public UK/EEA/Swiss Gemini paid-service prerequisite not fulfilled; actual screen-reader speech review explicitly deferred. Local worker and unobserved first scheduled cron remain disclosed operating limits
+Next ready task: record billing/public-audience eligibility when actually fulfilled and the builder's eventual spoken accessibility result; no repeat of passing OAuth/AI/chain journeys
+Exact command/action to resume: read research/release/deployment.json and production-ai.json; inspect only the newly changed external prerequisite or reported accessibility failure. Preserve test-results/m11-deployment-journal.json. Close G11 only when the named required evidence exists
+Relevant commit or reviewable diff: evidence-only follow-up after 0622531; verify publication count stays at most 50, remote matches and working tree is clean
+```

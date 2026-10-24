@@ -1,6 +1,6 @@
 # CarbonShift documentation
 
-Prepared 20 October 2026; household acceptance revision 24 October. This is the index and reading guide for **14 project documents plus three guidance files**. M00–M09 passed their scoped gates; G09 includes actual Sepolia and exported-proof verification. M06 timing assistance remains experimental/manual-first after measured quality misses. U34 household simulation/planning/reporting and revised local M10 public receipt/verifier pages are implemented and passed their scoped acceptance; M11 public release remains pending. See the root README and status log for actual evidence.
+Prepared 20 October 2026; household acceptance revision 24 October. This is the index and reading guide for **14 project documents plus three guidance files**. M00–M09 passed their scoped gates; G09 includes actual Sepolia and exported-proof verification. M06 timing assistance remains experimental/manual-first after measured quality misses. U34 household simulation/planning/reporting and revised local M10 public receipt/verifier pages are implemented and passed their scoped acceptance. M11's web deployment is live; public Gemini eligibility and the deferred screen-reader speech check remain open (status section 34). See the root README and status log for actual evidence.
 
 ## Start here
 
@@ -91,4 +91,4 @@ The builder authorized final release checks, the 40–50 commit GitHub publicati
 
 ### Live deployment checkpoint
 
-The GitHub-connected Vercel site is now live at [carbonshift-mocha.vercel.app](https://carbonshift-mocha.vercel.app). [Status section 33](decisions-and-status.md#33-m11-live-deployment-and-verified-production-journey) and [current deployment evidence](../research/release/deployment.json) record real production integration, actual proof and remaining G11 checks. Earlier pre-deployment notes are historical. Preserve the dedicated publication journal and confirmed receipt rather than creating another acceptance commitment.
+The GitHub-connected Vercel site is now live at [carbonshift-mocha.vercel.app](https://carbonshift-mocha.vercel.app). [Status section 34](decisions-and-status.md#34-m11-production-oauth-confirmation-and-bounded-ai-check) and [current deployment evidence](../research/release/deployment.json) record real production integration, actual proof and remaining G11 checks. Earlier pre-deployment notes are historical. Preserve the dedicated publication journal and confirmed receipt rather than creating another acceptance commitment.

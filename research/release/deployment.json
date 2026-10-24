@@ -17,9 +17,11 @@
       ]
     },
     "production": {
-      "id": "dpl_QYeonzFrS8gNxw7dDgk5BzYz5NiE",
-      "url": "carbonshift-gjy0ywy0o-z-lovejeets-projects.vercel.app",
-      "readyState": "READY"
+      "id": "dpl_6eBzwDKxPX6oLitJGfNXgxsZxdMG",
+      "url": "carbonshift-1nhseimsy-z-lovejeets-projects.vercel.app",
+      "readyState": "READY",
+      "sourceCommit": "06225315a61bb2a7d4e4a2dba5cdeef5341f2adb",
+      "applicationSourceUnchanged": true
     }
   },
   "liveJourney": {
@@ -219,26 +221,47 @@
     "matches": []
   },
   "githubChecks": {
-    "runId": 40127470579,
+    "runId": 40128176863,
     "conclusion": "success",
-    "url": "https://github.com/z-lovejeet/CarbonShift/actions/runs/40127470579"
+    "url": "https://github.com/z-lovejeet/CarbonShift/actions/runs/40128176863",
+    "sourceCommit": "06225315a61bb2a7d4e4a2dba5cdeef5341f2adb"
   },
   "fixtureCleanup": "Both temporary Auth members removed after confirmed publication; consented public copy retained without the private owner link.",
   "publicAi": {
     "enabled": true,
     "selectedProfile": "uk_public_paid_gemini",
     "billingVerified": false,
-    "publicInferenceInvoked": false,
-    "existingRoleQualificationUnchanged": true
+    "existingRoleQualificationUnchanged": true,
+    "billingStatus": "builder-confirmed-not-enabled",
+    "boundedDeployedInferenceInvoked": true,
+    "productionCheckEvidence": "production-ai.json",
+    "publicUKEligibilityVerified": false,
+    "profileNameIsBillingVerification": false
   },
   "remainingG11Checks": [
-    "Fresh human Google and GitHub identity callbacks on production",
-    "Confirm Gemini billing prerequisite and run bounded production inference",
-    "Actual screen-reader speech smoke; existing automated accessibility is separate"
+    "Fulfill Gemini paid-service prerequisite for public UK/EEA/Swiss availability; builder explicitly confirmed billing is not enabled",
+    "Actual screen-reader speech smoke; builder deferred this check and existing automated accessibility is separate"
   ],
   "operatingLimits": [
     "Ledger worker is a separate local process, not always-on Vercel hosting",
     "First automatically scheduled cron invocation has not occurred; enabled definition and authorized live endpoint were checked",
     "All consumption/CO2 values are estimates from authored assumptions and a national signal"
-  ]
+  ],
+  "humanOAuth": {
+    "reportedOn": "2026-10-25",
+    "source": "Builder confirmed both Google and GitHub worked at the production login URL.",
+    "google": "passed-by-builder",
+    "github": "passed-by-builder",
+    "agentEnteredProviderCredentials": false
+  },
+  "verifiedApplicationGithubChecks": {
+    "runId": 40127470579,
+    "conclusion": "success",
+    "url": "https://github.com/z-lovejeet/CarbonShift/actions/runs/40127470579"
+  },
+  "screenReader": {
+    "status": "deferred-by-builder",
+    "reportedOn": "2026-10-25",
+    "speechCheckPerformed": false
+  }
 }
