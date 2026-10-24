@@ -18,5 +18,9 @@ export default defineConfig({
     preferWasm: true,
     settings: { optimizer: { enabled: true, runs: 200 }, evmVersion: "cancun" },
   },
-  networks: { hardhat: { type: "edr-simulated", chainType: "l1", chainId: 31337 } },
+  networks: {
+    hardhat: { type: "edr-simulated", chainType: "l1", chainId: 31337 },
+    // Isolated proof replay, not an RPC connection or Sepolia deployment.
+    proof: { type: "edr-simulated", chainType: "l1", chainId: 11155111, initialDate: "2026-10-21T06:02:00Z" },
+  },
 });
