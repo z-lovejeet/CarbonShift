@@ -11,7 +11,15 @@ test.beforeAll(async () => {
   const outputs = Array.isArray(built) ? built : [built]; const chunk = outputs.flatMap((out) => "output" in out ? out.output : []).find((file) => file.type === "chunk");
   if (!chunk || chunk.type !== "chunk") throw new Error("Missing test-only browser harness"); browserCode = chunk.code;
 });
-test.beforeEach(async ({ page }) => { await page.goto("/"); await page.evaluate(() => { document.body.innerHTML = '<main class="shell planner-width"><h1>Authored AI test fixture</h1><div id="ai-test-root"></div></main>'; }); await page.addScriptTag({ content: browserCode }); });
+test.beforeEach(async ({ page, request }) => {
+  // Keep production styles, but mount the authored harness without a competing
+  // Next root that can replace its DOM during late landing-page hydration.
+  const response = await request.get("/");
+  const styles = ((await response.text()).match(/<link\b[^>]*>/g) ?? []).filter((link) => link.includes('rel="stylesheet"')).join("");
+  await page.route("**/__authored-ai-fixture", (route) => route.fulfill({ contentType: "text/html", body: `<!doctype html><html lang="en-GB"><head><title>CarbonShift authored AI test fixture</title>${styles}</head><body><main class="shell planner-width"><h1>Authored AI test fixture</h1><div id="ai-test-root"></div></main></body></html>` }));
+  await page.goto("/__authored-ai-fixture");
+  await page.addScriptTag({ content: browserCode });
+});
 test("source-backed suggestions need consent, review and editable manual fields", async ({ page }, testInfo) => {
   await page.evaluate(() => window.carbonShiftAiTest.renderFixture("success"));
   await page.getByText("Describe your timing", { exact: false }).click(); await page.getByLabel("Your timing request").fill("Tomorrow finish by noon.");

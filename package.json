@@ -16,13 +16,15 @@
     "typecheck": "next typegen && tsc --noEmit && tsc -p contracts/tsconfig.json",
     "test": "vitest run",
     "test:e2e": "playwright test",
-    "contracts:test": "hardhat test --config contracts/hardhat.config.ts",
+    "contracts:test": "hardhat test --config contracts/hardhat.config.ts && tsx scripts/receipt-artifacts.ts --check",
     "check:env": "tsx scripts/check-env.ts",
     "check:grid": "tsx scripts/check-grid.ts",
     "check:accounts": "node scripts/check-accounts.mjs",
     "check:planner": "node scripts/check-planner.mjs",
     "check:lifecycle": "node --conditions=react-server --import tsx scripts/check-lifecycle.mjs",
+    "check:publication": "node --import tsx scripts/check-publication.mjs",
     "lifecycle:maintenance": "tsx scripts/lifecycle-maintenance.ts",
+    "retention": "tsx scripts/retention.ts",
     "check:ai-flow": "node scripts/check-ai-flow.mjs",
     "verify:clean": "node scripts/verify-clean-install.mjs",
     "test:integration": "node scripts/test-integration.mjs",
@@ -31,13 +33,20 @@
     "ai:smoke": "node --conditions=react-server --import tsx scripts/smoke-ai.ts",
     "ai:maintenance": "tsx scripts/ai-maintenance.ts",
     "ai:evaluate-explanation": "node --conditions=react-server --import tsx scripts/evaluate-explanation.ts",
-    "ai:evaluate": "node --conditions=react-server --import tsx scripts/evaluate-ai.ts"
+    "ai:evaluate": "node --conditions=react-server --import tsx scripts/evaluate-ai.ts",
+    "proof:artifacts": "hardhat compile --config contracts/hardhat.config.ts && tsx scripts/receipt-artifacts.ts --write",
+    "worker:ledger": "node --import tsx src/worker/ledger.ts",
+    "ledger:reconcile": "node --import tsx src/worker/ledger.ts --reconcile-only --once",
+    "contracts:deploy": "hardhat compile --config contracts/hardhat.config.ts && tsx scripts/receipt-artifacts.ts --check && node --import tsx scripts/deploy-ledger.ts",
+    "check:household": "node scripts/check-household-expansion.mjs"
   },
   "dependencies": {
     "@google/genai": "2.30.0",
     "@js-temporal/polyfill": "0.5.1",
+    "@noble/hashes": "2.4.0",
     "@supabase/ssr": "0.12.7",
     "@supabase/supabase-js": "2.118.0",
+    "canonicalize": "5.1.0",
     "groq-sdk": "1.6.0",
     "next": "16.4.2",
     "react": "19.3.1",
@@ -45,6 +54,7 @@
     "react-is": "19.3.1",
     "recharts": "3.10.1",
     "server-only": "0.0.1",
+    "viem": "2.57.7",
     "zod": "4.6.7"
   },
   "devDependencies": {
@@ -75,7 +85,6 @@
     "tsx": "4.23.15",
     "typescript": "5.9.3",
     "typescript-eslint": "8.72.0",
-    "viem": "2.57.7",
     "vite": "7.3.7",
     "vitest": "5.0.5"
   }

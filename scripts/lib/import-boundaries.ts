@@ -66,7 +66,7 @@ export function inspectImportBoundaries(files: ReadonlyMap<string, string>): str
   return [...errors];
 }
 
-/** Domain imports stay inside the domain or the two explicitly selected pure libraries. */
+/** Domain imports stay inside the domain or explicitly selected pure libraries. */
 export function inspectDomainPurity(files: ReadonlyMap<string, string>): string[] {
   const errors = new Set<string>();
   for (const [name, text] of files) {
@@ -76,7 +76,8 @@ export function inspectDomainPurity(files: ReadonlyMap<string, string>): string[
       const target = specifier.startsWith("@/") ? `src/${specifier.slice(2)}` :
         specifier.startsWith(".") ? posix.normalize(posix.join(posix.dirname(name), specifier)) : null;
       if (target?.startsWith("src/domain/") || specifier === "zod" ||
-        (specifier === "@js-temporal/polyfill" && name === "src/domain/time.ts")) return;
+        (specifier === "@js-temporal/polyfill" && name === "src/domain/time.ts") ||
+        (["canonicalize", "@noble/hashes/sha2.js"].includes(specifier) && ["src/domain/proof/canonical.ts", "src/domain/proof/v2/canonical.ts"].includes(name))) return;
       errors.add(`Domain imports an impure/unapproved dependency in ${name}: ${specifier}`);
     };
     const walk = (node: ts.Node) => {
