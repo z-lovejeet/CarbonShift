@@ -75,3 +75,20 @@ export function assertAcceptanceTime(input: { createdAtUtc: string; expiresAtUtc
     throw new DomainError("COMPARISON_EXPIRED", "Refresh and review the comparison before accepting it.");
   }
 }
+
+/** Calendar boundaries rather than a fixed 24-hour addition, preserving London DST. */
+export function londonDayBounds(date: string): { startUtc: string; endUtc: string } {
+  let day: Temporal.PlainDate;
+  try {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error("date");
+    day = Temporal.PlainDate.from(date, { overflow: "reject" });
+  } catch { throw new DomainError("INVALID_LOCAL_TIME", "Choose a valid London calendar day."); }
+  return { startUtc: resolveLondonTime({ date: day.toString(), time: "00:00" }),
+    endUtc: resolveLondonTime({ date: day.add({ days: 1 }).toString(), time: "00:00" }) };
+}
+
+export function halfHourCoverage(startUtc: string, endUtc: string): { fromUtc: string; toUtc: string } {
+  const start = epochSeconds(startUtc), end = epochSeconds(endUtc);
+  if (start >= end) throw new DomainError("INVALID_TIME_WINDOW", "End time must follow the start.");
+  return { fromUtc: utcFromSeconds(Math.floor(start / 1800) * 1800), toUtc: utcFromSeconds(Math.ceil(end / 1800) * 1800) };
+}

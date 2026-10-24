@@ -1,0 +1,28 @@
+import { freezeDomain } from "../method";
+
+export const ACTIVITY_METHOD = freezeDomain({
+  version: "carbonshift-gb-activities-v2",
+  schemaVersion: 2,
+  geography: "GB_NATIONAL",
+  timezone: "Europe/London",
+  energyUnit: "mWh",
+  carbonUnit: "mgCO2",
+  sourceIntervalSeconds: 1800,
+  candidateStepSeconds: 300,
+  maximumTasks: 12,
+  maximumDurationMinutes: 2880,
+  maximumEnergyMwh: 1_000_000_000,
+  maximumSegments: 48,
+  maximumSearchNodes: 50_000,
+  maximumAlternatives: 3,
+  forecastHorizonSeconds: 172800,
+  forecastMaximumAgeSeconds: 1800,
+  comparisonLifetimeSeconds: 300,
+  operationalBufferSeconds: 600,
+  energyRounding: "half_up_to_mwh_before_integration",
+  carbonRounding: "exact_segment_overlap_then_half_up_per_task_mg",
+  aggregation: "sum_rounded_task_mg",
+  intervalConvention: "half_open",
+  candidateConvention: "utc_grid_window_block_boundaries_baseline_fixed",
+  selection: "total_mg_then_start_vector_by_task_id",
+} as const);
