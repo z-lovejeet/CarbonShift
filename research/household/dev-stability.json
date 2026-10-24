@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-24",
+  "scope": "U38 local idle development reload loop; not full product acceptance",
+  "nextVersion": "16.4.2",
+  "origin": "http://127.0.0.1:3001",
+  "command": "node scripts/check-dev-stability.mjs",
+  "beforeRecovery": {
+    "exitCode": 1,
+    "idleSeconds": 10,
+    "documentLoads": 121,
+    "reloadMessages": 34,
+    "builds": 53,
+    "runtimeErrors": 0
+  },
+  "recovery": "Regenerate only the existing .next/dev cache with CarbonShift stopped; restart unchanged application.",
+  "freshCache": {
+    "exitCode": 0,
+    "idleSeconds": 10,
+    "documentLoads": 0,
+    "reloadMessages": 0,
+    "builds": 0,
+    "runtimeErrors": 0
+  },
+  "normalRestartWithPersistedCache": {
+    "exitCode": 0,
+    "idleSeconds": 10,
+    "documentLoads": 0,
+    "reloadMessages": 0,
+    "builds": 0,
+    "runtimeErrors": 0
+  },
+  "targetedScriptEslint": "passed after adding explicit Node URL import",
+  "healthStatus": 200,
+  "limits": "No application behavior change, full suite, authentication flow, live model check or testnet transaction. Precise internal compiler cache invalidation cause is not established."
+}
