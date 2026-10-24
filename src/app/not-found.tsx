@@ -1,12 +1,4 @@
 import Link from "next/link";
-
 export default function NotFoundPage() {
-  return (
-    <section className="system-message" aria-labelledby="not-found-heading">
-      <p className="eyebrow">Page not found</p>
-      <h1 id="not-found-heading">This page isn’t here.</h1>
-      <p>The link may have changed. You can return home to find your way.</p>
-      <Link className="button" href="/">Return home</Link>
-    </section>
-  );
+  return <section className="system-message product-page" aria-labelledby="not-found-heading"><p className="eyebrow">Page not found</p><h1 id="not-found-heading">This page isn’t here.</h1><p>The link may have changed, or the record may not be available to this account. Return home or open your own saved plans to find your way.</p><div className="system-actions"><Link className="button" href="/">Return home</Link><Link className="text-link" href="/app">Your plans <span aria-hidden="true">↗</span></Link></div><div className="system-context">Private plans are visible only to their owner. Public receipts have their own separately consented links. An unavailable page does not disclose whether another person has a private record.</div></section>;
 }

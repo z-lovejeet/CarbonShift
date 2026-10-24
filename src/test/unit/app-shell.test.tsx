@@ -4,8 +4,16 @@ import { afterEach, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { AppShell } from "../../components/layout/app-shell";
 import ErrorPage from "../../app/error";
+import { navigationCurrent } from "../../components/layout/primary-navigation";
 
 afterEach(cleanup);
+
+it("marks only the current workspace and tolerates an unavailable router", () => {
+  expect(navigationCurrent("/app", null)).toBe(false);
+  expect(navigationCurrent("/app", "/app/plans/accepted-plan")).toBe(true);
+  expect(navigationCurrent("/app", "/app/simulate")).toBe(false);
+  expect(navigationCurrent("/app/day/new", "/app/day/new")).toBe(true);
+});
 
 it("provides the navigation, main target and keyboard skip link", () => {
   render(<AppShell><h1>Example content</h1></AppShell>);

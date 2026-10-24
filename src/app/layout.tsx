@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { AppShell } from "@/components/layout/app-shell";
 import { getWebEnvironment } from "@/server/env";
 import "./globals.css";
+import "./product.css";
 
 export const metadata: Metadata = {
   title: "CarbonShift",
