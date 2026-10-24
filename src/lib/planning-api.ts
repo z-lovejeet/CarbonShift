@@ -2,6 +2,11 @@ import { z } from "zod";
 import { comparisonDocumentSchema, comparisonViewSchema, planPageSchema, planSchema, type ComparisonRequest } from "@/contracts/planning";
 
 const messages: Record<string, string> = {
+  PREVIEW_CHANGED: "This public preview changed or expired. Review a fresh preview and consent again.",
+  PUBLICATION_NOT_ALLOWED: "Publication is unavailable for this plan or preceding transaction state. Refresh its status.",
+  PUBLICATION_RATE_LIMITED: "The daily publication limit has been reached. Keep your private plan and try tomorrow.",
+  PUBLISHED_PLAN_RETAINED: "This plan has a consented public copy. Account deletion can remove private data while retaining the public evidence.",
+  LEDGER_UNAVAILABLE: "Publication is currently unavailable. Your private plan remains usable.",
   REAUTH_REQUIRED: "Open Account settings and confirm your identity again before deleting private data.",
   INVALID_REPORT: "A run must begin after acceptance and finish before you report it. Report non-execution after the planned finish, or cancel before the planned start.",
   PLAN_CANCELLED: "This plan is cancelled. Create a new plan for another wash.",

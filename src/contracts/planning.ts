@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { reportDocumentSchema, resultRevisionSchema } from "./lifecycle";
+import { publicationStatusSchema } from "./publication";
 import { comparisonSchema, durationSchema, energyBasisSchema, energyWhSchema, utcInstantSchema, gridSnapshotSchema } from "@/domain/schemas";
 
 export const comparisonRequestSchema = z.strictObject({
@@ -17,7 +18,7 @@ export const planSchema = z.strictObject({
   schemaVersion: z.literal(1), id: z.uuid(), version: z.number().int().positive(), comparisonId: z.uuid(),
   mode: z.literal("live"), status: z.enum(["accepted", "cancelled"]), acceptedAtUtc: utcInstantSchema,
   comparison: comparisonSchema, forecastSnapshot: gridSnapshotSchema,
-  completion: z.enum(["not_reported", "ran", "did_not_run"]), publication: z.literal("private"),
+  completion: z.enum(["not_reported", "ran", "did_not_run"]), publication: publicationStatusSchema,
   latestReport: reportDocumentSchema.nullable(), latestResult: resultRevisionSchema.nullable(), reports: z.array(reportDocumentSchema).default([]), revisions: z.array(resultRevisionSchema),
 });
 export const planSummarySchema = planSchema.pick({ schemaVersion: true, id: true, version: true, status: true, mode: true, acceptedAtUtc: true, comparisonId: true, completion: true, publication: true }).extend({ baseline: comparisonSchema.shape.baseline, selected: comparisonSchema.shape.selected, differenceMg: comparisonSchema.shape.differenceMg });
