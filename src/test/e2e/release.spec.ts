@@ -1,6 +1,24 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
+test("native same-origin forms retain the Origin required by OAuth protection", async ({ page, request }) => {
+  const response = await request.get("/");
+  const headers = response.headers();
+  let origin: string | undefined;
+  await page.route("**/__authored-form-check", (route) => route.fulfill({
+    contentType: "text/html", headers: { "Referrer-Policy": headers["referrer-policy"]!, "Content-Security-Policy": headers["content-security-policy"]! },
+    body: '<!doctype html><html lang="en"><title>Authored form check</title><form action="/__authored-form-result" method="post"><button>Submit fixture</button></form></html>',
+  }));
+  await page.route("**/__authored-form-result", (route) => {
+    origin = route.request().headers().origin;
+    return route.fulfill({ contentType: "text/html", body: "<title>Fixture received</title><p>Fixture received</p>" });
+  });
+  await page.goto("/__authored-form-check");
+  await page.getByRole("button", { name: "Submit fixture" }).click();
+  await expect(page.getByText("Fixture received")).toBeVisible();
+  expect(origin).toBe(new URL(response.url()).origin);
+});
+
 test("release reading and verification pages remain accessible and fit the viewport", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
@@ -24,7 +42,7 @@ test("production responses protect browser boundaries and internal maintenance",
   expect(headers["content-security-policy"]).toContain("worker-src 'self' blob:");
   expect(headers["content-security-policy"]).not.toContain("unsafe-eval");
   expect(headers["x-content-type-options"]).toBe("nosniff");
-  expect(headers["referrer-policy"]).toBe("no-referrer");
+  expect(headers["referrer-policy"]).toBe("strict-origin-when-cross-origin");
   const maintenance = await request.get("/api/internal/maintenance");
   expect([401, 503]).toContain(maintenance.status());
   expect(await maintenance.text()).not.toContain("cs_retention");

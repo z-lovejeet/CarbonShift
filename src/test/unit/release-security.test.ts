@@ -34,5 +34,17 @@ it("limits production connections and framing while permitting the local verifie
   expect(csp).toContain("frame-ancestors 'none'");
   expect(csp).not.toContain("unsafe-eval");
   expect(headers["Strict-Transport-Security"]).toBe("max-age=31536000");
+  expect(headers["Referrer-Policy"]).toBe("strict-origin-when-cross-origin");
   expect(securityHeaders(true).some((h) => h.key === "Strict-Transport-Security")).toBe(false);
+});
+
+it("permits only the configured public Auth origin and supported OAuth redirect destinations", () => {
+  const csp = securityHeaders(false, "https://auth.example.invalid").find((h) => h.key === "Content-Security-Policy")!.value;
+  expect(csp).toContain("form-action 'self' https://auth.example.invalid https://accounts.google.com https://github.com;");
+  expect(csp).not.toContain("*");
+  for (const invalid of ["https://name:private-canary@auth.example.invalid", "https://auth.example.invalid/?private-canary=1", "malformed-private-canary"]) {
+    const invalidCsp = securityHeaders(false, invalid).find((h) => h.key === "Content-Security-Policy")!.value;
+    expect(invalidCsp).toContain("form-action 'self';");
+    expect(invalidCsp).not.toContain("private-canary");
+  }
 });

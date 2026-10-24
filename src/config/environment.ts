@@ -112,6 +112,9 @@ function parse<T>(schema: z.ZodType<T>, source: EnvironmentSource): T {
 
 export function parseWebEnvironment(source: EnvironmentSource) {
   const publicFields = new Set(["NEXT_PUBLIC_SUPABASE_URL", "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"]);
+  // Vercel injects this public SDK configuration even when automatic system
+  // variables are disabled. No other host-prefixed public variable is allowed.
+  publicFields.add("NEXT_PUBLIC_VERCEL_OBSERVABILITY_CLIENT_CONFIG");
   const forbidden = Object.keys(source).filter((key) => key.startsWith("NEXT_PUBLIC_") && !publicFields.has(key) && source[key]);
   if (source.LEDGER_PRIVATE_KEY?.trim()) throw new ConfigurationError(["LEDGER_PRIVATE_KEY (worker only)"]);
   if (forbidden.length) throw new ConfigurationError(forbidden.map((name) => /^[A-Z0-9_ ()]+$/.test(name) ? name : "UNRECOGNIZED_PUBLIC_VARIABLE"));

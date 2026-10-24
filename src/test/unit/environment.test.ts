@@ -64,6 +64,12 @@ describe("web configuration boundaries", () => {
     expect(() => parseWebEnvironment(worker)).toThrow(ConfigurationError);
     expect(() => parseWebEnvironment({ NEXT_PUBLIC_GEMINI_API_KEY: "canary" })).toThrow(ConfigurationError);
   });
+  it("accepts Vercel's injected public observability field without allowing arbitrary public keys", () => {
+    const injected = { VERCEL: "1", NEXT_PUBLIC_VERCEL_OBSERVABILITY_CLIENT_CONFIG: "{}" };
+    expect(() => parseWebEnvironment(injected)).not.toThrow();
+    expect(() => parseWebEnvironment({ ...injected, VERCEL: undefined })).not.toThrow();
+    expect(() => parseWebEnvironment({ ...injected, NEXT_PUBLIC_VERCEL_SECRET_KEY: "canary" })).toThrow(ConfigurationError);
+  });
   it("never returns the actual invalid credential in an error", () => {
     try { parseWebEnvironment({ ...ledger, SEPOLIA_RPC_URL: "invalid-private-rpc-canary" }); }
     catch (error) { expect(String(error)).not.toContain("invalid-private-rpc-canary"); return; }
