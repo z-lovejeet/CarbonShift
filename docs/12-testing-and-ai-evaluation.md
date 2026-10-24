@@ -1,6 +1,8 @@
 # CarbonShift — testing, AI evaluation, and acceptance
 
-Version 1.6 · 22 October 2026 · Pre-M06 quota-aware routing and abuse tests specified. M00–M05 evidence remains scoped; new AI/hardening and full acceptance remain incomplete.
+Version 1.8 · 23 October 2026 · M00–M09 local/testnet evidence is scoped in the status log. Timing AI remains experimental/manual-first and is currently timing out; public M10/M11 acceptance remains pending.
+
+**U34 target revision · 23 October 2026:** the approved household expansion at the end of this document supersedes conflicting washing-only restrictions for new v2 work. Earlier sections retain v1 contracts and historical implementation evidence. New capabilities are not passed until recorded in status.
 
 ## 1. Verification strategy
 
@@ -209,3 +211,51 @@ M04's regression command set includes lint, both typechecks, unit/component test
 Unit/component checks exercise strict commands, profile confirmation, future/unfinished runs, non-execution, current-report corrections, provider outage/null estimates, signed negative differences, stable retries and recent reauthentication/account deletion. Zero-byte DELETE streams are accepted; nonempty data is rejected. SQL checks cover atomicity/rollback, concurrent sequence allocation, actual snapshot persistence/RLS, unchanged refresh reuse, changed actual factors, terminal cancellation, deletion/orphan cleanup and owner-consistent reads.
 
 `pnpm check:lifecycle` drives the ordinary development planner/save/P06/P07/cancellation/deletion journey with real Auth/database/forecast and temporary members. It checks future-report rejection, preserved forecast, duplicate cancellation, foreign 404, deletion without confirmation 403, provider start redirects, desktop/mobile layout, axe and cleanup. Callback success/owner-switch rejection are isolated tests; temporary deletion uses a signed fixture receipt. A separate authored historical plan stays in memory and consumes real actual-grid data; it is never saved as a live comparison. No appliance operation, measured execution, human reauthentication pass or deployed product is inferred. See phase-7 evidence and status for actual outcomes.
+
+## M08 local T08/T10/T11 subset
+
+`proof-builders.test.ts` checks allowlist export, private-data omission, false profile/terminal cancellation, immutable snapshot/parent pairing, strict input and retry-stable nonce. `proof.test.ts` checks fixed golden digests against independent Node SHA-256, UTF-16 JCS order, key permutation, mutation, bounded duplicate-key/Unicode/integer import, known method, complete optimization/arithmetic and separate chain-unavailable states. It includes signed negative actual estimates, missing factors, inferior feasible start, altered source factors, future snapshots, changed profile, revision/correction/cancellation and wrong network/address/mode/cutoff/events/latest pointer.
+
+`contracts/test/shift-receipt.test.ts` exercises authorization, zero owner/hash, nonpayability, uniqueness, exact cutoff, demo zero cutoff, sequential hash-linked append, two-step transfer and unrelated same-window cycles. `proof-roundtrip.test.ts` deploys only to an isolated in-process EVM, commits a live or demo fixture, appends through an ownership transfer, reads actual state/events/block times through the generated ABI, exports/imports and independently verifies the complete bundle. Renouncing ownership leaves existing content verifiable. `src/test/e2e/proof.spec.ts` checks server/real Chromium hash/export/verifier parity across the three configured viewport projects and an India browser timezone.
+
+`contracts:test` also checks ABI/source/bytecode build fingerprints; `verify:clean` proves reproduction without ignored credentials/artifacts. These tests do not close T08 consent/worker/testnet delivery, T10 public route/consent or T11 full verification-page UX; those belong to M09/M10. Existing SQL/live-account evidence is retained from G07 because M08 changes no database/auth path. Exact fresh counts, failures resolved and final G08 outcome live in status section 22.
+
+## M09 verification scope
+
+`publication.test.ts` executes actual SQL for stable identity/preview bytes, concurrent same/different-key consent, altered/expired/version/path rejection, daily quota, owner RLS/direct-call denial, immutable public records, result consent and account-link detachment, fenced lease expiry and unsigned/signed cancellation/deletion. `publication-api` checks origin/auth/strict consent/path binding and sanitized failure; `publication-panel` checks the unchecked review, stable retry after lost acknowledgement, honest uncertainty and unpublished private changes.
+
+`ledger-worker` exercises crash before durable sign, after persist/broadcast/mining, exact-byte resend, lease loss, wrong-chain handling and reorganization/RPC uncertainty. `contracts/test/ledger-adapter.test.ts` uses the actual viem adapter to sign/broadcast/read a real isolated-EVM commitment and result, waits two further blocks and checks wrong calldata/changed block detection. Neither suite uses the dedicated wallet or public RPC.
+
+`check:publication` separately drives ordinary real development pages/API with temporary accounts, real national forecast, authored cycle energy, explicit preview/consent, offline-worker queuing, actual Sepolia plan/cancellation-result confirmation, retry/owner isolation and independently imported exported bundle against actual chain events. No appliance is operated and cancellation yields no numeric benefit. It checks desktop/mobile overflow, axe and browser errors, stops its worker and removes only temporary accounts, retaining disclosed evidence. Actual results are recorded in phase-9/status; no pass is inferred from the script existing. M10 public pages and M11 external release acceptance remain pending.
+
+## Household expansion — U34 focused acceptance
+
+Keep T01–T12 for v1. Add T13–T20 matching feature IDs in 02; historical pass totals do not pass these new tests.
+
+| ID | Practical evidence |
+|---|---|
+| T13 | TV/short vacuum/cycle/custom/no-direct-electricity inputs; real grid result; unknown source/wattage clarification; fractional integration and missing-data handling |
+| T14 | Single/two-task scheduling, fixed time/resource/dependency constraints, tiny-case exhaustive oracle, bounded search status, atomic owner-safe save/reload |
+| T15 | Separate mixed-day journey; London 23/25-hour bounds, per-task availability, fixed TV and wash-before-dry order |
+| T16 | Window too short, infeasible baseline, conflict, no improvement, stale/missing factors, incomplete search and explicitly reviewed relaxation |
+| T17 | Per-task report/non-run/correction, missing actuals, changed profile, latest-result-only partial aggregate and account/private deletion |
+| T18 | Expanded-role schema/semantic fixtures, new variant qualification, shared quota/fallback, manual path and grounded explanation |
+| T19 | Unchanged v1 proof, v2 portable reproducibility/tamper checks, exact consent/cutoff/privacy, local chain and one real Sepolia journey |
+| T20 | Real home source/status; three useful workspaces, mixed history, detailed reports, keyboard/mobile/no stale response, production build |
+
+Domain checks include the explicit 900W/10min and 100W/60min examples in 08, quantity conservation, zero factor vs null, task segment overlap, tie ordering, input precision/bounds, and a frozen v1 fixture. A small exhaustive oracle independently checks coupled search; do not mirror the implementation as its own expected answer. One bounded twelve-task case records elapsed time and search status without claiming unlimited scheduling capacity.
+
+Expanded AI evaluation is a focused authored set: 12 development cases and 12 held-out cases from separate sentence families, spanning explicit energy/unit extraction, multiple tasks/dependencies, fixed-vs-flexible time, ambiguous car cleaning, missing device power, conflicting windows, London DST and adversarial instructions. Freeze expected fields and review before live runs. Each newly enabled interpreter candidate needs its own evidence on these cases; explanation candidates need a small complete set of eligible-code scenarios. This replaces repeating the old 60-example washing dataset for v2; the old result remains historical evidence only. Count and disclose every actual run/retry and safety rejection. Keep manual-first experimental labeling if original quality targets are missed; no silent numerical/constraint fabrication may survive validation/review. Unknown/unavailable candidates stay excluded. Do not run all catalog models.
+
+Run targeted tests while editing; one combined unit/SQL/contract/browser/static/build pass at the integrated boundary, then repeat only affected checks after fixes. Use isolated fixtures in normal tests and separate bounded live source/provider/testnet checks. A route is not complete because it renders placeholder content or fixture success. Record which actual device measurements are absent; all authored energy examples remain estimates.
+
+
+### U37 builder-led UI acceptance
+
+On 24 October 2026 the builder accepted the U36 landing appearance, requested consistent quality/detail across the application, and explicitly said they will perform testing themselves. For this presentation update, Codex runs only lint/import-boundary, TypeScript and build checks to catch code/compilation errors. It does not run unit/component, browser/accessibility/end-to-end, live API/model, SQL or blockchain journeys. These are not new passing feature/visual acceptance claims; the builder’s review is pending. Historical U34/U36 evidence retains its original scope/date. Further test execution requires subsequent user direction or a concrete authorized scope change.
+
+## M11 reproduction and deployment evidence
+
+`pnpm verify:clean --browser` runs the frozen dependency install, environment check, lint/import boundaries, isolated contracts, both typechecks, unit/component tests, production build and production-browser suite in a fresh temporary copy. Real environment files, Vercel tokens, dependencies and generated artifacts are excluded. The temporary copy is removed afterward; preserve the command output for the release record. Chromium must already be installed with `pnpm exec playwright install chromium`. Isolated PostgreSQL tests remain `pnpm test:integration`; no hosted reset or paid inference is part of ordinary verification.
+
+A clean-copy/browser pass is local software evidence. It does not replace real deployment URLs, production proxy behavior, current Google/GitHub sign-in, public AI eligibility, a running ledger worker or a fresh external user journey. Existing AI/chain evidence should not be repeated solely to increase test counts.

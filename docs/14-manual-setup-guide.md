@@ -1,6 +1,8 @@
 # CarbonShift — manual setup guide for the builder
 
-Version 1.7 · 22 October 2026 · M06 configuration/admission implemented; Groq and Gemini Lite smokes observed. Builder free limits/label approval and completed current-role evaluation recorded. G06 passed locally under the experimental/manual-first policy. No paid upgrade was made.
+Version 1.9 · 23 October 2026 · M09 local credentials, incremental migrations and real Sepolia deployment/publication are verified. Current Gemini timing availability and public release decisions remain explicit limitations. No paid upgrade was made.
+
+**U34 target revision · 23 October 2026:** the approved household expansion at the end of this document supersedes conflicting washing-only restrictions for new v2 work. Earlier sections retain v1 contracts and historical implementation evidence. New capabilities are not passed until recorded in status.
 
 ## 1. Division of work
 
@@ -90,7 +92,7 @@ Use an eligible faucet linked from the [Ethereum networks page](https://ethereum
 
 Get an RPC URL from a provider supporting Sepolia. Read the chain ID before deployment. Test ETH has no intended real monetary role in CarbonShift.
 
-The signer belongs only in the ledger worker's environment. The Vercel web app does not need it. After local contract tests pass, Codex can deploy to the explicitly selected testnet as part of the authorized build and record the actual address, deployment block, transaction, compiler settings, and owner.
+The signer belongs only in the ledger worker's environment. The Vercel web app does not need it. After G08 passes and the user authorizes M09, Codex can deploy to the explicitly selected testnet and record the actual address, deployment block, transaction, compiler settings, and owner.
 
 ## 7. Environment-variable inventory
 
@@ -116,7 +118,7 @@ The signer belongs only in the ledger worker's environment. The Vercel web app d
 
 Server code exposes only deliberately public chain metadata, never the RPC credential or private key. The M06 loader validates the single routing policy and code-owned registry; arbitrary model/provider destinations are rejected. Never set qualified roles merely because a smoke succeeded.
 
-M01 generated `.env.example` for the web app and `.env.worker.example` for the later ledger worker. M04 securely populated ignored `.env.local` with the development project URL, publishable/secret keys and generated HMAC secret; it has owner-only permissions. The separate ignored `.env.supabase.local` holds CLI administration settings. `.env.worker.local` remains absent/unconfigured. The web template contains no signing credential. The local app origin defaults to `http://127.0.0.1:3000`; use that same browser origin/callback configuration when preparing M04. Production account-backed capabilities require an explicit HTTPS origin.
+M01 generated `.env.example` for the web app and `.env.worker.example` for the later ledger worker. M04 securely populated ignored `.env.local` with the development project URL, publishable/secret keys and generated HMAC secret; it has owner-only permissions. The separate ignored `.env.supabase.local` holds CLI administration settings. On 23 October, `.env.worker.local` was prepared with the existing Supabase project URL/secret key, Sepolia RPC and builder-entered dedicated signer. It remains ignored, untracked and owner-only. Authorized M09 subsequently configured the verified real contract address/deployment block and enabled the local ledger; both configuration checks now pass. The worker needs no publishable key or direct database URL for its planned Supabase API access. The web template contains no signing credential. The local app origin defaults to `http://127.0.0.1:3000`; use that same browser origin/callback configuration when preparing M04. Production account-backed capabilities require an explicit HTTPS origin.
 
 ## 8. Local readiness checks
 
@@ -176,3 +178,66 @@ Record actual selected service plans and limits. If access/cost prevents a requi
 No additional key or account setup is needed for M07. The existing callback allowlist is unchanged: recent identity confirmation uses signed HttpOnly intent/receipt cookies and the normal same-account Google/GitHub PKCE exchange. To delete a private plan, open Account settings, confirm with the same provider account, and return to the plan within ten minutes. Account deletion additionally requires explicit acknowledgement. This deletes CarbonShift private history, not the connected Google/GitHub account.
 
 `pnpm check:lifecycle` creates/deletes temporary fixture members; its receipt injection and authored historical in-memory comparison are labeled test evidence, not a human OAuth sign-in or appliance measurement. `pnpm lifecycle:maintenance` previews expired command acknowledgements; `pnpm lifecycle:maintenance --apply` removes only expired acknowledgements. Expiry blocks replay at 24 hours; physical cleanup runs when invoked. M11 must schedule retention. M08 builds local proof/contract code and needs no funded testnet signer; G-CHAIN is due for M09. Public UK AI routing and operator privacy contact remain deployment decisions.
+
+## M08 local checks and M09 preparation
+
+M08 needs no additional account, API key, wallet or RPC URL. Local proof/contract checks use synthetic data and an isolated EVM. The local network's chain ID 11155111 is deliberate test configuration; its deterministic addresses/transactions must never be copied into deployment configuration as Sepolia evidence.
+
+After G08, S07/S08 are the next external prerequisites for authorized M09: a dedicated testnet issuer wallet with recovery material stored securely outside the repo, eligible faucet funds and Sepolia RPC access. Put signing credentials only in the ignored worker environment, never the web environment or chat. A public wallet address is safe to record. No M08 command deploys remotely, funds a wallet or generates recovery material. The existing evaluated product AI providers need no change for this phase.
+
+On 23 October, read-only checks confirmed chain ID `11155111`, a native balance of **0.53 Sepolia ETH**, and that the worker key derives the builder's funded address `0x07084317B02a2fdc23F4E1bcA5749d849461A4E3`. The copied Supabase credentials passed a zero-row `profiles.user_id` API read (HTTP 200); this establishes credential/connectivity readiness, not future publication permissions or migrations. Those preparation checks performed no signature or deployment. M09 subsequently verified the real deployment and activated the local configuration, as recorded below. No additional key entry is needed for M10.
+
+## M09 local operation
+
+The actual verified Sepolia address/deployment block are now configured in both ignored environments; RPC access is available to the web reader and worker, while the signing key remains worker-only. Both environment checks can validate the activated configuration. Supabase migrations 008/009 are incremental; OAuth provider settings were preserved. No new key, wallet connection or cryptocurrency purchase is required.
+
+Run `pnpm dev` for the local app and `pnpm worker:ledger` in a separate terminal for publication processing. Stopping the worker leaves private planning usable and publications queued. `pnpm ledger:reconcile` observes existing signed operations once without signing or rebroadcast. Keep `.ledger-deployment.local.json` for safe deployment recovery; never delete the journal to force another nonce. `pnpm contracts:deploy` defaults to preparation and `--broadcast` explicitly requests a real testnet transaction.
+
+M10 adds public receipt/verifier/methodology/privacy pages. The operator privacy contact is still required before inviting real users; public UK AI profile/hosting/OAuth deployment decisions remain release gates. A configured local testnet ledger is not a public web deployment.
+
+## Household expansion — U34 manual timing
+
+No new mandatory API key, wallet, smart meter, paid subscription or crypto purchase is required for X01–X05. Reuse the configured development Supabase/OAuth, grid API, Gemini/Groq and dedicated Sepolia setup. Key presence is not a successful integration; Codex performs bounded checks when the consuming feature exists and never prints secrets.
+
+| Before | Builder action | Codex work |
+|---|---|---|
+| X01 | Optional: provide your actual device/programme watts or kWh if you want personal estimates; manual input works without a manufacturer match | Review source records; calculate deterministic profiles; no universal appliance API is assumed |
+| X02 live AI qualification | Review the small expanded expected-answer set when prepared; existing free limits remain | Implement/evaluate only candidates being enabled, preserve quotas and manual fallback |
+| X03/X04 integration | Existing development project access is sufficient | Isolated SQL checks, incremental migration without reset, generated types, owner-safe save/report checks |
+| X05 | Existing dedicated testnet signer/RPC/funds are sufficient if still available | Read current chain/balance, reuse compatible contract, bounded consented test record; no production funds |
+| Revised M10/M11 | Supply real privacy contact; choose allowed public AI profile and hosting when concrete setup is ready | Prepare public pages and deployment configuration; no billing/publication by assumption |
+
+When new pages are ready, user review should exercise a short appliance simulation, two-task comparison and mixed day. That user feedback is separate from automated checks. New live Gemini schema access may fail even when previous role access worked; this does not disable manual calculations. No request to paste keys or wallet recovery material is part of this expansion.
+
+U35 implementation configuration: `GRID_PUBLIC_SUMMARY_ENABLED` controls the cached anonymous home-page GB context; `LEDGER_HOUSEHOLD_ENABLED` controls new v2 publication writes after its verification gate. These are server feature settings, not API keys or paid activation. Ordinary fixture browser checks disable both. Codex configures the existing local environment when the relevant verification succeeds; no new builder account step is required. The public receipt/verifier can still inspect already consented records while new publication is disabled.
+
+The current local browser checks use `APP_ORIGIN=http://127.0.0.1:3001 pnpm dev --port 3001` because another project occupied port 3000. This is a process-local override; the original OAuth configuration has not been silently rewritten. Ordinary production-build/fixture checks clear account/AI/ledger credentials in their process. They do not activate a public free-Gemini profile.
+
+### Final local household handoff — 24 October 2026
+
+Migrations 010–013 are applied incrementally to the existing development project; types are regenerated. No new mandatory key or wallet step remains for local simulation/task/day planning. `GRID_PUBLIC_SUMMARY_ENABLED` and `LEDGER_HOUSEHOLD_ENABLED` are enabled locally after actual acceptance. The dedicated Sepolia contract was reused. Expanded Gemini Lite roles are locally qualified; the new Groq interpreter remains excluded, with manual/template recovery.
+
+Use `pnpm dev` on the original configured port 3000 when it is free, with `pnpm worker:ledger` in another terminal for new consented publications. The current server on port 3001 is useful for local page review; a fresh Google/GitHub sign-in on that port has not been verified against the existing 3000 callback allowlist. Preserve the other project occupying 3000. Port/redirect selection should be explicit before fresh account review or deployment.
+
+Before inviting public users, supply a real operator privacy contact and resolve the allowed public AI profile plus web/worker hosting and HTTPS/OAuth settings. Source publication and paid activation remain separate from this completed local build.
+
+### Development browser reload loop — U38
+
+On 24 October the existing Turbopack development cache repeatedly issued browser restart/reload messages even though source files were unchanged. Stop only CarbonShift's development server, remove the generated `.next/dev` directory, then restart with the same local origin and port. Regenerating that cache recovered the reported loop; a normal subsequent restart retained stability. Environment files, database records, wallet configuration and source files do not need resetting.
+
+`node scripts/check-dev-stability.mjs http://127.0.0.1:3001` checks the running local homepage for ten idle seconds after initial compilation. Keep files/browser tabs idle during this focused diagnostic. It fails on unexpected document navigation, HMR reload/rebuild messages or page runtime errors, and requires a successful initial page response. It uses an isolated anonymous browser and creates no account, saved plan, AI request or chain transaction. This is specific evidence for U38; the remaining U37 screen review stays with the builder.
+
+## M11 GitHub → Vercel release preparation — 25 October 2026
+
+The builder selected privacy contact `lovejeet1225@gmail.com`, Vercel hosting and GitHub-based deployment from `z-lovejeet/CarbonShift`, branch `main`. The authenticated project is **carbonshift** in **z-lovejeet's projects**, root `.`, Next.js, Node 24.x. Its assigned domain is `carbonshift-mocha.vercel.app`; an assigned domain is not yet a successful deployment. The builder will connect the repository in the dashboard after the verified source batch is pushed. Keep the existing project rather than creating a duplicate. [Vercel GitHub deployment](https://vercel.com/docs/git/vercel-for-github).
+
+1. Open the existing project's **Settings → Git**, connect `z-lovejeet/CarbonShift`, and use `main` for production. If GitHub permissions are requested, grant access to this repository.
+2. Confirm root `.`, framework Next.js and Node 24.x. Repository configuration supplies frozen pnpm install and `pnpm build`; pnpm 10.34.4 is pinned in `package.json`.
+3. Codex has prepared encrypted production environment entries for the existing credentials and selected flags; verify the actual deployment rather than importing a local file. Production environment must contain the existing Supabase public URL/publishable key and server secret, `RATE_LIMIT_HMAC_SECRET`, privacy contact, `CRON_SECRET`, selected AI keys/policy, grid flag and verified Sepolia read/publication metadata. Set `APP_ORIGIN=https://carbonshift-mocha.vercel.app` only for that verified project domain. Never upload `.env.worker.local`, `LEDGER_PRIVATE_KEY`, CLI administration passwords or Vercel login tokens to the web app. Local `.env.local` is not a deployment template to import wholesale.
+4. Keep the current role qualifications and conservative application ceilings. The builder selected Gemini plus Groq and will enable Google billing; this promise is not evidence billing is already enabled. Vercel production is prepared with the selected `uk_public_paid_gemini` profile; the builder must fulfill the billing prerequisite before public Gemini use. Codex has not verified or activated billing. Do not disguise the local development profile as a production pass or activate unevaluated model roles. The existing router permits up to two admitted attempts, including eligible cross-provider fallback; quotas and qualification decide which candidates can actually run.
+5. Add exact `https://carbonshift-mocha.vercel.app/auth/callback` to Supabase redirect URLs and set its Site URL to the production origin when deploying. Preserve local callbacks. Local Site URL now uses `http://127.0.0.1:3001`, with both 3000/3001 callbacks allowed; Google/GitHub remain enabled and Email disabled. Fresh human sign-in on the chosen current origin still needs verification.
+6. Deploy the pushed revision, inspect its actual build result, then verify health, headers, both sign-in providers and the complete private/public journey. Environment changes need a new deployment to take effect. Verify the hosting proxy before setting `TRUSTED_CLIENT_IP_HEADER=x-vercel-forwarded-for`.
+7. Run the dedicated ledger worker separately with `pnpm worker:ledger`. Vercel web requests/cron do not host that persistent signer process. Keep the computer awake while demonstrating queued publication. The interface's queued/submitted/uncertain states remain honest when the worker is unavailable.
+8. Check the configured daily retention cron's invocation after deployment. `pnpm retention` previews cleanup; `--apply` mutates eligible records. The bearer cron secret belongs only in Vercel server settings.
+
+The builder's later instructions explicitly authorize the Git commit/push batch and deployment preparation. Earlier no-publication statements describe historical boundaries, not the current instruction. No source publication proves G11 or authorizes spending beyond the separately chosen provider arrangement.

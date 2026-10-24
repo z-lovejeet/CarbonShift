@@ -1,8 +1,10 @@
 # CarbonShift — phased development roadmap for Codex
 
-Version 2.8 · 22 October 2026 · 12 phases, 60 primary tasks. M00–M07 passed locally, with M06 using the documented manual-first experimental quality policy. Current Lite/Groq roles and the real assisted journey are evaluated; unavailable/unevaluated routes remain excluded. M07 private lifecycle is implemented; M08 requires separate authorization. Actual execution evidence lives in the status log.
+Version 2.12 · 23 October 2026 · Original M00–M11 phase IDs retained. M00–M09 passed their scoped gates. U34 approves the X00–X05 sequence and revised local M10 work; the reviewed executable plan is linked in section 10. Current Gemini timing timeouts, pending public pages and release decisions remain recorded in the status log.
 
 ## 1. How to execute this roadmap
+
+U33 changes the product target after M09. Review the household expansion design and section 10 before choosing the next build slice. Do not execute the original washing-only M10/M11 presentation unchanged or label proposed X phases complete. Original phase evidence and IDs remain historical facts.
 
 This is the execution guide for a solo builder using Codex with the user's selected GPT-6.1 Sol configuration. It preserves milestone IDs `M00`–`M11` so existing specifications remain valid. Each milestone is now a phase with five individually verifiable tasks, numbered `Mxx.01`–`Mxx.05`.
 
@@ -276,6 +278,8 @@ Split M06.01 sequentially into `.01a` schemas/prompts, `.01b` policy/parser/regi
 
 **Human input:** none for local testing under the approved interface.
 
+**M08 implementation:** document 10 version 1.1 fixes comparison/result creation clocks, cancellation source, safe import, known method and trusted-observation boundaries. Entry point `src/domain/proof.ts`; server allowlist builders `src/server/proof/`; versioned ABI/build metadata `src/generated/`. `pnpm proof:artifacts` regenerates reviewed artifacts; `pnpm contracts:test` checks them. M08 only injects identity/nonces; M09 must persist them before preview, consent and enqueue. No publication route/table or testnet configuration is implied. Read status section 22 for actual gate evidence. Stop before M09.
+
 ### M09 — Phase 09: implement consented publication and the ledger worker
 
 **Goal:** safely turn a reviewed manifest into a real testnet record, surviving retries and interruptions.
@@ -469,3 +473,34 @@ After each phase, the app should either have a demonstrable new capability or a 
 This roadmap ends at a verified, handed-off application. It does not recreate the removed standalone operations or hackathon-submission documents.
 
 M05 estimate checkpoint: the manual live grid/Auth/save journey is now implemented and exercised on desktop/mobile, rather than inferred from isolated modules. AI account access/evaluation, completion/corrections, canonical proof/contract, funded testnet publication and deployment remain substantial separate work. No measured time log supports a tighter remaining-hours estimate; retain the original full-build estimate as provisional, not a delivery promise. Check the current official deadline again before allocating future work.
+
+## 10. Proposed household expansion — U33
+
+**Status: X00–X05 and revised local M10 passed their scoped acceptance on 24 October 2026. See status section 27 for the final evidence; M11 public release remains pending.** See the [written design](superpowers/specs/2026-10-23-household-electricity-design.md) and status section 25. M00–M09 remain passed for their actual scope. Do not reuse the earlier MVP effort estimate for this larger build.
+
+Approved ordering is X00 → X01 → X02 → X03 → X04 → X05 → revised M10 → M11. These IDs distinguish new work from earlier gates. Keep one working slice at a time, update the owning specifications before changing contracts, and preserve the existing application throughout.
+
+| Phase | Proposed work in execution order | Demonstrable exit condition |
+|---|---|---|
+| X00 — align the expansion | Review written design; resolve geography/task limits; align all fourteen owner documents; define exact v2 contracts and migration boundaries; write the implementation plan with file ownership and focused checks | Product, routes, method, privacy and acceptance requirements agree; design approval and implementation-plan review recorded |
+| X01 — activities and calculation | Versioned activity/profile schemas; reviewed source records and manual custom input; fine-duration energy integration; v2 source/time/freshness handling; known-answer and v1 compatibility checks | TV, a short vacuum session, wash cycle and powered car-cleaning inputs yield reproducible estimates or specific missing-input errors; no new default masquerades as measured data |
+| X02 — live simulation | Owner-safe simulation/profile APIs; activity interpreter schema/targeted qualification; separate simulator page; source-aware refresh and race handling; focused real-grid/browser journey | Select/type an activity, review its energy basis, change inputs and see correct current-source estimates; outage preserves input and energy-only results; no AI loop per slider movement |
+| X03 — task scheduling | Task-window/baseline validation; candidate search and coupled resource/dependency handling; explicit broader-window proposals; immutable comparison/save APIs; task-planning page and real save/reload | One and several tasks fit their actual constraints; no-improvement, infeasible, missing-data and bounded-search states differ; alternatives and baseline are inspectable |
+| X04 — whole-day experience | Dedicated day page; availability/fixed-task/dependency editor; joint timeline and per-task totals; per-task completion/corrections; actual day save/report journey | A mixed day survives save/reload with fixed TV time, appliance order and attention conflicts respected; missing/non-run tasks cannot inflate aggregate benefits |
+| X05 — proof and integration | Versioned v2 manifest/verification; exact publication preview and whole-day privacy rules; worker/contract compatibility checks; richer home/history/report content; focused integrated acceptance and regression | v1 receipts still reproduce; v2 private and explicitly consented public flows work; source/math/AI/chain states are real; route-specific content and responsive behavior are complete |
+
+The [approved executable plan](superpowers/plans/2026-10-23-household-electricity-plan.md) defines X00.01–X05.05 with named work areas/interfaces, checks and exit conditions. U34 authorizes sequential implementation of X01–X05 and revised local M10 in this chat. Keep gates/evidence honest; public deployment, billing and Git publication remain separate. The rows above are phase summaries; use the detailed plan for task execution.
+
+**Changes to downstream M10:** support explicit v1/v2 method dispatch in public receipts and verifier, reflect multi-task privacy/energy assumptions in supporting pages, and update the labeled demo without treating fixture data as live. Avoid finishing washing-only public UI immediately before changing its contracts.
+
+**Changes to downstream M11:** audit the expanded route/feature matrix, real source freshness, focused multi-task AI evidence and simulation/day-planning flows; retain external OAuth, production AI-profile and hosting checks. Existing billing and source-publication boundaries still apply.
+
+**Testing economy:** use relevant unit/integration/browser checks per changed slice; run the combined regression once after integration or when a new failure justifies it. Do not consume live AI quota for unchanged fields, make testnet transactions merely for cosmetic changes, or claim source access/role quality from key presence. The new model schema needs targeted evidence even when the same model passed the old washing-only task.
+
+U35 execution correction (24 October 2026): finish remaining implementation before one combined end-to-end/static/domain/SQL/contract/build verification pass. Do not repeat prior checks during implementation; diagnose earlier only when a concrete error blocks progress. This changes check timing, not acceptance criteria or honest completion requirements.
+
+Household execution handoff: implementation and the U35 combined verification pass are complete. Do not rerun passing live model/testnet journeys merely to resume work. The next ready work is the M11 release-readiness review: current route coverage, real operator privacy contact, eligible public AI profile, web/worker hosting and deployment OAuth choices. Reuse the existing contract/receipt evidence; do not redeploy or publish source automatically.
+
+## 11. M11 current release execution — 25 October 2026
+
+The builder authorized full M11 work, final checks and source publication in 40–50 commits, selecting GitHub deployment through the existing Vercel project. Local implementation and current isolated checks are recorded in status section 31. Do not use source push, assigned Vercel domain or prepared environment as evidence of a deployed G11 pass. The builder will connect the Git repository in the dashboard; next run the actual deployment/Auth/proxy/worker/public journey gates in M11.04, then close the remaining M11.03/M11.05 checks. Avoid repeating already-passing model and Sepolia evidence unless the deployed behavior requires it.

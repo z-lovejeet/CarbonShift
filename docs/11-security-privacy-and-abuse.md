@@ -1,6 +1,8 @@
 # CarbonShift — security, privacy, and abuse controls
 
-Version 1.3 · 22 October 2026 · M06 shared admission, OAuth/mutation throttles and privacy boundaries implemented and locally exercised. M07 private deletion/reauthentication is implemented; production proxy coverage and publication-aware controls remain pending; this is not a security certification.
+Version 1.4 · 23 October 2026 · M09 exact consent, signer/outbox and publication-aware deletion controls implemented. Production proxy coverage and external release checks remain pending; this is not a security certification.
+
+**U34 target revision · 23 October 2026:** the approved household expansion at the end of this document supersedes conflicting washing-only restrictions for new v2 work. Earlier sections retain v1 contracts and historical implementation evidence. New capabilities are not passed until recorded in status.
 
 ## 1. Assets and threats
 
@@ -135,3 +137,27 @@ Actual test results belong in the development status log. No control should be d
 ### M07 deletion baseline
 
 Private plan/account deletion requires a new same-account Google/GitHub OAuth exchange, a signed request nonce, and a session-bound ten-minute server receipt. Account deletion also requires explicit acknowledgement. An unrelated provider identity, ordinary token refresh or stale/tampered receipt is rejected. Receipts and pending OAuth intent are cleared on sign-out/account deletion. The M07 implementation has no public records; public/chain retention and deletion races must be extended before M09. Deleted-plan acknowledgement metadata expires after 24 hours, is physically pruned on the next explicit `lifecycle:maintenance --apply` run, and is deleted on account removal. Grid snapshots have no identity and orphan rows are removed transactionally when their owning private records are deleted. Existing provider quota reservations are not refunded by deletion.
+
+## M09 consent and signer controls
+
+Migrations 008/009 enforce immutable public text/digests, unique operations/nonce, owner-only reads and service-only preview/signing/lease functions. No web client can read raw transaction bytes or invoke a privileged publication function directly. Exact preview consent is separate from saving/reporting, rejects changed/expired/context-mismatched data and discloses schedule/blocked-time/energy privacy plus lasting copies. Result correction text is separately entered; private reasons/notes never auto-publish.
+
+The signer is loaded only by the worker/deployer entry points from ignored `.env.worker.local`. `.env.local` receives RPC/public chain metadata, never the private key. The deployment journal is ignored with owner-only permissions; signed bytes are operational recovery data and never returned in app responses. The worker does not log raw RPC errors, keys or signed bytes. Its fenced lease and plan lock prevent unsigned cancellation/deletion races; already signed operations remain reconcilable after private data removal. New publication limits are five commitments and twenty results per UTC day; retry replay does not create another operation. No paid activation or mainnet path exists.
+
+## Household expansion — U34 security and privacy
+
+Whole-day schedules expose routines. Treat names, fixed times, availability, resource labels, free text and notes as private. Interpretation is explicit opt-in; send only the current minimal draft, never account/history/wallet data. Raw prompts/results remain transient and absent from ordinary logs. HMAC metadata and retention controls continue across variants.
+
+V2 requests keep owner checks before elevated writes, owner-scoped RLS, strict finite integer schemas, bounded body sizes and shared mutation/AI budgets. Bound tasks (12), windows/blocks (8 each), resources (4), segments (48), solver nodes (50,000), text (2,000 units) and public imports (1 MiB); reject unknown or cyclic relationships. Validate query/cursor/route IDs before database use. No arbitrary source-URL fetch, model-selected endpoint or script execution. Display user text as text; reject markup-based rendering.
+
+Publication is separately consented per exact sanitized revision and states that timings/energy become public. Remove private names/IDs; show public aliases in preview. Deletion removes private routine data while retaining the previously disclosed immutable proof and clearing account links. A pending signed operation cannot be described as erased from the network; preserve existing uncertain-state reconciliation. Test current v1 deletion paths after adding v2 foreign keys.
+
+No secrets in browser/session handoffs; use session storage only for reviewed non-secret draft fields with a short expiry and clear-on-sign-out. Auth navigation and server guards apply to both new pages. Existing OAuth/login protections, worker-only signer and reauthentication rules remain. Expanded documentation does not activate public Gemini access, billing or production deployment.
+
+## M11 implemented retention and browser policy — 25 October 2026
+
+Migration 014 adds service-only `cs_retention`, with a dry-run default, transaction advisory lock and bounded batches of at most 1,000 eligible parents. Unpublished private v1/v2 plans and dependent reports are eligible after 30 days; unaccepted comparisons after 24 hours. Expired command keys, previews and AI metadata use their existing expiries. Consent/publication is checked again under parent locks before deletion. Consented public copies and durable ledger operations are retained. Do not advertise immediate deletion: expired records become inaccessible under their time checks and physical cleanup depends on a completed maintenance run.
+
+`pnpm retention` previews hosted counts; `pnpm retention --apply` explicitly applies cleanup. `vercel.json` declares a daily 03:17 UTC cron request authorized by server-only `CRON_SECRET`. Declaration does not prove the deployed cron is running; verify its first invocation after deployment. Local development still needs the explicit command. The isolated integration test exercises actual cleanup without touching hosted users.
+
+Production headers restrict browser connections/forms to this origin, forbid framing and object embedding, and allow the browser's local proof worker. Next's inline bootstrap/style requirements remain permitted; `unsafe-eval` and development WebSocket access are absent in production. This is a static CSP, not a nonce-based policy. HSTS, nosniff, no-referrer and disabled camera/microphone/geolocation/payment capabilities are set centrally. Vercel's trusted client-IP header must be verified on the actual deployment before being enabled; request headers supplied directly by callers are not trusted locally.
