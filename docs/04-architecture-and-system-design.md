@@ -1,6 +1,8 @@
 # CarbonShift — architecture and system design
 
-Version 1.6 · 22 October 2026 · M04–M06 run locally, including evaluated AI routes and shared admission. Timing assistance is experimental/manual-first. Web deployment and ledger remain later work.
+Version 1.8 · 23 October 2026 · M09 publication/outbox/worker and actual Sepolia flow implemented. Public M10 pages and M11 web deployment remain pending. AI timing remains experimental/manual-first.
+
+**U34 target revision · 23 October 2026:** the approved household expansion at the end of this document supersedes conflicting washing-only restrictions for new v2 work. Earlier sections retain v1 contracts and historical implementation evidence. New capabilities are not passed until recorded in status.
 
 ## 1. Architectural choice
 
@@ -164,3 +166,31 @@ The cache is a bounded optimization per process, not durable storage or a source
 The live controller posts confirmed fields, then reads `GET /comparisons/{id}` for the already-saved snapshot and verifies that the returned comparison equals the issued response. No extra grid request changes its forecast. Saving sends only ID/version and a stable random retry key; a valid-looking response for different reviewed inputs is rejected. Uncertain saves may be retried with that same key after UI expiry to discover an already-committed result; a definite expiry/version failure requires another reviewed comparison.
 
 The shared planner receives a live or demo adapter. Only the dedicated demo module imports the synthetic fixture and fixed clock; its discriminated interface exposes no save function and only creates a local preview. No demo server mode, fake-login switch or fixture-backed live endpoint was added. Offline browser tests exercise the shared UI via the labeled demo; the explicit `check:planner` command separately provisions two temporary development Auth sessions and drives ordinary protected pages/API against real grid/Supabase services. These seeded sessions are not evidence of new OAuth provider sign-ins.
+
+## M08 proof implementation boundary
+
+`domain/proof.ts` is the public browser-safe facade over strict manifest/method schemas, canonicalization, hashing and pure verification. Narrow pure-library imports are enforced by the boundary script. The verifier reuses deterministic scheduling/results with internal neutral reference placeholders only where the existing calculator requires storage metadata; these references are neither exported nor treated as storage/source evidence. Original comparison/result clocks are public reproducibility fields.
+
+`server/proof/builders.ts` validates retained private records, accepted/actual storage digests and parent pairing before allowlist projection. It takes caller-supplied persisted identity/nonce and separately reviewed correction text. `identity.ts` generates cryptographic material without storage side effects; persistence/consent/preview remain M09. No route or database schema changed in M08.
+
+Chain observations are separately validated caller inputs: configured context, contract reads, commitment/result events and block positions. The pure verifier cannot fetch a bundle URL or RPC. Embedded chain references are navigation metadata, not independently trusted observations. Original issuer remains distinct from current owner, including transfer/renunciation. The exact ABI/build fingerprints are generated from the compiled non-upgradeable contract; M09 must check these before signing.
+
+## M09 publication implementation
+
+`server/publication/` owns immutable previews, exact-hash consent, owner state and owner export. `contracts/publication.ts` is the shared runtime contract. The plan identity is inserted before preview; result nonces are frozen in the preview transaction and concurrent identical requests return those bytes. Consent revalidates the stored digest/current contract, then SQL checks owner, current plan version, expiry, operational cutoff, preceding confirmation and daily admission. Public copies and their outbox operation are one transaction.
+
+`worker/{contracts,processor,store,chain,ledger}.ts` separates durable state, orchestration and real viem transport. A two-minute fenced lease is scoped to chain/signer and renewed between jobs and before persistence. The plan lock serializes cancellation/deletion against durable signing. Signing intent can be reclaimed; signed bytes/nonce/hash are immutable and persist before broadcast. The single worker reconciles saved hashes, canonical blocks and exact events, requires two blocks after inclusion, and preserves uncertain/reorganized states. Unknown consumed nonces halt issuance rather than allocate another nonce. Owner/key/compiled-runtime checks precede signing; an RPC or database failure is not success.
+
+P05 has secondary review/consent, explicit state refresh and owner bundle download. Account deletion locks private plans, stops unsigned jobs, clears public account/plan links and removes private data. Already signed jobs retain the disclosed manifests and reconcile after deletion. Individual deletion of a consented plan is restricted. M10 public receipt/chain/import pages remain separate. No laptop worker is advertised as always on.
+
+## Household expansion — U34 architecture
+
+Add a separate v2 domain beneath the existing modular application. Reuse Auth, source ingestion, shared admission and worker infrastructure; do not mutate v1 domain behavior. Flow: reviewed activity input → server profile resolution → normalized energy segments → validated grid snapshot → deterministic simulation/joint search → immutable comparison → atomic accepted schedule → append-only reports → explicit publication.
+
+`domain/activities` owns schema-independent pure arithmetic/constraints/search through strict input schemas. `server/activities` resolves trusted reference records and grid acquisition; `server/schedules` owns authenticated persistence/lifecycle. Shared contracts contain no secrets or server imports. React consumes these contracts and renders estimates; it never supplies authoritative totals. Local what-if previews use the same pure engine but are replaced by server validation before compare/save.
+
+Profiles are reviewed versioned reference data in source, mirrored as immutable source records when referenced by persisted schedules. Neither model prose nor arbitrary URLs trigger external fetches. Continue using the existing allowlisted grid client and source metadata. Pad requests outward to source half-hour boundaries, then integrate actual overlap rather than passing minute-level boundaries to v1 grid helpers.
+
+Public home summary uses a bounded, cached, server-side grid read. Anonymous readers receive only a small validated aggregate/source projection, never a provider proxy or private data. Coalesce concurrent fetches, preserve original retrieval timestamps, and represent stale/error explicitly. No AI call during page rendering.
+
+The scheduler executes with a deterministic node budget and bounded arrays. Cancellation abandons a request; it is not evidence of infeasibility. Never block the UI thread with joint search. Keep grid failures, scheduling conflicts, SQL errors, quota exhaustion and chain uncertainty separate. Schema/method dispatch is explicit at saved-plan hydration and export boundaries; unknown versions fail closed.

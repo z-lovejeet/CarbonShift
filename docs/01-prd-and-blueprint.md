@@ -1,12 +1,22 @@
 # CarbonShift — PRD and product blueprint
 
-Version 1.9 · 22 October 2026 · M00–M07 run locally. AI timing is experimental/manual-first under the documented quality policy; private completion is implemented; receipts remain later work.
+Version 2.3 · 24 October 2026 · M00–M09 plus U34 X00–X05 and revised local M10 are implemented. Scoped acceptance and remaining release decisions are recorded in status section 27.
+
+## 0. Latest product direction — U33/U34
+
+The user requests household electrical activities beyond washing, separate simulation/task/day-planning pages, per-task availability and multi-task schedules, clear window conflicts and lower-carbon alternatives, richer home/report content and real sourced data. This replaces washing-only as the product target. The existing washing-only implementation, method and historical records remain v1; the sections below describe that implemented baseline rather than restricting the new request.
+
+The [household expansion design](superpowers/specs/2026-10-23-household-electricity-design.md) captures the request, proposed workflows, evidence boundaries and migration approach. U34 approves GB-only coverage, twelve-task capacity and five-minute candidate spacing for the first expansion, with bounded-search limits disclosed. Their implementation/quality requires new evidence. [Roadmap section 10](13-development-roadmap-and-codex-tasks.md#10-proposed-household-expansion--u33) records the approved delivery sequence. The user reviewed the [concrete build plan](superpowers/plans/2026-10-23-household-electricity-plan.md) and selected sequential execution in this chat. U34 sections now align all fourteen owners; retain stable v1 feature/task IDs and passed evidence.
+
+The three separate workspaces, per-task lifecycle, source-backed reports and explicit v1/v2 public receipt/verifier are now implemented. The final real-service journey, qualified AI routes and v2 Sepolia plan/result passed; public hosting, a public AI profile and a real operator privacy contact remain M11 decisions.
+
+AI will interpret and explain; trusted data plus deterministic software will calculate electricity/CO₂ and schedule tasks. Refreshed grid data is distinct from measured appliance consumption. Historical method v1 and accepted/public records cannot be silently converted to the expanded method.
 
 ## 1. Intent and authority
 
 CarbonShift helps a person choose a lower-carbon time for one flexible washing-machine cycle, understand the assumptions, and optionally publish an inspectable record of the plan and reported outcome.
 
-The user has selected CarbonShift, is a solo builder using Codex with their chosen GPT-6.1 Sol configuration, and requires Gemini and Groq APIs in the product. On 21 October 2026 the user authorized M00 through M05, requested all documents be read before every phase, and specified premium, modern, clean, minimal UI/UX plus real functional backend behavior. M01 implements the foundation, M02 the deterministic core, M03 the live national grid adapter and M04 OAuth/private plan APIs within that bounded design. The development Supabase project and two provider sign-ins have been checked; M05 now connects manual constraints, real grid comparison and immutable saving through private screens; M06 adds locally evaluated AI assistance and shared abuse controls. M07 implements private completion, history and deletion; publication and receipts remain later phases. No deployed web app/contract, user study or measured climate benefit is implied.
+The user has selected CarbonShift, is a solo builder using Codex with their chosen GPT-6.1 Sol configuration, and requires Gemini and Groq APIs in the product. On 21 October 2026 the user authorized M00 through M05, requested all documents be read before every phase, and specified premium, modern, clean, minimal UI/UX plus real functional backend behavior. M01 implements the foundation, M02 the deterministic core, M03 the live national grid adapter and M04 OAuth/private plan APIs within that bounded design. The development Supabase project and two provider sign-ins have been checked; M05 now connects manual constraints, real grid comparison and immutable saving through private screens; M06 adds locally evaluated AI assistance and shared abuse controls. M07 implements private completion, history and deletion; M09 adds exact-consent publication and real Sepolia records. Public receipt/verifier pages remain M10. A real contract deployment is recorded in the status log; no deployed web app, user study or measured climate benefit is implied.
 
 The user removed standalone deployment/operations and submission documents. Essential deployment steps appear in document 14 and implementation tasks in document 13. Do not recreate the removed documents.
 

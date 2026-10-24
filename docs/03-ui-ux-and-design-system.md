@@ -1,6 +1,8 @@
 # CarbonShift — UI/UX and design system
 
-Version 1.6 · 22 October 2026 · M05/M06 interfaces implemented locally, including reviewed experimental timing assistance and truthful quota/login recovery.
+Version 1.7 · 23 October 2026 · M05–M09 interfaces implemented locally, including reviewed experimental timing assistance, truthful recovery and explicit publication consent/status.
+
+**U34 target revision · 23 October 2026:** the approved household expansion at the end of this document supersedes conflicting washing-only restrictions for new v2 work. Earlier sections retain v1 contracts and historical implementation evidence. New capabilities are not passed until recorded in status.
 
 ## 1. Experience goal
 
@@ -186,3 +188,52 @@ The existing tokens remain in use. Native labeled controls handle units and Lond
 Recharts is dynamically loaded only when a comparison is rendered. Its step series uses actual half-hour tick positions, a zero-based y-axis, a hatched baseline window and a suggested-time band, plus text labels and an adjacent keyboard-accessible table. It has no animation or hidden hover-only information. Source/time/energy/method details remain inspectable; cross-midnight schedules expose the finish date. Zero improvements do not acquire a positive headline.
 
 The plan detail displays the frozen forecast and explicit initial execution/publication states; later lifecycle actions remain unavailable until implemented. Demo mode has a persistent synthetic-data/fixed-clock notice and a reset, and its final action says preview. Automated axe/keyboard/zoom checks and visual screenshots are scoped evidence, not a screen-reader or cross-browser certification. The builder deferred personal M05 review; actual observations belong in the status log.
+
+## Household expansion — U34 interface contract
+
+Retain the established typography, spacing, neutral surfaces and restrained accent. New pages use one dominant workspace and useful information density. Avoid decorative impact counters, faux live badges, repeated generic cards and model/provider jargon in the main flow.
+
+- Home: clear household problem and three workflow links; current GB grid summary with timestamp/source/unavailable state; concrete supported activities; how energy assumptions work; optional receipt explanation; useful FAQs. No invented users/partners/savings.
+- Simulator: left/top input editor, right/below result with electricity, estimated CO₂ and interval breakdown. Energy basis stays visible. Responsive two-column desktop becomes a single logical mobile flow. Changes invalidate stale results immediately; show which input revision produced the current result.
+- Task planner: compact task list with expandable editor, a distinct review step, baseline/recommended schedule comparison, up to three alternatives and detailed assumptions. Required corrections link to their field/task.
+- Day planner: separate date/availability editor and accessible timelines. Fixed activities are visibly fixed; overlaps are meaningful lanes rather than hidden collisions. Provide a table/list alternative and keyboard editing; dragging must never be the only control.
+- Saved report: baseline, selected, source/assumptions and per-task totals, then completion and optional publication. Forecast totals and reported estimates have separate headings. Partial reports display covered task count and which tasks are excluded.
+
+Navigation: Simulate, Plan tasks, Plan my day, My plans, Account. Use compact responsive navigation; retain visible focus, semantic labels, reduced motion and touch targets. No horizontal overflow at 360px. Loading regions announce changes without reading every refresh. Zero improvement is a valid neutral result; missing factors show unavailable, not 0. A search limit says “best found” and never a guaranteed optimum. Use “estimated grid CO₂” and “same electricity, different timing.”
+
+Use derived state rather than duplicated totals, explicit request revision/abort handling, and code-split charts/verifier. Input edits do not call AI. Refresh only visible simulator grid data at most once per five minutes; stop timers on unmount and never refresh frozen accepted payloads.
+
+
+## Household landing refinement — U36, 24 October 2026
+
+The user finds the current home basic/awkward and requests better design, more content and an accurate activity count. This is a bounded redesign of existing P01 within the approved premium/minimal, restrained-green direction. Product workspaces, calculation methods and publication permissions stay under their existing owners.
+
+Use a two-line, left-aligned hero with real current-grid context, an upcoming half-hour bar chart and an accessible values table. Charts use validated source values and a zero baseline; loading/unavailable states have reserved space and never contain synthetic factors. Cached source reads re-select the current half-hour at render time, including cache entries crossing a half-hour boundary. No decorative environmental photography, fabricated savings/users or new image/API dependency is required.
+
+Replace repetitive text sections with a keyboard-accessible workspace selector, a complete catalogue, a four-step sequence, a visually distinct private/public evidence explanation, useful FAQs and a clear final action. Activity/profile/task counts derive from their actual registries/method, rather than marketing constants. The catalogue contains eleven named categories plus custom, and four exact reviewed model references; the custom path accepts other supported electrical loads with sufficient user inputs.
+
+Keep styles in a homepage-scoped CSS module, preserve the shared application palette/system typography, and honor reduced motion. Native disclosures and ARIA tabs retain visible focus and arrow/Home/End keyboard use. Reuse the source cache and server-render the forecast; only the workspace picker requires a client island. Verify the affected landing journey and actual desktop/tablet/mobile layouts, without rerunning AI/ledger/SQL acceptance for a presentation change.
+
+
+## Product-wide visual alignment — U37, 24 October 2026
+
+The builder tested and approved the U36 landing appearance, then requested the same premium, clean visual quality and useful detail across every page. The builder explicitly takes ownership of testing for this update. Use the approved home as the reference rather than introducing another visual direction or restarting design approval.
+
+The shared implementation uses `src/app/product.css` plus `PageHeader`, `PageGuide`, `WorkspaceNotes` and `ReadingLayout` in `src/components/ui/`. Keep the landing page’s paper/forest palette and system typography; use restrained surfaces, clear heading scale, deliberate form grouping and consistent responsive spacing. Shared primary/mobile navigation exposes the current route. Existing route IDs, server ownership, method calculations, user confirmations and publication consent remain authoritative.
+
+| Area | Presentation and content |
+|---|---|
+| Dashboard | Useful entry points, loaded-history filter context, a real empty state and original-forecast labels |
+| Simulator | Input/result surfaces, grouped activity and energy fields, energy-source guidance and explicit estimate limitations |
+| Task/day planning | Reviewed workflow guidance, a distinct task rail/editor, clearer window/date controls, source-aware comparison and saved-review surfaces |
+| Saved v1/v2 reports | Original-method context, clear forecast/report/publication sections, per-task coverage, history and consent separation |
+| Account/login | Household scope, provider sign-in and recent identity confirmation, private/public retention explanation, distinct destructive controls |
+| Public receipt | Recorded baseline/selected/energy amounts, exact public task timing, method/receipt identity, separate verification states and consented result coverage |
+| Local verifier | Local-file explanation, readable import surface, optional observation trust context and definitions of each verification state |
+| Demo | Persistent synthetic-data boundaries, scenario explanations and preserved earlier washing example |
+| Methodology/privacy | Anchored reading navigation, reviewed source records, formulas, method/time/rounding/retention boundaries and truthful operator-contact state |
+| Framework states | Consistent not-found/error recovery and a value-free loading skeleton |
+
+Do not hardcode results into these layouts, recompute authoritative carbon amounts in components, hide failed/pending states or add fake counters. Public receipt figures read the already-consented manifest; a derived display difference is labeled as recorded forecast. An exact power reference is described as power rather than incorrectly called cycle energy. No new service, paid model, database migration or device connection is introduced.
+
+For U37, Codex runs compilation/lint checks only. Browser, accessibility/visual, functional, API/provider and chain acceptance remain the builder’s review. Do not mark the updated screens visually/behaviorally passed from the earlier U34/U36 evidence or automatically rerun those suites.

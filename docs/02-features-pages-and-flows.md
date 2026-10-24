@@ -1,6 +1,8 @@
 # CarbonShift — features, pages, and user flows
 
-Version 1.4 · 22 October 2026 · M06 assistance, quota recovery and repeated-request protection implemented locally. Timing assistance remains experimental/manual-first. Execution evidence is in the status log. Scope authority: [PRD](01-prd-and-blueprint.md).
+Version 1.6 · 25 October 2026 · The approved household expansion and revised local M10 are implemented. M11 release fixes and GitHub/Vercel preparation are recorded in status section 31; public deployment acceptance remains pending.
+
+**U34 target revision · 23 October 2026:** the approved household expansion at the end of this document supersedes conflicting washing-only restrictions for new v2 work. Earlier sections retain v1 contracts and historical implementation evidence. New capabilities are not passed until recorded in status.
 
 ## 1. Roles
 
@@ -114,3 +116,29 @@ Do not add a conversational chatbot page, payments page, carbon-credit marketpla
 P01 now links to live planning and the public example. P03 reads real owner plans, including empty/failure/pagination states; all current plans are private, so publication filters arrive with their actual state support. P04 provides manual fields → read-only reviewed constraints + confirmation → deterministic comparison → separate exact-result save review. The normalized earliest-feasible baseline is shown before saving. Changes require a fresh comparison and review; a failed request preserves the draft in browser memory.
 
 The server provides the date/clock reference. Local times always resolve in Europe/London; repeated hours expose an explicit earlier/later offset selection, and nonexistent times are rejected. Energy is decimal text converted exactly to integer Wh. Completion/cancellation/publication/AI controls are not shown as working actions before their owning phases. P05 reads immutable saved comparison/snapshot data and states execution is not reported, publication private. P12 uses the frozen authored fixture and fixed clock only, permits local exploration/reset, and previews rather than saving. M10 extends this existing demo with proof-specific cases.
+
+## Household expansion — U34 contract
+
+This section owns the approved new product target; earlier washing-only field/scope rules continue only for v1. Implementation status remains in the decision log.
+
+| Feature | Required behavior | Pages / test |
+|---|---|---|
+| F13 | Select/type household activity, confirm source-backed/manual energy, estimate electricity and CO₂ with live source status | P13 `/app/simulate`, T13 |
+| F14 | Plan one or up to twelve tasks with individual baselines/windows, fixed times, dependencies and resource conflicts | Existing P03 `/app/plan/new`, T14 |
+| F15 | Separate whole-day editor, calendar boundaries, comparison timelines and atomic schedule saving | P14 `/app/day/new`, T15 |
+| F16 | Too-short/conflicting windows, no improvement, missing data and bounded-search limits; optional reviewed window extension | P03/P14, T16 |
+| F17 | Immutable multi-task reports, per-task completion/correction and honest partial aggregates | Existing P05 `/app/plans/[planId]`, T17 |
+| F18 | Versioned v2 interpretation/explanations with review, shared limits and manual fallback | P03/P13/P14, T18 |
+| F19 | Exact-consent v2 publication and verification preserving v1 | Existing receipt/verifier pages, T19 |
+| F20 | Rich useful home, timestamped grid context, all-workspace navigation and mixed-version history | Existing home/dashboard, T20 |
+
+P13 is a what-if calculator; it does not save a commitment automatically. P03 supports one or several tasks; P14 adds a calendar-day boundary and timeline. Each has its own URL and primary action. A shared task editor is a reusable component, not a reason to combine pages. Saved v2 schedules use the existing detail URL with explicit version dispatch. New UUIDs must not collide with v1 IDs; the server checks both stores when allocating identities.
+
+Input steps: activity/equipment → energy basis and duration → timing/constraints → explicit review → calculate/compare → report → optional save. AI suggestions are editable and cannot skip review. A custom task without power or energy asks for information. Car cleaning asks whether powered equipment is involved. A user can duplicate/remove/reorder draft tasks without changing an accepted plan.
+
+Simulator-to-planner handoff transfers only reviewed draft fields through same-tab memory/session storage with a version/expiry; never include credentials, account information or AI raw text in URL query strings. Revalidate on arrival, clear on sign-out, and do not treat transferred values as accepted facts. No persistence is required to estimate. Manual entry remains available when assistance is unavailable.
+
+
+### U37 presentation alignment
+
+The builder approved the refined P01 landing and requested its visual quality across P02–P14, saved v1/v2 variants and framework states. Shared page framing, source/assumption guidance, report/receipt detail, reading navigation, active account/workspace navigation and consistent loading/empty/error surfaces are implemented. Route/feature permissions and existing server contracts are unchanged. The v2 completion URL retains its redirect to per-task reporting; it is not a second reporting implementation. The builder owns visual and functional testing of this update; current evidence is in status section 29.
