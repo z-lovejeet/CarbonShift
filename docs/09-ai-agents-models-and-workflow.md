@@ -2,6 +2,8 @@
 
 Version 1.4 · 22 October 2026 · Policy/admission/adapters/endpoints/UI implemented locally. G06 passed locally under the manual-first experimental policy. Lite timing scored 94.4% fields / 85% critical accuracy; Groq and Lite explanation each passed 4/4 live cases. The real assisted planning journey passed.
 
+**U34 target revision · 23 October 2026:** the approved household expansion at the end of this document supersedes conflicting washing-only restrictions for new v2 work. Earlier sections retain v1 contracts and historical implementation evidence. New capabilities are not passed until recorded in status.
+
 ## 1. Two different meanings of “agent”
 
 **Development agent:** Codex, using the user's selected GPT-6.1 Sol configuration, implements and tests the repository according to its instructions. This does not provide API inference inside the deployed product.
@@ -199,3 +201,21 @@ Unpaid Gemini terms permit product-improvement processing and human review and p
 LLM outputs are not generally bit-for-bit reproducible. The confirmed constraints and deterministic calculation must be reproducible. The published proof depends on reviewed inputs, not secret model reasoning.
 
 Official pricing is checked at setup through [Gemini pricing](https://ai.google.dev/gemini-api/docs/pricing) and [Groq catalog pricing](https://console.groq.com/docs/models). Current quota provenance is recorded in the phase evidence: builder AI Studio transcription, supplied Groq Free Plan table and observed Groq response headers. Exact sharing/overrides and billed usage remain unverified.
+
+## Household expansion — U34 AI variants
+
+Retain two bounded roles and existing quotas. Add explicit code-owned variants `activity-v2` (constraints role) and `schedule-explanation-v2` (explanation role). Existing v1 qualification does not authorize either variant. Bind task fingerprint/cache/run evidence to variant, prompt/schema version, immutable input/facts and policy digest. Preserve old v1 requests and policy decoding; any policy extension needs strict migration with manual/disabled startup preserved. No extra key, model, parallel race or autonomous orchestration is needed.
+
+Interpreter input: user-consented text up to 2,000 UTF-16 units, trusted reference date/London timezone and bounded vocabulary/reference IDs. Output: at most twelve draft activities; explicit category/equipment/duration/quantity, textual power/energy values only when stated with supported units, local windows/baseline/fixed times, source spans and clarification codes. Nullable fields remain unknown. Unknown model wattage is never inferred. Source-span presence is necessary, not sufficient: validate numerical values/units against their exact source and require human review of ambiguous timing/resource links. Known reference IDs are resolved by server lookup only after user choice. “Clean the car” asks manual/pressure-washer/vacuum; ordinary TV time is not automatically assumed flexible. Do not infer attention/safety permissions.
+
+Expanded explanation output selects only codes eligible from computed facts: lower estimate, no improvement found, fixed time retained, dependency respected, resource conflict, insufficient window, broader-window proposal, data missing and search limited. A model cannot invent a successful schedule or claim a specific saving. Templates supply all numbers/dates and mandatory limitations. A complete deterministic explanation is available without a provider.
+
+Eligibility is per model × role × variant. Run focused new fixtures described in 12 before promotion. Existing policy admission, atomic reservations, task deduplication, maximum two attempts, absolute deadline, privacy and circuit behavior apply across versions. No activity is executed, saved, relaxed or published by a model. A provider outage leaves the manual editor and actual calculation fully usable. Current Gemini timing failures remain documented; do not call a new schema professional merely because it has more fields.
+
+### Local household qualification update (U35)
+
+The agent reviewed the authored 24-case labels at the user's explicit request (“check it yourself”), correcting ambiguous object/category wording and recording the dataset hash. No independent human review is claimed. Gemini Flash-Lite `activity-v2.3` passed those 24 reviewed cases and is enabled only for that variant in local policy. Gemini `schedule-explanation-v2.3` passed six eligible/required-code scenarios after the empty-selection prompt defect was corrected; its local explanation variant is enabled. Groq's new interpreter remains excluded after invalid/rejected cases; v1 Groq qualification is retained. Shared quota/fallback/manual recovery boundaries are unchanged. Public deployment eligibility remains unresolved.
+
+## M11 public-provider decision — 25 October 2026
+
+The builder explicitly selected both Gemini and Groq, fallback within each provider and eligible cross-provider recovery. They intend to enable Google billing. Keep the existing two-attempt admitted router, evaluated role/variant qualifications and conservative pooled quota ceilings. The code already walks eligible candidates and favors cross-provider recovery after a failed Gemini attempt; it does not promise that every catalog model or variant is qualified. The production environment is prepared with the selected `uk_public_paid_gemini` profile; its billing prerequisite remains the builder’s responsibility before public Gemini use. Codex has not enabled billing or verified that account state. Do not treat the intention to enable billing as an observed account-state change. No new quality evidence is implied; the expanded Groq interpreter remains excluded until it passes its own checks.

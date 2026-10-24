@@ -1,6 +1,8 @@
 # CarbonShift — API and external integration contracts
 
-Version 1.5 · 22 October 2026 · Base path `/api/v1`. M04–M07 private planning, evaluated local AI/admission and lifecycle contracts are implemented; public APIs remain later work.
+Version 1.7 · 23 October 2026 · Base path `/api/v1`. M04–M09 private planning, AI/admission, lifecycle and owner publication APIs implemented; public receipt APIs remain M10.
+
+**U34 target revision · 23 October 2026:** the approved household expansion at the end of this document supersedes conflicting washing-only restrictions for new v2 work. Earlier sections retain v1 contracts and historical implementation evidence. New capabilities are not passed until recorded in status.
 
 ## 1. Common conventions
 
@@ -42,7 +44,7 @@ All normal request bodies max 16 KB; local proof imports max 256 KB and never po
 | `POST /plans/{id}/results/refresh` | `{expectedResultRevision}` + key | New result only if new data/status; otherwise return existing revision |
 | `POST /plans/{id}/publication-preview` | None | Public manifest, digest, privacy disclosure, short-lived preview ID |
 | `POST /plans/{id}/publication` | `{previewId, manifestHash, consentVersion, consent:true}` + key | Queued operation; recompute exact preview hash; never auto-consent |
-| `POST /plans/{id}/results/{revision}/publication-preview` | None | Result manifest with next public sequence and disclosure |
+| `POST /plans/{id}/results/{revision}/publication-preview` | `{correctionExplanation}`; separately reviewed public text, at most 500 characters | Result manifest with next public sequence and disclosure; private reasons/notes are never copied |
 | `POST /plans/{id}/results/{revision}/publication` | Same consent shape + key | Appends consented public result; preceding operation must be confirmed |
 | `GET /operations/{id}` | None | Owner-visible chain status/reference; excludes raw signed bytes |
 | `GET /receipts/{receiptId}` | None | Public summary and approved revisions, or 404 |
@@ -57,6 +59,8 @@ Google/GitHub OAuth uses Supabase SSR PKCE. POST `/auth/sign-in` validates the p
 M06 adds login-start/callback server throttling and a coarse private-mutation admission layer using document 11's policies. The existing OAuth POST/PKCE contract remains; a throttled start does not call the provider or destroy a valid session. A callback admission failure must not consume/exchange its code, log its query, or redirect in an automatic retry loop. Render a safe recovery response with Retry-After and a link to restart sign-in if the code expires; do not claim a callback code can always be replayed.
 
 Publication preview expires after five minutes and before the live precommit cutoff, whichever is earlier. Publication rechecks freshness/time/state. Any difference produces `409 PREVIEW_CHANGED` and another preview; consent is never transferred to changed data.
+
+M09 clarification: a plan preview expires at the earlier of five minutes or ten minutes before the precommit cutoff; result previews expire after five minutes. Persist receipt identity/nonces before returning a preview; concurrent identical previews reuse the frozen bytes. A changed private plan version, public predecessor or reviewed explanation requires a fresh preview. `GET /plans/{id}/publication` and `GET /plans/{id}/publication/bundle` provide owner-only state/export during M09; public receipt/bundle/chain routes remain M10. Signed transaction bytes are never part of these responses.
 
 The server supplies the trusted Europe/London reference date for live AI interpretation. A client `localReferenceDate` is accepted only if it matches that context; stale or conflicting dates require a refreshed review. Demo-relative dates are confined to fixture mode.
 
@@ -182,3 +186,49 @@ Lifecycle acknowledgements are `{planId, planVersion, reportId, resultId, change
 Reauthentication starts at the existing `/auth/sign-in` form with provider and `intent=reauth`; no client return URL is accepted. The server signs a short-lived request nonce bound to the current owner, stores the nonce in a signed HttpOnly intent cookie bound to the browser’s PKCE flow, preserving the existing allowlisted callback URL, and requires a newly exchanged PKCE session for that same owner. The resulting HttpOnly, SameSite=Lax receipt is bound to its Supabase session ID and expires after ten minutes. Normal sign-in, session refresh and a query parameter alone cannot mint it. Provider SSO may reuse its own login; this proves a fresh provider exchange, not forced password entry.
 
 Primary references checked for M07: [OAuth sign-in](https://supabase.com/docs/reference/javascript/auth-signinwithoauth), [server-side admin deletion](https://supabase.com/docs/reference/javascript/auth-admin-deleteuser). Administrative deletion stays server-only.
+
+### M08 internal proof contract (no HTTP endpoint yet)
+
+`buildPlanManifest(privatePlan, persistedIdentity)` returns a frozen sanitized live plan; `buildResultManifest(privatePlan, publicPlan, retainedReport, retainedRevision, actualSnapshotOrNull, publicOptions)` requires exact parent/snapshot pairing and separately reviewed correction text. Both reject unknown public fields and use the documented integer/UTC contracts. The nonce/receipt identity is supplied, not regenerated. No request-provided owner or totals become authoritative.
+
+`exportProofBundle`/`importProofBundle` operate locally under a 256-KiB limit; imports reject duplicate keys, unsafe/non-integer numeric lexemes and invalid Unicode. `verifyProofBundle(bundleOrJson, optionalTrustedContext)` performs no I/O and returns seven separate checks plus computed digests, original/current issuer fields and limitations. Trusted context is `{expectedChainId, expectedContractAddress, chain}`; `chain` is a separately obtained state/event/block observation, or null. Embedded transaction references cannot substitute for it. The versioned generated ABI/build metadata are available for later adapters; no RPC read endpoint, worker write or public default address is implemented in M08.
+
+## M09 executable publication contract
+
+Plan preview accepts an empty body or `{}`; result preview accepts only `{correctionExplanation}`. Preview response is `{id,manifest,manifestHash,expiresAtUtc,consentVersion:"public-proof-v1"}`. Consent is exactly `{previewId,manifestHash,consentVersion,consent:true}` plus the normal retry key and returns `{operationId,receiptId,manifestHash}`. The result URL identifies the private result sequence and is checked against the frozen preview. No owner, totals, timestamps, provider or chain destination may be supplied.
+
+Owner state is `{publication:null|{receiptId,manifestHash,manifest,operation,results:[{manifestHash,manifest,operation}]}}`. Operation projections contain `id,kind,status,manifestHash,transactionHash,blockNumber,checkedAtUtc,failureCode`; no signed bytes, signer key, leases or private result/account links. `GET /operations/{id}` checks identity plus owner/RLS. The owner bundle preserves all consented copies; chain references are null unless its complete transaction set is confirmed. Content can still be recomputed offline. Public receipt/bundle/chain APIs remain M10.
+
+`409 PREVIEW_CHANGED` requires another exact review. `409 PUBLICATION_NOT_ALLOWED` explains cancellation/cutoff/preceding-state constraints. `429 PUBLICATION_RATE_LIMITED` preserves the private plan. All private responses are non-cacheable. Chain status is the worker's recorded observation with a visible last-check time; a submit acknowledgement is never confirmation.
+
+## Household expansion — U34 API contract
+
+New APIs use strict v2 contracts and the existing `{data,requestId}` / safe error envelopes. Private responses use `private,no-store`. Mutations require exact origin, authenticated identity, shared admission and bounded JSON. No client owner ID, source factor, carbon total, server clock or trusted profile content is accepted. Resolve profile versions on the server.
+
+| Method/path | Contract |
+|---|---|
+| GET `/api/v2/activities/profiles` | Bounded reviewed reference records/categories and provenance; no personal data; authenticated |
+| POST `/api/v2/activities/simulate` | Reviewed activity plus start; return energy, nullable CO₂, interval/source metadata and explicit data status; no commitment |
+| POST `/api/v2/activities/interpret` | Consent, bounded text/reference context and stable AI task key; editable suggestions/questions; no authoritative energy or schedule |
+| POST `/api/v2/schedules/compare` | Strict reviewed tasks/day input; server forecast and deterministic comparison or precise conflict outcome |
+| POST `/api/v2/schedules` | Comparison identity/version plus stable idempotency key; atomic acceptance of exact stored comparison; return immutable schedule |
+| GET `/api/v2/schedules` | Owner pagination, maximum twenty items, stable accepted-time/UUID cursor |
+| GET `/api/v2/schedules/[id]` | Owner detail including immutable inputs and append-only task history |
+| POST `/api/v2/schedules/[id]/explanation` | Consent/key, server-loaded facts; eligible codes rendered with deterministic numbers |
+| POST `/api/v2/schedules/[id]/tasks/[taskId]/reports` | Ran/non-run plus current revision, profile confirmation/start where relevant, correction link; append only |
+| POST `/api/v2/schedules/[id]/tasks/[taskId]/refresh` | Reuse frozen report; obtain actual factors; append only if result state/source changes |
+| DELETE `/api/v2/schedules/[id]` | Same private/de-linked public retention and recent-auth rules as existing lifecycle |
+| POST `/api/v2/schedules/[id]/publication-preview` | Exact sanitized plan/result revision preview and disclosure before consent |
+| POST `/api/v2/schedules/[id]/publication` | Exact preview digest/version plus consent/idempotency; no implicit publication |
+
+Schedule create/compare/accept bodies cap at 32 KiB/eight seconds; interpretation text caps at 2,000 UTF-16 units with up to twelve tasks. Small simulation/report requests keep 16 KiB. These are explicit endpoint bounds; do not globally relax v1 request validation. Imported public bundles have a separate bounded schema/byte policy in 10.
+
+Use v1 mutation admission 30/minute/user as a shared ceiling across versions, comparison admission 10/minute/user, and a simulator ceiling 20/minute/user. AI remains within the same application/provider/user budgets across v1/v2. Public home summary is server-cached five minutes; do not expose an unlimited anonymous provider proxy.
+
+Errors distinguish `NEEDS_INFORMATION`, `INVALID_ACTIVITY`, `WINDOW_TOO_SHORT`, `BASELINE_INFEASIBLE`, `CONSTRAINT_CONFLICT`, `INCOMPLETE_GRID_COVERAGE`, `COMPARISON_EXPIRED`, `RATE_LIMITED`, `IDEMPOTENCY_CONFLICT` and unavailable services. Feasible no-improvement and feasible best-found are successful comparisons with clear status. Search exhaustion without a feasible witness is `search_incomplete`, never proven conflict. Retry only on explicit transient states, with Retry-After honored; an uncertain save reuses its key.
+
+Forecast requests round outward to half-hour boundaries and use the existing validated 48-hour national feed. Historical simulation uses actual factors and is labeled retrospective; mixed past/future simulation is rejected with an actionable choice rather than silently mix factor kinds. Source metadata retains original retrieval/issuance/license. Never substitute current intensity for missing future intervals or AI text for a failed API.
+
+## M11 release maintenance endpoint — 25 October 2026
+
+`GET /api/internal/maintenance` is an operator-only Vercel cron endpoint. It requires the exact `Bearer CRON_SECRET` value (at least 32 characters), returns no-store aggregate counts and runs the service-only `cs_retention` RPC. Missing configuration returns 503; missing/incorrect credentials return 401. It exposes no plan contents, provider keys or signer. A concurrent run returns a busy result rather than competing over the same cleanup. The public health endpoint remains liveness only. Schedule reads retain ownership/authentication checks and do not consume the mutation submission budget; duplicate/unknown paging parameters are rejected.
