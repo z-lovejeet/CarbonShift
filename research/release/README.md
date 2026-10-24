@@ -1,4 +1,16 @@
-# M11 pre-deployment checkpoint — 25 October 2026
+# M11 release evidence
+
+## Current deployed acceptance — 25 October 2026
+
+The application is live at [carbonshift-mocha.vercel.app](https://carbonshift-mocha.vercel.app). [Deployment evidence](deployment.json) records the actual Vercel build, passing GitHub workflow, fresh temporary-member journey, real grid calculations, retry/reload/ownership checks, native provider redirects, forged-IP protection, authorized retention execution, served-JavaScript credential scan and twelve measured page navigations. No real provider password was entered by the agent.
+
+The newly consented [public receipt](https://carbonshift-mocha.vercel.app/receipts/0x7634e04b847f24d720a4a12af5ba2bc4f10334fd942b96e5a347ff2f37078f56) is anchored by [the actual Sepolia transaction](https://sepolia.etherscan.io/tx/0x21e5258d02086896a418c35495900bbfd47ae202d0d91e8cec1c2a5cc5c8744d). Its browser verifier matched all seven separate checks. Both temporary members were removed after confirmation; their consented public copy remains without a private owner link. These are authored inputs and an estimated national-signal comparison, not measured household savings.
+
+Vercel hosts the web app. The separate local ledger worker must be running to process new publications. The retention cron is enabled, and its bearer-protected endpoint was executed successfully; its first automatically scheduled invocation has not yet occurred. Gemini and Groq remain configured with existing qualifications and conservative budgets. Public Gemini inference was not invoked while the builder's billing confirmation is pending.
+
+G11 remains open for fresh human Google/GitHub sign-in, the billing-dependent production Gemini check and actual screen-reader speech review. Automated accessibility and intercepted provider-boundary checks are separate evidence.
+
+## Historical pre-deployment checkpoint — 25 October 2026
 
 This record covers current local release preparation. G11 is open until the deployed environment is checked. Earlier [household acceptance](../household/final/README.md) and [M09 Sepolia evidence](../phase-9/README.md) remain dated integration evidence, not a new deployed pass.
 

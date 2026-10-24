@@ -88,3 +88,7 @@ The builder approved the new landing appearance and requested the same visual qu
 ### M11 current release work
 
 The builder authorized final release checks, the 40–50 commit GitHub publication batch, and GitHub-based Vercel deployment. They will connect the repository in the existing project dashboard. Privacy contact and local OAuth port alignment are configured; production billing/profile, deployment OAuth and worker availability require actual evidence. See status section 31 and the M11 section of document 14. Earlier no-publication/testing-deferral notes remain historical.
+
+### Live deployment checkpoint
+
+The GitHub-connected Vercel site is now live at [carbonshift-mocha.vercel.app](https://carbonshift-mocha.vercel.app). [Status section 33](decisions-and-status.md#33-m11-live-deployment-and-verified-production-journey) and [current deployment evidence](../research/release/deployment.json) record real production integration, actual proof and remaining G11 checks. Earlier pre-deployment notes are historical. Preserve the dedicated publication journal and confirmed receipt rather than creating another acceptance commitment.

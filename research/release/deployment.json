@@ -1,0 +1,244 @@
+{
+  "date": "2026-10-25",
+  "verifiedApplicationCommit": "02344d8510f3915fed1721dcfa4714b3dfd6a7f6",
+  "hosting": {
+    "project": "prj_wGBqODI5wHPDsGTfsxyIWguznmLL",
+    "autoExposeSystemEnvs": false,
+    "crons": {
+      "enabledAt": 1792871802425,
+      "disabledAt": null,
+      "deploymentId": "dpl_QYeonzFrS8gNxw7dDgk5BzYz5NiE",
+      "definitions": [
+        {
+          "path": "/api/internal/maintenance",
+          "schedule": "17 3 * * *",
+          "host": "carbonshift-gjy0ywy0o-z-lovejeets-projects.vercel.app"
+        }
+      ]
+    },
+    "production": {
+      "id": "dpl_QYeonzFrS8gNxw7dDgk5BzYz5NiE",
+      "url": "carbonshift-gjy0ywy0o-z-lovejeets-projects.vercel.app",
+      "readyState": "READY"
+    }
+  },
+  "liveJourney": {
+    "checkedAtUtc": "2026-10-24T19:57:09.926Z",
+    "origin": "https://carbonshift-mocha.vercel.app",
+    "basis": "Actual HTTPS production pages/APIs; authored inputs and temporary members; actual national grid and dedicated Sepolia. Human OAuth identity and measured appliance use are not claimed.",
+    "publicHealthAndOwnershipBoundary": "passed",
+    "proxy": {
+      "header": "x-vercel-forwarded-for",
+      "spoofedRequests": 2,
+      "unchangedAuthoritativeBucket": true,
+      "rawIpsStoredInEvidence": false
+    },
+    "oauthProviderBoundary": [
+      {
+        "provider": "Google",
+        "reached": true,
+        "cspBlocked": false,
+        "humanIdentityVerified": false
+      },
+      {
+        "provider": "GitHub",
+        "reached": true,
+        "cspBlocked": false,
+        "humanIdentityVerified": false
+      }
+    ],
+    "simulation": {
+      "energyMwh": 50000,
+      "estimatedMg": 3375,
+      "retrievedAtUtc": "2026-10-24T19:57:27Z"
+    },
+    "privatePlanning": {
+      "tasks": 2,
+      "reloaded": true,
+      "retrySamePlan": true,
+      "foreignDenied": true,
+      "reportSequence": 1,
+      "baselineMg": 32250,
+      "selectedMg": 30650
+    },
+    "publication": {
+      "receiptId": "0x7634e04b847f24d720a4a12af5ba2bc4f10334fd942b96e5a347ff2f37078f56",
+      "manifestHash": "0x9a908a4a1dd79f8e93287bd8999f8702c8436b519bf9227e2c492a2d884cee11",
+      "transactionHash": "0x21e5258d02086896a418c35495900bbfd47ae202d0d91e8cec1c2a5cc5c8744d",
+      "blockNumber": 11985997,
+      "publicReceipt": true,
+      "ownerExport": true,
+      "privateEndpointDeniedAnonymous": true,
+      "browserProofMismatches": 0,
+      "proofMatches": 7,
+      "limitations": "Authored energy and self-report; no measured savings or household execution verification."
+    },
+    "ai": "Not invoked by this check; public Gemini billing prerequisite remains separate.",
+    "completedAtUtc": "2026-10-24T19:59:06.335Z"
+  },
+  "maintenance": {
+    "checkedAtUtc": "2026-10-24T19:57:41.030Z",
+    "unauthorizedStatus": 401,
+    "status": 200,
+    "data": {
+      "busy": false,
+      "mode": "apply",
+      "removed": {
+        "privatePlans": 0,
+        "orphanSnapshots": 7,
+        "privateSchedules": 0,
+        "unacceptedComparisons": 1,
+        "expiredAcknowledgements": 0,
+        "unacceptedScheduleComparisons": 0
+      },
+      "eligible": {
+        "ai": {
+          "abandonedTasks": 0,
+          "oldRunMetadata": 0,
+          "expiredTaskKeys": 4,
+          "expiredCodeCache": 0,
+          "expiredReservations": 28
+        },
+        "privatePlans": 0,
+        "expiredPlanKeys": 0,
+        "expiredPreviews": 0,
+        "privateSchedules": 0,
+        "expiredScheduleKeys": 0,
+        "unacceptedComparisons": 1,
+        "expiredAcknowledgements": 0,
+        "expiredScheduleCodeCache": 0,
+        "expiredScheduleReportKeys": 0,
+        "unacceptedScheduleComparisons": 0
+      },
+      "batchLimit": 1000
+    }
+  },
+  "performance": {
+    "checkedAtUtc": "2026-10-24T19:59:34.356Z",
+    "origin": "https://carbonshift-mocha.vercel.app",
+    "environment": "Desktop Chromium from the builder machine; no network/CPU throttling; one browser with subsequent cache reuse; three navigations per route. Not field-user or mobile-network performance.",
+    "hardware": {
+      "cpu": "Apple M4",
+      "logicalCpus": 10,
+      "platform": "darwin",
+      "arch": "arm64",
+      "node": "v24.11.1"
+    },
+    "samples": [
+      {
+        "path": "/",
+        "sample": 1,
+        "ttfbMs": 36,
+        "domContentLoadedMs": 571,
+        "loadMs": 571
+      },
+      {
+        "path": "/",
+        "sample": 2,
+        "ttfbMs": 35,
+        "domContentLoadedMs": 497,
+        "loadMs": 523
+      },
+      {
+        "path": "/",
+        "sample": 3,
+        "ttfbMs": 35,
+        "domContentLoadedMs": 477,
+        "loadMs": 478
+      },
+      {
+        "path": "/demo",
+        "sample": 1,
+        "ttfbMs": 35,
+        "domContentLoadedMs": 515,
+        "loadMs": 612
+      },
+      {
+        "path": "/demo",
+        "sample": 2,
+        "ttfbMs": 34,
+        "domContentLoadedMs": 45,
+        "loadMs": 74
+      },
+      {
+        "path": "/demo",
+        "sample": 3,
+        "ttfbMs": 35,
+        "domContentLoadedMs": 45,
+        "loadMs": 71
+      },
+      {
+        "path": "/methodology",
+        "sample": 1,
+        "ttfbMs": 34,
+        "domContentLoadedMs": 494,
+        "loadMs": 510
+      },
+      {
+        "path": "/methodology",
+        "sample": 2,
+        "ttfbMs": 36,
+        "domContentLoadedMs": 46,
+        "loadMs": 55
+      },
+      {
+        "path": "/methodology",
+        "sample": 3,
+        "ttfbMs": 34,
+        "domContentLoadedMs": 48,
+        "loadMs": 56
+      },
+      {
+        "path": "/verify",
+        "sample": 1,
+        "ttfbMs": 36,
+        "domContentLoadedMs": 49,
+        "loadMs": 117
+      },
+      {
+        "path": "/verify",
+        "sample": 2,
+        "ttfbMs": 34,
+        "domContentLoadedMs": 47,
+        "loadMs": 56
+      },
+      {
+        "path": "/verify",
+        "sample": 3,
+        "ttfbMs": 34,
+        "domContentLoadedMs": 46,
+        "loadMs": 56
+      }
+    ]
+  },
+  "browserSecretScan": {
+    "checkedAtUtc": "2026-10-24T20:00:59.867Z",
+    "javascriptAssets": 9,
+    "bytes": 585350,
+    "localCredentialValuesChecked": 6,
+    "matches": []
+  },
+  "githubChecks": {
+    "runId": 40127470579,
+    "conclusion": "success",
+    "url": "https://github.com/z-lovejeet/CarbonShift/actions/runs/40127470579"
+  },
+  "fixtureCleanup": "Both temporary Auth members removed after confirmed publication; consented public copy retained without the private owner link.",
+  "publicAi": {
+    "enabled": true,
+    "selectedProfile": "uk_public_paid_gemini",
+    "billingVerified": false,
+    "publicInferenceInvoked": false,
+    "existingRoleQualificationUnchanged": true
+  },
+  "remainingG11Checks": [
+    "Fresh human Google and GitHub identity callbacks on production",
+    "Confirm Gemini billing prerequisite and run bounded production inference",
+    "Actual screen-reader speech smoke; existing automated accessibility is separate"
+  ],
+  "operatingLimits": [
+    "Ledger worker is a separate local process, not always-on Vercel hosting",
+    "First automatically scheduled cron invocation has not occurred; enabled definition and authorized live endpoint were checked",
+    "All consumption/CO2 values are estimates from authored assumptions and a national signal"
+  ]
+}
