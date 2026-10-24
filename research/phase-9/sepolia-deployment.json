@@ -1,0 +1,30 @@
+{
+  "checkedAtUtc": "2026-10-22T19:55:15.393Z",
+  "chainId": 11155111,
+  "contractAddress": "0xddc904b894669e4f00a3b4dfbaad58f90e9f7040",
+  "issuer": "0x07084317b02a2fdc23f4e1bca5749d849461a4e3",
+  "transactionHash": "0x4357d49ace21861481be1149975d6195a6ac83781461a7a8a2ddf38038a93ebd",
+  "deploymentBlock": 11971755,
+  "blockHash": "0x451955b15e2e1a007b0b0fafa2fab320a8c59b3d7ac2348b014c483eff469f64",
+  "confirmationPolicy": "two blocks after inclusion",
+  "gasUsed": "4048293",
+  "effectiveGasPrice": "39",
+  "build": {
+    "artifactVersion": 1,
+    "contractName": "ShiftReceipt",
+    "sourceName": "contracts/ShiftReceipt.sol",
+    "compiler": "0.8.37+commit.f401782d",
+    "evmVersion": "cancun",
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "openzeppelinVersion": "5.6.1",
+    "sourceSha256": "0x062ef5491d34a5c59386cf1670899e93c8c0130a16a30f193e9feab707975673",
+    "abiSha256": "0x73848d013b3ec4a61f8f377f8b72fce6a4fe930850363ff253bc2562b4315191",
+    "creationBytecodeSha256": "0x748c5e38b7a7ce5db3f6088d01402126f3c9ab0c746ebdfcddb59043312396c0",
+    "runtimeBytecodeSha256": "0xb8018704f88aaa924afc7104d7045217d1079dbd6961fed5b3a1004884994a4c"
+  },
+  "runtimeBytecodeMatched": true,
+  "ownerMatched": true
+}
