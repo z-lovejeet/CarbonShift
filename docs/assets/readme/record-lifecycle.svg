@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+<title id="title">Private plans, reports and public revisions</title><desc id="desc">Drafts become immutable accepted comparisons. Per-task reports and corrections append; separately consented public revisions preserve distinct histories.</desc>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 Z" fill="#165D3B"/></marker></defs>
+<rect width="1200" height="600" rx="20" fill="#F7F8F4"/>
+<text x="48" y="43" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1.7">RECORD LIFECYCLE</text>
+<text x="48" y="91" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#17261E" text-anchor="start" letter-spacing="-0.8">Keep each kind of evidence distinct.</text>
+<text x="48" y="124" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#526158" text-anchor="start">A forecast, a self-report and a chain commitment answer different questions.</text>
+<rect x="48" y="165" width="258" height="123" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="68" y="201" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Draft</text>
+<text x="68" y="233" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Editable activities</text>
+<text x="68" y="258" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">and constraints.</text>
+<rect x="330" y="165" width="258" height="123" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="350" y="201" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Reviewed input</text>
+<text x="350" y="233" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Confirmed baseline</text>
+<text x="350" y="258" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">and energy basis.</text>
+<rect x="612" y="165" width="258" height="123" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="632" y="201" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Comparison</text>
+<text x="632" y="233" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Fresh source snapshot;</text>
+<text x="632" y="258" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">expires if not accepted.</text>
+<rect x="894" y="165" width="258" height="123" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="914" y="201" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Accepted plan</text>
+<text x="914" y="233" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Immutable reviewed</text>
+<text x="914" y="258" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">comparison and forecast.</text>
+<path d="M306 228 H330" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M588 228 H612" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M870 228 H894" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M1023 288 V326 H224 V365" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="48" y="365" width="352" height="139" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="68" y="401" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Reports + corrections</text>
+<text x="68" y="433" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Record completed or skipped tasks.</text>
+<text x="68" y="458" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Corrections append to private history.</text>
+<rect x="424" y="365" width="352" height="139" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="444" y="401" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Updated estimate</text>
+<text x="444" y="433" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Actual grid factors when complete.</text>
+<text x="444" y="458" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Partial coverage remains explicit.</text>
+<rect x="800" y="365" width="352" height="139" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="820" y="401" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Public result revision</text>
+<text x="820" y="433" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Separate preview and consent.</text>
+<text x="820" y="458" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Requires a confirmed public plan.</text>
+<path d="M400 435 H424" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M776 435 H800" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="48" y="552" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#526158" text-anchor="start">Private corrections never publish automatically. Existing v1 washing records retain their original method and bytes.</text>
+</svg>

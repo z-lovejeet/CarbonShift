@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="755" viewBox="0 0 1200 755" role="img" aria-labelledby="title desc">
+<title id="title">Bounded AI workflow</title><desc id="desc">Consent and shared quota admission precede qualified model access. Reviewed inputs feed deterministic comparison; saved facts ground optional explanation.</desc>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 Z" fill="#165D3B"/></marker></defs>
+<rect width="1200" height="755" rx="20" fill="#F7F8F4"/>
+<text x="48" y="43" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1.7">AI WORKFLOW</text>
+<text x="48" y="91" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#17261E" text-anchor="start" letter-spacing="-0.8">Assistance with a defined boundary.</text>
+<text x="48" y="124" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#526158" text-anchor="start">Two roles: editable household interpretation and grounded schedule explanation.</text>
+<rect x="48" y="166" width="204" height="121" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="68" y="202" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Describe</text>
+<text x="68" y="234" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">A household request</text>
+<text x="68" y="259" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">without personal data.</text>
+<rect x="273" y="166" width="204" height="121" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="293" y="202" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Consent</text>
+<text x="293" y="234" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Explicit permission for</text>
+<text x="293" y="259" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">external processing.</text>
+<rect x="498" y="166" width="204" height="121" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="518" y="202" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Admission</text>
+<text x="518" y="234" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Reserve request and</text>
+<text x="518" y="259" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">token budgets first.</text>
+<rect x="723" y="166" width="204" height="121" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="743" y="202" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Qualified route</text>
+<text x="743" y="234" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Eligible role + variant;</text>
+<text x="743" y="259" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">bounded recovery.</text>
+<rect x="948" y="166" width="204" height="121" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="968" y="202" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Validate</text>
+<text x="968" y="234" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Strict schema and</text>
+<text x="968" y="259" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">clarification questions.</text>
+<path d="M252 226 H273" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M477 226 H498" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M702 226 H723" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M927 226 H948" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M1050 287 V326 H180 V369" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="48" y="369" width="258" height="124" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="68" y="405" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Review inputs</text>
+<text x="68" y="437" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Edit and confirm the</text>
+<text x="68" y="462" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">energy and timing basis.</text>
+<rect x="330" y="369" width="258" height="124" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="350" y="405" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Compare in code</text>
+<text x="350" y="437" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Arithmetic and schedule</text>
+<text x="350" y="462" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">search are deterministic.</text>
+<rect x="612" y="369" width="258" height="124" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="632" y="405" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Save privately</text>
+<text x="632" y="437" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Accept the exact plan</text>
+<text x="632" y="462" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">and forecast snapshot.</text>
+<rect x="894" y="369" width="258" height="124" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="914" y="405" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Optional explanation</text>
+<text x="914" y="437" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Checked reason codes</text>
+<text x="914" y="462" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">from saved schedule facts.</text>
+<path d="M306 432 H330" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M588 432 H612" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M870 432 H894" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="48" y="535" width="1104" height="164" rx="14" fill="#EEF2E9" stroke="#D7DFD6"/>
+<text x="70" y="565" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">RELIABILITY BOUNDARY</text>
+<text x="70" y="601" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#17261E" text-anchor="start">At most two attempts</text>
+<text x="70" y="628" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" text-anchor="start">Per AI task; shared deadline.</text>
+<text x="70" y="652" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" text-anchor="start">Skip capped or ineligible routes.</text>
+<text x="433" y="601" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#17261E" text-anchor="start">Role-specific qualification</text>
+<text x="433" y="628" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" text-anchor="start">Gemini/Groq integration does not</text>
+<text x="433" y="652" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" text-anchor="start">qualify every role on every model.</text>
+<text x="804" y="601" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#17261E" text-anchor="start">Manual recovery</text>
+<text x="804" y="628" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" text-anchor="start">Input and comparison remain usable.</text>
+<text x="804" y="652" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" text-anchor="start">Cached/standard copy is labeled.</text>
+<text x="48" y="730" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" text-anchor="start">AI never operates equipment, accepts a plan or publishes a record. Explanations pass their own admission checks.</text>
+</svg>

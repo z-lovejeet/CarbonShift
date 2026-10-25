@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="530" viewBox="0 0 1200 530" role="img" aria-labelledby="title desc">
+<title id="title">Three workspaces, one coherent routine</title><desc id="desc">Separate simulation, task and day planning lead to private histories and optional public proof.</desc>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 Z" fill="#165D3B"/></marker></defs>
+<rect width="1200" height="530" rx="20" fill="#F7F8F4"/>
+<text x="48" y="43" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1.7">PRODUCT WORKSPACES</text>
+<text x="48" y="91" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#17261E" text-anchor="start" letter-spacing="-0.8">Three workspaces. One thoughtful routine.</text>
+<text x="48" y="124" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#526158" text-anchor="start">Each workspace has a clear job. Your accepted records connect them.</text>
+<rect x="48" y="163" width="352" height="240" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="68" y="191" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">01</text>
+<text x="68" y="221" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Simulate an activity</text>
+<text x="68" y="253" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Enter watts, cycle energy or a</text>
+<text x="68" y="278" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">reviewed appliance reference.</text>
+<text x="68" y="303" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Inspect electricity, grid CO2</text>
+<text x="68" y="328" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">and the time-interval breakdown.</text>
+<rect x="424" y="163" width="352" height="240" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="444" y="191" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">02</text>
+<text x="444" y="221" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Plan one or many tasks</text>
+<text x="444" y="253" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Confirm your usual times.</text>
+<text x="444" y="278" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Set windows, blocks and order.</text>
+<text x="444" y="303" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Compare feasible schedules</text>
+<text x="444" y="328" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">without changing energy needs.</text>
+<rect x="800" y="163" width="352" height="240" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="820" y="191" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">03</text>
+<text x="820" y="221" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Plan a whole day</text>
+<text x="820" y="253" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Coordinate up to 12 activities.</text>
+<text x="820" y="278" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Keep appointments fixed.</text>
+<text x="820" y="303" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Respect equipment and attention</text>
+<text x="820" y="328" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">within one London calendar day.</text>
+<rect x="48" y="429" width="1104" height="64" rx="12" fill="#EEF2E9" stroke="#D7DFD6"/>
+<text x="600" y="468" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="600" fill="#165D3B" text-anchor="middle">Save privately  →  Report and correct  →  Publish by consent  →  Verify locally</text>
+</svg>

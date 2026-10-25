@@ -14,7 +14,7 @@ M06 is complete locally under the documented manual-first experimental quality p
 
 ## Product boundaries
 
-- Primary track: Renewable Energy & Energy Trading.
+- Primary submission track: Carbon Markets & Emissions Transparency, as subsequently selected by the builder. The project contributes transparent electricity-emission estimates and inspectable records; earlier energy-track references are historical.
 - Current product: separate household simulator/task/day workspaces, up to twelve tasks, GB national signal, Europe/London scheduling, confirmed energy assumptions and per-task self-reports. Existing washing-only records retain v1.
 - Gemini and Groq are product providers. Codex's development model is separate.
 - Scheduling, carbon arithmetic, authorization, and verification are deterministic software.

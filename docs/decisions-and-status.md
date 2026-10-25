@@ -1406,3 +1406,23 @@ Next ready task: publish this single authorized follow-up, verify its connected 
 Exact command/action to resume: verify origin/main matches the authorized follow-up and its GitHub/Vercel status; open /app/plan/new or /app/day/new; use pnpm dev --port 3001 for local recording if needed; preserve top-level test-results guards and browser-only output directories
 Relevant commit or reviewable diff: one explicitly authorized focused follow-up after a0ee34b429e1d2390f965e3fc9838a7bacf3259a, preserving the previous 50 commits and published history
 ```
+
+
+## 37. Public README and illustrated architecture
+
+26 October 2026. The builder requested a complete professional, detailed README with SVGs, architecture and live links, then explicitly approved the result and authorized immediate cleanup, commit and GitHub push. Rewrote the public entry point around the household product, live routes, a reproducible four-task routine, deterministic methodology, bounded AI, actual Sepolia evidence, privacy, service setup, API/source map, scoped verification, deployment, troubleshooting and remaining rollout items. Added eight original static SVGs under docs/assets/readme in the existing paper/forest palette. The architecture assigns database/service orchestration to the server and signing to the separate worker; the calculation core remains pure. Repository guidance now reflects the builder's subsequently selected Carbon Markets & Emissions Transparency submission track. No application behavior, provider policy, credentials, saved record or contract was changed.
+
+Observed documentation checks: all 64 README local references resolved; all eight SVGs parsed as XML without external resources, scripts or foreignObject; rendered all eight for visual inspection. One initial AI-node heading overflow was corrected. The hero wordmark and server/database arrow were refined after inspection. Dated evidence counts remain labeled by their recorded run; G11 prerequisites and operating limits remain disclosed. No product, provider or testnet acceptance journey was repeated for these documentation changes.
+
+```text
+Task: Post-M11 public README redesign
+Status: documentation and SVG assets completed; builder authorized immediate single-commit publication
+Scope/spec version used: current household implementation and evidence, builder's README/visual request and explicit commit/push instruction
+Changed files: README.md; eight docs/assets/readme SVGs; AGENTS.md primary-track correction; this status entry
+Checks run and observed results: README local references resolved; eight SVG XML/security checks and render inspection passed after the described visual corrections; final diff whitespace check required before commit
+Manual/live checks and environment: no repeated user, AI, grid or chain journey; live links point to existing recorded deployment/receipts
+Unresolved failures or decisions: existing G11 public-provider prerequisite and spoken-accessibility review stay open; local worker/cron observation limits remain disclosed
+Next ready task: push the approved documentation commit and let the builder review GitHub rendering
+Exact command/action to resume: verify origin/main matches the documentation commit and working tree is clean; inspect its GitHub check status without claiming a pending workflow passed
+Relevant commit or reviewable diff: one explicitly authorized documentation/illustration commit after 01a30a3; preserve published history
+```

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="860" viewBox="0 0 1200 860" role="img" aria-labelledby="title desc">
+<title id="title">CarbonShift system architecture and trust boundaries</title><desc id="desc">A browser calls authenticated server APIs. Server adapters validate grid and AI data and persist owned records. Pure domain code computes estimates. A separate worker signs Sepolia commitments.</desc>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 Z" fill="#165D3B"/></marker></defs>
+<rect width="1200" height="860" rx="20" fill="#F7F8F4"/>
+<text x="48" y="43" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1.7">SYSTEM ARCHITECTURE</text>
+<text x="48" y="91" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#17261E" text-anchor="start" letter-spacing="-0.8">Separate the calculation from its services.</text>
+<text x="48" y="124" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#526158" text-anchor="start">The domain engine stays pure; the web server orchestrates data and permissions.</text>
+<rect x="40" y="159" width="290" height="398" rx="15" fill="#EEF2E9" stroke="#D7DFD6"/>
+<text x="60" y="190" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">BROWSER</text>
+<rect x="370" y="159" width="420" height="398" rx="15" fill="#EEF2E9" stroke="#D7DFD6"/>
+<text x="390" y="190" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">WEB / SERVER</text>
+<rect x="830" y="159" width="330" height="398" rx="15" fill="#EEF2E9" stroke="#D7DFD6"/>
+<text x="850" y="190" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">EXTERNAL SERVICES</text>
+<rect x="60" y="214" width="250" height="101" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="80" y="250" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Review and consent</text>
+<text x="80" y="282" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">React + Next.js interface</text>
+<text x="80" y="307" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Forms and source disclosures</text>
+<rect x="60" y="355" width="250" height="160" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="80" y="391" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Local proof verifier</text>
+<text x="80" y="423" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Exported JSON stays local.</text>
+<text x="80" y="448" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Recompute bytes and results.</text>
+<text x="80" y="473" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Chain observations are</text>
+<text x="80" y="498" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">a separate trust input.</text>
+<rect x="390" y="214" width="380" height="101" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="410" y="250" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Authenticated API</text>
+<text x="410" y="282" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Ownership checks + strict schemas</text>
+<text x="410" y="307" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Origin checks + shared admission</text>
+<rect x="390" y="355" width="380" height="124" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="410" y="391" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Pure domain engine</text>
+<text x="410" y="423" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Energy → grid overlap → CO2</text>
+<text x="410" y="448" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Feasibility → bounded schedule search</text>
+<text x="410" y="473" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">No model, database or network imports</text>
+<rect x="850" y="214" width="290" height="79" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="870" y="250" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">NESO grid API</text>
+<text x="870" y="282" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Validated national snapshots</text>
+<rect x="850" y="312" width="290" height="79" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="870" y="348" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Gemini / Groq</text>
+<text x="870" y="380" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Qualified, bounded AI roles</text>
+<rect x="850" y="410" width="290" height="105" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="870" y="446" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Supabase / PostgreSQL</text>
+<text x="870" y="478" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Accounts, RLS, snapshots,</text>
+<text x="870" y="503" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">histories, quotas and outbox</text>
+<path d="M310 264 H390" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M580 315 V355" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M770 246 H850" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M770 282 H810 V352 H850" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M770 298 H818 V465 H850" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="580" y="528" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="600" fill="#165D3B" text-anchor="middle">SERVER-SUPPLIED DATA  /  DETERMINISTIC RESULTS</text>
+<rect x="40" y="590" width="1120" height="219" rx="15" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="60" y="622" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">OPTIONAL PUBLICATION  /  SIGNER OUTSIDE THE WEB HOST</text>
+<rect x="60" y="647" width="240" height="107" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="80" y="683" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Accepted record</text>
+<text x="80" y="715" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Immutable private plan</text>
+<rect x="335" y="647" width="240" height="107" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="355" y="683" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Consent + outbox</text>
+<text x="355" y="715" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Exact reviewed public copy</text>
+<rect x="610" y="647" width="240" height="107" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="630" y="683" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Ledger worker</text>
+<text x="630" y="715" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Signer, RPC and recovery</text>
+<rect x="885" y="647" width="240" height="107" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="905" y="683" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">Sepolia contract</text>
+<text x="905" y="715" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" fill="#526158" text-anchor="start">Hashes, timing, revisions</text>
+<path d="M300 699 H335" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M575 699 H610" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M850 699 H885" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="60" y="785" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#526158" text-anchor="start">Vercel serves the web app. Continuous publication depends on the separately running worker.</text>
+</svg>

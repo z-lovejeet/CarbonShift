@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="450" viewBox="0 0 1200 450" role="img" aria-labelledby="title desc">
+<title id="title">CarbonShift: everyday energy, thoughtful timing</title><desc id="desc">Household electricity planning with reviewed inputs, AI assistance and inspectable records. Decorative appliance and clock illustration; not an app screenshot.</desc>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 Z" fill="#165D3B"/></marker></defs>
+<rect width="1200" height="450" rx="20" fill="#F7F8F4"/>
+<text x="54" y="50" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1.2">IEEE CLIMATECHAIN  /  HOUSEHOLD ELECTRICITY</text>
+<text x="50" y="150" font-family="Arial, Helvetica, sans-serif" font-size="86" font-weight="700" fill="#17261E" letter-spacing="-4">CarbonShift<tspan fill="#165D3B">.</tspan></text>
+<text x="54" y="222" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="600" fill="#17261E" text-anchor="start">Everyday energy.</text>
+<text x="54" y="270" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="600" fill="#17261E" text-anchor="start">Thoughtful timing.</text>
+<text x="56" y="322" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="400" fill="#526158" text-anchor="start">AI assistance. Transparent estimates. Inspectable records.</text>
+<rect x="54" y="351" width="150" height="37" rx="8" fill="#EEF2E9" stroke="#D7DFD6"/>
+<text x="129.0" y="375" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#165D3B" text-anchor="middle">GB national signal</text>
+<rect x="218" y="351" width="141" height="37" rx="8" fill="#EEF2E9" stroke="#D7DFD6"/>
+<text x="288.5" y="375" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#165D3B" text-anchor="middle">48-hour horizon</text>
+<rect x="373" y="351" width="148" height="37" rx="8" fill="#EEF2E9" stroke="#D7DFD6"/>
+<text x="447.0" y="375" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#165D3B" text-anchor="middle">Up to 12 activities</text>
+<path d="M728 64 V386" fill="none" stroke="#D7DFD6" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="972" cy="204" r="125" fill="#FFFFFF" stroke="#D7DFD6" stroke-width="2"/>
+<path d="M972.00 92.00 L972.00 101.00" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1028.00 107.01 L1023.50 114.80" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1068.99 148.00 L1061.20 152.50" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1084.00 204.00 L1075.00 204.00" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1068.99 260.00 L1061.20 255.50" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M1028.00 300.99 L1023.50 293.20" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M972.00 316.00 L972.00 307.00" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M916.00 300.99 L920.50 293.20" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M875.01 260.00 L882.80 255.50" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M860.00 204.00 L869.00 204.00" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M875.01 148.00 L882.80 152.50" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M916.00 107.01 L920.50 114.80" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M972 123 A81 81 0 0 1 1042 164" fill="none" stroke="#165D3B" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M972 158 V204 L1009 221" fill="none" stroke="#165D3B" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="820" y="223" width="133" height="127" rx="12" fill="#FFFFFF" stroke="#165D3B"/>
+<path d="M820 251 H953" fill="none" stroke="#D7DFD6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="887" cy="297" r="34" fill="#EEF2E9" stroke="#165D3B" stroke-width="2"/>
+<circle cx="887" cy="297" r="24" fill="#FFFFFF" stroke="#D7DFD6" stroke-width="1"/>
+<circle cx="834" cy="238" r="2" fill="#165D3B" stroke="#165D3B" stroke-width="1"/>
+<circle cx="845" cy="238" r="2" fill="#165D3B" stroke="#165D3B" stroke-width="1"/>
+<circle cx="856" cy="238" r="2" fill="#165D3B" stroke="#165D3B" stroke-width="1"/>
+<rect x="973" y="260" width="171" height="88" rx="9" fill="#EEF2E9" stroke="#165D3B"/>
+<path d="M1058 348 V363 M1025 363 H1091" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M812 382 H862 Q877 382 887 371 T918 371 H1143" fill="none" stroke="#165D3B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="975" y="415" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="600" fill="#165D3B" text-anchor="middle" letter-spacing="1">REVIEW  /  PLAN  /  VERIFY</text>
+</svg>

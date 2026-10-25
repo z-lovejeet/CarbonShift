@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="555" viewBox="0 0 1200 555" role="img" aria-labelledby="title desc">
+<title id="title">Illustrative electricity and carbon calculation</title><desc id="desc">An authored 1 kWh activity produces different factor-weighted estimates under two sets of illustrative grid factors. This is not live or measured impact.</desc>
+<defs><marker id="arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 Z" fill="#165D3B"/></marker></defs>
+<rect width="1200" height="555" rx="20" fill="#F7F8F4"/>
+<text x="48" y="43" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1.7">CALCULATION METHOD</text>
+<text x="48" y="91" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" fill="#17261E" text-anchor="start" letter-spacing="-0.8">Same energy. Different grid factors.</text>
+<text x="48" y="124" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="400" fill="#526158" text-anchor="start">Authored arithmetic example only - not a live result or measured saving.</text>
+<rect x="48" y="164" width="528" height="258" rx="14" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="73" y="199" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">USUAL TIME</text>
+<text x="73" y="237" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">1 kWh over 60 minutes</text>
+<text x="73" y="278" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#17261E" text-anchor="start">0.5 kWh × 300 g/kWh = 150 g</text>
+<text x="73" y="311" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#17261E" text-anchor="start">0.5 kWh × 340 g/kWh = 170 g</text>
+<path d="M73 329 H551" fill="none" stroke="#D7DFD6" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="73" y="386" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" fill="#165D3B" text-anchor="start">320 g CO2</text>
+<rect x="624" y="164" width="528" height="258" rx="14" fill="#EEF2E9" stroke="#D7DFD6"/>
+<text x="649" y="199" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#165D3B" text-anchor="start" letter-spacing="1">ALTERNATIVE TIME</text>
+<text x="649" y="237" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#17261E" text-anchor="start">1 kWh over 60 minutes</text>
+<text x="649" y="278" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#17261E" text-anchor="start">0.5 kWh × 100 g/kWh = 50 g</text>
+<text x="649" y="311" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="400" fill="#17261E" text-anchor="start">0.5 kWh × 140 g/kWh = 70 g</text>
+<path d="M649 329 H1127" fill="none" stroke="#D7DFD6" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="649" y="386" font-family="Arial, Helvetica, sans-serif" font-size="36" font-weight="700" fill="#165D3B" text-anchor="start">120 g CO2</text>
+<rect x="48" y="446" width="1104" height="67" rx="12" fill="#FFFFFF" stroke="#D7DFD6"/>
+<text x="600" y="487" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" fill="#165D3B" text-anchor="middle">Illustrative difference: 200 g CO2  ·  Energy and duration unchanged</text>
+</svg>
