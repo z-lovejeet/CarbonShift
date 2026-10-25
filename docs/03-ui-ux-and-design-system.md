@@ -237,3 +237,8 @@ The shared implementation uses `src/app/product.css` plus `PageHeader`, `PageGui
 Do not hardcode results into these layouts, recompute authoritative carbon amounts in components, hide failed/pending states or add fake counters. Public receipt figures read the already-consented manifest; a derived display difference is labeled as recorded forecast. An exact power reference is described as power rather than incorrectly called cycle energy. No new service, paid model, database migration or device connection is introduced.
 
 For U37, Codex runs compilation/lint checks only. Browser, accessibility/visual, functional, API/provider and chain acceptance remain the builder’s review. Do not mark the updated screens visually/behaviorally passed from the earlier U34/U36 evidence or automatically rerun those suites.
+
+
+### 25 October — remove the planning-limit banner
+
+The builder requested removal of the blue planning-limit notice shown above the household task form. Remove that shared notice from both task and whole-day planners. Keep the normal field hints, London-time labels, date bounds and actionable validation errors; the 48-hour forecast limit, day boundary and ten-minute lead-time rules remain enforced. This is a presentation removal, with no scheduling, calculation, AI or publication behavior change.

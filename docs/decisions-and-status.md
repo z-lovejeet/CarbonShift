@@ -1361,3 +1361,24 @@ Next ready task: record billing/public-audience eligibility when actually fulfil
 Exact command/action to resume: read research/release/deployment.json and production-ai.json; inspect only the newly changed external prerequisite or reported accessibility failure. Preserve test-results/m11-deployment-journal.json. Close G11 only when the named required evidence exists
 Relevant commit or reviewable diff: evidence-only follow-up after 0622531; verify publication count stays at most 50, remote matches and working tree is clean
 ```
+
+
+## 35. Remove the household planning-limit notice
+
+25 October 2026. The builder requested removal of the blue planning-limits notice shown above the household task form while recording the demonstration. Removed the shared `planning-range` aside and its now-unused Next Link import from `src/components/activities/task-planner.tsx`; both task and whole-day planners use this component. Updated the UI owner document to reflect the presentation choice. Existing date bounds, London-time field labels, day hints, current-time checks, review validation, API validation and actionable errors remain intact. No forecast horizon, ten-minute buffer, carbon method, model policy or publication rule changed.
+
+Observed checks: targeted ESLint for the edited component passed; application `pnpm exec tsc --noEmit` passed; the removed notice text/ARIA label/class no longer appear in application/components or existing tests; `git diff --check` passed. No new tests were written for this reversible copy/layout removal, and no browser/Auth/AI/database or blockchain acceptance journey was repeated. Hosted publication is a connected-GitHub follow-up; do not infer a completed Vercel deployment from the local static checks.
+
+```text
+Task: Post-M11 presentation correction — remove planning-limit banner
+Status: implementation and scoped static checks passed; GitHub/Vercel publication follows
+Scope/spec version used: builder's explicit notice-removal request; document 03 presentation amendment; existing scheduling rules preserved
+Dependencies and external gates: existing local development server and connected GitHub/Vercel project
+Changed files: src/components/activities/task-planner.tsx; docs/03-ui-ux-and-design-system.md; docs/decisions-and-status.md
+Checks run and observed results: targeted ESLint exit 0; application tsc exit 0; obsolete notice search returned no matches; diff whitespace check passed
+Manual/live checks and environment: no repeated live-provider, OAuth, user-session or testnet transaction checks
+Unresolved failures or decisions: no issue observed in scoped static checks; G11's existing two external items from section 34 remain open
+Next ready task: confirm connected-GitHub deployment and let the builder refresh the recording page
+Exact command/action to resume: inspect the deployed SHA/state for the follow-up after 35af783; preserve source publication at no more than 50 commits for this batch. Refresh /app/plan/new or /app/day/new; only the blue notice is removed
+Relevant commit or reviewable diff: focused three-file follow-up after 35af783; previous 49 commits are preserved
+```
