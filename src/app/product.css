@@ -392,3 +392,13 @@
   .loading-panels { grid-template-columns: minmax(0,1fr); }
 }
 @media (prefers-reduced-motion: reduce) { .product-page .button, .workspace-links a { transition: none; } }
+
+
+/* Shared picker fields retain space for their custom calendar/clock controls. */
+.product-page .task-form input[data-picker-field]:not([type="checkbox"]):not([type="radio"]),
+.product-page .activity-workspace .date-time-field input[data-picker-field],
+.product-page .task-report .date-time-field input[data-picker-field] { padding-right: 48px; min-height: 50px; border-radius: 9px; font-variant-numeric: tabular-nums; }
+.date-time-field { container: date-time / inline-size; }
+@container date-time (max-width: 300px) {
+  .date-time-inputs { grid-template-columns: minmax(0,1fr); gap: 12px; }
+}

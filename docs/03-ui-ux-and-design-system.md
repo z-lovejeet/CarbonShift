@@ -242,3 +242,10 @@ For U37, Codex runs compilation/lint checks only. Browser, accessibility/visual,
 ### 25 October — remove the planning-limit banner
 
 The builder requested removal of the blue planning-limit notice shown above the household task form. Remove that shared notice from both task and whole-day planners. Keep the normal field hints, London-time labels, date bounds and actionable validation errors; the 48-hour forecast limit, day boundary and ten-minute lead-time rules remain enforced. This is a presentation removal, with no scheduling, calculation, AI or publication behavior change.
+
+
+### 25 October — styled date/time pickers and today's default
+
+The builder requests an app-styled calendar/time selection and today's date by default. The shared date/time field uses a compact React Aria calendar with Monday-first weeks, bounded dates, forest-green selection and a Today action. Its date text accepts UK or ISO entry and serializes to the existing ISO local-date value. Time uses a styled 24-hour hour/minute dialog with exact minute selection, explicit Set time and direct HH:mm entry. Dialogs support keyboard navigation, Escape and restored focus; mobile placement stays within the viewport, and narrow date/time groups stack without crowding.
+
+New blank dates initialize once to the current Europe/London day; dates already supplied by a user, simulator handoff, saved record or selected whole-day date are preserved. Times remain unselected unless already supplied. Changes to a date/time still clear a previous DST occurrence choice, and repeated London hours retain the existing explicit occurrence selector. Date bounds, scheduling/API validation and the 48-hour/ten-minute rules are unchanged. The whole-day selector uses the same calendar. Hide the development-only status badge so it cannot overlap picker controls during local recording.

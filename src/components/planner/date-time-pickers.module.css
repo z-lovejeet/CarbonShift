@@ -1,0 +1,60 @@
+.control { position: relative; min-width: 0; }
+.control .input { width: 100%; min-width: 0; min-height: 50px; padding: 13px 48px 13px 16px; border: 1px solid #bdcbbb; border-radius: 9px; background: #fafbf8; color: #17261e; font: inherit; font-size: 15px; font-variant-numeric: tabular-nums; letter-spacing: .01em; transition: border-color 150ms, box-shadow 150ms; }
+.control .input:focus { outline: none; border-color: #165d3b; box-shadow: 0 0 0 3px rgb(22 93 59 / .09); }
+.control[data-open] .input { border-color: #165d3b; box-shadow: 0 0 0 3px rgb(22 93 59 / .07); }
+.control[data-invalid] .input { border-color: #a42323; }
+.control .input::placeholder { color: #64715f; font-size: 14px; }
+.trigger { position: absolute; inset-block: 5px; right: 5px; display: grid; place-items: center; width: 38px; padding: 0; border: 0; border-radius: 6px; color: #526b56; background: transparent; cursor: pointer; transition: color 150ms, background 150ms; }
+.trigger:hover, .trigger[data-pressed], .control[data-open] .trigger { color: #165d3b; background: #eaf0e5; }
+.trigger:focus-visible { outline: 2px solid #165d3b; outline-offset: 1px; }
+.popover { width: 318px; max-width: calc(100vw - 24px); border: 1px solid #d7dfd3; border-radius: 14px; background: #fff; color: #17261e; box-shadow: 0 8px 16px -10px rgb(26 52 33 / .18), 0 24px 64px -20px rgb(26 52 33 / .24); z-index: 40; overflow: hidden; transform-origin: var(--trigger-anchor-point); font-family: inherit; }
+.popover[data-entering] { animation: appear 150ms ease-out; }
+.popover[data-exiting] { animation: disappear 110ms ease-in; }
+.dialog { outline: none; padding: 18px; }
+.calendar { outline: none; }
+.calendarHeader { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 18px; }
+.month { margin: 0; color: #17261e; font-size: 16px; font-weight: 600; letter-spacing: -.025em; line-height: 1.4; }
+.monthActions { display: flex; gap: 4px; }
+.monthButton { display: grid; place-items: center; width: 31px; height: 31px; padding: 0; border: 1px solid transparent; border-radius: 7px; background: transparent; color: #3e5543; cursor: pointer; }
+.monthButton:hover { background: #eef2e9; border-color: #dce5d7; }
+.monthButton[data-disabled] { color: #bdc5ba; cursor: default; background: transparent; border-color: transparent; }
+.monthButton[data-focus-visible] { outline: 2px solid #165d3b; outline-offset: 1px; }
+.calendarGrid { width: 100%; border-collapse: separate; border-spacing: 2px 5px; }
+.calendarGrid th, .calendarGrid td { padding: 0; border: 0; vertical-align: middle; text-align: center; }
+.weekday { color: #5e6e5a; font-size: 10px; font-weight: 500; text-align: center; padding-bottom: 9px; }
+.day { display: grid; place-items: center; width: 35px; height: 35px; margin: 0 auto; border: 1px solid transparent; border-radius: 9px; outline: none; color: #273b2c; font-size: 13px; font-weight: 450; font-variant-numeric: tabular-nums; cursor: pointer; transition: background 120ms, color 120ms, border-color 120ms; }
+.day[data-hovered] { background: #eef2e9; }
+.day[data-today] { border-color: #9ab598; color: #165d3b; font-weight: 600; }
+.day[data-selected] { background: #165d3b; color: #fff; border-color: #165d3b; font-weight: 600; box-shadow: 0 2px 5px rgb(22 93 59 / .15); }
+.day[data-outside-month] { color: #a4aea0; }
+.day[data-disabled], .day[data-unavailable] { color: #c0c7bc; cursor: default; background: transparent; box-shadow: none; }
+.day[data-focus-visible] { outline: 2px solid #165d3b; outline-offset: 2px; }
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 15px -18px -18px; padding: 13px 18px; border-top: 1px solid #e6ebe2; background: #f8faf5; }
+.quietButton, .todayButton, .applyButton { min-height: 34px; padding: 6px 11px; border: 0; border-radius: 7px; font: inherit; font-size: 12px; font-weight: 550; cursor: pointer; }
+.quietButton { background: transparent; color: #687565; }
+.quietButton:hover { background: #eaf0e5; color: #283e2d; }
+.todayButton { color: #165d3b; background: #e7efdf; }
+.todayButton:hover { background: #dbe8d1; }
+.applyButton { color: white; background: #165d3b; padding-inline: 16px; }
+.applyButton:hover { background: #10492e; }
+.todayButton[data-disabled], .applyButton[data-disabled] { opacity: .4; cursor: default; }
+.quietButton[data-focus-visible], .todayButton[data-focus-visible], .applyButton[data-focus-visible] { outline: 2px solid #165d3b; outline-offset: 2px; }
+.timePopover { width: 286px; }
+.timeHeader { display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid #e6ebe2; }
+.timeCaption { margin: 0 0 5px; color: #697765; font-size: 11px; }
+.timePreview { margin: 0; color: #17261e; font-size: 30px; font-weight: 500; letter-spacing: -.045em; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.timePreview span { margin-inline: 4px; color: #90a08a; }
+.clockFormat { padding: 5px 8px; color: #526b4c; background: #eef3e8; border-radius: 5px; font-size: 10px; }
+.timeColumns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.columnLabel { margin: 0 0 9px; color: #697765; font-size: 11px; }
+.timePopover { overflow-y: auto; }
+.timeList { max-height: 150px; padding: 4px; overflow-y: auto; overscroll-behavior: contain; scroll-padding: 4px; border: 1px solid #e1e8dc; border-radius: 9px; background: #fafcf7; outline: none; scrollbar-width: thin; scrollbar-color: #bcccb3 transparent; }
+.timeOption { display: grid; place-items: center; min-height: 35px; margin-bottom: 2px; border-radius: 6px; outline: none; color: #43543d; font-size: 14px; font-variant-numeric: tabular-nums; cursor: pointer; }
+.timeOption:last-child { margin-bottom: 0; }
+.timeOption[data-hovered], .timeOption[data-focused] { color: #165d3b; background: #e9f0e2; }
+.timeOption[data-selected] { background: #165d3b; color: white; font-weight: 600; }
+.timeOption[data-focus-visible] { outline: 2px solid #165d3b; outline-offset: -2px; }
+@keyframes appear { from { opacity: 0; transform: translateY(-4px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes disappear { to { opacity: 0; transform: translateY(-2px); } }
+@media (max-width: 380px) { .popover { width: 300px; } .day { width: 32px; height: 35px; } .timePopover { width: 276px; } }
+@media (prefers-reduced-motion: reduce) { .popover[data-entering], .popover[data-exiting] { animation: none; } .control .input, .trigger, .day { transition: none; } }

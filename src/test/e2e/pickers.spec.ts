@@ -1,0 +1,33 @@
+import { expect, test } from "@playwright/test";
+import AxeBuilder from "@axe-core/playwright";
+
+test("styled date/time pickers keep exact minutes, keyboard dismissal and a readable viewport", async ({ page }, testInfo) => {
+  const mutations: string[] = [];
+  page.on("request", (request) => { if (["POST", "PUT", "PATCH", "DELETE"].includes(request.method())) mutations.push(request.url()); });
+  await page.goto("/demo");
+  await page.getByText("Try the earlier washing planner", { exact: true }).click();
+  await page.getByRole("button", { name: "Choose earliest start date", exact: true }).click();
+  const calendar = page.getByRole("dialog", { name: "Choose earliest start date", exact: true });
+  await expect(calendar).toBeVisible();
+  await calendar.screenshot({ path: testInfo.outputPath("calendar.png") });
+  const bounds = await calendar.boundingBox();
+  expect(bounds!.x).toBeGreaterThanOrEqual(0);
+  expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(page.viewportSize()!.width);
+  expect((await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze()).violations).toEqual([]);
+  await page.keyboard.press("Escape"); await expect(calendar).toHaveCount(0);
+  const trigger = page.getByRole("button", { name: "Choose earliest start time", exact: true });
+  await trigger.click();
+  const time = page.getByRole("dialog", { name: "Choose earliest start time", exact: true });
+  await time.getByRole("listbox", { name: "Hour", exact: true }).getByRole("option", { name: "23", exact: true }).click();
+  await time.getByRole("listbox", { name: "Minute", exact: true }).getByRole("option", { name: "04", exact: true }).click();
+  await time.screenshot({ path: testInfo.outputPath("time.png") });
+  expect((await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa"]).analyze()).violations).toEqual([]);
+  await time.getByRole("button", { name: "Set time", exact: true }).click();
+  await expect(time).toHaveCount(0); await expect(page.locator("#earliest-time")).toHaveValue("23:04");
+  await trigger.click(); await expect(time).toBeVisible();
+  await time.getByRole("listbox", { name: "Hour", exact: true }).focus();
+  await page.keyboard.press("Escape"); await expect(time).toHaveCount(0);
+  await expect(trigger).toBeFocused(); await expect(page.locator("#earliest-time")).toHaveValue("23:04");
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  expect(mutations).toEqual([]);
+});

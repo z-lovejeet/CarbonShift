@@ -244,3 +244,10 @@ Extend existing planner/detail/history routes with explicit version dispatch; pr
 Pure schemas and calculation contracts now live in `src/domain/activities/{schemas,documents,schedule-documents,report-schemas}.ts`; `src/contracts/{activities,schedules,schedule-lifecycle}.ts` re-export them for server/UI consumers. Domain results and v2 proof import those pure owners rather than API/server modules. The purity checker permits the same selected canonicalization/hash libraries only in the two versioned canonical modules.
 
 New workspaces live under `src/app/app/{simulate,plan/new,day/new}`. Shared household UI is `src/components/activities/`. APIs and server persistence/lifecycle/publication live under `src/app/api/v2/` and `src/server/{activities,schedules}/`. Public projections, source observations and generic receipt reads live in `src/server/publication/`. The local verifier runs heavy calculations in `src/lib/proof-worker.ts`. These are implementation locations, not acceptance claims; current evidence remains in status.
+
+
+### 25 October — shared date/time presentation controls
+
+Added exact runtime pins `react-aria-components` 1.22.1 and `@internationalized/date` 3.12.4 for accessible calendar/listbox/popover interactions. Registry metadata was inspected and the strict pnpm install succeeded. `src/components/planner/date-time-pickers.tsx` and its CSS module own the presentation widgets; `date-time-field.tsx` preserves the existing local date/time/occurrence interface, defaulting only initially empty dates to today's London date. Existing domain time math continues using `@js-temporal/polyfill`; the new UI packages do not own scheduling, carbon calculations or authorization. Whole-day selection reuses the calendar. Styles retain the current paper/forest palette.
+
+Relevant official component references: [Calendar](https://react-aria.adobe.com/Calendar), [Popover](https://react-aria.adobe.com/Popover), [ListBox](https://react-aria.adobe.com/ListBox). These are interaction primitives styled locally, not an additional global design theme.
